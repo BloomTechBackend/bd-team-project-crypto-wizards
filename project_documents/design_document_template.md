@@ -1,40 +1,46 @@
-# Crypto Wizards Design Document
+# [team name] Design Document
 
-## Crypto Portfolio Tracker Design
+## Instructions
+
+*Save a copy of this template for your team in the same folder that contains
+this template.*
+
+*Replace italicized text (including this text!) with details of the design you
+are proposing for your team project. (Your replacement text shouldn't be in
+italics)*
+
+*You should take a look at the example design document in the same folder as
+this template for more guidance on the types of information to capture, and the
+level of detail to aim for.*
+
+## *Project Title* Design
 
 ## 1. Problem Statement
 
-Digital currency, crypto, is a medium of exchange through an encrypted computer 
-network. Owning several crypto assets can be difficult to track and view overall 
-value and performance. 
-
-This design document describes a crypto portfolio tracking service that provides 
-a custom view of the client's portfolio to meet their needs. It is designed to connect 
-with selected crypto exchanges, displaying realtime data converted to USD to see an
-accurate asset value. This will keep track of all assets in a single location 
-with historical data to view growth and regression.
+*Explain clearly what problem you are trying to solve.*
 
 
 ## 2. Top Questions to Resolve in Review
 
-1. How should daily historical data be calculated with a volatile market?   
-2. How many and what assets should be accessible, eliminating stable coin and keeping a 
-market cap order?  
-3. How to manage API calls on the backend and design the frontend to utilize backend data? 
+*List the most important questions you have about your design, or things that
+you are still debating internally that you might like help working through.*
+
+1.   
+2.   
+3.  
 
 ## 3. Use Cases
 
-U1. As a customer, I want to create a new portfolio from a list of assets when I log 
-into the site.
+*This is where we work backwards from the customer and define what our customers
+would like to do (and why). You may also include use cases for yourselves, or
+for the organization providing the product to customers.*
 
-U2. As a customer, I want to view a portfolio holding all my assets with realtime value 
-converted to USD.
+U1. *As a [product] customer, I want to `<result>` when I `<action>`*
+
+U2. *As a [product] customer, I want to view my grocery list when I log into the
+grocery list page*
     
-U3. As a customer, I want to update my list of assets in my portfolio.
-
-U4. As a customer, I want to remove assets from my portfolio.
-
-U5. As a customer, I want to view historical data showing asset performance.
+U3. ...
 
 ## 4. Project Scope
 
