@@ -50,7 +50,7 @@ We will use API Gateway and Lambda to create five endpoints (CreatePotfolio, Get
 
 We will store the assets available for the portfolio in a table in DynamoDB. The porfolios themselves will also be stored in DynamoDB. 
 
-CryptoPortfolioTracker will also provide a web interface for users to manage their porfolios. A main page providing will let them create new porfolios and link off to pages to update assets, view assets and view historical Data.
+CryptoPortfolioTracker will also provide a web interface for users to manage their porfolios. A main page providing  a list view will let them create new porfolios and link off to pages to update assets, view assets and view historical Data.
 
 # 6. API
 
