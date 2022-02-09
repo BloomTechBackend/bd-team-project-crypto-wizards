@@ -4,15 +4,9 @@
 
 ## 1. Problem Statement
 
-Digital currency, crypto, is a medium of exchange through an encrypted computer 
-network. Owning several crypto assets can be difficult to track and view overall 
-value and performance. 
+Crypto assets are digital tokens secured through a decentralized computer network. Owning several crypto assets can be difficult to track and view overall value and performance.
 
-This design document describes a crypto portfolio tracking service that provides 
-a custom view of the client's portfolio to meet their needs. It is designed to connect 
-with selected crypto exchanges, displaying realtime data converted to USD to see an
-accurate asset value. This will keep track of all assets in a single location 
-with historical data to view growth and regression.
+This design document describes a crypto portfolio tracking service that provides a custom view of the client's portfolio to meet their needs. It is designed to connect with a 3rd party price quoting service, displaying realtime data converted to USD to see an accurate asset value. This will keep track of all assets in a single location with historical data to view growth and regression.
 
 
 ## 2. Top Questions to Resolve in Review
@@ -38,36 +32,25 @@ U5. As a customer, I want to view historical data showing asset performance.
 
 ## 4. Project Scope
 
-*Clarify which parts of the problem you intend to solve. It helps reviewers know
-what questions to ask to make sure you are solving for what you say and stops
-discussions from getting sidetracked by aspects you do not intend to handle in
-your design.*
-
 ### 4.1. In Scope
 
-*Which parts of the problem defined in Sections 1 and 2 will you solve with this
-design?*
+* Creating, retrieving, and updating a porfolio.
+* Retrieving the historical data of the portfolio.
+* Retrieving the historical data showing asset performance.
 
 ### 4.2. Out of Scope
 
-*Based on your problem description in Sections 1 and 2, are there any aspects
-you are not planning to solve? Do potential expansions or related problems occur
-to you that you want to explicitly say you are not worrying about now? Feel free
-to put anything here that you think your team can't accomplish in the unit, but
-would love to do with more time.*
+* Buying and selling of assets.
 
 # 5. Proposed Architecture Overview
 
-*Describe broadly how you are proposing to solve for the requirements you
-described in Section 2.*
+This initial iteration will provide creating, retrieving, and updating a user's portfolio, as well as viewing the historical data of the porfolio and the assets to gauge the overall performance over a period of time.
 
-*This may include class diagram(s) showing what components you are planning to
-build.*
+We will use API Gateway and Lambda to create five endpoints (CreatePotfolio, GetPortfolio, UpdatePortfolio, GetPorfolioHistory, GetAssetPotfolio) that will handle the creation, update, and retrieval of porfolio along with the retrieval of the historical data to satisfy our requirements.
 
-*You should argue why this architecture (organization of components) is
-reasonable. That is, why it represents a good data flow and a good separation of
-concerns. Where applicable, argue why this architecture satisfies the stated
-requirements.*
+We will store the assets available for the portfolio in a table in DynamoDB. The porfolios themselves will also be stored in DynamoDB. 
+
+CryptoPortfolioTracker will also provide a web interface for users to manage their porfolios. A main page providing will let them create new porfolios and link off to pages to update assets, view assets and view historical Data.
 
 # 6. API
 
