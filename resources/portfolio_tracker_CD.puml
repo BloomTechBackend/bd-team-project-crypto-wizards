@@ -1,0 +1,64 @@
+@startuml
+title Portfolio Tracker
+
+
+Portfolio --* UpdatePortfolio
+GetPortfolioHistory --* PortfolioHistory
+GetPortfolio --* Portfolio
+User --* CreatePortfolio
+User --* GetPortfolio
+Portfolio --* GetPortfolioHistory
+GetAsset --* Asset
+Asset --* AssetHistory
+Portfolio --* GetAsset
+
+class User {
+  -@DynamoDBHashKey userName : String
+  -password : String
+}
+
+class Asset {
+  -@DynamoDBHashKey assetId : String
+  -@DynamoDBRangeKey marketCap : Integer
+  -assetName : String
+  -assetImage : String
+  -totalSupply : Integer
+  -usdValue: Integer
+  -isAvailable : bool
+}
+
+class Portfolio {
+   -@DynamoDBDKey assetId : String
+   -assetQuantity : Integer
+   -timeStamp : String
+}
+
+class AssetHistory {
+  -@DynamoDBDocument : Map
+  -@DynamoDBBHashKey assetId : String
+  -@DynamoDBRangeKey timeStamp : String
+  -usdValue : Integer
+}
+
+class PortfolioHistory {
+  -@DynamoDBDocument : Map
+  -@DynamoDBBHashKey assetId : String
+  -@DynamoDBRangeKey timeStamp : String
+}
+
+class GetAsset {
+}
+
+class CreatePortfolio {
+}
+
+class GetPortfolio {
+}
+
+class UpdatePortfolio {
+}
+
+class GetPortfolioHistory {
+}
+
+@enduml
