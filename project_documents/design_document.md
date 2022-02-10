@@ -138,31 +138,27 @@ RegisterActivity saves the new user onto the database.](images/design_document/R
 
 ![alt text](images/design_document/GetPortfolioHistory.png)
 
-### 6.8. GetAssetHistoryActivity Endpoint
-* Accepts `GET` requests to `/portfolios/:assetid/history`
-* Accepts a valid Asset ID and returns the corresponding Asset's historical data'.
-
-![alt text](images/design_document/GetAssetHistory.png)
-
 # 7. Tables
 
-### 7.1. `User` 
+### 7.1. `users` 
 ```
 userName // partition key, string
 password // string
+salt // string
 ```
 
-### 7.2.  `Portfolio`
+### 7.2.  `portfolios`
 ```
 userId // partition key ,string
 assetId // string
 assetQuantity // number
 ```
 
-### 7.3.  `Asset`
+### 7.3.  `assets`
 ```
 assetId // partition key, string
-marketCap // sort key, number
+rankByMarketCap // sort key, number
+marketCap // number
 assetImage // string
 assetName // string
 totalSupply // number
@@ -170,21 +166,21 @@ usdValue // number
 isAvailable // boolean
 ```
 
-### 7.4.  `AssetHistory`
+### 7.4.  `asset_history`
 ```
 * assetId // partition key, string
 * timeStamp // sort key, string
 * usdValue: // string
 ```
 
-### 7.5.  `PortfolioHistory`
+### 7.5.  `portfolio_history`
 ```
 userId // String
 timeStamp // String
 portfolio // String Set
 ```
 
-### 7.6.  `ConsolidatedPortfolioHistory`
+### 7.6.  `consolidated_portfolio_history`
 ```
 userId // partition key, string
 timeStamp: sort key, string
