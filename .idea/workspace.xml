@@ -4,23 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1a7b167-a746-4d95-887e-103e49727ebe" name="Changes" comment="Created the initial Sequence Diagrams and snapshots to be included in the design document">
+    <list default="true" id="c1a7b167-a746-4d95-887e-103e49727ebe" name="Changes" comment="Updated the sequence Diagrams with suggestions from Shannon">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project_documents/design_document.md" beforeDir="false" afterPath="$PROJECT_DIR$/project_documents/design_document.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/CreatePortfolio_SD.puml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/CreatePortfolio_SD.puml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/GetAssetHistory_SD.puml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/GetAssetHistory_SD.puml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/GetPortfolioHistory_SD.puml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/GetPortfolioHistory_SD.puml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/GetPortfolio_SD.puml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/GetPortfolio_SD.puml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/Images/CreatePortfolio.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/Images/GetAssetHistory.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/Images/GetPortfolio.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/Images/GetPortfolioHistory.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/Images/Login.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/Images/Register.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/Images/UdatePortfolio.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/Login_SD.puml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/Login_SD.puml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/Register_SD.puml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/Register_SD.puml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/UpdatePortfolio_SD.puml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/UpdatePortfolio_SD.puml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,7 +134,14 @@
       <option name="project" value="LOCAL" />
       <updated>1644505576699</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Updated the sequence Diagrams with suggestions from Shannon">
+      <created>1644519609168</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1644519609168</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -166,6 +160,7 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Updated the design document's API &amp; Tables Section (6 &amp; 7), Created the EntityRelationshipDiagram.puml" />
     <MESSAGE value="Created the initial Sequence Diagrams and snapshots to be included in the design document" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created the initial Sequence Diagrams and snapshots to be included in the design document" />
+    <MESSAGE value="Updated the sequence Diagrams with suggestions from Shannon" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated the sequence Diagrams with suggestions from Shannon" />
   </component>
 </project>
