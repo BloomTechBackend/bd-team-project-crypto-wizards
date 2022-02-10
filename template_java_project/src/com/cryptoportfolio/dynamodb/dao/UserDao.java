@@ -1,8 +1,8 @@
 package com.cryptoportfolio.dynamodb.dao;
 
+import com.amazon.ata.aws.dynamodb.DynamoDbClientProvider;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
-import com.cryptoportfolio.dynamodb.DynamoDbClientProvider;
 import com.cryptoportfolio.dynamodb.models.User;
 
 public class UserDao {
