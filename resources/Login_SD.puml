@@ -1,0 +1,20 @@
+@startuml
+title Login
+actor Client
+
+participant "Login Page" as loginPage
+activate Client
+activate loginPage
+activate LoginActivity
+database users
+
+Client -> loginPage : submit login form
+loginPage -> LoginActivity : send login request
+LoginActivity -> users : verify user in users
+users -> LoginActivity : return the username
+LoginActivity -> loginPage : return the username
+loginPage -> Client : return the username
+deactivate Client
+deactivate loginPage
+deactivate LoginActivity
+@enduml

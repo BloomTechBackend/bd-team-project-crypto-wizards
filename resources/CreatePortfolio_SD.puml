@@ -1,0 +1,15 @@
+@startuml
+title Create Portfolios
+actor Client
+
+participant "Portfolio Page" as portfolioPage
+activate Client
+activate CreatePortfolioActivity
+database portfolios
+
+Client -> portfolioPage : submit the portfolio form
+portfolioPage -> CreatePortfolioActivity :  send post portfolio request
+CreatePortfolioActivity -> portfolios : create portfolio
+deactivate Client
+deactivate CreatePortfolioActivity
+@enduml

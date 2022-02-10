@@ -1,0 +1,16 @@
+@startuml
+title Register
+actor Client
+
+participant "Registration Page" as registrationPage
+activate Client
+activate registrationPage
+activate RegisterActivity
+database users
+
+Client -> registrationPage : submit a registration form
+registrationPage -> RegisterActivity :  send registration request
+RegisterActivity -> users : Saved new user to users
+deactivate Client
+deactivate registrationPage
+@enduml

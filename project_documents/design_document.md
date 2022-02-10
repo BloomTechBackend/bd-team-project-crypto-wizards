@@ -46,7 +46,7 @@ U5. As a customer, I want to view historical data showing asset performance.
 
 This initial iteration will provide creating, retrieving, and updating a user's portfolio, as well as viewing the historical data of the portfolio and the assets to gauge the overall performance over a period of time.
 
-We will use API Gateway and Lambda to create seven endpoints (`Register`,`Login`, `Verify`, `CreatePortfolio`, `GetPortfolio`, `UpdatePortfolio`, `GetPortfolioHistory`, `GetAssetHistory`) that will handle the creation, update, and retrieval of portfolio along with the retrieval of the historical data to satisfy our requirements.
+We will use API Gateway and Lambda to create eight endpoints (`Register`,`Login`, `Verify`, `CreatePortfolioActivity`, `GetPortfolioActivity`, `UpdatePortfolioActivity`, `GetPortfolioHistoryActivity`, `GetAssetHistoryActivity`) that will handle the creation, update, and retrieval of portfolio along with the retrieval of the historical data to satisfy our requirements.
 
 We will store the assets available for the portfolio in a table in DynamoDB. The portfolios themselves will also be stored in DynamoDB. 
 
@@ -76,7 +76,7 @@ boolean isAvailable;
 
 ## 6.1. Register Endpoint
 
-* Accepts a User ID and password.
+* Accepts `POST` request to `/register`.
 * Returns a "User Successfully Created" response after successfully validating the provided information.
 * If the given User ID has invalid characters, will throw an
   `InvalidAttributeValueException`
@@ -85,27 +85,35 @@ boolean isAvailable;
 * If the User already exists, will throw a 
   `UserAreadyExistsException`
 
+![Client provides a UserName and Password to register. 
+Register page sends a registration request to RegisterActivity which validates the Input.
+RegisterActivity saves the new user onto the database.](images/design_document/Register.png)
+
 ## 6.2. Login Endpoint
 
-* Accepts a User ID and password.
-* Returns the home page of the App after successfully validating the login.
+* Accepts a `POST` request to `/login`.
+* Returns a successful authentication.
 * If the given User ID is not found, will throw a
   `UserNotFoundException`
 * If the provided password is incorrect, will throw an
   `InvalidPasswordException`
 
-## 6.3. Verify Endpoint
-* Accepts a page refresh and validates if the session is still valid.
-* Returns the refreshed page of the App if the session is valid.
-* If the session has expired, will throw an
-  `SessionExpiredException`
+![alt text](images/design_document/Login.png)
 
-## 6.4. GetPortfolio Endpoint
+## 6.3. Verify Endpoint
+* Accepts `POST` request  to `/verify`.
+* Verifies if Access token is still valid.
+  * If the session has expired, will throw an
+    `SessionExpiredException`
+
+## 6.4. GetPortfolioActivity Endpoint
 
 * Accepts `GET` requests to `/portfolios/:id`
 * Accepts a User ID and returns the corresponding PortfolioModel.
 
-## 6.5. CreatePortfolio Endpoint
+![alt text](images/design_document/GetPortfolio.png)
+
+## 6.5. CreatePortfolioActivity Endpoint
 
 * Accepts `POST` requests to `/portfolios`
 * Accepts data to create a new portfolio for the provided userName, with the selected list of Assets.
@@ -113,40 +121,44 @@ boolean isAvailable;
     * If the user enters the number of assets to be more than that available in the market, will throw an
       `InsufficientAssetsException`.
 
-### 6.6. UpdatePortfolio Endpoint
+![alt text](images/design_document/CreatePortfolio.png)
+
+### 6.6. UpdatePortfolioActivity Endpoint
 
 * Accepts `PUT` requests to `/portfolios/:id`
 * Accepts data to update the quantity of portfolio owned and adding new assets to the portfolio. Returns the updated portfolio.
     * If the user enters the number of assets to be more than that available in the market, will throw an
       `InsufficientAssetsException`.
-    
-### 6.6. GetPortfolioHistory Endpoint
+
+![alt text](images/design_document/UdatePortfolio.png)
+
+### 6.7. GetPortfolioHistoryActivity Endpoint
 * Accepts `GET` requests to `/portfolios/:id/history`
 * Accepts a valid User ID and returns the corresponding Portfolio's historical data'.
 
-### 6.6. GetAssetHistory Endpoint
-* Accepts `GET` requests to `/portfolios/:assetid/history`
-* Accepts a valid Asset ID and returns the corresponding Asset's historical data'.
+![alt text](images/design_document/GetPortfolioHistory.png)
 
 # 7. Tables
 
-### 7.1. `User` 
+### 7.1. `users` 
 ```
 userName // partition key, string
 password // string
+salt // string
 ```
 
-### 7.2.  `Portfolio`
+### 7.2.  `portfolios`
 ```
 userId // partition key ,string
 assetId // string
 assetQuantity // number
 ```
 
-### 7.3.  `Asset`
+### 7.3.  `assets`
 ```
 assetId // partition key, string
-marketCap // sort key, number
+rankByMarketCap // sort key, number
+marketCap // number
 assetImage // string
 assetName // string
 totalSupply // number
@@ -154,21 +166,21 @@ usdValue // number
 isAvailable // boolean
 ```
 
-### 7.4.  `AssetHistory`
+### 7.4.  `asset_history`
 ```
 * assetId // partition key, string
 * timeStamp // sort key, string
 * usdValue: // string
 ```
 
-### 7.5.  `PortfolioHistory`
+### 7.5.  `portfolio_history`
 ```
 userId // String
 timeStamp // String
 portfolio // String Set
 ```
 
-### 7.6.  `ConsolidatedPortfolioHistory`
+### 7.6.  `consolidated_portfolio_history`
 ```
 userId // partition key, string
 timeStamp: sort key, string

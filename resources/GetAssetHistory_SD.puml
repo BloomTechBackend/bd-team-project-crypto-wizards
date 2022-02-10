@@ -1,0 +1,18 @@
+@startuml
+title Get Asset's History
+actor Client
+
+participant "Home Page" as HomePage
+activate Client
+activate GetAssetHistoryActivity
+database assets
+
+Client -> HomePage : visit the Home page
+HomePage -> GetAssetHistoryActivity :  send get Asset History request
+GetAssetHistoryActivity -> assets : load Asset's Historical Data for the user
+assets -> GetAssetHistoryActivity : Asset's Historical Data for the user
+GetAssetHistoryActivity -> HomePage : List <AssetHistoricalData>
+HomePage -> Client : Historical data displayed to the user
+deactivate Client
+deactivate GetAssetHistoryActivity
+@enduml
