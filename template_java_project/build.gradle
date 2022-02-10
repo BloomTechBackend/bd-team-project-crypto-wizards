@@ -65,6 +65,12 @@ dependencies {
 //
 //    compileOnly 'org.projectlombok:lombok:1.18.16'
 //    annotationProcessor 'org.projectlombok:lombok:1.18.16'
+
+    implementation 'com.amazonaws:aws-java-sdk-dynamodb:1.12.154'
+
+    implementation 'org.mindrot:jbcrypt:0.4'
+
+
 }
 
 task buildZip(type: Zip) {
