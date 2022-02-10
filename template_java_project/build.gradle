@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+//    id "io.freefair.lombok" version "6.3.0"
 }
 
 repositories {
@@ -59,6 +60,11 @@ dependencies {
     implementation 'com.amazonaws:aws-lambda-java-events:2.2.9'
     runtimeOnly 'com.amazonaws:aws-lambda-java-log4j2:1.2.0'
 
+//    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+//    implementation 'com.squareup.retrofit2:converter-jackson:2.9.0'
+//
+//    compileOnly 'org.projectlombok:lombok:1.18.16'
+//    annotationProcessor 'org.projectlombok:lombok:1.18.16'
 }
 
 task buildZip(type: Zip) {
