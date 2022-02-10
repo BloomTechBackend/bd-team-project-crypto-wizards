@@ -5,15 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c1a7b167-a746-4d95-887e-103e49727ebe" name="Changes" comment="Created the initial Sequence Diagrams and snapshots to be included in the design document">
-      <change afterPath="$PROJECT_DIR$/project_documents/images/design_document/CreatePortfolio.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project_documents/images/design_document/GetAssetHistory.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project_documents/images/design_document/GetPortfolio.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project_documents/images/design_document/GetPortfolioHistory.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project_documents/images/design_document/Login.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project_documents/images/design_document/Register.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project_documents/images/design_document/UdatePortfolio.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project_documents/design_document.md" beforeDir="false" afterPath="$PROJECT_DIR$/project_documents/design_document.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/CreatePortfolio_SD.puml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/CreatePortfolio_SD.puml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/GetAssetHistory_SD.puml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/GetAssetHistory_SD.puml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/GetPortfolioHistory_SD.puml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/GetPortfolioHistory_SD.puml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/GetPortfolio_SD.puml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/GetPortfolio_SD.puml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/Images/CreatePortfolio.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/Images/GetAssetHistory.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/Images/GetPortfolio.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/Images/GetPortfolioHistory.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/Images/Login.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/Images/Register.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/Images/UdatePortfolio.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/Login_SD.puml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/Login_SD.puml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/Register_SD.puml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/Register_SD.puml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/UpdatePortfolio_SD.puml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/UpdatePortfolio_SD.puml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,6 +110,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/project_documents/images/design_document" />
       <recent name="$PROJECT_DIR$/resources/Images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -132,7 +140,14 @@
       <option name="project" value="LOCAL" />
       <updated>1644461736337</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Created the initial Sequence Diagrams and snapshots to be included in the design document">
+      <created>1644505576699</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1644505576699</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

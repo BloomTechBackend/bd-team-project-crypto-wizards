@@ -5,11 +5,11 @@ actor Client
 participant "Portfolio Page" as portfolioPage
 activate Client
 activate CreatePortfolioActivity
-database DynamoDB
+database portfolios
 
-Client -> portfolioPage : visit the portfolio page
+Client -> portfolioPage : submit the portfolio form
 portfolioPage -> CreatePortfolioActivity :  send post portfolio request
-CreatePortfolioActivity -> DynamoDB : create portfolio
+CreatePortfolioActivity -> portfolios : create portfolio
 deactivate Client
 deactivate CreatePortfolioActivity
 @enduml

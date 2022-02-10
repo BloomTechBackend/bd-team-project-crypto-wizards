@@ -46,7 +46,7 @@ U5. As a customer, I want to view historical data showing asset performance.
 
 This initial iteration will provide creating, retrieving, and updating a user's portfolio, as well as viewing the historical data of the portfolio and the assets to gauge the overall performance over a period of time.
 
-We will use API Gateway and Lambda to create seven endpoints (`Register`,`Login`, `Verify`, `CreatePortfolioActivity`, `GetPortfolioActivity`, `UpdatePortfolioActivity`, `GetPortfolioHistoryActivity`, `GetAssetHistoryActivity`) that will handle the creation, update, and retrieval of portfolio along with the retrieval of the historical data to satisfy our requirements.
+We will use API Gateway and Lambda to create eight endpoints (`Register`,`Login`, `Verify`, `CreatePortfolioActivity`, `GetPortfolioActivity`, `UpdatePortfolioActivity`, `GetPortfolioHistoryActivity`, `GetAssetHistoryActivity`) that will handle the creation, update, and retrieval of portfolio along with the retrieval of the historical data to satisfy our requirements.
 
 We will store the assets available for the portfolio in a table in DynamoDB. The portfolios themselves will also be stored in DynamoDB. 
 
@@ -76,7 +76,7 @@ boolean isAvailable;
 
 ## 6.1. Register Endpoint
 
-* Accepts a User ID and password.
+* Accepts `POST` request to `/register`.
 * Returns a "User Successfully Created" response after successfully validating the provided information.
 * If the given User ID has invalid characters, will throw an
   `InvalidAttributeValueException`
@@ -91,8 +91,8 @@ RegisterActivity saves the new user onto the database.](images/design_document/R
 
 ## 6.2. Login Endpoint
 
-* Accepts a User ID and password.
-* Returns the home page of the App after successfully validating the login.
+* Accepts a `POST` request to `/login`.
+* Returns a successful authentication.
 * If the given User ID is not found, will throw a
   `UserNotFoundException`
 * If the provided password is incorrect, will throw an
@@ -101,10 +101,10 @@ RegisterActivity saves the new user onto the database.](images/design_document/R
 ![alt text](images/design_document/Login.png)
 
 ## 6.3. Verify Endpoint
-* Accepts a page refresh and validates if the session is still valid.
-* Returns the refreshed page of the App if the session is valid.
-* If the session has expired, will throw an
-  `SessionExpiredException`
+* Accepts `POST` request  to `/verify`.
+* Verifies if Access token is still valid.
+  * If the session has expired, will throw an
+    `SessionExpiredException`
 
 ## 6.4. GetPortfolioActivity Endpoint
 
@@ -132,13 +132,13 @@ RegisterActivity saves the new user onto the database.](images/design_document/R
 
 ![alt text](images/design_document/UdatePortfolio.png)
 
-### 6.6. GetPortfolioHistoryActivity Endpoint
+### 6.7. GetPortfolioHistoryActivity Endpoint
 * Accepts `GET` requests to `/portfolios/:id/history`
 * Accepts a valid User ID and returns the corresponding Portfolio's historical data'.
 
 ![alt text](images/design_document/GetPortfolioHistory.png)
 
-### 6.6. GetAssetHistoryActivity Endpoint
+### 6.8. GetAssetHistoryActivity Endpoint
 * Accepts `GET` requests to `/portfolios/:assetid/history`
 * Accepts a valid Asset ID and returns the corresponding Asset's historical data'.
 
