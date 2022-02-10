@@ -13,6 +13,12 @@ public class User {
     private String password;
     private String salt;
 
+    public User(String username, String password, String salt) {
+        this.username = username;
+        this.password = password;
+        this.salt = salt;
+    }
+
     @DynamoDBHashKey(attributeName = "username")
     public String getUsername() {
         return username;
