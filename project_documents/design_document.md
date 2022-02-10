@@ -85,7 +85,9 @@ boolean isAvailable;
 * If the User already exists, will throw a 
   `UserAreadyExistsException`
 
-
+![Client provides a UserName and Password to register. 
+Register page sends a registration request to RegisterActivity which validates the Input.
+RegisterActivity saves the new user onto the database.](images/design_document/Register.png)
 
 ## 6.2. Login Endpoint
 
@@ -96,17 +98,20 @@ boolean isAvailable;
 * If the provided password is incorrect, will throw an
   `InvalidPasswordException`
 
+![alt text](images/design_document/Login.png)
+
 ## 6.3. Verify Endpoint
 * Accepts a page refresh and validates if the session is still valid.
 * Returns the refreshed page of the App if the session is valid.
 * If the session has expired, will throw an
   `SessionExpiredException`
 
-
 ## 6.4. GetPortfolioActivity Endpoint
 
 * Accepts `GET` requests to `/portfolios/:id`
 * Accepts a User ID and returns the corresponding PortfolioModel.
+
+![alt text](images/design_document/GetPortfolio.png)
 
 ## 6.5. CreatePortfolioActivity Endpoint
 
@@ -116,20 +121,28 @@ boolean isAvailable;
     * If the user enters the number of assets to be more than that available in the market, will throw an
       `InsufficientAssetsException`.
 
+![alt text](images/design_document/CreatePortfolio.png)
+
 ### 6.6. UpdatePortfolioActivity Endpoint
 
 * Accepts `PUT` requests to `/portfolios/:id`
 * Accepts data to update the quantity of portfolio owned and adding new assets to the portfolio. Returns the updated portfolio.
     * If the user enters the number of assets to be more than that available in the market, will throw an
       `InsufficientAssetsException`.
-    
+
+![alt text](images/design_document/UdatePortfolio.png)
+
 ### 6.6. GetPortfolioHistoryActivity Endpoint
 * Accepts `GET` requests to `/portfolios/:id/history`
 * Accepts a valid User ID and returns the corresponding Portfolio's historical data'.
 
+![alt text](images/design_document/GetPortfolioHistory.png)
+
 ### 6.6. GetAssetHistoryActivity Endpoint
 * Accepts `GET` requests to `/portfolios/:assetid/history`
 * Accepts a valid Asset ID and returns the corresponding Asset's historical data'.
+
+![alt text](images/design_document/GetAssetHistory.png)
 
 # 7. Tables
 
