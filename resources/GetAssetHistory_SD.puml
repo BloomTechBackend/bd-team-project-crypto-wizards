@@ -1,11 +1,18 @@
 @startuml
-'https://plantuml.com/sequence-diagram
+title Get Asset's History
+actor Client
 
-autonumber
+participant "Home Page" as HomePage
+activate Client
+activate GetAssetHistoryActivity
+database DynamoDB
 
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
-
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
+Client -> HomePage : visit the Home page
+HomePage -> GetAssetHistoryActivity :  send get Asset History request
+GetAssetHistoryActivity -> DynamoDB : load Asset's Historical Data for the user
+DynamoDB -> GetAssetHistoryActivity : Asset's Historical Data for the user
+GetAssetHistoryActivity -> HomePage : Asset's historical data result
+HomePage -> Client : Historical data displayed to the user
+deactivate Client
+deactivate GetAssetHistoryActivity
 @enduml

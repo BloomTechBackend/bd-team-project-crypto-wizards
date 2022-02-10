@@ -1,11 +1,18 @@
 @startuml
-'https://plantuml.com/sequence-diagram
+title Get Portfolios
+actor Client
 
-autonumber
+participant "Portfolio Page" as portfolioPage
+activate Client
+activate GetPortfolioActivity
+database DynamoDB
 
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
-
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
+Client -> portfolioPage : visit the portfolio page
+portfolioPage -> GetPortfolioActivity :  send get portfolio request
+GetPortfolioActivity -> DynamoDB : load portfolio
+DynamoDB -> GetPortfolioActivity : portfolio item by userId
+GetPortfolioActivity -> portfolioPage : List <PortfolioModel>
+portfolioPage -> Client : Portfolio successfully displayed
+deactivate Client
+deactivate GetPortfolioActivity
 @enduml

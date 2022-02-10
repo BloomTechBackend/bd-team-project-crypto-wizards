@@ -1,11 +1,16 @@
 @startuml
-'https://plantuml.com/sequence-diagram
+title Register
+actor Client
 
-autonumber
+participant "Registration Page" as registrationPage
+activate Client
+activate registrationPage
+database DynamoDB
 
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
-
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
+Client -> registrationPage : visit the registration page
+registrationPage -> DynamoDB :  send registration request
+DynamoDB -> registrationPage : user created successfully
+registrationPage -> Client : redirect to home page
+deactivate Client
+deactivate registrationPage
 @enduml

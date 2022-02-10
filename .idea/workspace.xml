@@ -5,8 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c1a7b167-a746-4d95-887e-103e49727ebe" name="Changes" comment="Updated the design document's API &amp; Tables Section (6 &amp; 7), Created the EntityRelationshipDiagram.puml">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/Images/CreatePortfolio.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/Images/GetAssetHistory.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/Images/GetPortfolio.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/Images/GetPortfolioHistory.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/Images/Login.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/Images/Register.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/Images/UdatePortfolio.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_documents/design_document.md" beforeDir="false" afterPath="$PROJECT_DIR$/project_documents/design_document.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/CreatePortfolio_SD.puml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/CreatePortfolio_SD.puml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/GetAssetHistory_SD.puml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/GetAssetHistory_SD.puml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/GetPortfolioHistory_SD.puml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/GetPortfolioHistory_SD.puml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/GetPortfolio_SD.puml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/GetPortfolio_SD.puml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/Login_SD.puml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/Login_SD.puml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/Register_SD.puml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/Register_SD.puml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/UpdatePortfolio_SD.puml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/UpdatePortfolio_SD.puml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +49,7 @@
       <list>
         <option value="Salt Wireframe" />
         <option value="UML Class" />
+        <option value="UML Sequence" />
       </list>
     </option>
   </component>
@@ -59,12 +74,12 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="main" />
-                    <option name="lastUsedInstant" value="1644450862" />
+                    <option name="branchName" value="uma" />
+                    <option name="lastUsedInstant" value="1644451898" />
                   </RecentBranch>
                   <RecentBranch>
-                    <option name="branchName" value="uma" />
-                    <option name="lastUsedInstant" value="1644450653" />
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1644450862" />
                   </RecentBranch>
                 </list>
               </option>
@@ -86,12 +101,20 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="DefaultPlantUmlFileTemplate" value="UML Class" />
+    <property name="DefaultPlantUmlFileTemplate" value="UML Sequence" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/Images" />
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/Images" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
