@@ -5,12 +5,13 @@ actor Client
 participant "Login Page" as loginPage
 activate Client
 activate loginPage
-database DynamoDB
+activate LoginActivity
+database users
 
-Client -> loginPage : visit the login page
-loginPage -> DynamoDB : send login request
-DynamoDB -> loginPage : send successful validation response
-loginPage -> Client : Successful login/load home page
+Client -> loginPage : submit login form
+loginPage -> LoginActivity : send login request
+LoginActivity -> users : verify user in users
 deactivate Client
 deactivate loginPage
+deactivate LoginActivity
 @enduml

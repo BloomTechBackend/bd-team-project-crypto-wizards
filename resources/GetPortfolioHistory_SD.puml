@@ -5,12 +5,12 @@ actor Client
 participant "Portfolio Page" as portfolioPage
 activate Client
 activate GetPortfolioHistoryActivity
-database DynamoDB
+database portfolioHistory
 
-Client -> portfolioPage : visit the portfolio page
+Client -> portfolioPage : submit the portfolio form
 portfolioPage -> GetPortfolioHistoryActivity :  send get portfolio's History request
-GetPortfolioHistoryActivity -> DynamoDB : load portfolio's Historical Data for the user
-DynamoDB -> GetPortfolioHistoryActivity : portfolio's Historical Data from the DB
+GetPortfolioHistoryActivity -> portfolioHistory : load portfolio's Historical Data for the user
+portfolioHistory -> GetPortfolioHistoryActivity : portfolio's Historical Data from the DB
 GetPortfolioHistoryActivity -> portfolioPage : portfolio's historical data result
 portfolioPage -> Client : Historical data displayed to the user
 deactivate Client

@@ -5,11 +5,11 @@ actor Client
 participant "Portfolio Page" as portfolioPage
 activate Client
 activate UpdatePortfolioActivity
-database DynamoDB
+database portfolios
 
-Client -> portfolioPage : visit the portfolio page
+Client -> portfolioPage : submit the portfolio form
 portfolioPage -> UpdatePortfolioActivity :  submit portfolio update request
-UpdatePortfolioActivity -> DynamoDB : save updates
+UpdatePortfolioActivity -> portfolios : save updates
 deactivate Client
 deactivate UpdatePortfolioActivity
 @enduml

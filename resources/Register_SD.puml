@@ -5,12 +5,12 @@ actor Client
 participant "Registration Page" as registrationPage
 activate Client
 activate registrationPage
-database DynamoDB
+activate RegisterActivity
+database users
 
-Client -> registrationPage : visit the registration page
-registrationPage -> DynamoDB :  send registration request
-DynamoDB -> registrationPage : user created successfully
-registrationPage -> Client : redirect to home page
+Client -> registrationPage : submit a registration form
+registrationPage -> RegisterActivity :  send registration request
+RegisterActivity -> users : Saved new user to users
 deactivate Client
 deactivate registrationPage
 @enduml
