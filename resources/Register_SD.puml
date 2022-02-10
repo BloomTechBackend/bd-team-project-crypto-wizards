@@ -1,0 +1,16 @@
+@startuml
+title Register
+actor Client
+
+participant "Registration Page" as registrationPage
+activate Client
+activate registrationPage
+database DynamoDB
+
+Client -> registrationPage : visit the registration page
+registrationPage -> DynamoDB :  send registration request
+DynamoDB -> registrationPage : user created successfully
+registrationPage -> Client : redirect to home page
+deactivate Client
+deactivate registrationPage
+@enduml

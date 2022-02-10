@@ -1,0 +1,15 @@
+@startuml
+title Update Portfolios
+actor Client
+
+participant "Portfolio Page" as portfolioPage
+activate Client
+activate UpdatePortfolioActivity
+database DynamoDB
+
+Client -> portfolioPage : visit the portfolio page
+portfolioPage -> UpdatePortfolioActivity :  submit portfolio update request
+UpdatePortfolioActivity -> DynamoDB : save updates
+deactivate Client
+deactivate UpdatePortfolioActivity
+@enduml

@@ -1,0 +1,15 @@
+@startuml
+title Create Portfolios
+actor Client
+
+participant "Portfolio Page" as portfolioPage
+activate Client
+activate CreatePortfolioActivity
+database DynamoDB
+
+Client -> portfolioPage : visit the portfolio page
+portfolioPage -> CreatePortfolioActivity :  send post portfolio request
+CreatePortfolioActivity -> DynamoDB : create portfolio
+deactivate Client
+deactivate CreatePortfolioActivity
+@enduml

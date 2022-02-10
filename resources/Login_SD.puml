@@ -1,0 +1,16 @@
+@startuml
+title Login
+actor Client
+
+participant "Login Page" as loginPage
+activate Client
+activate loginPage
+database DynamoDB
+
+Client -> loginPage : visit the login page
+loginPage -> DynamoDB : send login request
+DynamoDB -> loginPage : send successful validation response
+loginPage -> Client : Successful login/load home page
+deactivate Client
+deactivate loginPage
+@enduml

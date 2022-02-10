@@ -46,7 +46,7 @@ U5. As a customer, I want to view historical data showing asset performance.
 
 This initial iteration will provide creating, retrieving, and updating a user's portfolio, as well as viewing the historical data of the portfolio and the assets to gauge the overall performance over a period of time.
 
-We will use API Gateway and Lambda to create seven endpoints (`Register`,`Login`, `Verify`, `CreatePortfolio`, `GetPortfolio`, `UpdatePortfolio`, `GetPortfolioHistory`, `GetAssetHistory`) that will handle the creation, update, and retrieval of portfolio along with the retrieval of the historical data to satisfy our requirements.
+We will use API Gateway and Lambda to create seven endpoints (`Register`,`Login`, `Verify`, `CreatePortfolioActivity`, `GetPortfolioActivity`, `UpdatePortfolioActivity`, `GetPortfolioHistoryActivity`, `GetAssetHistoryActivity`) that will handle the creation, update, and retrieval of portfolio along with the retrieval of the historical data to satisfy our requirements.
 
 We will store the assets available for the portfolio in a table in DynamoDB. The portfolios themselves will also be stored in DynamoDB. 
 
@@ -85,6 +85,8 @@ boolean isAvailable;
 * If the User already exists, will throw a 
   `UserAreadyExistsException`
 
+
+
 ## 6.2. Login Endpoint
 
 * Accepts a User ID and password.
@@ -100,12 +102,13 @@ boolean isAvailable;
 * If the session has expired, will throw an
   `SessionExpiredException`
 
-## 6.4. GetPortfolio Endpoint
+
+## 6.4. GetPortfolioActivity Endpoint
 
 * Accepts `GET` requests to `/portfolios/:id`
 * Accepts a User ID and returns the corresponding PortfolioModel.
 
-## 6.5. CreatePortfolio Endpoint
+## 6.5. CreatePortfolioActivity Endpoint
 
 * Accepts `POST` requests to `/portfolios`
 * Accepts data to create a new portfolio for the provided userName, with the selected list of Assets.
@@ -113,18 +116,18 @@ boolean isAvailable;
     * If the user enters the number of assets to be more than that available in the market, will throw an
       `InsufficientAssetsException`.
 
-### 6.6. UpdatePortfolio Endpoint
+### 6.6. UpdatePortfolioActivity Endpoint
 
 * Accepts `PUT` requests to `/portfolios/:id`
 * Accepts data to update the quantity of portfolio owned and adding new assets to the portfolio. Returns the updated portfolio.
     * If the user enters the number of assets to be more than that available in the market, will throw an
       `InsufficientAssetsException`.
     
-### 6.6. GetPortfolioHistory Endpoint
+### 6.6. GetPortfolioHistoryActivity Endpoint
 * Accepts `GET` requests to `/portfolios/:id/history`
 * Accepts a valid User ID and returns the corresponding Portfolio's historical data'.
 
-### 6.6. GetAssetHistory Endpoint
+### 6.6. GetAssetHistoryActivity Endpoint
 * Accepts `GET` requests to `/portfolios/:assetid/history`
 * Accepts a valid Asset ID and returns the corresponding Asset's historical data'.
 
