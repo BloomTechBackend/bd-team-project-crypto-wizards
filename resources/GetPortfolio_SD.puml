@@ -1,0 +1,18 @@
+@startuml
+title Get Portfolios
+actor Client
+
+participant "Portfolio Page" as portfolioPage
+activate Client
+activate GetPortfolioActivity
+database portfolios
+
+Client -> portfolioPage : submit the portfolio form
+portfolioPage -> GetPortfolioActivity :  send get portfolio request
+GetPortfolioActivity -> portfolios : load portfolio
+portfolios -> GetPortfolioActivity : portfolio item by userId
+GetPortfolioActivity -> portfolioPage : List <PortfolioModel>
+portfolioPage -> Client : Portfolio successfully displayed
+deactivate Client
+deactivate GetPortfolioActivity
+@enduml

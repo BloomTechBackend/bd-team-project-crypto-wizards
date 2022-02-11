@@ -1,0 +1,15 @@
+@startuml
+title Update Portfolios
+actor Client
+
+participant "Portfolio Page" as portfolioPage
+activate Client
+activate UpdatePortfolioActivity
+database portfolios
+
+Client -> portfolioPage : submit the portfolio form
+portfolioPage -> UpdatePortfolioActivity :  submit portfolio update request
+UpdatePortfolioActivity -> portfolios : save updates
+deactivate Client
+deactivate UpdatePortfolioActivity
+@enduml

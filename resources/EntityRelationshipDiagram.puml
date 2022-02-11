@@ -1,0 +1,57 @@
+@startuml
+entity User {
+  * userName: String
+  --
+  * password: String
+}
+
+entity Portfolio {
+  * userId: String
+  --
+  * assetId: String
+  * assetQuantity: number
+}
+
+entity Asset {
+  * assetId: String
+  ..
+  * marketCap: number
+  --
+  * assetImage: String
+  * assetName: String
+  * totalSupply: number
+  * usdValue: number
+  * isAvailable: boolean
+}
+
+entity AssetHistory {
+  * assetId: String
+  ..
+  * timeStamp: String
+  --
+  * usdValue: String
+}
+
+entity PortfolioHistory {
+  * userId: String
+  ..
+  * timeStamp: String
+  --
+  * portfolio: String Set
+}
+
+entity ConsolidatedPortfolioHistory {
+  * userId: String
+  ..
+  * timeStamp: String
+  --
+  * totalUsdValue: number
+}
+
+
+User "1  " --{ "1 " Portfolio
+Portfolio "1 " --{ "0..*" Asset
+Portfolio "1 " --{ "0..*" PortfolioHistory
+Portfolio "1 " --{ "0..*" ConsolidatedPortfolioHistory
+Asset "1 " --{ "0..*" AssetHistory
+@enduml

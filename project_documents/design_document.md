@@ -4,15 +4,9 @@
 
 ## 1. Problem Statement
 
-Digital currency, crypto, is a medium of exchange through an encrypted computer 
-network. Owning several crypto assets can be difficult to track and view overall 
-value and performance. 
+Crypto assets are digital tokens secured through a decentralized computer network. Owning several crypto assets can be difficult to track and view overall value and performance.
 
-This design document describes a crypto portfolio tracking service that provides 
-a custom view of the client's portfolio to meet their needs. It is designed to connect 
-with selected crypto exchanges, displaying realtime data converted to USD to see an
-accurate asset value. This will keep track of all assets in a single location 
-with historical data to view growth and regression.
+This design document describes a crypto portfolio tracking service that provides a custom view of the client's portfolio to meet their needs. It is designed to connect with a 3rd party price quoting service, displaying realtime data converted to USD to see an accurate asset value. This will keep track of all assets in a single location with historical data to view growth and regression.
 
 
 ## 2. Top Questions to Resolve in Review
@@ -38,71 +32,160 @@ U5. As a customer, I want to view historical data showing asset performance.
 
 ## 4. Project Scope
 
-*Clarify which parts of the problem you intend to solve. It helps reviewers know
-what questions to ask to make sure you are solving for what you say and stops
-discussions from getting sidetracked by aspects you do not intend to handle in
-your design.*
-
 ### 4.1. In Scope
 
-*Which parts of the problem defined in Sections 1 and 2 will you solve with this
-design?*
+* Creating, retrieving, and updating a porfolio.
+* Retrieving the historical data of the portfolio.
+* Retrieving the historical data showing asset performance.
 
 ### 4.2. Out of Scope
 
-*Based on your problem description in Sections 1 and 2, are there any aspects
-you are not planning to solve? Do potential expansions or related problems occur
-to you that you want to explicitly say you are not worrying about now? Feel free
-to put anything here that you think your team can't accomplish in the unit, but
-would love to do with more time.*
+* Buying and selling of assets.
 
 # 5. Proposed Architecture Overview
 
-*Describe broadly how you are proposing to solve for the requirements you
-described in Section 2.*
+This initial iteration will provide creating, retrieving, and updating a user's portfolio, as well as viewing the historical data of the portfolio and the assets to gauge the overall performance over a period of time.
 
-*This may include class diagram(s) showing what components you are planning to
-build.*
+We will use API Gateway and Lambda to create eight endpoints (`Register`,`Login`, `Verify`, `CreatePortfolioActivity`, `GetPortfolioActivity`, `UpdatePortfolioActivity`, `GetPortfolioHistoryActivity`, `GetAssetHistoryActivity`) that will handle the creation, update, and retrieval of portfolio along with the retrieval of the historical data to satisfy our requirements.
 
-*You should argue why this architecture (organization of components) is
-reasonable. That is, why it represents a good data flow and a good separation of
-concerns. Where applicable, argue why this architecture satisfies the stated
-requirements.*
+We will store the assets available for the portfolio in a table in DynamoDB. The portfolios themselves will also be stored in DynamoDB. 
+
+CryptoPortfolioTracker will also provide a web interface for users to manage their portfolios. A main page providing  a list view will let them create new portfolios and link off to pages to update assets, view assets and view historical Data.
 
 # 6. API
 
 ## 6.1. Public Models
+```
+//PortfolioModel
 
-*Define the data models your service will expose in its responses via your
-*`-Model`* package. These will be equivalent to the *`PlaylistModel`* and
-*`SongModel`* from the Unit 3 project.*
+String userId;
+String assetId;
+Integer assetQuantity;
 
-## 6.2. *First Endpoint*
+//AssetModel
 
-*Describe the behavior of the first endpoint you will build into your service
-API. This should include what data it requires, what data it returns, and how it
-will handle any known failure cases. You should also include a sequence diagram
-showing how a user interaction goes from user to website to service to database,
-and back. This first endpoint can serve as a template for subsequent endpoints.
-(If there is a significant difference on a subsequent endpoint, review that with
-your team before building it!)*
+String assetId;
+Integer marketCap;
+String assetImage;
+String assetName;
+Integer totalSupply;
+Integer usdValue;
+boolean isAvailable;
 
-*(You should have a separate section for each of the endpoints you are expecting
-to build...)*
+```
 
-## 6.3 *Second Endpoint*
+## 6.1. Register Endpoint
 
-*(repeat, but you can use shorthand here, indicating what is different, likely
-primarily the data in/out and error conditions. If the sequence diagram is
-nearly identical, you can say in a few words how it is the same/different from
-the first endpoint)*
+* Accepts `POST` request to `/register`.
+* Returns a "User Successfully Created" response after successfully validating the provided information.
+* If the given User ID has invalid characters, will throw an
+  `InvalidAttributeValueException`
+* If the provided password has invalid characters, will throw an
+  `InvalidAttributeValueException`
+* If the User already exists, will throw a 
+  `UserAreadyExistsException`
+
+![Client provides a UserName and Password to register. 
+Register page sends a registration request to RegisterActivity which validates the Input.
+RegisterActivity saves the new user onto the database.](images/design_document/Register.png)
+
+## 6.2. Login Endpoint
+
+* Accepts a `POST` request to `/login`.
+* Returns a successful authentication.
+* If the given User ID is not found, will throw a
+  `UserNotFoundException`
+* If the provided password is incorrect, will throw an
+  `InvalidPasswordException`
+
+![alt text](images/design_document/Login.png)
+
+## 6.3. Verify Endpoint
+* Accepts `POST` request  to `/verify`.
+* Verifies if Access token is still valid.
+  * If the session has expired, will throw an
+    `SessionExpiredException`
+
+## 6.4. GetPortfolioActivity Endpoint
+
+* Accepts `GET` requests to `/portfolios/:id`
+* Accepts a User ID and returns the corresponding PortfolioModel.
+
+![alt text](images/design_document/GetPortfolio.png)
+
+## 6.5. CreatePortfolioActivity Endpoint
+
+* Accepts `POST` requests to `/portfolios`
+* Accepts data to create a new portfolio for the provided userName, with the selected list of Assets.
+* Returns the new portfolio along with the total value of the assets.
+    * If the user enters the number of assets to be more than that available in the market, will throw an
+      `InsufficientAssetsException`.
+
+![alt text](images/design_document/CreatePortfolio.png)
+
+### 6.6. UpdatePortfolioActivity Endpoint
+
+* Accepts `PUT` requests to `/portfolios/:id`
+* Accepts data to update the quantity of portfolio owned and adding new assets to the portfolio. Returns the updated portfolio.
+    * If the user enters the number of assets to be more than that available in the market, will throw an
+      `InsufficientAssetsException`.
+
+![alt text](images/design_document/UdatePortfolio.png)
+
+### 6.7. GetPortfolioHistoryActivity Endpoint
+* Accepts `GET` requests to `/portfolios/:id/history`
+* Accepts a valid User ID and returns the corresponding Portfolio's historical data'.
+
+![alt text](images/design_document/GetPortfolioHistory.png)
 
 # 7. Tables
 
-*Define the DynamoDB tables you will need for the data your service will use. It
-may be helpful to first think of what objects your service will need, then
-translate that to a table structure, like with the *`Playlist` POJO* versus the
-`playlists` table in the Unit 3 project.*
+### 7.1. `users` 
+```
+userName // partition key, string
+password // string
+salt // string
+```
+
+### 7.2.  `portfolios`
+```
+userId // partition key ,string
+assetId // string
+assetQuantity // number
+```
+
+### 7.3.  `assets`
+```
+assetId // partition key, string
+rankByMarketCap // sort key, number
+marketCap // number
+assetImage // string
+assetName // string
+totalSupply // number
+usdValue // number
+isAvailable // boolean
+```
+
+### 7.4.  `asset_history`
+```
+* assetId // partition key, string
+* timeStamp // sort key, string
+* usdValue: // string
+```
+
+### 7.5.  `portfolio_history`
+```
+userId // String
+timeStamp // String
+portfolio // String Set
+```
+
+### 7.6.  `consolidated_portfolio_history`
+```
+userId // partition key, string
+timeStamp: sort key, string
+totalUsdValue: number
+```
 
 # 8. Pages
 
