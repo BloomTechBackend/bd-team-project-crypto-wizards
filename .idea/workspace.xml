@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1a7b167-a746-4d95-887e-103e49727ebe" name="Changes" comment="Updated the sequence Diagrams with suggestions from Shannon">
+    <list default="true" id="c1a7b167-a746-4d95-887e-103e49727ebe" name="Changes" comment="Updated the sequence Diagrams with suggestions from David">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project_documents/design_document.md" beforeDir="false" afterPath="$PROJECT_DIR$/project_documents/design_document.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/Login_SD.puml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/Login_SD.puml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,12 +60,12 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="uma" />
-                    <option name="lastUsedInstant" value="1644451898" />
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1644522827" />
                   </RecentBranch>
                   <RecentBranch>
-                    <option name="branchName" value="main" />
-                    <option name="lastUsedInstant" value="1644450862" />
+                    <option name="branchName" value="uma" />
+                    <option name="lastUsedInstant" value="1644451898" />
                   </RecentBranch>
                 </list>
               </option>
@@ -93,7 +92,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/project_documents/images/design_document" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -141,7 +140,21 @@
       <option name="project" value="LOCAL" />
       <updated>1644519609168</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Updated the sequence Diagrams with suggestions from David">
+      <created>1644522399648</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1644522399648</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Updated the sequence Diagrams with suggestions from David">
+      <created>1644522496751</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1644522496751</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -161,6 +174,7 @@
     <MESSAGE value="Updated the design document's API &amp; Tables Section (6 &amp; 7), Created the EntityRelationshipDiagram.puml" />
     <MESSAGE value="Created the initial Sequence Diagrams and snapshots to be included in the design document" />
     <MESSAGE value="Updated the sequence Diagrams with suggestions from Shannon" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated the sequence Diagrams with suggestions from Shannon" />
+    <MESSAGE value="Updated the sequence Diagrams with suggestions from David" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated the sequence Diagrams with suggestions from David" />
   </component>
 </project>
