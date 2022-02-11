@@ -5,6 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c1a7b167-a746-4d95-887e-103e49727ebe" name="Changes" comment="Pages added to Design Doc" />
+    <list default="true" id="c1a7b167-a746-4d95-887e-103e49727ebe" name="Changes" comment="Updated the sequence Diagrams with suggestions from Shannon">
+      <change beforePath="$PROJECT_DIR$/template_java_project/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/gradlew" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -62,12 +65,12 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="uma" />
-                    <option name="lastUsedInstant" value="1644451898" />
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1644522827" />
                   </RecentBranch>
                   <RecentBranch>
-                    <option name="branchName" value="main" />
-                    <option name="lastUsedInstant" value="1644450862" />
+                    <option name="branchName" value="uma" />
+                    <option name="lastUsedInstant" value="1644451898" />
                   </RecentBranch>
                 </list>
               </option>
@@ -93,9 +96,16 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/project_documents/images/design_document" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/project_documents/images/design_document" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">

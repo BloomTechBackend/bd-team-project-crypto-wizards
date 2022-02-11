@@ -145,7 +145,7 @@ password // string
 
 ### 7.2.  `portfolios`
 ```
-userId // partition key ,string
+username // partition key ,string
 assetId // string
 assetQuantity // number
 ```
