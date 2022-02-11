@@ -137,50 +137,50 @@ RegisterActivity saves the new user onto the database.](images/design_document/R
 
 # 7. Tables
 
-### 7.1. `users` 
+### 7.1. `users`
 ```
-userName // partition key, string
+username // partition key, string
 password // string
 ```
 
 ### 7.2.  `portfolios`
 ```
 username // partition key ,string
-assetId // string
-assetQuantity // number
+asset_id // string
+asset_quantity // number
 ```
 
 ### 7.3.  `assets`
 ```
-assetId // partition key, string
-rankByMarketCap // sort key, number
-marketCap // number
-assetImage // string
-assetName // string
-totalSupply // number
-usdValue // number
-isAvailable // boolean
+asset_id // partition key, string
+rank_by_market_cap // sort key, number
+market_cap // number
+asset_image // string
+asset_name // string
+total_supply // number
+usd_value // number
+is_available // boolean
 ```
 
 ### 7.4.  `asset_history`
 ```
-* assetId // partition key, string
-* timeStamp // sort key, string
-* usdValue: // string
+* asset_id // partition key, string
+* time_stamp // sort key, string
+* usd_value: // string
 ```
 
 ### 7.5.  `portfolio_history`
 ```
-userId // String
-timeStamp // string
-portfolio // string Set
+username // partition key, string
+time_stamp // sort key, string
+port_folio // String Set
 ```
 
 ### 7.6.  `consolidated_portfolio_history`
 ```
-userId // partition key, string
-timeStamp // sort key, string
-totalUsdValue // number
+username // partition key, string
+time_stamp // sort key, string
+total_usd_value: number
 ```
 
 # 8. Pages
