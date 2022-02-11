@@ -115,7 +115,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1644365687422</updated>
-      <workItem from="1644544560724" duration="2934000" />
+      <workItem from="1644544560724" duration="3264000" />
     </task>
     <task id="LOCAL-00001" summary="Updated the design document's API &amp; Tables Section (6 &amp; 7), Created the EntityRelationshipDiagram.puml">
       <created>1644449732646</created>
@@ -152,7 +152,14 @@
       <option name="project" value="LOCAL" />
       <updated>1644547522849</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Pages added to Design Doc">
+      <created>1644547747598</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1644547747598</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
