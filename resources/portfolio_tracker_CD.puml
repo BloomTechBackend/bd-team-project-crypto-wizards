@@ -4,6 +4,7 @@ title Portfolio Tracker
 
 Portfolio --* UpdatePortfolio
 GetPortfolioHistory --* PortfolioHistory
+GetPortfolioHistory --* ConsolidatedPortfolioHistory
 GetPortfolio --* Portfolio
 User --* CreatePortfolio
 User --* GetPortfolio
@@ -28,9 +29,9 @@ class Asset {
 }
 
 class Portfolio {
-   -@DynamoDBDKey assetId : String
+   -@DynamoDBDKey userId : String
+   -userId : String
    -assetQuantity : Integer
-   -timeStamp : String
 }
 
 class AssetHistory {
@@ -44,6 +45,12 @@ class PortfolioHistory {
   -@DynamoDBDocument : Map
   -@DynamoDBBHashKey assetId : String
   -@DynamoDBRangeKey timeStamp : String
+}
+
+class ConsolidatedPortfolioHistory {
+  -@DynamoDBBHashKey userId : String
+  -@DynamoDBRangeKey timeStamp : String
+  -totalUsdValue: Integer
 }
 
 class GetAsset {
