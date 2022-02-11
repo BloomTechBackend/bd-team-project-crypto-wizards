@@ -5,11 +5,15 @@ import com.amazonaws.services.lambda.runtime.LambdaLogger;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyResponseEvent;
+import com.cryptoportfolio.activity.RegisterActivity;
+import com.cryptoportfolio.utils.Utils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import static com.cryptoportfolio.utils.Utils.buildResponse;
 
 public class LambdaProxy implements RequestHandler<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> {
 
@@ -21,7 +25,7 @@ public class LambdaProxy implements RequestHandler<APIGatewayProxyRequestEvent, 
     private Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     @Override
-    public APIGatewayProxyResponseEvent handleRequest(final APIGatewayProxyRequestEvent event, final Context context)
+    public APIGatewayProxyResponseEvent handleRequest(final APIGatewayProxyRequestEvent request, final Context context)
     {
         APIGatewayProxyResponseEvent response;
         LambdaLogger logger = context.getLogger();
@@ -31,16 +35,16 @@ public class LambdaProxy implements RequestHandler<APIGatewayProxyRequestEvent, 
         logger.log("ENVIRONMENT VARIABLES: " + gson.toJson(System.getenv()));
         logger.log("CONTEXT: " + gson.toJson(context));
         // process event
-        logger.log("EVENT: " + gson.toJson(event));
-        logger.log("EVENT TYPE: " + event.getClass().toString());
+        logger.log("EVENT: " + gson.toJson(request));
+        logger.log("EVENT TYPE: " + request.getClass().toString());
 
-        if ("GET".equals(event.getHttpMethod()) && HEALTH_PATH.equals(event.getPath())) {
+        if ("GET".equals(request.getHttpMethod()) && HEALTH_PATH.equals(request.getPath())) {
             response = buildResponse(200, "200 OK");
-        } else if ("POST".equals(event.getHttpMethod()) && REGISTER_PATH.equals(event.getPath())) {
+        } else if ("POST".equals(request.getHttpMethod()) && REGISTER_PATH.equals(request.getPath())) {
+            response = new RegisterActivity().handleRequest(request, context);
+        } else if ("POST".equals(request.getHttpMethod()) && LOGIN_PATH.equals(request.getPath())) {
             response = buildResponse(200, "200 OK");
-        } else if ("POST".equals(event.getHttpMethod()) && LOGIN_PATH.equals(event.getPath())) {
-            response = buildResponse(200, "200 OK");
-        } else if ("POST".equals(event.getHttpMethod()) && VERIFY_PATH.equals(event.getPath())) {
+        } else if ("POST".equals(request.getHttpMethod()) && VERIFY_PATH.equals(request.getPath())) {
             response = buildResponse(200, "200 OK");
         } else {
             response = buildResponse(404, "404 Not Found");
@@ -50,15 +54,5 @@ public class LambdaProxy implements RequestHandler<APIGatewayProxyRequestEvent, 
 
         return response;
 
-    }
-
-    APIGatewayProxyResponseEvent buildResponse(int statusCode, Object body) {
-        return new APIGatewayProxyResponseEvent()
-                .withStatusCode(statusCode)
-                .withIsBase64Encoded(false)
-                .withHeaders(Map.of(
-                        "Access-Control-Allow-Origin","*",
-                        "Content-Type", "application/json"))
-                .withBody(gson.toJson(body));
     }
 }
