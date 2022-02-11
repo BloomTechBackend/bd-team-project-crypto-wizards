@@ -144,12 +144,11 @@ RegisterActivity saves the new user onto the database.](images/design_document/R
 ```
 userName // partition key, string
 password // string
-salt // string
 ```
 
 ### 7.2.  `portfolios`
 ```
-userId // partition key ,string
+username // partition key ,string
 assetId // string
 assetQuantity // number
 ```
