@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1a7b167-a746-4d95-887e-103e49727ebe" name="Changes" comment="Updated the sequence Diagrams with suggestions from David">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_documents/design_document.md" beforeDir="false" afterPath="$PROJECT_DIR$/project_documents/design_document.md" afterDir="false" />
+    <list default="true" id="c1a7b167-a746-4d95-887e-103e49727ebe" name="Changes" comment="Updated the sequence Diagrams with suggestions from Shannon">
+      <change beforePath="$PROJECT_DIR$/template_java_project/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/gradlew" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,6 +92,9 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/project_documents/images/design_document" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -111,6 +113,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1644365687422</updated>
+      <workItem from="1644544560724" duration="77000" />
     </task>
     <task id="LOCAL-00001" summary="Updated the design document's API &amp; Tables Section (6 &amp; 7), Created the EntityRelationshipDiagram.puml">
       <created>1644449732646</created>
@@ -156,6 +159,9 @@
     </task>
     <option name="localTasksCounter" value="7" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
