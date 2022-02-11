@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1a7b167-a746-4d95-887e-103e49727ebe" name="Changes" comment="Pages added to Design Doc" />
-    <list default="true" id="c1a7b167-a746-4d95-887e-103e49727ebe" name="Changes" comment="Updated the sequence Diagrams with suggestions from Shannon">
+    <list default="true" id="c1a7b167-a746-4d95-887e-103e49727ebe" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_documents/design_document.md" beforeDir="false" afterPath="$PROJECT_DIR$/project_documents/design_document.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/template_java_project/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/gradlew" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -96,16 +97,13 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-
     <property name="last_opened_file_path" value="$PROJECT_DIR$/project_documents/images/design_document" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
-
     <property name="last_opened_file_path" value="$PROJECT_DIR$/project_documents/images/design_document" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
-
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
