@@ -23,5 +23,10 @@
         </processorPath>
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="UnitProject" target="11" />
+      <module name="UnitProject.main" target="11" />
+      <module name="UnitProject.test" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>
