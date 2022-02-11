@@ -5,6 +5,7 @@ import com.amazonaws.services.lambda.runtime.LambdaLogger;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyResponseEvent;
+import com.cryptoportfolio.activity.LoginActivity;
 import com.cryptoportfolio.activity.RegisterActivity;
 import com.cryptoportfolio.utils.Utils;
 import com.google.gson.Gson;
@@ -43,7 +44,7 @@ public class LambdaProxy implements RequestHandler<APIGatewayProxyRequestEvent, 
         } else if ("POST".equals(request.getHttpMethod()) && REGISTER_PATH.equals(request.getPath())) {
             response = new RegisterActivity().handleRequest(request, context);
         } else if ("POST".equals(request.getHttpMethod()) && LOGIN_PATH.equals(request.getPath())) {
-            response = buildResponse(200, "200 OK");
+            response = new LoginActivity().handleRequest(request, context);
         } else if ("POST".equals(request.getHttpMethod()) && VERIFY_PATH.equals(request.getPath())) {
             response = buildResponse(200, "200 OK");
         } else {
