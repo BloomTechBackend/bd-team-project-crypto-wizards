@@ -27,17 +27,24 @@ public class RegisterActivity implements RequestHandler<APIGatewayProxyRequestEv
     public APIGatewayProxyResponseEvent handleRequest(APIGatewayProxyRequestEvent request, Context context) {
 
         UserModel userModel = gson.fromJson(request.getBody(), UserModel.class);
+        String username = userModel.getUsername();
+        String password = userModel.getPassword();
 
-        String hashedPassword = BCrypt.hashpw(userModel.getPassword(), BCrypt.gensalt());
+        if (null == username || "".equals(username) || null == password || "".equals(password)) {
+            return Utils.buildResponse(401,
+                    new RegisterResponse(username, "All fields required"));
+        }
+
+        String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
 
         try {
-            userDao.createUser(new User(userModel.getUsername(), hashedPassword));
-        } catch (Exception e) {
+            userDao.createUser(new User(username, hashedPassword));
+        } catch (UserAlreadyExistsException e) {
             return Utils.buildResponse(401,
-                    new RegisterResponse(userModel.getUsername(), "Username already exists"));
+                    new RegisterResponse(username, "Username already exists"));
         }
 
         return Utils.buildResponse(200,
-                new RegisterResponse(userModel.getUsername(), "Registered successfully"));
+                new RegisterResponse(username, "Registered successfully"));
     }
 }
