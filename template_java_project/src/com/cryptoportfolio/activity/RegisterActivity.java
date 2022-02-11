@@ -1,6 +1,7 @@
 package com.cryptoportfolio.activity;
 
 import com.amazonaws.services.lambda.runtime.Context;
+import com.amazonaws.services.lambda.runtime.LambdaLogger;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyResponseEvent;
@@ -26,6 +27,8 @@ public class RegisterActivity implements RequestHandler<APIGatewayProxyRequestEv
     @Override
     public APIGatewayProxyResponseEvent handleRequest(APIGatewayProxyRequestEvent request, Context context) {
 
+        LambdaLogger logger = context.getLogger();
+
         UserModel userModel = gson.fromJson(request.getBody(), UserModel.class);
         String username = userModel.getUsername();
         String password = userModel.getPassword();
@@ -37,8 +40,12 @@ public class RegisterActivity implements RequestHandler<APIGatewayProxyRequestEv
 
         String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
 
+        User user = new User();
+        user.setUsername(username);
+        user.setPassword(hashedPassword);
+
         try {
-            userDao.createUser(new User(username, hashedPassword));
+            userDao.createUser(user);
         } catch (UserAlreadyExistsException e) {
             return Utils.buildResponse(401,
                     new RegisterResponse(username, "Username already exists"));

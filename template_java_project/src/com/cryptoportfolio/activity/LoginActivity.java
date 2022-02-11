@@ -15,6 +15,8 @@ import com.cryptoportfolio.utils.Utils;
 import com.google.gson.Gson;
 import org.mindrot.jbcrypt.BCrypt;
 
+import java.util.Date;
+
 public class LoginActivity implements RequestHandler<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> {
 
     private UserDao userDao;
@@ -52,10 +54,13 @@ public class LoginActivity implements RequestHandler<APIGatewayProxyRequestEvent
         }
 
         // Create and sign JSON web token
-        Algorithm algorithm = Algorithm.HMAC256("secret");
+        Date expiry = new Date();
+        expiry.setTime(expiry.getTime() + 3_600_000);
+        Algorithm algorithm = Algorithm.HMAC256(System.getenv("JWT_SECRET"));
         String token = JWT.create()
                 .withIssuer("cryptoportfolio")
                 .withClaim("username", username)
+                .withExpiresAt(expiry)
                 .sign(algorithm);
 
         return Utils.buildResponse(200,
