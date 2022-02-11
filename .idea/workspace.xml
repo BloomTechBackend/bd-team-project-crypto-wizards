@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <list default="true" id="c1a7b167-a746-4d95-887e-103e49727ebe" name="Changes" comment="Updated the sequence Diagrams with suggestions from David">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project_documents/design_document.md" beforeDir="false" afterPath="$PROJECT_DIR$/project_documents/design_document.md" afterDir="false" />
@@ -12,6 +13,10 @@
     <list default="true" id="c1a7b167-a746-4d95-887e-103e49727ebe" name="Changes" comment="Updated the sequence Diagrams with suggestions from Shannon">
       <change beforePath="$PROJECT_DIR$/template_java_project/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/gradlew" afterDir="false" />
 >>>>>>> 462136713441ac4cd25df7aac833df7ade7e1c47
+=======
+    <list default="true" id="c1a7b167-a746-4d95-887e-103e49727ebe" name="Changes" comment="Updated the sequence Diagrams with suggestions from Shannon">
+      <change beforePath="$PROJECT_DIR$/template_java_project/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/gradlew" afterDir="false" />
+>>>>>>> 8abfd7551db659e69bd41d6db36e1de84cdd5ffd
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,6 +102,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
 <<<<<<< HEAD
+<<<<<<< HEAD
     <property name="last_opened_file_path" value="$PROJECT_DIR$/project_documents/images/design_document" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
 =======
@@ -104,6 +110,13 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
 >>>>>>> 462136713441ac4cd25df7aac833df7ade7e1c47
+=======
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/project_documents/images/design_document" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+>>>>>>> 8abfd7551db659e69bd41d6db36e1de84cdd5ffd
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
