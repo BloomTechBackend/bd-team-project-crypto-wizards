@@ -64,6 +64,9 @@ dependencies {
     // bcrypt for password hashing
     implementation 'org.mindrot:jbcrypt:0.4'
 
+    // JSON web token library
+    implementation 'com.auth0:java-jwt:3.18.3'
+
     implementation files("$rootDir/LibrariesAndUtilities/ATAResources.jar")
     implementation files("$rootDir/LibrariesAndUtilities/CoinGeckoAPIClient.jar")
 
