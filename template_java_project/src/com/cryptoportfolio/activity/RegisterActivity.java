@@ -32,7 +32,7 @@ public class RegisterActivity implements RequestHandler<APIGatewayProxyRequestEv
 
         try {
             userDao.createUser(new User(userModel.getUsername(), hashedPassword));
-        } catch (UserAlreadyExistsException e) {
+        } catch (Exception e) {
             return Utils.buildResponse(401,
                     new RegisterResponse(userModel.getUsername(), "Username already exists"));
         }
