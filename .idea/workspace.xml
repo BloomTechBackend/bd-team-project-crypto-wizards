@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c1a7b167-a746-4d95-887e-103e49727ebe" name="Changes" comment="Updated the sequence Diagrams with suggestions from Shannon">
-      <change beforePath="$PROJECT_DIR$/template_java_project/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/gradlew" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_documents/design_document.md" beforeDir="false" afterPath="$PROJECT_DIR$/project_documents/design_document.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +41,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitSEFilterConfiguration">
@@ -111,7 +118,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1644365687422</updated>
-      <workItem from="1644544560724" duration="77000" />
+      <workItem from="1644544560724" duration="2242000" />
     </task>
     <task id="LOCAL-00001" summary="Updated the design document's API &amp; Tables Section (6 &amp; 7), Created the EntityRelationshipDiagram.puml">
       <created>1644449732646</created>
