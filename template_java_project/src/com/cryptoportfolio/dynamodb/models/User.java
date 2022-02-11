@@ -11,12 +11,10 @@ public class User {
 
     private String username;
     private String password;
-    private String salt;
 
-    public User(String username, String password, String salt) {
+    public User(String username, String password) {
         this.username = username;
         this.password = password;
-        this.salt = salt;
     }
 
     @DynamoDBHashKey(attributeName = "username")
@@ -37,26 +35,17 @@ public class User {
         this.password = password;
     }
 
-    @DynamoDBAttribute(attributeName = "salt")
-    public String getSalt() {
-        return salt;
-    }
-
-    public void setSalt(String salt) {
-        this.salt = salt;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(getUsername(), user.getUsername()) && Objects.equals(getPassword(), user.getPassword()) && Objects.equals(getSalt(), user.getSalt());
+        return Objects.equals(getUsername(), user.getUsername()) && Objects.equals(getPassword(), user.getPassword());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getUsername(), getPassword(), getSalt());
+        return Objects.hash(getUsername(), getPassword());
     }
 
     @Override
@@ -64,7 +53,6 @@ public class User {
         return "User{" +
                 "username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", salt='" + salt + '\'' +
                 '}';
     }
 }

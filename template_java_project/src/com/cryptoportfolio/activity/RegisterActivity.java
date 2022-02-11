@@ -6,7 +6,8 @@ import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyResponseEvent;
 import com.cryptoportfolio.dynamodb.dao.UserDao;
 import com.cryptoportfolio.dynamodb.models.User;
-import com.cryptoportfolio.models.RegisterResponse;
+import com.cryptoportfolio.exceptions.UserAlreadyExistsException;
+import com.cryptoportfolio.models.responses.RegisterResponse;
 import com.cryptoportfolio.models.UserModel;
 import com.cryptoportfolio.utils.Utils;
 import com.google.gson.Gson;
@@ -27,12 +28,16 @@ public class RegisterActivity implements RequestHandler<APIGatewayProxyRequestEv
 
         UserModel userModel = gson.fromJson(request.getBody(), UserModel.class);
 
-        String salt = BCrypt.gensalt(12);
-        String hashedPassword = BCrypt.hashpw(userModel.getPassword(), salt);
+        String hashedPassword = BCrypt.hashpw(userModel.getPassword(), BCrypt.gensalt());
 
-        userDao.createUser(new User(userModel.getUsername(), hashedPassword, salt));
+        try {
+            userDao.createUser(new User(userModel.getUsername(), hashedPassword));
+        } catch (UserAlreadyExistsException e) {
+            return Utils.buildResponse(401,
+                    new RegisterResponse(userModel.getUsername(), "Username already exists"));
+        }
 
-
-        return Utils.buildResponse(200, new RegisterResponse(userModel.getUsername()));
+        return Utils.buildResponse(200,
+                new RegisterResponse(userModel.getUsername(), "Registered successfully"));
     }
 }

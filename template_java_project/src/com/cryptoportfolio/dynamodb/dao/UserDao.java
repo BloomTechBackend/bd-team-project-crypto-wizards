@@ -4,6 +4,7 @@ import com.amazon.ata.aws.dynamodb.DynamoDbClientProvider;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.cryptoportfolio.dynamodb.models.User;
+import com.cryptoportfolio.exceptions.UserAlreadyExistsException;
 
 public class UserDao {
 
@@ -14,7 +15,12 @@ public class UserDao {
     }
 
     public void createUser(User user) {
-        dynamoDBMapper.save(user);
+
+        if (dynamoDBMapper.load(user) != null) {
+            throw new UserAlreadyExistsException(String.format("username %s already exists", user.getUsername()));
+        } else {
+            dynamoDBMapper.save(user);
+        }
     }
 
     public User getUser(String username) {
