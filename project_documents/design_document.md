@@ -12,9 +12,8 @@ This design document describes a crypto portfolio tracking service that provides
 ## 2. Top Questions to Resolve in Review
 
 1. How should daily historical data be calculated with a volatile market?   
-2. How many and what assets should be accessible, eliminating stable coin and keeping a 
-market cap order?  
-3. How to manage API calls on the backend and design the frontend to utilize backend data? 
+2. How to fix a top 50 asset view for client with a larger number on backend with consistent changes?
+3. How implement a secure login with registration page and verify if access token is still valid? 
 
 ## 3. Use Cases
 
@@ -26,15 +25,13 @@ converted to USD.
     
 U3. As a customer, I want to update my list of assets in my portfolio.
 
-U4. As a customer, I want to remove assets from my portfolio.
-
-U5. As a customer, I want to view historical data showing asset performance.
+U4. As a customer, I want to view historical data showing asset performance.
 
 ## 4. Project Scope
 
 ### 4.1. In Scope
 
-* Creating, retrieving, and updating a porfolio.
+* Creating, retrieving, and updating a portfolio.
 * Retrieving the historical data of the portfolio.
 * Retrieving the historical data showing asset performance.
 
@@ -74,7 +71,7 @@ boolean isAvailable;
 
 ```
 
-## 6.1. Register Endpoint
+## 6.2. Register Endpoint
 
 * Accepts `POST` request to `/register`.
 * Returns a "User Successfully Created" response after successfully validating the provided information.
@@ -89,7 +86,7 @@ boolean isAvailable;
 Register page sends a registration request to RegisterActivity which validates the Input.
 RegisterActivity saves the new user onto the database.](images/design_document/Register.png)
 
-## 6.2. Login Endpoint
+## 6.3. Login Endpoint
 
 * Accepts a `POST` request to `/login`.
 * Returns a successful authentication.
@@ -100,20 +97,20 @@ RegisterActivity saves the new user onto the database.](images/design_document/R
 
 ![alt text](images/design_document/Login.png)
 
-## 6.3. Verify Endpoint
+## 6.4. Verify Endpoint
 * Accepts `POST` request  to `/verify`.
 * Verifies if Access token is still valid.
   * If the session has expired, will throw an
     `SessionExpiredException`
 
-## 6.4. GetPortfolioActivity Endpoint
+## 6.5. GetPortfolioActivity Endpoint
 
 * Accepts `GET` requests to `/portfolios/:id`
 * Accepts a User ID and returns the corresponding PortfolioModel.
 
 ![alt text](images/design_document/GetPortfolio.png)
 
-## 6.5. CreatePortfolioActivity Endpoint
+## 6.6. CreatePortfolioActivity Endpoint
 
 * Accepts `POST` requests to `/portfolios`
 * Accepts data to create a new portfolio for the provided userName, with the selected list of Assets.
@@ -123,7 +120,7 @@ RegisterActivity saves the new user onto the database.](images/design_document/R
 
 ![alt text](images/design_document/CreatePortfolio.png)
 
-### 6.6. UpdatePortfolioActivity Endpoint
+### 6.7. UpdatePortfolioActivity Endpoint
 
 * Accepts `PUT` requests to `/portfolios/:id`
 * Accepts data to update the quantity of portfolio owned and adding new assets to the portfolio. Returns the updated portfolio.
@@ -132,7 +129,7 @@ RegisterActivity saves the new user onto the database.](images/design_document/R
 
 ![alt text](images/design_document/UdatePortfolio.png)
 
-### 6.7. GetPortfolioHistoryActivity Endpoint
+### 6.8. GetPortfolioHistoryActivity Endpoint
 * Accepts `GET` requests to `/portfolios/:id/history`
 * Accepts a valid User ID and returns the corresponding Portfolio's historical data'.
 
@@ -175,23 +172,31 @@ isAvailable // boolean
 ### 7.5.  `portfolio_history`
 ```
 userId // String
-timeStamp // String
-portfolio // String Set
+timeStamp // string
+portfolio // string Set
 ```
 
 ### 7.6.  `consolidated_portfolio_history`
 ```
 userId // partition key, string
-timeStamp: sort key, string
-totalUsdValue: number
+timeStamp // sort key, string
+totalUsdValue // number
 ```
 
 # 8. Pages
 
-*Include mock-ups of the web pages you expect to build. These can be as
-sophisticated as mockups/wireframes using drawing software, or as simple as
-hand-drawn pictures that represent the key customer-facing components of the
-pages. It should be clear what the interactions will be on the page, especially
-where customers enter and submit data. You may want to accompany the mockups
-with some description of behaviors of the page (e.g. “When customer submits the
-submit-dog-photo button, the customer is sent to the doggie detail page”)*
+![alt text](images/design_document/Flow.png)
+
+![alt text](images/design_document/RegisterPage.png)
+
+![alt text](images/design_document/LoginPage.png)
+
+
+![alt text](images/design_document/GetPortfolioPage.png)
+
+
+![alt text](images/design_document/CreatePortfolioPage.png)
+
+
+![alt text](images/design_document/UpdatePortfolioPage.png)
+

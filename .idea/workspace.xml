@@ -4,19 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <list default="true" id="c1a7b167-a746-4d95-887e-103e49727ebe" name="Changes" comment="Updated the sequence Diagrams with suggestions from David">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_documents/design_document.md" beforeDir="false" afterPath="$PROJECT_DIR$/project_documents/design_document.md" afterDir="false" />
-=======
+    <list default="true" id="c1a7b167-a746-4d95-887e-103e49727ebe" name="Changes" comment="Pages added to Design Doc" />
     <list default="true" id="c1a7b167-a746-4d95-887e-103e49727ebe" name="Changes" comment="Updated the sequence Diagrams with suggestions from Shannon">
       <change beforePath="$PROJECT_DIR$/template_java_project/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/gradlew" afterDir="false" />
->>>>>>> 462136713441ac4cd25df7aac833df7ade7e1c47
-=======
-    <list default="true" id="c1a7b167-a746-4d95-887e-103e49727ebe" name="Changes" comment="Updated the sequence Diagrams with suggestions from Shannon">
-      <change beforePath="$PROJECT_DIR$/template_java_project/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/gradlew" afterDir="false" />
->>>>>>> 8abfd7551db659e69bd41d6db36e1de84cdd5ffd
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +40,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitSEFilterConfiguration">
@@ -101,22 +96,16 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-<<<<<<< HEAD
-<<<<<<< HEAD
+
     <property name="last_opened_file_path" value="$PROJECT_DIR$/project_documents/images/design_document" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
-=======
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
->>>>>>> 462136713441ac4cd25df7aac833df7ade7e1c47
-=======
+
     <property name="last_opened_file_path" value="$PROJECT_DIR$/project_documents/images/design_document" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
->>>>>>> 8abfd7551db659e69bd41d6db36e1de84cdd5ffd
+
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -124,6 +113,7 @@
       <recent name="$PROJECT_DIR$/resources/Images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\shans\Dev\Unit5\bd-team-project-crypto-wizards\project_documents\images\design_document" />
       <recent name="$PROJECT_DIR$/resources" />
     </key>
   </component>
@@ -135,7 +125,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1644365687422</updated>
-      <workItem from="1644544560724" duration="77000" />
+      <workItem from="1644544560724" duration="3264000" />
     </task>
     <task id="LOCAL-00001" summary="Updated the design document's API &amp; Tables Section (6 &amp; 7), Created the EntityRelationshipDiagram.puml">
       <created>1644449732646</created>
@@ -165,19 +155,19 @@
       <option name="project" value="LOCAL" />
       <updated>1644519609168</updated>
     </task>
-    <task id="LOCAL-00005" summary="Updated the sequence Diagrams with suggestions from David">
-      <created>1644522399648</created>
+    <task id="LOCAL-00005" summary="Pages added to Design Doc">
+      <created>1644547522849</created>
       <option name="number" value="00005" />
       <option name="presentableId" value="LOCAL-00005" />
       <option name="project" value="LOCAL" />
-      <updated>1644522399648</updated>
+      <updated>1644547522849</updated>
     </task>
-    <task id="LOCAL-00006" summary="Updated the sequence Diagrams with suggestions from David">
-      <created>1644522496751</created>
+    <task id="LOCAL-00006" summary="Pages added to Design Doc">
+      <created>1644547747598</created>
       <option name="number" value="00006" />
       <option name="presentableId" value="LOCAL-00006" />
       <option name="project" value="LOCAL" />
-      <updated>1644522496751</updated>
+      <updated>1644547747598</updated>
     </task>
     <option name="localTasksCounter" value="7" />
     <servers />
@@ -202,7 +192,7 @@
     <MESSAGE value="Updated the design document's API &amp; Tables Section (6 &amp; 7), Created the EntityRelationshipDiagram.puml" />
     <MESSAGE value="Created the initial Sequence Diagrams and snapshots to be included in the design document" />
     <MESSAGE value="Updated the sequence Diagrams with suggestions from Shannon" />
-    <MESSAGE value="Updated the sequence Diagrams with suggestions from David" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated the sequence Diagrams with suggestions from David" />
+    <MESSAGE value="Pages added to Design Doc" />
+    <option name="LAST_COMMIT_MESSAGE" value="Pages added to Design Doc" />
   </component>
 </project>
