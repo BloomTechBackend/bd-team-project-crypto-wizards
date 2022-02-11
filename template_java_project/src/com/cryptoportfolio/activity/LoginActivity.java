@@ -39,6 +39,7 @@ public class LoginActivity implements RequestHandler<APIGatewayProxyRequestEvent
                     new LoginResponse(username, null,"Username and password are required"));
         }
 
+        // Get user, throw exception if user does not exist
         User user;
         try {
             user = userDao.getUser(username);
@@ -53,9 +54,9 @@ public class LoginActivity implements RequestHandler<APIGatewayProxyRequestEvent
                     new LoginResponse(username, null,"Password is incorrect"));
         }
 
-        // Create and sign JSON web token
+        // Create and sign JSON web token expiring in 1 hr (3,600,000 milliseconds)
         Date expiry = new Date();
-        expiry.setTime(expiry.getTime() + 3_600_000);
+        expiry.setTime(expiry.getTime() + 60_000);
         Algorithm algorithm = Algorithm.HMAC256(System.getenv("JWT_SECRET"));
         String token = JWT.create()
                 .withIssuer("cryptoportfolio")
