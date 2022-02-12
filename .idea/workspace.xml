@@ -4,10 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1a7b167-a746-4d95-887e-103e49727ebe" name="Changes" comment="">
+    <list default="true" id="c1a7b167-a746-4d95-887e-103e49727ebe" name="Changes" comment="table structure modified in Design Doc">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/activity/GetPortfolioActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/converter/AssetListConverter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/converter/ModelConverter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/dynamodb/dao/AssetDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/dynamodb/dao/UserAssetsDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/dynamodb/models/Asset.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/dynamodb/models/UserAssets.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/exceptions/PortfolioNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/models/PortfolioModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/models/requests/GetPortfolioRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/models/results/GetPortfolioResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_documents/design_document.md" beforeDir="false" afterPath="$PROJECT_DIR$/project_documents/design_document.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template_java_project/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/gradlew" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +48,7 @@
         <option value="Salt Wireframe" />
         <option value="UML Class" />
         <option value="UML Sequence" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -66,12 +78,12 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="main" />
-                    <option name="lastUsedInstant" value="1644522827" />
+                    <option name="branchName" value="uma" />
+                    <option name="lastUsedInstant" value="1644603119" />
                   </RecentBranch>
                   <RecentBranch>
-                    <option name="branchName" value="uma" />
-                    <option name="lastUsedInstant" value="1644451898" />
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1644603084" />
                   </RecentBranch>
                 </list>
               </option>
@@ -97,10 +109,6 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/project_documents/images/design_document" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/project_documents/images/design_document" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
@@ -113,6 +121,9 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\shans\Dev\Unit5\bd-team-project-crypto-wizards\project_documents\images\design_document" />
       <recent name="$PROJECT_DIR$/resources" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.cryptoportfolio.converter" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -167,7 +178,14 @@
       <option name="project" value="LOCAL" />
       <updated>1644547747598</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="table structure modified in Design Doc">
+      <created>1644553038757</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1644553038757</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -191,6 +209,7 @@
     <MESSAGE value="Created the initial Sequence Diagrams and snapshots to be included in the design document" />
     <MESSAGE value="Updated the sequence Diagrams with suggestions from Shannon" />
     <MESSAGE value="Pages added to Design Doc" />
-    <option name="LAST_COMMIT_MESSAGE" value="Pages added to Design Doc" />
+    <MESSAGE value="table structure modified in Design Doc" />
+    <option name="LAST_COMMIT_MESSAGE" value="table structure modified in Design Doc" />
   </component>
 </project>
