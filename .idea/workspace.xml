@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1a7b167-a746-4d95-887e-103e49727ebe" name="Changes" comment="table structure modified in Design Doc">
+    <list default="true" id="c1a7b167-a746-4d95-887e-103e49727ebe" name="Changes" comment="Created the GetPlaylistActivity module. Testing pending. Pushing for safety purposes">
       <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/activity/GetPortfolioActivity.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/converter/AssetListConverter.java" afterDir="false" />
@@ -13,6 +13,7 @@
       <change afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/dynamodb/dao/UserAssetsDao.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/dynamodb/models/Asset.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/dynamodb/models/UserAssets.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/exceptions/AssetNotFoundException.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/exceptions/PortfolioNotFoundException.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/models/PortfolioModel.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/models/requests/GetPortfolioRequest.java" afterDir="false" />
@@ -185,7 +186,14 @@
       <option name="project" value="LOCAL" />
       <updated>1644553038757</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Created the GetPlaylistActivity module. Testing pending. Pushing for safety purposes">
+      <created>1644634828923</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1644634828924</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -210,6 +218,7 @@
     <MESSAGE value="Updated the sequence Diagrams with suggestions from Shannon" />
     <MESSAGE value="Pages added to Design Doc" />
     <MESSAGE value="table structure modified in Design Doc" />
-    <option name="LAST_COMMIT_MESSAGE" value="table structure modified in Design Doc" />
+    <MESSAGE value="Created the GetPlaylistActivity module. Testing pending. Pushing for safety purposes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created the GetPlaylistActivity module. Testing pending. Pushing for safety purposes" />
   </component>
 </project>
