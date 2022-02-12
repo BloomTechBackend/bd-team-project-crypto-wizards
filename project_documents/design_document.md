@@ -143,7 +143,7 @@ username // partition key, string
 password // string
 ```
 
-### 7.2.  `portfolios`
+### 7.2.  `user_assets`
 ```
 username // partition key ,string
 asset_id // string

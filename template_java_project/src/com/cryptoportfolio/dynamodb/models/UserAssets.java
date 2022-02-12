@@ -7,7 +7,6 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 import java.util.Objects;
 
 /**
- *
  * This is the Dynamo DB mapper class for the UserAssets Table
  */
 

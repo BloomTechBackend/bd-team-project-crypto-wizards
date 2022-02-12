@@ -5,21 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c1a7b167-a746-4d95-887e-103e49727ebe" name="Changes" comment="Created the GetPlaylistActivity module. Testing pending. Pushing for safety purposes">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/activity/GetPortfolioActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/converter/AssetListConverter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/converter/ModelConverter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/dynamodb/dao/AssetDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/dynamodb/dao/UserAssetsDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/dynamodb/models/Asset.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/dynamodb/models/UserAssets.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/exceptions/AssetNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/exceptions/PortfolioNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/models/PortfolioModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/models/requests/GetPortfolioRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/models/results/GetPortfolioResult.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_documents/design_document.md" beforeDir="false" afterPath="$PROJECT_DIR$/project_documents/design_document.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/dynamodb/models/UserAssets.java" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/dynamodb/models/UserAssets.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,7 +181,14 @@
       <option name="project" value="LOCAL" />
       <updated>1644634828924</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Created the GetPlaylistActivity module. Testing pending. Pushing for safety purposes">
+      <created>1644634976551</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1644634976557</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
