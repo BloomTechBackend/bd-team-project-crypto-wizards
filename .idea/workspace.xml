@@ -4,14 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1a7b167-a746-4d95-887e-103e49727ebe" name="Changes" comment="updated the design doc with the table name of the portfolios table to user_assets table">
-      <change afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/dynamodb/models/UserPortfolio.java" afterDir="false" />
+
+    <list default="true" id="c1a7b167-a746-4d95-887e-103e49727ebe" name="Changes" comment="Pages added to Design Doc">
+      <change afterPath="$PROJECT_DIR$/template_java_project/.idea/runConfigurations.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/template_java_project/.idea/template_java_project.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_documents/design_document.md" beforeDir="false" afterPath="$PROJECT_DIR$/project_documents/design_document.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/activity/GetPortfolioActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/activity/GetPortfolioActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/converter/ModelConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/converter/ModelConverter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/dynamodb/dao/UserAssetsDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/dynamodb/dao/UserPortfolioDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/dynamodb/models/UserAssets.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_java_project/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/.gitignore" afterDir="false" />
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +43,9 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="main" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -87,6 +89,9 @@
       </RecentBranches>
     </option>
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="24qkpOfzGOq8K5i3cGgVmlghCG6" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -105,6 +110,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -128,6 +134,8 @@
       <option name="presentableId" value="Default" />
       <updated>1644365687422</updated>
       <workItem from="1644544560724" duration="3264000" />
+      <workItem from="1644693541658" duration="1300000" />
+      <workItem from="1644725847279" duration="1373000" />
     </task>
     <task id="LOCAL-00001" summary="Updated the design document's API &amp; Tables Section (6 &amp; 7), Created the EntityRelationshipDiagram.puml">
       <created>1644449732646</created>
@@ -215,7 +223,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
