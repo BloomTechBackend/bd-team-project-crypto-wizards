@@ -18,6 +18,9 @@ public class CreatePortfolioActivity  implements RequestHandler<CreatePortfolioR
     private final Logger log = LogManager.getLogger();
     private UserPortfolioDao userPortfolioDao;
 
+    public CreatePortfolioActivity() {
+    }
+
     /**
      * Instantiates a new CreatePortfolioActivity object.
      *
@@ -27,6 +30,7 @@ public class CreatePortfolioActivity  implements RequestHandler<CreatePortfolioR
     public CreatePortfolioActivity(UserPortfolioDao userPortfolioDao) {
         this.userPortfolioDao = userPortfolioDao;
     }
+
 
 
     /**
@@ -48,16 +52,17 @@ public class CreatePortfolioActivity  implements RequestHandler<CreatePortfolioR
 
         UserPortfolio userPortfolio = new UserPortfolio();
 
-            Map<String, Double> assetQuantityMap = createPortfolioRequest.getAssetQuantityMap();
+        Map<String, Double> assetQuantityMap = createPortfolioRequest.getAssetQuantityMap();
 
-            userPortfolio.setUsername(createPortfolioRequest.getUsername());
-            userPortfolio.setAssetQuantityMap(assetQuantityMap);
+        userPortfolio.setUsername(createPortfolioRequest.getUsername());
 
-            userPortfolioDao.savePortfolio(userPortfolio);
+        userPortfolio.setAssetQuantityMap(assetQuantityMap);
 
-            PortfolioModel PortfolioModel = new ModelConverter().toPortfolioModel(createPortfolioRequest.getUsername(), userPortfolio);
+        userPortfolioDao.savePortfolio(userPortfolio);
 
-            return CreatePortfolioResult.builder().withPortfolio(PortfolioModel).build();
+        PortfolioModel PortfolioModel = new ModelConverter().toPortfolioModel(createPortfolioRequest.getUsername(), userPortfolio);
+
+        return CreatePortfolioResult.builder().withPortfolio(PortfolioModel).build();
     }
 
 }
