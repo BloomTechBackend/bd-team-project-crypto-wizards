@@ -15,7 +15,7 @@ import java.util.Objects;
 public class UserPortfolio {
 
     private String username;
-    private Map<String, Integer> assetQuantityMap;
+    private Map<String, Double> assetQuantityMap;
 
     @DynamoDBHashKey(attributeName = "username")
     public String getUsername() {
@@ -28,11 +28,11 @@ public class UserPortfolio {
 
 
     @DynamoDBAttribute(attributeName = "asset_quantity_map")
-    public Map<String, Integer> getAssetQuantityMap() {
+    public Map<String, Double> getAssetQuantityMap() {
         return assetQuantityMap;
     }
 
-    public void setAssetQuantityMap(Map<String, Integer> assetQuantityMap) {
+    public void setAssetQuantityMap(Map<String, Double> assetQuantityMap) {
         this.assetQuantityMap = assetQuantityMap;
     }
 
