@@ -4,10 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1a7b167-a746-4d95-887e-103e49727ebe" name="Changes" comment="Created the GetPlaylistActivity module. Testing pending. Pushing for safety purposes">
+    <list default="true" id="c1a7b167-a746-4d95-887e-103e49727ebe" name="Changes" comment="updated the design doc with the table name of the portfolios table to user_assets table">
+      <change afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/dynamodb/models/UserPortfolio.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project_documents/design_document.md" beforeDir="false" afterPath="$PROJECT_DIR$/project_documents/design_document.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/dynamodb/models/UserAssets.java" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/dynamodb/models/UserAssets.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/activity/GetPortfolioActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/activity/GetPortfolioActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/converter/ModelConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/converter/ModelConverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/dynamodb/dao/UserAssetsDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/dynamodb/dao/UserPortfolioDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/dynamodb/models/UserAssets.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,7 +192,14 @@
       <option name="project" value="LOCAL" />
       <updated>1644634976557</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="updated the design doc with the table name of the portfolios table to user_assets table">
+      <created>1644635148330</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1644635148330</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -214,6 +225,7 @@
     <MESSAGE value="Pages added to Design Doc" />
     <MESSAGE value="table structure modified in Design Doc" />
     <MESSAGE value="Created the GetPlaylistActivity module. Testing pending. Pushing for safety purposes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created the GetPlaylistActivity module. Testing pending. Pushing for safety purposes" />
+    <MESSAGE value="updated the design doc with the table name of the portfolios table to user_assets table" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated the design doc with the table name of the portfolios table to user_assets table" />
   </component>
 </project>

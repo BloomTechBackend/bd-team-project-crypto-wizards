@@ -3,15 +3,13 @@ package com.cryptoportfolio.activity;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.cryptoportfolio.converter.ModelConverter;
-import com.cryptoportfolio.dynamodb.dao.UserAssetsDao;
-import com.cryptoportfolio.dynamodb.models.UserAssets;
+import com.cryptoportfolio.dynamodb.dao.UserPortfolioDao;
+import com.cryptoportfolio.dynamodb.models.UserPortfolio;
 import com.cryptoportfolio.models.PortfolioModel;
 import com.cryptoportfolio.models.requests.GetPortfolioRequest;
 import com.cryptoportfolio.models.results.GetPortfolioResult;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import java.util.List;
 
 /**
  * Implementation of the GetPortfolioActivity for the CryptoPortfolioTracker's GetPortfolio API.
@@ -22,17 +20,17 @@ import java.util.List;
 public class GetPortfolioActivity implements RequestHandler<GetPortfolioRequest, GetPortfolioResult>  {
 
     private final Logger log = LogManager.getLogger();
-    private UserAssetsDao userAssetsDao;
+    private UserPortfolioDao userPortfolioDao;
 
     /**
      * Instantiates a new GetPortfolioActivity object.
      *
-     * @param userAssetsDao PortfolioDao to access the portfolio table.
+     * @param userPortfolioDao PortfolioDao to access the portfolio table.
      */
 
 
-    public GetPortfolioActivity(UserAssetsDao userAssetsDao) {
-        this.userAssetsDao = userAssetsDao;
+    public GetPortfolioActivity(UserPortfolioDao userPortfolioDao) {
+        this.userPortfolioDao = userPortfolioDao;
     }
 
     /**
@@ -50,7 +48,7 @@ public class GetPortfolioActivity implements RequestHandler<GetPortfolioRequest,
         log.info("Received GetPortfolioRequest {}", getPortfolioRequest);
         String requestedId = getPortfolioRequest.getUsername();
 
-        List<UserAssets> portfolio = userAssetsDao.getUserAssets(requestedId);
+        UserPortfolio portfolio = userPortfolioDao.getUserPortfolio(requestedId);
         PortfolioModel portfolioModel = new ModelConverter().toPortfolioModel(requestedId, portfolio);
 
         return GetPortfolioResult.builder()

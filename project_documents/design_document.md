@@ -143,11 +143,10 @@ username // partition key, string
 password // string
 ```
 
-### 7.2.  `user_assets`
+### 7.2.  `portfolios`
 ```
 username // partition key ,string
-asset_id // string
-asset_quantity // number
+asset_quantity_map // Map <string, Integer>
 ```
 
 ### 7.3.  `assets`
