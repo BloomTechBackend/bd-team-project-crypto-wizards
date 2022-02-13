@@ -1,13 +1,12 @@
 package com.cryptoportfolio.models;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
 public class PortfolioModel {
     private String username;
-    private Map<String, Integer> assetValue = new HashMap<>();
+    private Map<String, Double> assetValue = new HashMap<>();
 
     public PortfolioModel() {
 
@@ -22,14 +21,14 @@ public class PortfolioModel {
 
     public static final class Builder {
         private String username;
-        private Map<String, Integer> assetValue = new HashMap<>();
+        private Map<String, Double> assetValue = new HashMap<>();
 
         public Builder withUsername(String usernameToUse) {
             this.username = usernameToUse;
             return this;
         }
 
-        public Builder withAssetValue(Map<String, Integer> assetValue) {
+        public Builder withAssetValue(Map<String, Double> assetValue) {
             this.assetValue = assetValue;
             return this;
         }
@@ -46,11 +45,11 @@ public class PortfolioModel {
         this.username = username;
     }
 
-    public Map<String, Integer> getAssetValue() {
+    public Map<String, Double> getAssetValue() {
         return assetValue;
     }
 
-    public void setAssetValue(Map<String, Integer> assetValue) {
+    public void setAssetValue(Map<String, Double> assetValue) {
         this.assetValue = assetValue;
     }
 

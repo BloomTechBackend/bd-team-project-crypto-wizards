@@ -13,7 +13,7 @@ public class ModelConverter {
      */
     public PortfolioModel toPortfolioModel(String username, UserPortfolio userAssetsMapping) {
 
-        Map<String, Integer> portfolioAssetsMap = userAssetsMapping.getAssetQuantityMap();
+        Map<String, Double> portfolioAssetsMap = userAssetsMapping.getAssetQuantityMap();
 
         return PortfolioModel.builder()
                 .withUsername(username)
