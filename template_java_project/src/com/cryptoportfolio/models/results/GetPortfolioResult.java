@@ -2,6 +2,8 @@ package com.cryptoportfolio.models.results;
 
 import com.cryptoportfolio.models.PortfolioModel;
 
+import java.util.Objects;
+
 public class GetPortfolioResult {
     private PortfolioModel portfolio;
 
@@ -28,5 +30,25 @@ public class GetPortfolioResult {
         }
 
         public GetPortfolioResult build() {return new GetPortfolioResult(this);}
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof GetPortfolioResult)) return false;
+        GetPortfolioResult that = (GetPortfolioResult) o;
+        return Objects.equals(getPortfolio(), that.getPortfolio());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getPortfolio());
+    }
+
+    @Override
+    public String toString() {
+        return "GetPortfolioResult{" +
+                "portfolio=" + portfolio +
+                '}';
     }
 }

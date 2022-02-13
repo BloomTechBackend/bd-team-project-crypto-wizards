@@ -4,14 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1a7b167-a746-4d95-887e-103e49727ebe" name="Changes" comment="updated the design doc with the table name of the portfolios table to user_assets table">
-      <change afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/activity/CreatePortfolioActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/models/requests/CreatePortfolioRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/models/results/CreatePortfolioResult.java" afterDir="false" />
+    <list default="true" id="c1a7b167-a746-4d95-887e-103e49727ebe" name="Changes" comment="Created the Classes for CreatePortfolioActivity. Testing pending.">
+      <change afterPath="$PROJECT_DIR$/template_java_project/tst/CreatePortfolioActivityTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/template_java_project/tst/GetPortfolioActivityTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/converter/ModelConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/converter/ModelConverter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/dynamodb/models/UserPortfolio.java" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/dynamodb/models/UserPortfolio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/models/PortfolioModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/models/PortfolioModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_java_project/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/activity/CreatePortfolioActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/activity/CreatePortfolioActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/models/results/GetPortfolioResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/models/results/GetPortfolioResult.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +25,9 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
+        <task path="$PROJECT_DIR$/template_java_project">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
             <expand />
@@ -103,11 +105,15 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/template_java_project" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/template_java_project" />
       <recent name="$PROJECT_DIR$/project_documents/images/design_document" />
       <recent name="$PROJECT_DIR$/resources/Images" />
     </key>
@@ -118,6 +124,122 @@
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.cryptoportfolio.converter" />
     </key>
+  </component>
+  <component name="RunManager" selected="Gradle.GetPortfolioActivityTest.handleRequest_savedPlaylistFound_returnsPlaylistModelInResult">
+    <configuration name="CreatePlaylistActivityTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/template_java_project" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;CreatePlaylistActivityTest&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="CreatePortfolioActivityTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/template_java_project" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;CreatePortfolioActivityTest&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="CreatePortfolioActivityTest.handleRequest_withProperUsername_createsPortfolio" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/template_java_project" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;CreatePortfolioActivityTest.handleRequest_withProperUsername_createsPortfolio&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="GetPortfolioActivityTest.handleRequest_savedPlaylistFound_returnsPlaylistModelInResult" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/template_java_project" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;GetPortfolioActivityTest.handleRequest_savedPlaylistFound_returnsPlaylistModelInResult&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="template_java_project [test]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/template_java_project" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.GetPortfolioActivityTest.handleRequest_savedPlaylistFound_returnsPlaylistModelInResult" />
+        <item itemvalue="Gradle.CreatePortfolioActivityTest.handleRequest_withProperUsername_createsPortfolio" />
+        <item itemvalue="Gradle.template_java_project [test]" />
+        <item itemvalue="Gradle.CreatePortfolioActivityTest" />
+        <item itemvalue="Gradle.CreatePlaylistActivityTest" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -199,7 +321,14 @@
       <option name="project" value="LOCAL" />
       <updated>1644635148330</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Created the Classes for CreatePortfolioActivity. Testing pending.">
+      <created>1644728289538</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1644728289538</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -226,6 +355,10 @@
     <MESSAGE value="table structure modified in Design Doc" />
     <MESSAGE value="Created the GetPlaylistActivity module. Testing pending. Pushing for safety purposes" />
     <MESSAGE value="updated the design doc with the table name of the portfolios table to user_assets table" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated the design doc with the table name of the portfolios table to user_assets table" />
+    <MESSAGE value="Created the Classes for CreatePortfolioActivity. Testing pending." />
+    <option name="LAST_COMMIT_MESSAGE" value="Created the Classes for CreatePortfolioActivity. Testing pending." />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/UnitProject$CreatePortfolioActivityTest_handleRequest_withProperUsername_createsPortfolio.ic" NAME="CreatePortfolioActivityTest.handleRequest_withProperUsername_createsPortfolio Coverage Results" MODIFIED="1644777463551" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
