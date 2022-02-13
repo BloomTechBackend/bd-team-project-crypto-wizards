@@ -12,9 +12,10 @@ import com.auth0.jwt.exceptions.TokenExpiredException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.cryptoportfolio.dynamodb.dao.UserDao;
 import com.cryptoportfolio.models.requests.VerifyRequest;
-import com.cryptoportfolio.models.responses.LoginResponse;
 import com.cryptoportfolio.models.responses.VerifyResponse;
+import com.cryptoportfolio.utils.Auth;
 import com.cryptoportfolio.utils.Utils;
+import com.cryptoportfolio.utils.VerificationStatus;
 import com.google.gson.Gson;
 
 public class VerifyActivity implements RequestHandler<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> {
@@ -34,25 +35,10 @@ public class VerifyActivity implements RequestHandler<APIGatewayProxyRequestEven
         String username = verifyRequest.getUsername();
         String token = verifyRequest.getToken();
 
-        if (null == username || "".equals(username) || null == token || "".equals(token)) {
+        VerificationStatus verificationStatus = Auth.verifyToken(username, token);
+        if (!verificationStatus.isVerified()) {
             return Utils.buildResponse(401,
-                    new VerifyResponse(username, token,false, "Username and token required"));
-        }
-
-        // Verify JSON web token
-        try {
-            Algorithm algorithm = Algorithm.HMAC256(System.getenv("JWT_SECRET"));
-            JWTVerifier verifier = JWT.require(algorithm)
-                    .withIssuer("cryptoportfolio")
-                    .withClaim("username", username)
-                    .build(); //Reusable verifier instance
-            DecodedJWT jwt = verifier.verify(token);
-        } catch (TokenExpiredException e) {
-            return Utils.buildResponse(401,
-                    new VerifyResponse(username, token,false, "Token expired"));
-        } catch (JWTVerificationException e){
-            return Utils.buildResponse(401,
-                    new VerifyResponse(username, token,false, "Verification failed"));
+                    new VerifyResponse(username, token, false, verificationStatus.getMessage()));
         }
 
         return Utils.buildResponse(200,
