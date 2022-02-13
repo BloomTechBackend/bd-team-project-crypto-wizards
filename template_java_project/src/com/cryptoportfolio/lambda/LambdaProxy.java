@@ -32,11 +32,8 @@ public class LambdaProxy implements RequestHandler<APIGatewayProxyRequestEvent, 
         APIGatewayProxyResponseEvent response;
         LambdaLogger logger = context.getLogger();
 
-        logger.log("BEGIN LAMBDA FUNCTION");
-        // log execution details
         logger.log("ENVIRONMENT VARIABLES: " + gson.toJson(System.getenv()));
         logger.log("CONTEXT: " + gson.toJson(context));
-        // process event
         logger.log("EVENT: " + gson.toJson(request));
         logger.log("EVENT TYPE: " + request.getClass().toString());
 
@@ -51,8 +48,6 @@ public class LambdaProxy implements RequestHandler<APIGatewayProxyRequestEvent, 
         } else {
             response = buildResponse(404, "404 Not Found");
         }
-
-        logger.log("END LAMBDA FUNCTION");
 
         return response;
 
