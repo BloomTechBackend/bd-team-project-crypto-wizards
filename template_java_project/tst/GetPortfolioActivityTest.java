@@ -52,6 +52,7 @@ public class GetPortfolioActivityTest {
             .withUsername(expectedUsername)
             .build();
 
+
         // WHEN
         GetPortfolioResult result = getPortfolioActivity.handleRequest(request, null);
         System.out.println("result : " +result);
