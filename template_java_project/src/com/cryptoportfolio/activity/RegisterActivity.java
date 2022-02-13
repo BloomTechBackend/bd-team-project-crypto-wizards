@@ -1,6 +1,7 @@
 package com.cryptoportfolio.activity;
 
 import com.amazonaws.services.lambda.runtime.Context;
+import com.amazonaws.services.lambda.runtime.LambdaLogger;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyResponseEvent;
@@ -26,18 +27,31 @@ public class RegisterActivity implements RequestHandler<APIGatewayProxyRequestEv
     @Override
     public APIGatewayProxyResponseEvent handleRequest(APIGatewayProxyRequestEvent request, Context context) {
 
-        UserModel userModel = gson.fromJson(request.getBody(), UserModel.class);
+        LambdaLogger logger = context.getLogger();
 
-        String hashedPassword = BCrypt.hashpw(userModel.getPassword(), BCrypt.gensalt());
+        UserModel userModel = gson.fromJson(request.getBody(), UserModel.class);
+        String username = userModel.getUsername();
+        String password = userModel.getPassword();
+
+        if (null == username || "".equals(username) || null == password || "".equals(password)) {
+            return Utils.buildResponse(401,
+                    new RegisterResponse(username, "Username and password are required"));
+        }
+
+        String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
+
+        User user = new User();
+        user.setUsername(username);
+        user.setPassword(hashedPassword);
 
         try {
-            userDao.createUser(new User(userModel.getUsername(), hashedPassword));
-        } catch (Exception e) {
+            userDao.createUser(user);
+        } catch (UserAlreadyExistsException e) {
             return Utils.buildResponse(401,
-                    new RegisterResponse(userModel.getUsername(), "Username already exists"));
+                    new RegisterResponse(username, "Username already exists"));
         }
 
         return Utils.buildResponse(200,
-                new RegisterResponse(userModel.getUsername(), "Registered successfully"));
+                new RegisterResponse(username, "Registered successfully"));
     }
 }

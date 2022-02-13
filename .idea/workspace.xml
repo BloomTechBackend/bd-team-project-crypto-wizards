@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+
     <list default="true" id="c1a7b167-a746-4d95-887e-103e49727ebe" name="Changes" comment="Pages added to Design Doc">
       <change afterPath="$PROJECT_DIR$/template_java_project/.idea/runConfigurations.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/template_java_project/.idea/template_java_project.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/template_java_project/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/.gitignore" afterDir="false" />
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +40,7 @@
         <option value="Salt Wireframe" />
         <option value="UML Class" />
         <option value="UML Sequence" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -70,12 +73,12 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="main" />
-                    <option name="lastUsedInstant" value="1644522827" />
+                    <option name="branchName" value="uma" />
+                    <option name="lastUsedInstant" value="1644603119" />
                   </RecentBranch>
                   <RecentBranch>
-                    <option name="branchName" value="uma" />
-                    <option name="lastUsedInstant" value="1644451898" />
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1644603084" />
                   </RecentBranch>
                 </list>
               </option>
@@ -117,6 +120,9 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\shans\Dev\Unit5\bd-team-project-crypto-wizards\project_documents\images\design_document" />
       <recent name="$PROJECT_DIR$/resources" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.cryptoportfolio.converter" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -173,7 +179,35 @@
       <option name="project" value="LOCAL" />
       <updated>1644547747598</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="table structure modified in Design Doc">
+      <created>1644553038757</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1644553038757</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Created the GetPlaylistActivity module. Testing pending. Pushing for safety purposes">
+      <created>1644634828923</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1644634828924</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Created the GetPlaylistActivity module. Testing pending. Pushing for safety purposes">
+      <created>1644634976551</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1644634976557</updated>
+    </task>
+    <task id="LOCAL-00010" summary="updated the design doc with the table name of the portfolios table to user_assets table">
+      <created>1644635148330</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1644635148330</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -196,6 +230,9 @@
     <MESSAGE value="Created the initial Sequence Diagrams and snapshots to be included in the design document" />
     <MESSAGE value="Updated the sequence Diagrams with suggestions from Shannon" />
     <MESSAGE value="Pages added to Design Doc" />
-    <option name="LAST_COMMIT_MESSAGE" value="Pages added to Design Doc" />
+    <MESSAGE value="table structure modified in Design Doc" />
+    <MESSAGE value="Created the GetPlaylistActivity module. Testing pending. Pushing for safety purposes" />
+    <MESSAGE value="updated the design doc with the table name of the portfolios table to user_assets table" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated the design doc with the table name of the portfolios table to user_assets table" />
   </component>
 </project>

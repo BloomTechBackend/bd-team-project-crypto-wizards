@@ -5,6 +5,7 @@ import com.amazonaws.regions.Regions;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.cryptoportfolio.dynamodb.models.User;
 import com.cryptoportfolio.exceptions.UserAlreadyExistsException;
+import com.cryptoportfolio.exceptions.UserNotFoundException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -17,14 +18,20 @@ public class UserDao {
     }
 
     public void createUser(User user) {
-        if (dynamoDBMapper.load(User.class, user.getUsername()) != null) {
-            throw new UserAlreadyExistsException(String.format("username %s already exists", user.getUsername()));
+        if (null != dynamoDBMapper.load(User.class, user.getUsername())) {
+            throw new UserAlreadyExistsException(String.format("user %s already exists", user.getUsername()));
         } else {
             dynamoDBMapper.save(user);
         }
     }
 
     public User getUser(String username) {
-        return dynamoDBMapper.load(User.class, username);
+
+        User user = dynamoDBMapper.load(User.class, username);
+        if (null == user) {
+            throw new UserNotFoundException(String.format("user %s does not exist", user.getUsername()));
+        }
+
+        return user;
     }
 }
