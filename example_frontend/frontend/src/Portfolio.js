@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import {useNavigate} from "react-router-dom";
 import {getUsername, resetUserSession} from '../../frontend/src/service/AuthService';
 
 const Portfolio = (props) => {
     const username = getUsername();
+    const navigate = useNavigate();
 
     const logoutHandler = () => {
         resetUserSession();
-        props.history.push('/login');
+        navigate('/Login');
     }
     return (
         <div>

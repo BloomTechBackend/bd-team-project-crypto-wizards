@@ -6,44 +6,44 @@ import Register from "./Register";
 import Login from "./Login";
 import Portfolio from "./Portfolio";
 import {getUsername, getToken, setUserSession, resetUserSession} from '../../frontend/src/service/AuthService';
-//import PublicRoute from "../../frontend/src/routes/PublicRoute";
-//import PrivateRoute from "../../frontend/src/routes/PrivateRoute";
+import PublicRoute from "../../frontend/src/routes/PublicRoute";
+import PrivateRoute from "../../frontend/src/routes/PrivateRoute";
 
-//const verifyTokenAPIUrl = 'https://ccixqpmq4c.execute-api.us-east-2.amazonaws.com/prod/verify';
+const verifyTokenAPIUrl = 'https://ccixqpmq4c.execute-api.us-east-2.amazonaws.com/prod/verify';
 
 function App() {
 
-  // const [isAuthentication, setAuthentication] = useState;
-  //
-  // useEffect(() => {
-  //   const token = getToken();
-  //   if (token === 'undefined' || token === undefined || token === null || !token) {
-  //     return;
-  //   }
-  //
-  //   const requestConfig = {
-  //     headers: {
-  //       'x-api-key': '9zsZhasE01a9hxGo92WUr68aGSvllMBN6Q3FHmBI'
-  //     }
-  //   }
-  //   const requestBody = {
-  //     username: getUsername(),
-  //     token: token
-  //   }
-  //
-  //   axios.post(verifyTokenAPIUrl, requestBody, requestConfig).then((response) => {
-  //     setUserSession(response.data.username, response.data.token);
-  //     setAuthentication(false);
-  //   }).catch(() => {
-  //     resetUserSession();
-  //     setAuthentication(false);
-  //   })
-  // }, []);
-  //
-  // const token = getToken();
-  // if (isAuthentication && token) {
-  //   return <div className="content">Authentication...</div>
-  // }
+  const [isAuthentication, setAuthentication] = useState('');
+  
+  useEffect(() => {
+    const token = getToken();
+    if (token === 'undefined' || token === undefined || token === null || !token) {
+      return;
+    }
+  
+    const requestConfig = {
+      headers: {
+        'x-api-key': '9zsZhasE01a9hxGo92WUr68aGSvllMBN6Q3FHmBI'
+      }
+    }
+    const requestBody = {
+      username: getUsername(),
+      token: token
+    }
+  
+    axios.post(verifyTokenAPIUrl, requestBody, requestConfig).then((response) => {
+      setUserSession(response.data.username, response.data.token);
+      setAuthentication(false);
+    }).catch(() => {
+      resetUserSession();
+      setAuthentication(false);
+    })
+  }, []);
+  
+  const token = getToken();
+  if (isAuthentication && token) {
+    return <div className="content">Authentication...</div>
+  }
 
   return (
       <div className="App">

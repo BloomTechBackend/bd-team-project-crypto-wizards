@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {useNavigate} from "react-router-dom";
 import axios from 'axios';
 import {setUserSession} from '../../frontend/src/service/AuthService';
 
@@ -8,6 +9,7 @@ const Login = (props) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState(null);
+    const navigate = useNavigate();
 
     const submitHandler = (event) => {
         event.preventDefault();
@@ -28,8 +30,8 @@ const Login = (props) => {
 
         axios.post(loginAPIUrl, requestBody, requestConfig).then((response) => {
             setUserSession(response.data.username, response.data.token);
-                console.log("You are logged in");
-                //props.history.push('/portfolio');
+            console.log("You are logged in");
+            navigate('/Portfolio');
         }).catch((error) => {
             if (error.response.status === 401 || error.response.status === 403) {
                 setErrorMessage(error.response.data.message);
