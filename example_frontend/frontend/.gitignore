@@ -55,6 +55,15 @@ build
 .idea/**/gradle.xml
 .idea/**/libraries
 
+ .idea/artifacts
+ .idea/compiler.xml
+ .idea/jarRepositories.xml
+ .idea/modules.xml
+ .idea/*.iml
+ .idea/modules
+ *.iml
+ *.ipr
+
 # File-based project format
 *.iws
 
