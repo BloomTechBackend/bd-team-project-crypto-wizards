@@ -10,7 +10,7 @@ import java.util.Objects;
 
 public class PortfolioModel {
     private String username;
-    private Map<String, Double> assetValue = new HashMap<>();
+    private Map<String, Double> assetQuantities = new HashMap<>();
 
     public PortfolioModel() {
 
@@ -18,14 +18,14 @@ public class PortfolioModel {
 
     public PortfolioModel(Builder builder) {
         this.username = builder.username;
-        this.assetValue = builder.assetValue;
+        this.assetQuantities = builder.assetQuantities;
     }
 
     public static Builder builder() { return new Builder(); }
 
     public static final class Builder {
         private String username;
-        private Map<String, Double> assetValue = new HashMap<>();
+        private Map<String, Double> assetQuantities = new HashMap<>();
 
         public Builder withUsername(String usernameToUse) {
             this.username = usernameToUse;
@@ -33,7 +33,7 @@ public class PortfolioModel {
         }
 
         public Builder withAssetValue(Map<String, Double> assetValue) {
-            this.assetValue = assetValue;
+            this.assetQuantities = assetValue;
             return this;
         }
 
@@ -49,12 +49,12 @@ public class PortfolioModel {
         this.username = username;
     }
 
-    public Map<String, Double> getAssetValue() {
-        return assetValue;
+    public Map<String, Double> getAssetQuantities() {
+        return assetQuantities;
     }
 
-    public void setAssetValue(Map<String, Double> assetValue) {
-        this.assetValue = assetValue;
+    public void setAssetQuantities(Map<String, Double> assetQuantities) {
+        this.assetQuantities = assetQuantities;
     }
 
     @Override
@@ -62,19 +62,19 @@ public class PortfolioModel {
         if (this == o) return true;
         if (!(o instanceof PortfolioModel)) return false;
         PortfolioModel that = (PortfolioModel) o;
-        return Objects.equals(getUsername(), that.getUsername()) && Objects.equals(getAssetValue(), that.getAssetValue());
+        return Objects.equals(getUsername(), that.getUsername()) && Objects.equals(getAssetQuantities(), that.getAssetQuantities());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getUsername(), getAssetValue());
+        return Objects.hash(getUsername(), getAssetQuantities());
     }
 
     @Override
     public String toString() {
         return "PortfolioModel{" +
                 "username='" + username + '\'' +
-                ", assetValue=" + assetValue +
+                ", assetValue=" + assetQuantities +
                 '}';
     }
 }

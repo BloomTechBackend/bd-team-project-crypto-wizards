@@ -12,6 +12,7 @@ import com.auth0.jwt.exceptions.TokenExpiredException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.cryptoportfolio.dynamodb.dao.UserDao;
 import com.cryptoportfolio.models.requests.VerifyRequest;
+import com.cryptoportfolio.models.responses.FailureResponse;
 import com.cryptoportfolio.models.responses.VerifyResponse;
 import com.cryptoportfolio.utils.Auth;
 import com.cryptoportfolio.utils.Utils;
@@ -38,7 +39,7 @@ public class VerifyActivity implements RequestHandler<APIGatewayProxyRequestEven
         VerificationStatus verificationStatus = Auth.verifyToken(username, token);
         if (!verificationStatus.isVerified()) {
             return Utils.buildResponse(401,
-                    new VerifyResponse(username, token, false, verificationStatus.getMessage()));
+                    new FailureResponse(verificationStatus.getMessage()));
         }
 
         return Utils.buildResponse(200,

@@ -6,12 +6,10 @@ public class LoginResponse {
 
     private String username;
     private String token;
-    private String message;
 
-    public LoginResponse(String username, String token, String message) {
+    public LoginResponse(String username, String token) {
         this.username = username;
         this.token = token;
-        this.message = message;
     }
 
     public String getUsername() {
@@ -30,25 +28,17 @@ public class LoginResponse {
         this.token = token;
     }
 
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         LoginResponse that = (LoginResponse) o;
-        return Objects.equals(getUsername(), that.getUsername()) && Objects.equals(getToken(), that.getToken()) && Objects.equals(getMessage(), that.getMessage());
+        return Objects.equals(getUsername(), that.getUsername()) && Objects.equals(getToken(), that.getToken());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getUsername(), getToken(), getMessage());
+        return Objects.hash(getUsername(), getToken());
     }
 
     @Override
@@ -56,7 +46,6 @@ public class LoginResponse {
         return "LoginResponse{" +
                 "username='" + username + '\'' +
                 ", token='" + token + '\'' +
-                ", message='" + message + '\'' +
                 '}';
     }
 }
