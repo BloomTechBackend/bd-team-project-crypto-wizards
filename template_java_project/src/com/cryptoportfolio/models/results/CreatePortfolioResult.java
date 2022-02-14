@@ -2,6 +2,10 @@ package com.cryptoportfolio.models.results;
 
 import com.cryptoportfolio.models.PortfolioModel;
 
+/**
+ * Builder class to build the result for the CreatePortfolioActivity using the request
+ */
+
 public class CreatePortfolioResult {
         private PortfolioModel portfolio;
 

@@ -9,54 +9,55 @@ import com.cryptoportfolio.dynamodb.models.Asset;
 import com.cryptoportfolio.dynamodb.models.Portfolio;
 import com.cryptoportfolio.exceptions.InsufficientAssetsException;
 import com.cryptoportfolio.models.PortfolioModel;
+import com.cryptoportfolio.models.requests.UpdatePortfolioRequest;
+import com.cryptoportfolio.models.results.UpdatePortfolioResult;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import com.cryptoportfolio.models.requests.CreatePortfolioRequest;
-import com.cryptoportfolio.models.results.CreatePortfolioResult;
 
 import java.util.Map;
 
-public class CreatePortfolioActivity  implements RequestHandler<CreatePortfolioRequest, CreatePortfolioResult> {
+public class UpdatePortfolioActivity implements RequestHandler<UpdatePortfolioRequest, UpdatePortfolioResult> {
 
     private final Logger log = LogManager.getLogger();
     private PortfolioDao portfolioDao;
     private AssetDao assetDao;
 
-    public CreatePortfolioActivity() {
+    public UpdatePortfolioActivity() {
     }
 
     /**
-     * Instantiates a new CreatePortfolioActivity object.
+     * Instantiates a new UpdatePortfolioActivity object.
      *
      * @param portfolioDao PortfolioDao to access the Portfolios table.
      */
 
-    public CreatePortfolioActivity(PortfolioDao portfolioDao, AssetDao assetDao) {
+    public UpdatePortfolioActivity(PortfolioDao portfolioDao, AssetDao assetDao) {
         this.portfolioDao = portfolioDao;
         this.assetDao = assetDao;
     }
 
 
+
     /**
-     * This method handles the incoming request by persisting a new Portfolio
-     * with the provided username and the assetId,quantity map from the request.
+     * This method handles the incoming request by updating the existing Portfolio
+     * with the provided new asset quantities.
      * <p>
-     * It then returns the newly created Portfolio.
+     * It then returns the newly updated Portfolio.
      * <p>
      *
-     * @param createPortfolioRequest request object containing the username and the assetId,quantity map
+     * @param updatePortfolioRequest request object containing the username and the asset,quantity map
      *                              associated with it
-     * @return createPortfolioResult result object containing the API defined {@link PortfolioModel}
+     * @return updatePortfolioResult result object containing the API defined {@link PortfolioModel}
      */
     @Override
-    public CreatePortfolioResult handleRequest(final CreatePortfolioRequest createPortfolioRequest, Context context) throws InsufficientAssetsException{
-        log.info("Received CreatePortfolioRequest {}", createPortfolioRequest);
+    public UpdatePortfolioResult handleRequest(final UpdatePortfolioRequest updatePortfolioRequest, Context context) throws InsufficientAssetsException{
+        log.info("Received CreatePortfolioRequest {}", updatePortfolioRequest);
 
         Portfolio portfolio = new Portfolio();
         Asset asset = new Asset();
 
 
-        Map<String, Double> assetQuantityMap = createPortfolioRequest.getAssetQuantityMap();
+        Map<String, Double> assetQuantityMap = updatePortfolioRequest.getAssetQuantityMap();
 
         for(Map.Entry<String, Double> entry : assetQuantityMap.entrySet()) {
             if (entry.getValue() > assetDao.getAsset(entry.getKey()).getTotalSupply()) {
@@ -64,14 +65,14 @@ public class CreatePortfolioActivity  implements RequestHandler<CreatePortfolioR
             }
         }
 
-        portfolio.setUsername(createPortfolioRequest.getUsername());
+        portfolio.setUsername(updatePortfolioRequest.getUsername());
         portfolio.setAssetQuantityMap(assetQuantityMap);
 
         portfolioDao.savePortfolio(portfolio);
 
-        PortfolioModel PortfolioModel = new ModelConverter().toPortfolioModel(createPortfolioRequest.getUsername(), portfolio);
+        PortfolioModel portfolioModel = new ModelConverter().toPortfolioModel(updatePortfolioRequest.getUsername(), portfolio);
 
-        return CreatePortfolioResult.builder().withPortfolio(PortfolioModel).build();
+        return UpdatePortfolioResult.builder().withPortfolio(portfolioModel).build();
     }
 
 }

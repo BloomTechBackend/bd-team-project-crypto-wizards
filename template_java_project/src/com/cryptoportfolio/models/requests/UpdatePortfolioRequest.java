@@ -4,23 +4,22 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
- * The Builder class to create a portfolio request using the provided username and the assetId, quantity mapping
+ * The Builder class to create an Update request using the provided username and the asset quantity
  */
-
-public class CreatePortfolioRequest {
+public class UpdatePortfolioRequest {
     private String username;
     private Map<String, Double> assetQuantityMap;
     private String token;
 
-    public CreatePortfolioRequest() {
+    public UpdatePortfolioRequest() {
     }
 
-    public CreatePortfolioRequest(String username, Map<String, Double> assetQuantityMap) {
+    public UpdatePortfolioRequest(String username, Map<String, Double> assetQuantityMap) {
         this.username = username;
         this.assetQuantityMap = assetQuantityMap;
     }
 
-    public CreatePortfolioRequest(Builder builder) {
+    public UpdatePortfolioRequest(Builder builder) {
         this.username = builder.username;
         this.assetQuantityMap = builder.assetQuantityMap;
     }
@@ -59,7 +58,7 @@ public class CreatePortfolioRequest {
         private Builder() {
         }
 
-        public Builder withusername(String usernameToUse) {
+        public Builder withUsername(String usernameToUse) {
             this.username = usernameToUse;
             return this;
         }
@@ -69,13 +68,13 @@ public class CreatePortfolioRequest {
             return this;
         }
 
-        public CreatePortfolioRequest.Builder withToken(String tokenToUse) {
+        public UpdatePortfolioRequest.Builder withToken(String tokenToUse) {
             this.token = tokenToUse;
             return this;
         }
 
-        public CreatePortfolioRequest build() {
-            return new CreatePortfolioRequest(this);
+        public UpdatePortfolioRequest build() {
+            return new UpdatePortfolioRequest(this);
         }
     }
 

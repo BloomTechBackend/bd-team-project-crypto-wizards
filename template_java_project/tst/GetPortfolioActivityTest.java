@@ -1,24 +1,19 @@
 import com.cryptoportfolio.activity.GetPortfolioActivity;
-import com.cryptoportfolio.dynamodb.dao.UserPortfolioDao;
-import com.cryptoportfolio.dynamodb.models.UserPortfolio;
+import com.cryptoportfolio.dynamodb.dao.PortfolioDao;
 import com.cryptoportfolio.models.requests.GetPortfolioRequest;
 import com.cryptoportfolio.models.results.GetPortfolioResult;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.when;
-import static org.mockito.MockitoAnnotations.initMocks;
 
 public class GetPortfolioActivityTest {
 
     //@Mock
-    private UserPortfolioDao userPortfolioDao;
+    private PortfolioDao portfolioDao;
 
     //@InjectMocks
     private GetPortfolioActivity getPortfolioActivity;
@@ -27,8 +22,8 @@ public class GetPortfolioActivityTest {
     public void setUp() {
 
         //initMocks(this);
-        userPortfolioDao = new UserPortfolioDao();
-        getPortfolioActivity = new GetPortfolioActivity(userPortfolioDao);
+        portfolioDao = new PortfolioDao();
+        getPortfolioActivity = new GetPortfolioActivity(portfolioDao);
     }
 
     @Test

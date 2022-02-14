@@ -8,11 +8,11 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
- * This is the Dynamo DB mapper class for the UserAssets Table
+ * This is the Dynamo DB mapper class for the portfolios Table
  */
 
 @DynamoDBTable(tableName = "portfolios")
-public class UserPortfolio {
+public class Portfolio {
 
     private String username;
     private Map<String, Double> assetQuantityMap;
@@ -39,8 +39,8 @@ public class UserPortfolio {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof UserPortfolio)) return false;
-        UserPortfolio that = (UserPortfolio) o;
+        if (!(o instanceof Portfolio)) return false;
+        Portfolio that = (Portfolio) o;
         return Objects.equals(getUsername(), that.getUsername()) && Objects.equals(getAssetQuantityMap(), that.getAssetQuantityMap());
     }
 
