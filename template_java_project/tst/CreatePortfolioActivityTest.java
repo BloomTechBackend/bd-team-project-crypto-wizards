@@ -47,7 +47,7 @@ public class CreatePortfolioActivityTest {
         // WHEN
         CreatePortfolioResult result = createPortfolioActivity.handleRequest(request, null);
 
-        Map<String, Double> createdPortfolio = result.getPortfolio().getAssetValue();
+        Map<String, Double> createdPortfolio = result.getPortfolio().getAssetQuantities();
 
         System.out.println("createdPortfolio : " + createdPortfolio);
 

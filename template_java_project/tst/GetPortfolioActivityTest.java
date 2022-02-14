@@ -54,7 +54,7 @@ public class GetPortfolioActivityTest {
 
         // THEN
         assertEquals(expectedUsername, result.getPortfolio().getUsername());
-        assertEquals(expectedAssetQuantityMap, result.getPortfolio().getAssetValue());
+        assertEquals(expectedAssetQuantityMap, result.getPortfolio().getAssetQuantities());
     }
 
 }

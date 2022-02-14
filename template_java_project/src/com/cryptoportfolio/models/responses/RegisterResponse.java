@@ -1,13 +1,13 @@
 package com.cryptoportfolio.models.responses;
 
+import java.util.Objects;
+
 public class RegisterResponse {
 
     private String username;
-    private String message;
 
-    public RegisterResponse(String username, String message) {
+    public RegisterResponse(String username) {
         this.username = username;
-        this.message = message;
     }
 
     public String getUsername() {
@@ -18,11 +18,23 @@ public class RegisterResponse {
         this.username = username;
     }
 
-    public String getMessage() {
-        return message;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RegisterResponse that = (RegisterResponse) o;
+        return Objects.equals(getUsername(), that.getUsername());
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    @Override
+    public int hashCode() {
+        return Objects.hash(getUsername());
+    }
+
+    @Override
+    public String toString() {
+        return "RegisterResponse{" +
+                "username='" + username + '\'' +
+                '}';
     }
 }
