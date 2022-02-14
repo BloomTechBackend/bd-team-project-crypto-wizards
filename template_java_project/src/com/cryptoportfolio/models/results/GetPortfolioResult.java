@@ -4,6 +4,10 @@ import com.cryptoportfolio.models.PortfolioModel;
 
 import java.util.Objects;
 
+/**
+ * Builder class to fetch the result for the GetPortfolioActivity using the request
+ */
+
 public class GetPortfolioResult {
     private PortfolioModel portfolio;
 

@@ -1,0 +1,43 @@
+package com.cryptoportfolio.dynamodb.dao;
+
+import com.amazon.ata.aws.dynamodb.DynamoDbClientProvider;
+import com.amazonaws.regions.Regions;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
+import com.cryptoportfolio.dynamodb.models.Portfolio;
+import com.cryptoportfolio.exceptions.InsufficientAssetsException;
+
+/**
+ * The PortfolioDao class will create a new portfolio and also fetch an existing portfolio
+ */
+public class PortfolioDao {
+    private final DynamoDBMapper dynamoDBMapper;
+
+
+    public PortfolioDao() {
+        this.dynamoDBMapper = new DynamoDBMapper(DynamoDbClientProvider.getDynamoDBClient(Regions.US_EAST_2));
+    }
+
+    /**
+     *
+     * @param username Requires a UserName whose Portfolio needs to be fetched
+     * @return Returns a Portfolio for the given User
+     */
+    public Portfolio getUserPortfolio(String username) {
+        Portfolio portfolio = this.dynamoDBMapper.load(Portfolio.class, username);
+
+        if (portfolio == null) {
+            throw new InsufficientAssetsException("Could not find portfolio for the user :  " + username);
+        }
+        return portfolio;
+    }
+
+    /**
+     *
+     * @param portfolio Saves a portfolio to the database
+     * @return returns the saved portfolio
+     */
+    public Portfolio savePortfolio(Portfolio portfolio) {
+        this.dynamoDBMapper.save(portfolio);
+        return portfolio;
+    }
+}

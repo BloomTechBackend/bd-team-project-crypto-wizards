@@ -4,6 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+/**
+ *
+ */
+
 public class PortfolioModel {
     private String username;
     private Map<String, Double> assetValue = new HashMap<>();
