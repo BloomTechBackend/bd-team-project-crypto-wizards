@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1a7b167-a746-4d95-887e-103e49727ebe" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example_frontend/frontend/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/example_frontend/frontend/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example_frontend/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/example_frontend/frontend/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example_frontend/frontend/src/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/example_frontend/frontend/src/Login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example_frontend/frontend/src/Portfolio.js" beforeDir="false" afterPath="$PROJECT_DIR$/example_frontend/frontend/src/Portfolio.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example_frontend/frontend/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/example_frontend/frontend/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example_frontend/frontend/src/routes/PrivateRoute.js" beforeDir="false" afterPath="$PROJECT_DIR$/example_frontend/frontend/src/routes/PrivateRoute.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example_frontend/frontend/src/routes/PublicRoute.js" beforeDir="false" afterPath="$PROJECT_DIR$/example_frontend/frontend/src/routes/PublicRoute.js" afterDir="false" />
-    </list>
+    <list default="true" id="c1a7b167-a746-4d95-887e-103e49727ebe" name="Changes" comment="workspace.xml" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
