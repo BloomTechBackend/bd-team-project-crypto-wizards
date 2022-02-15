@@ -8,6 +8,7 @@ import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyResponseEvent
 import com.cryptoportfolio.dynamodb.dao.UserDao;
 import com.cryptoportfolio.dynamodb.models.User;
 import com.cryptoportfolio.exceptions.UserAlreadyExistsException;
+import com.cryptoportfolio.models.responses.FailureResponse;
 import com.cryptoportfolio.models.responses.RegisterResponse;
 import com.cryptoportfolio.models.UserModel;
 import com.cryptoportfolio.utils.Utils;
@@ -35,9 +36,8 @@ public class RegisterActivity implements RequestHandler<APIGatewayProxyRequestEv
 
         if (null == username || "".equals(username) || null == password || "".equals(password)) {
             return Utils.buildResponse(401,
-                    new RegisterResponse.Builder()
-                            .withUsername(username)
-                            .build());
+                    new FailureResponse("Username and password are required"));
+
         }
 
         String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
@@ -50,9 +50,7 @@ public class RegisterActivity implements RequestHandler<APIGatewayProxyRequestEv
             userDao.createUser(user);
         } catch (UserAlreadyExistsException e) {
             return Utils.buildResponse(401,
-                    new RegisterResponse.Builder()
-                            .withUsername(username)
-                            .build());
+                    new FailureResponse("Username already exists"));
         }
 
         return Utils.buildResponse(200,
