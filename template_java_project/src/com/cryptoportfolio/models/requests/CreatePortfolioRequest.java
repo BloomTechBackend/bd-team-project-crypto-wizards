@@ -51,7 +51,7 @@ public class CreatePortfolioRequest {
         private Builder() {
         }
 
-        public Builder withusername(String usernameToUse) {
+        public Builder withUsername(String usernameToUse) {
             this.username = usernameToUse;
             return this;
         }

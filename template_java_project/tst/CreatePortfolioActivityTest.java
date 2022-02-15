@@ -40,7 +40,7 @@ public class CreatePortfolioActivityTest {
         assetQuantityMap.put("ASSET3", 3.2);
 
         CreatePortfolioRequest request = CreatePortfolioRequest.builder()
-                                         .withusername(username)
+                                         .withUsername(username)
                                          .withAssetQuantityMap(assetQuantityMap)
                                          .build();
 
