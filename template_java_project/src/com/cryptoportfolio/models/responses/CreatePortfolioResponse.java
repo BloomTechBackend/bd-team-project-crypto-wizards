@@ -7,27 +7,27 @@ import com.cryptoportfolio.models.PortfolioModel;
  */
 
 public class CreatePortfolioResponse {
-        private PortfolioModel portfolio;
+        private String message;
 
         public CreatePortfolioResponse(Builder builder) {
-            this.portfolio = builder.portfolio;
+            this.message = builder.message;
         }
 
-        public PortfolioModel getPortfolio() {
-            return portfolio;
+        public String getMessage() {
+            return message;
         }
 
-        public void setPortfolio(PortfolioModel Portfolio) {
-            this.portfolio = portfolio;
+        public void setMessage(String message) {
+            this.message = message;
         }
 
         public static Builder builder() {return new Builder();}
 
         public static final class Builder {
-            private PortfolioModel portfolio;
+            private String message;
 
-            public Builder withPortfolio(PortfolioModel portfolio) {
-                this.portfolio = portfolio;
+            public Builder withMessage(String message) {
+                this.message = message;
                 return this;
             }
 
