@@ -31,18 +31,14 @@ public class CreatePortfolioActivity  implements RequestHandler<APIGatewayProxyR
     private PortfolioDao portfolioDao;
     private AssetDao assetDao;
 
-    public CreatePortfolioActivity() {
-    }
-
     /**
      * Instantiates a new CreatePortfolioActivity object.
      *
-     * @param portfolioDao PortfolioDao to access the Portfolios table.
      */
 
-    public CreatePortfolioActivity(PortfolioDao portfolioDao, AssetDao assetDao) {
-        this.portfolioDao = portfolioDao;
-        this.assetDao = assetDao;
+    public CreatePortfolioActivity() {
+        this.portfolioDao = new PortfolioDao();
+        this.assetDao = new AssetDao();
     }
 
 
