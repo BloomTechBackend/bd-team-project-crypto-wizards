@@ -1,5 +1,6 @@
 package com.cryptoportfolio.converter;
 import com.cryptoportfolio.dynamodb.models.Portfolio;
+import com.cryptoportfolio.models.PortfolioAssetModel;
 import com.cryptoportfolio.models.PortfolioModel;
 
 import java.util.*;

@@ -1,5 +1,7 @@
 package com.cryptoportfolio.models;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class PortfolioAssetModel {
@@ -15,18 +17,84 @@ public class PortfolioAssetModel {
     private double quantity;
     private double quantityUSDValue;
 
-    public PortfolioAssetModel(String assetId, int rankByMarketCap, int marketCap, String assetImage, String assetName, int totalSupply, double usdValue, boolean isAvailable, double quantity, double quantityUSDValue) {
-        this.assetId = assetId;
-        this.rankByMarketCap = rankByMarketCap;
-        this.marketCap = marketCap;
-        this.assetImage = assetImage;
-        this.assetName = assetName;
-        this.totalSupply = totalSupply;
-        this.usdValue = usdValue;
-        this.isAvailable = isAvailable;
-        this.quantity = quantity;
-        this.quantityUSDValue = quantityUSDValue;
+    public PortfolioAssetModel() {
+
     }
+
+    public PortfolioAssetModel(PortfolioAssetModel.Builder builder) {
+        this.assetId = builder.assetId;
+        this.rankByMarketCap = builder.rankByMarketCap;
+        this.marketCap = builder.marketCap;
+        this.assetImage = builder.assetImage;
+        this.assetName = builder.assetName;
+        this.totalSupply = builder.totalSupply;
+        this.usdValue = builder.usdValue;
+        this.quantity = builder.quantity;
+        this.quantityUSDValue = builder.quantityUSDValue;
+    }
+
+
+    public static PortfolioAssetModel.Builder builder() { return new PortfolioAssetModel.Builder(); }
+
+    public static final class Builder {
+        private String assetId;
+        private int rankByMarketCap;
+        private int marketCap;
+        private String assetImage;
+        private String assetName;
+        private int totalSupply;
+        private double usdValue;
+        private double quantity;
+        private double quantityUSDValue;
+
+        public PortfolioAssetModel.Builder withAssetId(String assetIdToUse) {
+            this.assetId = assetIdToUse;
+            return this;
+        }
+
+        public PortfolioAssetModel.Builder withRankByMarketCap(int rankByMarketCapToUse) {
+            this.rankByMarketCap = rankByMarketCapToUse;
+            return this;
+        }
+
+        public PortfolioAssetModel.Builder withMarketCap(int marketCapToUse) {
+            this.marketCap = marketCapToUse;
+            return this;
+        }
+
+        public PortfolioAssetModel.Builder withAssetImage(String assetImageToUse) {
+            this.assetImage = assetImageToUse;
+            return this;
+        }
+
+        public PortfolioAssetModel.Builder withAssetName(String assetNameToUse) {
+            this.assetName = assetNameToUse;
+            return this;
+        }
+
+        public PortfolioAssetModel.Builder withTotalSupply(int totalSupplyToUse) {
+            this.totalSupply = totalSupplyToUse;
+            return this;
+        }
+
+        public PortfolioAssetModel.Builder withUsdValue(double usdValueToUse) {
+            this.usdValue = usdValueToUse;
+            return this;
+        }
+
+        public PortfolioAssetModel.Builder withQuantity(double quantityToUse) {
+            this.quantity = quantityToUse;
+            return this;
+        }
+
+        public PortfolioAssetModel.Builder withQuantityUSDValue(double quantityUSDValueToUse) {
+            this.quantityUSDValue = quantityUSDValueToUse;
+            return this;
+        }
+
+        public PortfolioAssetModel build() {return new PortfolioAssetModel(this);}
+    }
+
 
     public String getAssetId() {
         return assetId;
@@ -111,7 +179,7 @@ public class PortfolioAssetModel {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof PortfolioAssetModel)) return false;
         PortfolioAssetModel that = (PortfolioAssetModel) o;
         return getRankByMarketCap() == that.getRankByMarketCap() && getMarketCap() == that.getMarketCap() && getTotalSupply() == that.getTotalSupply() && Double.compare(that.getUsdValue(), getUsdValue()) == 0 && isAvailable() == that.isAvailable() && Double.compare(that.getQuantity(), getQuantity()) == 0 && Double.compare(that.getQuantityUSDValue(), getQuantityUSDValue()) == 0 && Objects.equals(getAssetId(), that.getAssetId()) && Objects.equals(getAssetImage(), that.getAssetImage()) && Objects.equals(getAssetName(), that.getAssetName());
     }

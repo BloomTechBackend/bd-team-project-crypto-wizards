@@ -27,7 +27,8 @@ public class Asset {
     public void setAssetId(String assetId) {
         this.assetId = assetId;
     }
-    @DynamoDBRangeKey(attributeName = "rank_by_market_cap")
+
+    @DynamoDBAttribute(attributeName = "rank_by_market_cap")
     public Integer getRankByMarketCap() {
         return rankByMarketCap;
     }
