@@ -2,6 +2,11 @@ package com.cryptoportfolio.models.requests;
 
 import java.util.Objects;
 
+
+/**
+ * Builder class to create request to fetch a portfolio for the given user
+ */
+
 public class GetPortfolioRequest {
     private String username;
     private String token;

@@ -6,16 +6,10 @@ public class VerifyResponse {
 
     private String username;
     private String token;
-    private boolean verified;
-    private String message;
 
-
-
-    public VerifyResponse(String username, String token, boolean verified, String message) {
+    public VerifyResponse(String username, String token) {
         this.username = username;
         this.token = token;
-        this.verified = verified;
-        this.message = message;
     }
 
     public String getUsername() {
@@ -34,33 +28,17 @@ public class VerifyResponse {
         this.token = token;
     }
 
-    public boolean isVerified() {
-        return verified;
-    }
-
-    public void setVerified(boolean verified) {
-        this.verified = verified;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         VerifyResponse that = (VerifyResponse) o;
-        return isVerified() == that.isVerified() && Objects.equals(getUsername(), that.getUsername()) && Objects.equals(getToken(), that.getToken()) && Objects.equals(getMessage(), that.getMessage());
+        return Objects.equals(getUsername(), that.getUsername()) && Objects.equals(getToken(), that.getToken());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getUsername(), getToken(), isVerified(), getMessage());
+        return Objects.hash(getUsername(), getToken());
     }
 
     @Override
@@ -68,8 +46,6 @@ public class VerifyResponse {
         return "VerifyResponse{" +
                 "username='" + username + '\'' +
                 ", token='" + token + '\'' +
-                ", verified=" + verified +
-                ", message='" + message + '\'' +
                 '}';
     }
 }

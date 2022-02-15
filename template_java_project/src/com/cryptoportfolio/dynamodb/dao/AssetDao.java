@@ -1,38 +1,37 @@
 package com.cryptoportfolio.dynamodb.dao;
 
+import com.amazon.ata.aws.dynamodb.DynamoDbClientProvider;
+import com.amazonaws.regions.Regions;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.cryptoportfolio.dynamodb.models.Asset;
-import com.cryptoportfolio.exceptions.AssetNotFoundException;
+import com.cryptoportfolio.exceptions.InsufficientAssetsException;
 
 /**
  * The AssetDao Class fetches the Asset details from the DynamoDB table
  */
 
 public class AssetDao {
-    private final DynamoDBMapper dynamoDbMapper;
+    private final DynamoDBMapper dynamoDBMapper;
 
     /**
-     * Instantiates an AssetDao object.
-     *
-     * @param dynamoDbMapper the {@link DynamoDBMapper} used to interact with the album_track table
+     * Instantiates an AssetDao object
      */
 
-    public AssetDao(DynamoDBMapper dynamoDbMapper) {
-        this.dynamoDbMapper = dynamoDbMapper;
+    public AssetDao() {
+        this.dynamoDBMapper = new DynamoDBMapper(DynamoDbClientProvider.getDynamoDBClient(Regions.US_EAST_2));
     }
 
     /**
      *
      * @param assetId Requires and Asset Id input parameter
-     * @param rankByMarketCap Requires and rankByMarketCap input parameter
      * @return Returns an Asset Object
      */
 
-    public Asset getAsset (String assetId, Integer rankByMarketCap) {
-        Asset asset = this.dynamoDbMapper.load(Asset.class, assetId, rankByMarketCap);
+    public Asset getAsset (String assetId) {
+        Asset asset = this.dynamoDBMapper.load(Asset.class, assetId);
 
         if (asset == null) {
-            throw new AssetNotFoundException();
+            throw new InsufficientAssetsException();
         }
 
         return asset;

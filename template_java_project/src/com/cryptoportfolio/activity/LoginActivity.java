@@ -10,6 +10,7 @@ import com.cryptoportfolio.dynamodb.dao.UserDao;
 import com.cryptoportfolio.dynamodb.models.User;
 import com.cryptoportfolio.exceptions.UserNotFoundException;
 import com.cryptoportfolio.models.UserModel;
+import com.cryptoportfolio.models.responses.FailureResponse;
 import com.cryptoportfolio.models.responses.LoginResponse;
 import com.cryptoportfolio.utils.Utils;
 import com.google.gson.Gson;
@@ -36,7 +37,7 @@ public class LoginActivity implements RequestHandler<APIGatewayProxyRequestEvent
 
         if (null == username || "".equals(username) || null == password || "".equals(password)) {
             return Utils.buildResponse(401,
-                    new LoginResponse(username, null,"Username and password are required"));
+                    new FailureResponse("Username and password are required"));
         }
 
         // Get user, throw exception if user does not exist
@@ -45,13 +46,13 @@ public class LoginActivity implements RequestHandler<APIGatewayProxyRequestEvent
             user = userDao.getUser(username);
         } catch (UserNotFoundException e) {
             return Utils.buildResponse(403,
-                    new LoginResponse(username, null,"User does not exist"));
+                    new FailureResponse("User does not exist"));
         }
 
         // Check provided password against password from database
         if (!BCrypt.checkpw(password, user.getPassword())) {
             return Utils.buildResponse(403,
-                    new LoginResponse(username, null,"Password is incorrect"));
+                    new FailureResponse("Password is incorrect"));
         }
 
         // Create and sign JSON web token expiring in 1 hr (3,600,000 milliseconds)
@@ -65,6 +66,6 @@ public class LoginActivity implements RequestHandler<APIGatewayProxyRequestEvent
                 .sign(algorithm);
 
         return Utils.buildResponse(200,
-                new LoginResponse(username, token,"Login successful"));
+                new LoginResponse(username, token));
     }
 }

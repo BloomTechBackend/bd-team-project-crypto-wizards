@@ -33,9 +33,14 @@ sourceSets {
     }
 }
 
+test {
+    useJUnitPlatform()
+}
+
 dependencies {
     implementation 'org.junit.jupiter:junit-jupiter:5.7.2'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.2'
+    testImplementation 'org.junit.platform:junit-platform-commons:1.5.2'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.2'
 
     implementation 'com.google.guava:guava:30.1.1-jre'

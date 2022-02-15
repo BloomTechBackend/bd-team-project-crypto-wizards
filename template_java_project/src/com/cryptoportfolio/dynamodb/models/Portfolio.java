@@ -8,14 +8,14 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
- * This is the Dynamo DB mapper class for the UserAssets Table
+ * This is the Dynamo DB mapper class for the portfolios Table
  */
 
 @DynamoDBTable(tableName = "portfolios")
-public class UserPortfolio {
+public class Portfolio {
 
     private String username;
-    private Map<String, Integer> assetQuantityMap;
+    private Map<String, Double> assetQuantityMap;
 
     @DynamoDBHashKey(attributeName = "username")
     public String getUsername() {
@@ -28,19 +28,19 @@ public class UserPortfolio {
 
 
     @DynamoDBAttribute(attributeName = "asset_quantity_map")
-    public Map<String, Integer> getAssetQuantityMap() {
+    public Map<String, Double> getAssetQuantityMap() {
         return assetQuantityMap;
     }
 
-    public void setAssetQuantityMap(Map<String, Integer> assetQuantityMap) {
+    public void setAssetQuantityMap(Map<String, Double> assetQuantityMap) {
         this.assetQuantityMap = assetQuantityMap;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof UserPortfolio)) return false;
-        UserPortfolio that = (UserPortfolio) o;
+        if (!(o instanceof Portfolio)) return false;
+        Portfolio that = (Portfolio) o;
         return Objects.equals(getUsername(), that.getUsername()) && Objects.equals(getAssetQuantityMap(), that.getAssetQuantityMap());
     }
 

@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
+import {useNavigate} from "react-router-dom";
 import axios from 'axios';
-import {useNavigate} from 'react-router-dom'
 import {setUserSession} from '../../frontend/src/service/AuthService';
 
 const loginAPIUrl = 'https://ccixqpmq4c.execute-api.us-east-2.amazonaws.com/prod/login';
 
-const Login = ({props}) => {
+const Login = (props) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState(null);
@@ -30,8 +30,8 @@ const Login = ({props}) => {
 
         axios.post(loginAPIUrl, requestBody, requestConfig).then((response) => {
             setUserSession(response.data.username, response.data.token);
-                console.log('You are logged in');
-                navigate('/portfolio');
+            props.authenticate();
+            navigate('/portfolio');
         }).catch((error) => {
             if (error.response.status === 401 || error.response.status === 403) {
                 setErrorMessage(error.response.data.message);
