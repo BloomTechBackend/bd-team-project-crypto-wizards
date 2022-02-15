@@ -1,4 +1,4 @@
-package com.cryptoportfolio.models.results;
+package com.cryptoportfolio.models.responses;
 
 import com.cryptoportfolio.models.PortfolioModel;
 
@@ -6,10 +6,10 @@ import com.cryptoportfolio.models.PortfolioModel;
  * Builder class to build the result for the UpdatePortfolioActivity using the request
  */
 
-public class UpdatePortfolioResult {
+public class UpdatePortfolioResponse {
     private PortfolioModel portfolio;
 
-    public UpdatePortfolioResult(Builder builder) {
+    public UpdatePortfolioResponse(Builder builder) {
         this.portfolio = builder.portfolio;
     }
 
@@ -31,6 +31,6 @@ public class UpdatePortfolioResult {
             return this;
         }
 
-        public UpdatePortfolioResult build() {return new UpdatePortfolioResult(this);}
+        public UpdatePortfolioResponse build() {return new UpdatePortfolioResponse(this);}
     }
 }

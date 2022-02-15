@@ -18,6 +18,7 @@ public class Asset {
     Double totalSupply;
     Double usdValue;
     Boolean isAvailable;
+    String assetSymbol;
 
     @DynamoDBHashKey(attributeName = "asset_id")
     public String getAssetId() {
@@ -27,7 +28,8 @@ public class Asset {
     public void setAssetId(String assetId) {
         this.assetId = assetId;
     }
-    @DynamoDBRangeKey(attributeName = "rank_by_market_cap")
+
+    @DynamoDBAttribute(attributeName = "rank_by_market_cap")
     public Integer getRankByMarketCap() {
         return rankByMarketCap;
     }
@@ -97,6 +99,15 @@ public class Asset {
 
     public void setAvailable(Boolean available) {
         isAvailable = available;
+    }
+
+    @DynamoDBAttribute(attributeName = "asset_symbol")
+    public String getAssetSymbol() {
+        return assetSymbol;
+    }
+
+    public void setAssetSymbol(String assetSymbol) {
+        this.assetSymbol = assetSymbol;
     }
 
     @Override

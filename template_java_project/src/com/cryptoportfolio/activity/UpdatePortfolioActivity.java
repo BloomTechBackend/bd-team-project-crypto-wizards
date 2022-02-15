@@ -10,13 +10,13 @@ import com.cryptoportfolio.dynamodb.models.Portfolio;
 import com.cryptoportfolio.exceptions.InsufficientAssetsException;
 import com.cryptoportfolio.models.PortfolioModel;
 import com.cryptoportfolio.models.requests.UpdatePortfolioRequest;
-import com.cryptoportfolio.models.results.UpdatePortfolioResult;
+import com.cryptoportfolio.models.responses.UpdatePortfolioResponse;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.Map;
 
-public class UpdatePortfolioActivity implements RequestHandler<UpdatePortfolioRequest, UpdatePortfolioResult> {
+public class UpdatePortfolioActivity implements RequestHandler<UpdatePortfolioRequest, UpdatePortfolioResponse> {
 
     private final Logger log = LogManager.getLogger();
     private PortfolioDao portfolioDao;
@@ -50,7 +50,7 @@ public class UpdatePortfolioActivity implements RequestHandler<UpdatePortfolioRe
      * @return updatePortfolioResult result object containing the API defined {@link PortfolioModel}
      */
     @Override
-    public UpdatePortfolioResult handleRequest(final UpdatePortfolioRequest updatePortfolioRequest, Context context) throws InsufficientAssetsException{
+    public UpdatePortfolioResponse handleRequest(final UpdatePortfolioRequest updatePortfolioRequest, Context context) throws InsufficientAssetsException{
         log.info("Received CreatePortfolioRequest {}", updatePortfolioRequest);
 
         Portfolio portfolio = new Portfolio();
@@ -72,7 +72,7 @@ public class UpdatePortfolioActivity implements RequestHandler<UpdatePortfolioRe
 
         PortfolioModel portfolioModel = new ModelConverter().toPortfolioModel(updatePortfolioRequest.getUsername(), portfolio);
 
-        return UpdatePortfolioResult.builder().withPortfolio(portfolioModel).build();
+        return UpdatePortfolioResponse.builder().withPortfolio(portfolioModel).build();
     }
 
 }

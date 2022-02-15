@@ -7,16 +7,17 @@ import com.cryptoportfolio.dynamodb.dao.AssetDao;
 import com.cryptoportfolio.dynamodb.dao.PortfolioDao;
 import com.cryptoportfolio.dynamodb.models.Asset;
 import com.cryptoportfolio.dynamodb.models.Portfolio;
+import com.cryptoportfolio.exceptions.AssetNotAvailableException;
 import com.cryptoportfolio.exceptions.InsufficientAssetsException;
 import com.cryptoportfolio.models.PortfolioModel;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.cryptoportfolio.models.requests.CreatePortfolioRequest;
-import com.cryptoportfolio.models.results.CreatePortfolioResult;
+import com.cryptoportfolio.models.responses.CreatePortfolioResponse;
 
 import java.util.Map;
 
-public class CreatePortfolioActivity  implements RequestHandler<CreatePortfolioRequest, CreatePortfolioResult> {
+public class CreatePortfolioActivity  implements RequestHandler<CreatePortfolioRequest, CreatePortfolioResponse> {
 
     private final Logger log = LogManager.getLogger();
     private PortfolioDao portfolioDao;
@@ -49,7 +50,8 @@ public class CreatePortfolioActivity  implements RequestHandler<CreatePortfolioR
      * @return createPortfolioResult result object containing the API defined {@link PortfolioModel}
      */
     @Override
-    public CreatePortfolioResult handleRequest(final CreatePortfolioRequest createPortfolioRequest, Context context) throws InsufficientAssetsException{
+    public CreatePortfolioResponse handleRequest(final CreatePortfolioRequest createPortfolioRequest, Context context)
+            throws InsufficientAssetsException, AssetNotAvailableException {
         log.info("Received CreatePortfolioRequest {}", createPortfolioRequest);
 
         Portfolio portfolio = new Portfolio();
@@ -58,8 +60,11 @@ public class CreatePortfolioActivity  implements RequestHandler<CreatePortfolioR
 
         Map<String, Double> assetQuantityMap = createPortfolioRequest.getAssetQuantityMap();
 
-        for(Map.Entry<String, Double> entry : assetQuantityMap.entrySet()) {
-            if (entry.getValue() > assetDao.getAsset(entry.getKey()).getTotalSupply()) {
+        for(String assetId : assetQuantityMap.keySet()) {
+            if (assetDao.getAsset(assetId) == null || !assetDao.getAsset(assetId).getAvailable()) {
+                throw new AssetNotAvailableException();
+            }
+            if (createPortfolioRequest.getAssetQuantityMap().get(assetId) > assetDao.getAsset(assetId).getTotalSupply()) {
                 throw new InsufficientAssetsException();
             }
         }
@@ -71,7 +76,7 @@ public class CreatePortfolioActivity  implements RequestHandler<CreatePortfolioR
 
         PortfolioModel PortfolioModel = new ModelConverter().toPortfolioModel(createPortfolioRequest.getUsername(), portfolio);
 
-        return CreatePortfolioResult.builder().withPortfolio(PortfolioModel).build();
+        return CreatePortfolioResponse.builder().withPortfolio(PortfolioModel).build();
     }
 
 }

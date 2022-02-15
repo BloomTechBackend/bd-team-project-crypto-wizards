@@ -37,6 +37,7 @@ public class RegisterActivity implements RequestHandler<APIGatewayProxyRequestEv
         if (null == username || "".equals(username) || null == password || "".equals(password)) {
             return Utils.buildResponse(401,
                     new FailureResponse("Username and password are required"));
+
         }
 
         String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
@@ -53,6 +54,8 @@ public class RegisterActivity implements RequestHandler<APIGatewayProxyRequestEv
         }
 
         return Utils.buildResponse(200,
-                new RegisterResponse(username));
+                new RegisterResponse.Builder()
+                        .withUsername(username)
+                        .build());
     }
 }

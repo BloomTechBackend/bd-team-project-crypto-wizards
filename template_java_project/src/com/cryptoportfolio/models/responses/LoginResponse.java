@@ -7,9 +7,9 @@ public class LoginResponse {
     private String username;
     private String token;
 
-    public LoginResponse(String username, String token) {
-        this.username = username;
-        this.token = token;
+    public LoginResponse(Builder builder) {
+        this.username = builder.username;
+        this.token = builder.token;
     }
 
     public String getUsername() {
@@ -26,6 +26,25 @@ public class LoginResponse {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public static Builder builder() {return new Builder();}
+
+    public static final class Builder {
+        public String username;
+        private String token;
+
+        public Builder withUsername(String username) {
+            this.username = username;
+            return this;
+        }
+
+        public Builder withToken(String token) {
+            this.token = token;
+            return this;
+        }
+
+        public LoginResponse build() {return new LoginResponse(this);}
     }
 
     @Override

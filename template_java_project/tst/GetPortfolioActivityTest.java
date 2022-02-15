@@ -1,19 +1,21 @@
 import com.cryptoportfolio.activity.GetPortfolioActivity;
+import com.cryptoportfolio.dynamodb.dao.AssetDao;
 import com.cryptoportfolio.dynamodb.dao.PortfolioDao;
 import com.cryptoportfolio.models.requests.GetPortfolioRequest;
-import com.cryptoportfolio.models.results.GetPortfolioResult;
+import com.cryptoportfolio.models.responses.GetPortfolioResponse;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class GetPortfolioActivityTest {
 
     //@Mock
     private PortfolioDao portfolioDao;
+    private AssetDao assetDao;
 
     //@InjectMocks
     private GetPortfolioActivity getPortfolioActivity;
@@ -23,25 +25,21 @@ public class GetPortfolioActivityTest {
 
         //initMocks(this);
         portfolioDao = new PortfolioDao();
-        getPortfolioActivity = new GetPortfolioActivity(portfolioDao);
+        assetDao = new AssetDao();
+        getPortfolioActivity = new GetPortfolioActivity(portfolioDao,assetDao);
     }
 
     @Test
-    public void handleRequest_savedPlaylistFound_returnsPlaylistModelInResult() {
+    public void handleRequest_savedPortfolioFound_returnsPortfolioModelInResult() {
         // GIVEN
         String expectedUsername = "david";
 
 
         Map<String, Double> expectedAssetQuantityMap = new HashMap<>();
-        expectedAssetQuantityMap.put("ASSET1", 4.0);
-        expectedAssetQuantityMap.put("ASSET2", 2.5);
-        expectedAssetQuantityMap.put("ASSET3", 3.2);
+        expectedAssetQuantityMap.put("bitcoin", 4.0);
+        expectedAssetQuantityMap.put("ethereum", 2.5);
+        expectedAssetQuantityMap.put("rippl", 3.2);
 
-//        UserPortfolio userPortfolio = new UserPortfolio();
-//        userPortfolio.setUsername(expectedUsername);
-//        userPortfolio.setAssetQuantityMap(expectedAssetQuantityMap);
-//
-//        when(userPortfolioDao.getUserPortfolio(expectedUsername)).thenReturn(userPortfolio);
 
         GetPortfolioRequest request = GetPortfolioRequest.builder()
             .withUsername(expectedUsername)
@@ -49,12 +47,11 @@ public class GetPortfolioActivityTest {
 
 
         // WHEN
-        GetPortfolioResult result = getPortfolioActivity.handleRequest(request, null);
-        System.out.println("result : " +result);
+        GetPortfolioResponse result = getPortfolioActivity.handleRequest(request, null);
 
         // THEN
-        assertEquals(expectedUsername, result.getPortfolio().getUsername());
-        assertEquals(expectedAssetQuantityMap, result.getPortfolio().getAssetQuantities());
+        assertTrue(result.getPortfolioAssetMap().containsKey(expectedUsername));
+        assertNotNull(result.getPortfolioAssetMap());
     }
 
 }
