@@ -8,7 +8,7 @@ import com.cryptoportfolio.dynamodb.dao.PortfolioDao;
 import com.cryptoportfolio.dynamodb.models.Asset;
 import com.cryptoportfolio.dynamodb.models.Portfolio;
 import com.cryptoportfolio.exceptions.InsufficientAssetsException;
-import com.cryptoportfolio.models.PortfolioModel;
+import com.cryptoportfolio.models.String;
 import com.cryptoportfolio.models.requests.UpdatePortfolioRequest;
 import com.cryptoportfolio.models.responses.UpdatePortfolioResponse;
 import org.apache.logging.log4j.LogManager;
@@ -47,7 +47,7 @@ public class UpdatePortfolioActivity implements RequestHandler<UpdatePortfolioRe
      *
      * @param updatePortfolioRequest request object containing the username and the asset,quantity map
      *                              associated with it
-     * @return updatePortfolioResult result object containing the API defined {@link PortfolioModel}
+     * @return updatePortfolioResult result object containing the API defined {@link String}
      */
     @Override
     public UpdatePortfolioResponse handleRequest(final UpdatePortfolioRequest updatePortfolioRequest, Context context) throws InsufficientAssetsException{
@@ -57,9 +57,9 @@ public class UpdatePortfolioActivity implements RequestHandler<UpdatePortfolioRe
         Asset asset = new Asset();
 
 
-        Map<String, Double> assetQuantityMap = updatePortfolioRequest.getAssetQuantityMap();
+        Map<java.lang.String, Double> assetQuantityMap = updatePortfolioRequest.getAssetQuantityMap();
 
-        for(Map.Entry<String, Double> entry : assetQuantityMap.entrySet()) {
+        for(Map.Entry<java.lang.String, Double> entry : assetQuantityMap.entrySet()) {
             if (entry.getValue() > assetDao.getAsset(entry.getKey()).getTotalSupply()) {
                 throw new InsufficientAssetsException();
             }
@@ -70,7 +70,7 @@ public class UpdatePortfolioActivity implements RequestHandler<UpdatePortfolioRe
 
         portfolioDao.savePortfolio(portfolio);
 
-        PortfolioModel portfolioModel = new ModelConverter().toPortfolioModel(updatePortfolioRequest.getUsername(), portfolio);
+        String portfolioModel = new ModelConverter().toPortfolioModel(updatePortfolioRequest.getUsername(), portfolio);
 
         return UpdatePortfolioResponse.builder().withPortfolio(portfolioModel).build();
     }

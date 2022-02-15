@@ -3,6 +3,7 @@ package com.cryptoportfolio.dynamodb.dao;
 import com.amazon.ata.aws.dynamodb.DynamoDbClientProvider;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMappingException;
 import com.cryptoportfolio.dynamodb.models.Portfolio;
 import com.cryptoportfolio.exceptions.InsufficientAssetsException;
 
@@ -36,8 +37,11 @@ public class PortfolioDao {
      * @param portfolio Saves a portfolio to the database
      * @return returns the saved portfolio
      */
-    public Portfolio savePortfolio(Portfolio portfolio) {
-        this.dynamoDBMapper.save(portfolio);
-        return portfolio;
+    public void savePortfolio(Portfolio portfolio) {
+        try {
+            this.dynamoDBMapper.save(portfolio);
+        } catch (Exception e){
+            throw new DynamoDBMappingException();
+        }
     }
 }

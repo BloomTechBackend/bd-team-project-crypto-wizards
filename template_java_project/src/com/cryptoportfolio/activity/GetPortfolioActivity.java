@@ -8,15 +8,13 @@ import com.cryptoportfolio.dynamodb.models.Asset;
 import com.cryptoportfolio.dynamodb.models.Portfolio;
 import com.cryptoportfolio.exceptions.PortfolioNotFoundException;
 import com.cryptoportfolio.models.PortfolioAssetModel;
-import com.cryptoportfolio.models.PortfolioModel;
+import com.cryptoportfolio.models.String;
 import com.cryptoportfolio.models.requests.GetPortfolioRequest;
 import com.cryptoportfolio.models.responses.GetPortfolioResponse;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -51,16 +49,16 @@ public class GetPortfolioActivity implements RequestHandler<GetPortfolioRequest,
      * If the portfolio does not exist, this should throw a PortfolioNotFoundException.
      *
      * @param getPortfolioRequest request object containing the username
-     * @return getPortfolioResult result object containing the API defined {@link PortfolioModel}
+     * @return getPortfolioResult result object containing the API defined {@link String}
      */
     @Override
     public GetPortfolioResponse handleRequest(final GetPortfolioRequest getPortfolioRequest, Context context) throws PortfolioNotFoundException {
         //verifyRequest
         log.info("Received GetPortfolioRequest {}", getPortfolioRequest);
-        String requestedId = getPortfolioRequest.getUsername();
+        java.lang.String requestedId = getPortfolioRequest.getUsername();
 
         Portfolio portfolio = portfolioDao.getUserPortfolio(requestedId);
-        Map<String, PortfolioAssetModel> assetMap = new HashMap<>();
+        Map<java.lang.String, PortfolioAssetModel> assetMap = new HashMap<>();
         //Map<String, List<PortfolioAssetModel>> userAssetMap = new HashMap<>();
         double totalPortfolioValue = 0.0;
 
@@ -68,7 +66,7 @@ public class GetPortfolioActivity implements RequestHandler<GetPortfolioRequest,
             throw new PortfolioNotFoundException();
         }
 
-        for (String assetId : portfolioDao.getUserPortfolio(requestedId).getAssetQuantityMap().keySet()) {
+        for (java.lang.String assetId : portfolioDao.getUserPortfolio(requestedId).getAssetQuantityMap().keySet()) {
             Asset asset = assetDao.getAsset(assetId);
             double assetQuantity = portfolioDao.getUserPortfolio(requestedId).getAssetQuantityMap().get(assetId);
             PortfolioAssetModel portfolioAssetModel = new PortfolioAssetModel.Builder()

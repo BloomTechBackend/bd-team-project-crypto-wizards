@@ -1,5 +1,8 @@
 package com.cryptoportfolio.dynamodb.models;
-import com.amazonaws.services.dynamodbv2.datamodeling.*;
+
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 
 import java.util.Objects;
 
@@ -13,12 +16,11 @@ public class Asset {
     Integer rankByMarketCap;
     String assetName;
     String assetSymbol;
-    Double marketCap;
+    Integer marketCap;
     String assetImage;
     Double totalSupply;
     Double usdValue;
     Boolean isAvailable;
-    String assetSymbol;
 
     @DynamoDBHashKey(attributeName = "asset_id")
     public String getAssetId() {
@@ -57,11 +59,11 @@ public class Asset {
     }
 
     @DynamoDBAttribute(attributeName = "market_cap")
-    public Double getMarketCap() {
+    public int getMarketCap() {
         return marketCap;
     }
 
-    public void setMarketCap(Double marketCap) {
+    public void setMarketCap(Integer marketCap) {
         this.marketCap = marketCap;
     }
 
@@ -101,14 +103,6 @@ public class Asset {
         isAvailable = available;
     }
 
-    @DynamoDBAttribute(attributeName = "asset_symbol")
-    public String getAssetSymbol() {
-        return assetSymbol;
-    }
-
-    public void setAssetSymbol(String assetSymbol) {
-        this.assetSymbol = assetSymbol;
-    }
 
     @Override
     public boolean equals(Object o) {
