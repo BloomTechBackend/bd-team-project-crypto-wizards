@@ -1,18 +1,14 @@
 package com.cryptoportfolio.models;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
-
 public class PortfolioAssetModel {
 
     private String assetId;
     private int rankByMarketCap;
-    private int marketCap;
+    private double marketCap;
     private String assetImage;
     private String assetName;
     private String assetSymbol;
-    private int totalSupply;
+    private double totalSupply;
     private double usdValue;
     private double quantity;
     private double quantityUSDValue;
@@ -39,11 +35,11 @@ public class PortfolioAssetModel {
     public static final class Builder {
         private String assetId;
         private int rankByMarketCap;
-        private int marketCap;
+        private double marketCap;
         private String assetImage;
         private String assetName;
         private String assetSymbol;
-        private int totalSupply;
+        private double totalSupply;
         private double usdValue;
         private double quantity;
         private double quantityUSDValue;
@@ -58,7 +54,7 @@ public class PortfolioAssetModel {
             return this;
         }
 
-        public PortfolioAssetModel.Builder withMarketCap(int marketCapToUse) {
+        public PortfolioAssetModel.Builder withMarketCap(double marketCapToUse) {
             this.marketCap = marketCapToUse;
             return this;
         }
@@ -78,7 +74,7 @@ public class PortfolioAssetModel {
             return this;
         }
 
-        public PortfolioAssetModel.Builder withTotalSupply(int totalSupplyToUse) {
+        public PortfolioAssetModel.Builder withTotalSupply(double totalSupplyToUse) {
             this.totalSupply = totalSupplyToUse;
             return this;
         }
@@ -119,11 +115,11 @@ public class PortfolioAssetModel {
         this.rankByMarketCap = rankByMarketCap;
     }
 
-    public int getMarketCap() {
+    public double getMarketCap() {
         return marketCap;
     }
 
-    public void setMarketCap(int marketCap) {
+    public void setMarketCap(double marketCap) {
         this.marketCap = marketCap;
     }
 
@@ -143,11 +139,11 @@ public class PortfolioAssetModel {
         this.assetName = assetName;
     }
 
-    public int getTotalSupply() {
+    public double getTotalSupply() {
         return totalSupply;
     }
 
-    public void setTotalSupply(int totalSupply) {
+    public void setTotalSupply(double totalSupply) {
         this.totalSupply = totalSupply;
     }
 
