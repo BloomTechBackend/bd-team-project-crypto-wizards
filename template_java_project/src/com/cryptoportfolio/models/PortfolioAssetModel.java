@@ -11,9 +11,9 @@ public class PortfolioAssetModel {
     private int marketCap;
     private String assetImage;
     private String assetName;
+    private String assetSymbol;
     private int totalSupply;
     private double usdValue;
-    private boolean isAvailable;
     private double quantity;
     private double quantityUSDValue;
 
@@ -42,6 +42,7 @@ public class PortfolioAssetModel {
         private int marketCap;
         private String assetImage;
         private String assetName;
+        private String assetSymbol;
         private int totalSupply;
         private double usdValue;
         private double quantity;
@@ -64,6 +65,11 @@ public class PortfolioAssetModel {
 
         public PortfolioAssetModel.Builder withAssetImage(String assetImageToUse) {
             this.assetImage = assetImageToUse;
+            return this;
+        }
+
+        public PortfolioAssetModel.Builder withAssetSymbol(String assetSymbolToUse) {
+            this.assetSymbol = assetSymbolToUse;
             return this;
         }
 
@@ -91,6 +97,7 @@ public class PortfolioAssetModel {
             this.quantityUSDValue = quantityUSDValueToUse;
             return this;
         }
+
 
         public PortfolioAssetModel build() {return new PortfolioAssetModel(this);}
     }
@@ -152,14 +159,6 @@ public class PortfolioAssetModel {
         this.usdValue = usdValue;
     }
 
-    public boolean isAvailable() {
-        return isAvailable;
-    }
-
-    public void setAvailable(boolean available) {
-        isAvailable = available;
-    }
-
     public double getQuantity() {
         return quantity;
     }
@@ -176,32 +175,13 @@ public class PortfolioAssetModel {
         this.quantityUSDValue = quantityUSDValue;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof PortfolioAssetModel)) return false;
-        PortfolioAssetModel that = (PortfolioAssetModel) o;
-        return getRankByMarketCap() == that.getRankByMarketCap() && getMarketCap() == that.getMarketCap() && getTotalSupply() == that.getTotalSupply() && Double.compare(that.getUsdValue(), getUsdValue()) == 0 && isAvailable() == that.isAvailable() && Double.compare(that.getQuantity(), getQuantity()) == 0 && Double.compare(that.getQuantityUSDValue(), getQuantityUSDValue()) == 0 && Objects.equals(getAssetId(), that.getAssetId()) && Objects.equals(getAssetImage(), that.getAssetImage()) && Objects.equals(getAssetName(), that.getAssetName());
+    public String getAssetSymbol() {
+        return assetSymbol;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(getAssetId(), getRankByMarketCap(), getMarketCap(), getAssetImage(), getAssetName(), getTotalSupply(), getUsdValue(), isAvailable(), getQuantity(), getQuantityUSDValue());
+    public void setAssetSymbol(String assetSymbol) {
+        this.assetSymbol = assetSymbol;
     }
 
-    @Override
-    public String toString() {
-        return "PortfolioAssetModel{" +
-                "assetId='" + assetId + '\'' +
-                ", rankByMarketCap=" + rankByMarketCap +
-                ", marketCap=" + marketCap +
-                ", assetImage='" + assetImage + '\'' +
-                ", assetName='" + assetName + '\'' +
-                ", totalSupply=" + totalSupply +
-                ", usdValue=" + usdValue +
-                ", isAvailable=" + isAvailable +
-                ", quantity=" + quantity +
-                ", quantityUSDValue=" + quantityUSDValue +
-                '}';
-    }
+
 }

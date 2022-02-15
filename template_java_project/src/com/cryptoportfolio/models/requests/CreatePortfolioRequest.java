@@ -10,7 +10,7 @@ import java.util.Objects;
 public class CreatePortfolioRequest {
     private String username;
     private Map<String, Double> assetQuantityMap;
-    private String token;
+
 
     public CreatePortfolioRequest() {
     }
@@ -41,20 +41,12 @@ public class CreatePortfolioRequest {
         this.assetQuantityMap = assetQuantityMap;
     }
 
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
 
     public static Builder builder() { return new Builder(); }
 
     public static final class Builder {
         private String username;
         private Map<String, Double> assetQuantityMap;
-        private String token;
 
         private Builder() {
         }
@@ -69,10 +61,6 @@ public class CreatePortfolioRequest {
             return this;
         }
 
-        public CreatePortfolioRequest.Builder withToken(String tokenToUse) {
-            this.token = tokenToUse;
-            return this;
-        }
 
         public CreatePortfolioRequest build() {
             return new CreatePortfolioRequest(this);
