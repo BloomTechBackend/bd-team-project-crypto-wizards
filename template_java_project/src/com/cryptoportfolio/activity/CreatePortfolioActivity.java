@@ -13,11 +13,11 @@ import com.cryptoportfolio.models.PortfolioModel;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.cryptoportfolio.models.requests.CreatePortfolioRequest;
-import com.cryptoportfolio.models.results.CreatePortfolioResult;
+import com.cryptoportfolio.models.responses.CreatePortfolioResponse;
 
 import java.util.Map;
 
-public class CreatePortfolioActivity  implements RequestHandler<CreatePortfolioRequest, CreatePortfolioResult> {
+public class CreatePortfolioActivity  implements RequestHandler<CreatePortfolioRequest, CreatePortfolioResponse> {
 
     private final Logger log = LogManager.getLogger();
     private PortfolioDao portfolioDao;
@@ -50,7 +50,7 @@ public class CreatePortfolioActivity  implements RequestHandler<CreatePortfolioR
      * @return createPortfolioResult result object containing the API defined {@link PortfolioModel}
      */
     @Override
-    public CreatePortfolioResult handleRequest(final CreatePortfolioRequest createPortfolioRequest, Context context)
+    public CreatePortfolioResponse handleRequest(final CreatePortfolioRequest createPortfolioRequest, Context context)
             throws InsufficientAssetsException, AssetNotAvailableException {
         log.info("Received CreatePortfolioRequest {}", createPortfolioRequest);
 
@@ -76,7 +76,7 @@ public class CreatePortfolioActivity  implements RequestHandler<CreatePortfolioR
 
         PortfolioModel PortfolioModel = new ModelConverter().toPortfolioModel(createPortfolioRequest.getUsername(), portfolio);
 
-        return CreatePortfolioResult.builder().withPortfolio(PortfolioModel).build();
+        return CreatePortfolioResponse.builder().withPortfolio(PortfolioModel).build();
     }
 
 }

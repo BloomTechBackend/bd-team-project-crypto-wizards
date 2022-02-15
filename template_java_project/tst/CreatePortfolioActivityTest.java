@@ -3,7 +3,7 @@ import com.cryptoportfolio.activity.CreatePortfolioActivity;
 import com.cryptoportfolio.dynamodb.dao.AssetDao;
 import com.cryptoportfolio.dynamodb.dao.PortfolioDao;
 import com.cryptoportfolio.models.requests.CreatePortfolioRequest;
-import com.cryptoportfolio.models.results.CreatePortfolioResult;
+import com.cryptoportfolio.models.responses.CreatePortfolioResponse;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -45,7 +45,7 @@ public class CreatePortfolioActivityTest {
                                          .build();
 
         // WHEN
-        CreatePortfolioResult result = createPortfolioActivity.handleRequest(request, null);
+        CreatePortfolioResponse result = createPortfolioActivity.handleRequest(request, null);
 
         Map<String, Double> createdPortfolio = result.getPortfolio().getAssetQuantities();
 

@@ -35,7 +35,9 @@ public class RegisterActivity implements RequestHandler<APIGatewayProxyRequestEv
 
         if (null == username || "".equals(username) || null == password || "".equals(password)) {
             return Utils.buildResponse(401,
-                    new RegisterResponse(username, "Username and password are required"));
+                    new RegisterResponse.Builder()
+                            .withUsername(username)
+                            .build());
         }
 
         String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
@@ -48,10 +50,14 @@ public class RegisterActivity implements RequestHandler<APIGatewayProxyRequestEv
             userDao.createUser(user);
         } catch (UserAlreadyExistsException e) {
             return Utils.buildResponse(401,
-                    new RegisterResponse(username, "Username already exists"));
+                    new RegisterResponse.Builder()
+                            .withUsername(username)
+                            .build());
         }
 
         return Utils.buildResponse(200,
-                new RegisterResponse(username, "Registered successfully"));
+                new RegisterResponse.Builder()
+                        .withUsername(username)
+                        .build());
     }
 }

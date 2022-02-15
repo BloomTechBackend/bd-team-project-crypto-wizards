@@ -1,9 +1,7 @@
-package com.cryptoportfolio.models.results;
+package com.cryptoportfolio.models.responses;
 
 import com.cryptoportfolio.models.PortfolioAssetModel;
-import com.cryptoportfolio.models.PortfolioModel;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -12,13 +10,13 @@ import java.util.Objects;
  * Builder class to fetch the result for the GetPortfolioActivity using the request
  */
 
-public class GetPortfolioResult {
+public class GetPortfolioResponse {
     private Map<String, List<PortfolioAssetModel>> portfolioAssetMap;
     private double totalPortfolioValue;
 
 
 
-    public GetPortfolioResult(Builder builder) {
+    public GetPortfolioResponse(Builder builder) {
         this.portfolioAssetMap = builder.portfolioAssetMap;
         this.totalPortfolioValue = builder.totalPortfolioValue;
     }
@@ -55,14 +53,14 @@ public class GetPortfolioResult {
             return this;
         }
 
-        public GetPortfolioResult build() {return new GetPortfolioResult(this);}
+        public GetPortfolioResponse build() {return new GetPortfolioResponse(this);}
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof GetPortfolioResult)) return false;
-        GetPortfolioResult that = (GetPortfolioResult) o;
+        if (!(o instanceof GetPortfolioResponse)) return false;
+        GetPortfolioResponse that = (GetPortfolioResponse) o;
         return Double.compare(that.getTotalPortfolioValue(), getTotalPortfolioValue()) == 0 && Objects.equals(getPortfolioAssetMap(), that.getPortfolioAssetMap());
     }
 

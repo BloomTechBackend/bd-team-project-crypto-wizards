@@ -2,7 +2,7 @@ import com.cryptoportfolio.activity.GetPortfolioActivity;
 import com.cryptoportfolio.dynamodb.dao.AssetDao;
 import com.cryptoportfolio.dynamodb.dao.PortfolioDao;
 import com.cryptoportfolio.models.requests.GetPortfolioRequest;
-import com.cryptoportfolio.models.results.GetPortfolioResult;
+import com.cryptoportfolio.models.responses.GetPortfolioResponse;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -47,7 +47,7 @@ public class GetPortfolioActivityTest {
 
 
         // WHEN
-        GetPortfolioResult result = getPortfolioActivity.handleRequest(request, null);
+        GetPortfolioResponse result = getPortfolioActivity.handleRequest(request, null);
 
         // THEN
         assertTrue(result.getPortfolioAssetMap().containsKey(expectedUsername));

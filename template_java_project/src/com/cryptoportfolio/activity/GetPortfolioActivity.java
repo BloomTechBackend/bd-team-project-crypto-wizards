@@ -2,7 +2,6 @@ package com.cryptoportfolio.activity;
 
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
-import com.cryptoportfolio.converter.ModelConverter;
 import com.cryptoportfolio.dynamodb.dao.AssetDao;
 import com.cryptoportfolio.dynamodb.dao.PortfolioDao;
 import com.cryptoportfolio.dynamodb.models.Asset;
@@ -11,7 +10,7 @@ import com.cryptoportfolio.exceptions.PortfolioNotFoundException;
 import com.cryptoportfolio.models.PortfolioAssetModel;
 import com.cryptoportfolio.models.PortfolioModel;
 import com.cryptoportfolio.models.requests.GetPortfolioRequest;
-import com.cryptoportfolio.models.results.GetPortfolioResult;
+import com.cryptoportfolio.models.responses.GetPortfolioResponse;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -26,7 +25,7 @@ import java.util.Map;
  * This API allows the customer to retrieve their saved portfolio.
  */
 
-public class GetPortfolioActivity implements RequestHandler<GetPortfolioRequest, GetPortfolioResult>  {
+public class GetPortfolioActivity implements RequestHandler<GetPortfolioRequest, GetPortfolioResponse>  {
 
     private final Logger log = LogManager.getLogger();
     private PortfolioDao portfolioDao;
@@ -55,7 +54,7 @@ public class GetPortfolioActivity implements RequestHandler<GetPortfolioRequest,
      * @return getPortfolioResult result object containing the API defined {@link PortfolioModel}
      */
     @Override
-    public GetPortfolioResult handleRequest(final GetPortfolioRequest getPortfolioRequest, Context context) throws PortfolioNotFoundException {
+    public GetPortfolioResponse handleRequest(final GetPortfolioRequest getPortfolioRequest, Context context) throws PortfolioNotFoundException {
         log.info("Received GetPortfolioRequest {}", getPortfolioRequest);
         String requestedId = getPortfolioRequest.getUsername();
 
@@ -90,7 +89,7 @@ public class GetPortfolioActivity implements RequestHandler<GetPortfolioRequest,
         userAssetMap.put(requestedId, portfolioModelList);
 
 
-        return GetPortfolioResult.builder()
+        return GetPortfolioResponse.builder()
                 .withPortfolioAssetMap(userAssetMap)
                 .withTotalPortfolioValue(totalPortfolioValue)
                 .build();

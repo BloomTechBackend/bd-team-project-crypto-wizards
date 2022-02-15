@@ -6,8 +6,8 @@ public class RegisterResponse {
 
     private String username;
 
-    public RegisterResponse(String username) {
-        this.username = username;
+    public RegisterResponse(RegisterResponse.Builder builder) {
+        this.username = builder.username;
     }
 
     public String getUsername() {
@@ -16,6 +16,19 @@ public class RegisterResponse {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public static Builder builder() {return new Builder();}
+
+    public static final class Builder {
+        private String username;
+
+        public Builder withUsername(String username) {
+            this.username = username;
+            return this;
+        }
+
+        public RegisterResponse build() {return new RegisterResponse(this);}
     }
 
     @Override
