@@ -15,7 +15,7 @@ public class CreatePortfolioResponse {
             return message;
         }
 
-        public void setMessage(String Portfolio) {
+        public void setMessage(String message) {
             this.message = message;
         }
 

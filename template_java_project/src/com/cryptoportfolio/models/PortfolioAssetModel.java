@@ -1,12 +1,11 @@
 package com.cryptoportfolio.models;
 
-import java.lang.String;
 
 public class PortfolioAssetModel {
 
     private String assetId;
     private int rankByMarketCap;
-    private int marketCap;
+    private double marketCap;
     private String assetImage;
     private String assetName;
     private String assetSymbol;
@@ -32,12 +31,12 @@ public class PortfolioAssetModel {
     }
 
 
-    public static Builder builder() { return new PortfolioAssetModel.Builder(); }
+    public static Builder builder() { return new Builder(); }
 
     public static final class Builder {
         private String assetId;
         private int rankByMarketCap;
-        private int marketCap;
+        private double marketCap;
         private String assetImage;
         private String assetName;
         private String assetSymbol;
@@ -117,11 +116,11 @@ public class PortfolioAssetModel {
         this.rankByMarketCap = rankByMarketCap;
     }
 
-    public int getMarketCap() {
+    public double getMarketCap() {
         return marketCap;
     }
 
-    public void setMarketCap(int marketCap) {
+    public void setMarketCap(double marketCap) {
         this.marketCap = marketCap;
     }
 
@@ -145,7 +144,7 @@ public class PortfolioAssetModel {
         return totalSupply;
     }
 
-    public void setTotalSupply(int totalSupply) {
+    public void setTotalSupply(double totalSupply) {
         this.totalSupply = totalSupply;
     }
 

@@ -11,8 +11,14 @@ import com.cryptoportfolio.dynamodb.dao.AssetDao;
 import com.cryptoportfolio.dynamodb.dao.PortfolioDao;
 import com.cryptoportfolio.dynamodb.models.Asset;
 import com.cryptoportfolio.dynamodb.models.Portfolio;
-import com.cryptoportfolio.models.String;
+
+
 import com.cryptoportfolio.models.responses.FailureResponse;
+
+import com.cryptoportfolio.exceptions.AssetNotAvailableException;
+import com.cryptoportfolio.exceptions.InsufficientAssetsException;
+import com.cryptoportfolio.models.PortfolioModel;
+
 import com.cryptoportfolio.utils.Auth;
 import com.cryptoportfolio.utils.Utils;
 import com.cryptoportfolio.utils.VerificationStatus;
@@ -32,19 +38,15 @@ public class CreatePortfolioActivity  implements RequestHandler<APIGatewayProxyR
     private AssetDao assetDao;
     private Gson gson;
 
-    public CreatePortfolioActivity() {
-    }
-
     /**
      * Instantiates a new CreatePortfolioActivity object.
      *
-     * @param portfolioDao PortfolioDao to access the Portfolios table.
      */
 
-    public CreatePortfolioActivity(PortfolioDao portfolioDao, AssetDao assetDao) {
-        this.portfolioDao = portfolioDao;
-        this.assetDao = assetDao;
-        this.gson = new Gson();
+    public CreatePortfolioActivity() {
+        this.portfolioDao = new PortfolioDao();
+        this.assetDao = new AssetDao();
+
     }
 
 
@@ -60,27 +62,27 @@ public class CreatePortfolioActivity  implements RequestHandler<APIGatewayProxyR
      * @return createPortfolioResult result object containing the API defined {@link String}
      */
     @Override
-    public APIGatewayProxyResponseEvent handleRequest(APIGatewayProxyRequestEvent request, Context context) {
-
+    public APIGatewayProxyResponseEvent handleRequest(final APIGatewayProxyRequestEvent request, Context context) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         LambdaLogger logger = context.getLogger();
-        logger.log(request.getBody());
+        logger.log(gson.toJson(request));
+
         CreatePortfolioRequest createPortfolioRequest = gson.fromJson(request.getBody(), CreatePortfolioRequest.class);
-        java.lang.String username = createPortfolioRequest.getUsername();
+        String username = createPortfolioRequest.getUsername();
         VerificationStatus verificationStatus = Auth.verifyRequest(username, request);
 
         if (!verificationStatus.isVerified()) {
-            return Utils.buildResponse(401,
-                    new FailureResponse(verificationStatus.getMessage()));
+            return Utils.buildResponse(401, verificationStatus.getMessage());
         }
 
         Portfolio portfolio = new Portfolio();
         Asset asset = new Asset();
 
 
-        Map<java.lang.String, Double> assetQuantityMap = createPortfolioRequest.getAssetQuantityMap();
+        Map<String, Double> assetQuantityMap = createPortfolioRequest.getAssetQuantityMap();
 
-        for(java.lang.String assetId : assetQuantityMap.keySet()) {
+
+        for(String assetId : assetQuantityMap.keySet()) {
             if (assetDao.getAsset(assetId) == null || !assetDao.getAsset(assetId).getAvailable()) {
                 return Utils.buildResponse(401,
                     new FailureResponse("This Asset is not available"));
@@ -93,7 +95,6 @@ public class CreatePortfolioActivity  implements RequestHandler<APIGatewayProxyR
 
         portfolio.setUsername(createPortfolioRequest.getUsername());
         portfolio.setAssetQuantityMap(assetQuantityMap);
-
         try {
             portfolioDao.savePortfolio(portfolio);
         } catch (DynamoDBMappingException e) {
@@ -101,8 +102,9 @@ public class CreatePortfolioActivity  implements RequestHandler<APIGatewayProxyR
                     new FailureResponse("Unable to save portfolio"));
         }
 
-        return Utils.buildResponse(200,
-                CreatePortfolioResponse.builder().withMessage("Portfolio Created Successfully").build());
+        return Utils.buildResponse(200, CreatePortfolioResponse.builder()
+                        .withMessage("Portfolio created successfully")
+                        .build());
     }
 
 }
