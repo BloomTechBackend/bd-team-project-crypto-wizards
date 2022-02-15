@@ -18,7 +18,6 @@ public class Asset {
     Double totalSupply;
     Double usdValue;
     Boolean isAvailable;
-    String assetSymbol;
 
     @DynamoDBHashKey(attributeName = "asset_id")
     public String getAssetId() {
@@ -99,15 +98,6 @@ public class Asset {
 
     public void setAvailable(Boolean available) {
         isAvailable = available;
-    }
-
-    @DynamoDBAttribute(attributeName = "asset_symbol")
-    public String getAssetSymbol() {
-        return assetSymbol;
-    }
-
-    public void setAssetSymbol(String assetSymbol) {
-        this.assetSymbol = assetSymbol;
     }
 
     @Override
