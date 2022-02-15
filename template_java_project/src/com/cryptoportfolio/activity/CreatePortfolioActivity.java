@@ -60,11 +60,11 @@ public class CreatePortfolioActivity  implements RequestHandler<CreatePortfolioR
 
         Map<String, Double> assetQuantityMap = createPortfolioRequest.getAssetQuantityMap();
 
-        for(Map.Entry<String, Double> entry : assetQuantityMap.entrySet()) {
-            if (!assetDao.getAsset(entry.getKey()).getAvailable()) {
+        for(String assetId : assetQuantityMap.keySet()) {
+            if (assetDao.getAsset(assetId) == null || !assetDao.getAsset(assetId).getAvailable()) {
                 throw new AssetNotAvailableException();
             }
-            if (entry.getValue() > assetDao.getAsset(entry.getKey()).getTotalSupply()) {
+            if (createPortfolioRequest.getAssetQuantityMap().get(assetId) > assetDao.getAsset(assetId).getTotalSupply()) {
                 throw new InsufficientAssetsException();
             }
         }

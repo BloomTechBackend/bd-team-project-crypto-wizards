@@ -55,25 +55,27 @@ public class GetPortfolioActivity implements RequestHandler<GetPortfolioRequest,
      */
     @Override
     public GetPortfolioResponse handleRequest(final GetPortfolioRequest getPortfolioRequest, Context context) throws PortfolioNotFoundException {
+        //verifyRequest
         log.info("Received GetPortfolioRequest {}", getPortfolioRequest);
         String requestedId = getPortfolioRequest.getUsername();
 
         Portfolio portfolio = portfolioDao.getUserPortfolio(requestedId);
-        List<PortfolioAssetModel> portfolioModelList = new ArrayList<>();
-        Map<String, List<PortfolioAssetModel>> userAssetMap = new HashMap<>();
+        Map<String, PortfolioAssetModel> assetMap = new HashMap<>();
+        //Map<String, List<PortfolioAssetModel>> userAssetMap = new HashMap<>();
         double totalPortfolioValue = 0.0;
 
         if (portfolio == null) {
             throw new PortfolioNotFoundException();
         }
 
-        for (Map.Entry<String, Double> entry : portfolioDao.getUserPortfolio(requestedId).getAssetQuantityMap().entrySet()) {
-            Asset asset = assetDao.getAsset(entry.getKey());
-            double assetQuantity = entry.getValue();
+        for (String assetId : portfolioDao.getUserPortfolio(requestedId).getAssetQuantityMap().keySet()) {
+            Asset asset = assetDao.getAsset(assetId);
+            double assetQuantity = portfolioDao.getUserPortfolio(requestedId).getAssetQuantityMap().get(assetId);
             PortfolioAssetModel portfolioAssetModel = new PortfolioAssetModel.Builder()
                     .withAssetId(asset.getAssetId())
                     .withAssetImage(asset.getAssetImage())
                     .withAssetName(asset.getAssetName())
+                    .withAssetSymbol(asset.getAssetSymbol())
                     .withRankByMarketCap(asset.getRankByMarketCap())
                     .withMarketCap(asset.getMarketCap())
                     .withTotalSupply(asset.getTotalSupply())
@@ -82,15 +84,13 @@ public class GetPortfolioActivity implements RequestHandler<GetPortfolioRequest,
                     .withQuantityUSDValue(assetQuantity * asset.getUsdValue())
                     .build();
 
-            portfolioModelList.add(portfolioAssetModel);
+            assetMap.put(assetId, portfolioAssetModel);
             totalPortfolioValue = totalPortfolioValue + (assetQuantity * asset.getUsdValue());
         }
-        System.out.println("totalPortfolioValue : " + totalPortfolioValue);
-        userAssetMap.put(requestedId, portfolioModelList);
-
 
         return GetPortfolioResponse.builder()
-                .withPortfolioAssetMap(userAssetMap)
+                .withUsername(requestedId)
+                .withPortfolioAssetMap(assetMap)
                 .withTotalPortfolioValue(totalPortfolioValue)
                 .build();
     }

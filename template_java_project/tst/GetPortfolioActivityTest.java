@@ -36,9 +36,9 @@ public class GetPortfolioActivityTest {
 
 
         Map<String, Double> expectedAssetQuantityMap = new HashMap<>();
-        expectedAssetQuantityMap.put("ASSET1", 4.0);
-        expectedAssetQuantityMap.put("ASSET2", 2.5);
-        expectedAssetQuantityMap.put("ASSET3", 3.2);
+        expectedAssetQuantityMap.put("bitcoin", 4.0);
+        expectedAssetQuantityMap.put("ethereum", 2.5);
+        expectedAssetQuantityMap.put("rippl", 3.2);
 
 
         GetPortfolioRequest request = GetPortfolioRequest.builder()
