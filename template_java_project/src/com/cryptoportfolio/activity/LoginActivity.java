@@ -66,6 +66,9 @@ public class LoginActivity implements RequestHandler<APIGatewayProxyRequestEvent
                 .sign(algorithm);
 
         return Utils.buildResponse(200,
-                new LoginResponse(username, token));
+                new LoginResponse.Builder()
+                        .withUsername(username)
+                        .withToken(token)
+                        .build());
     }
 }
