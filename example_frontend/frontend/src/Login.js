@@ -30,8 +30,8 @@ const Login = (props) => {
 
         axios.post(loginAPIUrl, requestBody, requestConfig).then((response) => {
             setUserSession(response.data.username, response.data.token);
-            console.log("You are logged in");
-            navigate('/Portfolio');
+            props.authenticate();
+            navigate('/portfolio');
         }).catch((error) => {
             if (error.response.status === 401 || error.response.status === 403) {
                 setErrorMessage(error.response.data.message);

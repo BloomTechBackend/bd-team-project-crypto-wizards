@@ -8,7 +8,8 @@ const Portfolio = (props) => {
 
     const logoutHandler = () => {
         resetUserSession();
-        navigate('/Login');
+        props.logout();
+        navigate('/login');
     }
     return (
         <div>

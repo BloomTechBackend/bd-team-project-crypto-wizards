@@ -1,4 +1,4 @@
-import {BrowserRouter, NavLink, Route, Routes} from "react-router-dom";
+import {BrowserRouter, NavLink, Route, Routes, Navigate} from "react-router-dom";
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import Home from "./Home";
@@ -14,6 +14,13 @@ const verifyTokenAPIUrl = 'https://ccixqpmq4c.execute-api.us-east-2.amazonaws.co
 function App() {
 
   const [isAuthentication, setAuthentication] = useState('');
+  const [isTokenSet, setToken] = useState(getToken());
+
+  useEffect(() => {
+    const token = getToken();
+    token ? setToken(true) : setToken(false);
+  })
+
   
   useEffect(() => {
     const token = getToken();
@@ -45,6 +52,7 @@ function App() {
     return <div className="content">Authentication...</div>
   }
 
+  // setToken(getToken());
   return (
       <div className="App">
         <BrowserRouter>
@@ -56,10 +64,19 @@ function App() {
           </div>
           <div className="content">
             <Routes>
-              <Route path="/" element={<Home />}/>
-              <Route path="/register" element={<Register/>}/>
-              <Route path="/login" element={<Login/>}/>
-              <Route path="/portfolio" element={<Portfolio/>}/>
+              {/* {console.log(getToken())} */}
+              
+              {!isTokenSet && (
+                <>
+                  <Route path="/" element={<Home />}/>
+                  <Route path="/register" element={<Register/>}/>
+                  <Route path="/login" element={<Login authenticate={() => setToken(getToken())}/>}/>
+                </>
+              )}
+              {isTokenSet && (
+                <Route path="/portfolio" element={<Portfolio logout={() => setToken(getToken())}/>}/>
+              )}
+              <Route path="*" element={<Navigate to={isTokenSet ? "/portfolio" : "/"} />} />
             </Routes>
           </div>
         </BrowserRouter>
