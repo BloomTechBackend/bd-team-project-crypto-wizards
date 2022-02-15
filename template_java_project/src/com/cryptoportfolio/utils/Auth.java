@@ -1,5 +1,6 @@
 package com.cryptoportfolio.utils;
 
+import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
@@ -41,5 +42,9 @@ public class Auth {
                 .withVerified(true)
                 .withMessage("Verification succeeded")
                 .build();
+    }
+
+    public static VerificationStatus verifyRequest(String username, APIGatewayProxyRequestEvent request) {
+        return verifyToken(username, request.getHeaders().get("token"));
     }
 }
