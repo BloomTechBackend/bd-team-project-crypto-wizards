@@ -43,6 +43,6 @@ public class VerifyActivity implements RequestHandler<APIGatewayProxyRequestEven
         }
 
         return Utils.buildResponse(200,
-                new VerifyResponse(username, token,true, "Verification succeeded"));
+                new VerifyResponse(username, token));
     }
 }

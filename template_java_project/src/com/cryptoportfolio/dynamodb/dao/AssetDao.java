@@ -6,6 +6,8 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.cryptoportfolio.dynamodb.models.Asset;
 import com.cryptoportfolio.exceptions.InsufficientAssetsException;
 
+import java.util.List;
+
 /**
  * The AssetDao Class fetches the Asset details from the DynamoDB table
  */
@@ -35,5 +37,9 @@ public class AssetDao {
         }
 
         return asset;
+    }
+
+    public void batchSaveAssets(List<Asset> assets) {
+        dynamoDBMapper.batchSave(assets);
     }
 }

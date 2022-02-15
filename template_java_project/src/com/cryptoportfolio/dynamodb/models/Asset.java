@@ -1,6 +1,5 @@
 package com.cryptoportfolio.dynamodb.models;
 import com.amazonaws.services.dynamodbv2.datamodeling.*;
-import com.cryptoportfolio.converter.AssetListConverter;
 
 import java.util.Objects;
 
@@ -12,10 +11,11 @@ import java.util.Objects;
 public class Asset {
     String assetId;
     Integer rankByMarketCap;
-    Integer marketCap;
-    String assetImage;
     String assetName;
-    Integer totalSupply;
+    String assetSymbol;
+    Double marketCap;
+    String assetImage;
+    Double totalSupply;
     Double usdValue;
     Boolean isAvailable;
 
@@ -36,12 +36,30 @@ public class Asset {
         this.rankByMarketCap = rankByMarketCap;
     }
 
+    @DynamoDBAttribute(attributeName = "asset_name")
+    public String getAssetName() {
+        return assetName;
+    }
+
+    public void setAssetName(String assetName) {
+        this.assetName = assetName;
+    }
+
+    @DynamoDBAttribute(attributeName = "asset_symbol")
+    public String getAssetSymbol() {
+        return assetSymbol;
+    }
+
+    public void setAssetSymbol(String assetSymbol) {
+        this.assetSymbol = assetSymbol;
+    }
+
     @DynamoDBAttribute(attributeName = "market_cap")
-    public Integer getMarketCap() {
+    public Double getMarketCap() {
         return marketCap;
     }
 
-    public void setMarketCap(Integer marketCap) {
+    public void setMarketCap(Double marketCap) {
         this.marketCap = marketCap;
     }
 
@@ -54,21 +72,12 @@ public class Asset {
         this.assetImage = assetImage;
     }
 
-    @DynamoDBAttribute(attributeName = "asset_name")
-    public String getAssetName() {
-        return assetName;
-    }
-
-    public void setAssetName(String assetName) {
-        this.assetName = assetName;
-    }
-
     @DynamoDBAttribute(attributeName = "total_supply")
-    public Integer getTotalSupply() {
+    public Double getTotalSupply() {
         return totalSupply;
     }
 
-    public void setTotalSupply(Integer totalSupply) {
+    public void setTotalSupply(Double totalSupply) {
         this.totalSupply = totalSupply;
     }
 
@@ -93,14 +102,14 @@ public class Asset {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Asset)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         Asset asset = (Asset) o;
-        return Objects.equals(getAssetId(), asset.getAssetId()) && Objects.equals(getRankByMarketCap(), asset.getRankByMarketCap()) && Objects.equals(getMarketCap(), asset.getMarketCap()) && Objects.equals(getAssetImage(), asset.getAssetImage()) && Objects.equals(getAssetName(), asset.getAssetName()) && Objects.equals(getTotalSupply(), asset.getTotalSupply()) && Objects.equals(getUsdValue(), asset.getUsdValue()) && Objects.equals(isAvailable, asset.isAvailable);
+        return Objects.equals(getAssetId(), asset.getAssetId()) && Objects.equals(getRankByMarketCap(), asset.getRankByMarketCap()) && Objects.equals(getAssetName(), asset.getAssetName()) && Objects.equals(getAssetSymbol(), asset.getAssetSymbol()) && Objects.equals(getMarketCap(), asset.getMarketCap()) && Objects.equals(getAssetImage(), asset.getAssetImage()) && Objects.equals(getTotalSupply(), asset.getTotalSupply()) && Objects.equals(getUsdValue(), asset.getUsdValue()) && Objects.equals(isAvailable, asset.isAvailable);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getAssetId(), getRankByMarketCap(), getMarketCap(), getAssetImage(), getAssetName(), getTotalSupply(), getUsdValue(), isAvailable);
+        return Objects.hash(getAssetId(), getRankByMarketCap(), getAssetName(), getAssetSymbol(), getMarketCap(), getAssetImage(), getTotalSupply(), getUsdValue(), isAvailable);
     }
 
     @Override
@@ -108,9 +117,10 @@ public class Asset {
         return "Asset{" +
                 "assetId='" + assetId + '\'' +
                 ", rankByMarketCap=" + rankByMarketCap +
+                ", assetName='" + assetName + '\'' +
+                ", assetSymbol='" + assetSymbol + '\'' +
                 ", marketCap=" + marketCap +
                 ", assetImage='" + assetImage + '\'' +
-                ", assetName='" + assetName + '\'' +
                 ", totalSupply=" + totalSupply +
                 ", usdValue=" + usdValue +
                 ", isAvailable=" + isAvailable +
