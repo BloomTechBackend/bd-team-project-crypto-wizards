@@ -1,4 +1,3 @@
-//
 //import com.cryptoportfolio.activity.CreatePortfolioActivity;
 //import com.cryptoportfolio.dynamodb.dao.AssetDao;
 //import com.cryptoportfolio.dynamodb.dao.PortfolioDao;
@@ -55,6 +54,7 @@
 //
 //        assertEquals(username, result.getMessage().getUsername());
 //    }
+
 
 //    @Test
 //    public void handleRequest_withIncorrectName_createsPlaylist() {

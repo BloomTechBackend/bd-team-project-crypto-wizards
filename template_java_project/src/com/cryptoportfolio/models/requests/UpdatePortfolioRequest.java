@@ -9,7 +9,6 @@ import java.util.Objects;
 public class UpdatePortfolioRequest {
     private String username;
     private Map<String, Double> assetQuantityMap;
-    private String token;
 
     public UpdatePortfolioRequest() {
     }
@@ -40,20 +39,11 @@ public class UpdatePortfolioRequest {
         this.assetQuantityMap = assetQuantityMap;
     }
 
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
-
     public static Builder builder() { return new Builder(); }
 
     public static final class Builder {
         private String username;
         private Map<String, Double> assetQuantityMap;
-        private String token;
 
         private Builder() {
         }
@@ -65,11 +55,6 @@ public class UpdatePortfolioRequest {
 
         public Builder withAssetQuantityMap(Map<String, Double> assetQuantityMapIdToUse) {
             this.assetQuantityMap = assetQuantityMapIdToUse;
-            return this;
-        }
-
-        public UpdatePortfolioRequest.Builder withToken(String tokenToUse) {
-            this.token = tokenToUse;
             return this;
         }
 

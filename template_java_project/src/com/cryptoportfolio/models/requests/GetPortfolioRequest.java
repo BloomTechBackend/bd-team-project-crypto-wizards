@@ -13,7 +13,7 @@ public class GetPortfolioRequest {
 
     public GetPortfolioRequest(Builder builder) {
         this.username = builder.username;
-        this.token = builder.token;
+
     }
 
     public String getToken() {
@@ -36,9 +36,7 @@ public class GetPortfolioRequest {
 
     public static final class Builder {
         private String username;
-        private String token;
-
-
+        
         private Builder() {
 
         }
@@ -48,10 +46,6 @@ public class GetPortfolioRequest {
             return this;
         }
 
-        public Builder withToken(String tokenToUse) {
-            this.token = tokenToUse;
-            return this;
-        }
 
         public GetPortfolioRequest build() { return new GetPortfolioRequest(this); }
     }
@@ -61,19 +55,18 @@ public class GetPortfolioRequest {
         if (this == o) return true;
         if (!(o instanceof GetPortfolioRequest)) return false;
         GetPortfolioRequest that = (GetPortfolioRequest) o;
-        return Objects.equals(getUsername(), that.getUsername()) && Objects.equals(getToken(), that.getToken());
+        return Objects.equals(getUsername(), that.getUsername());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getUsername(), getToken());
+        return Objects.hash(getUsername());
     }
 
     @Override
     public String toString() {
         return "GetPortfolioRequest{" +
                 "username='" + username + '\'' +
-                ", token='" + token + '\'' +
                 '}';
     }
 }

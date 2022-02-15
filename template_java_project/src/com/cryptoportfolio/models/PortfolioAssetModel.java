@@ -1,5 +1,6 @@
 package com.cryptoportfolio.models;
 
+
 public class PortfolioAssetModel {
 
     private String assetId;
@@ -30,7 +31,7 @@ public class PortfolioAssetModel {
     }
 
 
-    public static PortfolioAssetModel.Builder builder() { return new PortfolioAssetModel.Builder(); }
+    public static Builder builder() { return new Builder(); }
 
     public static final class Builder {
         private String assetId;
@@ -44,52 +45,52 @@ public class PortfolioAssetModel {
         private double quantity;
         private double quantityUSDValue;
 
-        public PortfolioAssetModel.Builder withAssetId(String assetIdToUse) {
+        public Builder withAssetId(String assetIdToUse) {
             this.assetId = assetIdToUse;
             return this;
         }
 
-        public PortfolioAssetModel.Builder withRankByMarketCap(int rankByMarketCapToUse) {
+        public Builder withRankByMarketCap(int rankByMarketCapToUse) {
             this.rankByMarketCap = rankByMarketCapToUse;
             return this;
         }
 
-        public PortfolioAssetModel.Builder withMarketCap(double marketCapToUse) {
+        public Builder withMarketCap(int marketCapToUse) {
             this.marketCap = marketCapToUse;
             return this;
         }
 
-        public PortfolioAssetModel.Builder withAssetImage(String assetImageToUse) {
+        public Builder withAssetImage(String assetImageToUse) {
             this.assetImage = assetImageToUse;
             return this;
         }
 
-        public PortfolioAssetModel.Builder withAssetSymbol(String assetSymbolToUse) {
+        public Builder withAssetSymbol(String assetSymbolToUse) {
             this.assetSymbol = assetSymbolToUse;
             return this;
         }
 
-        public PortfolioAssetModel.Builder withAssetName(String assetNameToUse) {
+        public Builder withAssetName(String assetNameToUse) {
             this.assetName = assetNameToUse;
             return this;
         }
 
-        public PortfolioAssetModel.Builder withTotalSupply(double totalSupplyToUse) {
+        public Builder withTotalSupply(double totalSupplyToUse) {
             this.totalSupply = totalSupplyToUse;
             return this;
         }
 
-        public PortfolioAssetModel.Builder withUsdValue(double usdValueToUse) {
+        public Builder withUsdValue(double usdValueToUse) {
             this.usdValue = usdValueToUse;
             return this;
         }
 
-        public PortfolioAssetModel.Builder withQuantity(double quantityToUse) {
+        public Builder withQuantity(double quantityToUse) {
             this.quantity = quantityToUse;
             return this;
         }
 
-        public PortfolioAssetModel.Builder withQuantityUSDValue(double quantityUSDValueToUse) {
+        public Builder withQuantityUSDValue(double quantityUSDValueToUse) {
             this.quantityUSDValue = quantityUSDValueToUse;
             return this;
         }

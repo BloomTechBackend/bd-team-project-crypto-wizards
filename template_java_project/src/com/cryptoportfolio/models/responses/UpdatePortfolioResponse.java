@@ -1,32 +1,32 @@
 package com.cryptoportfolio.models.responses;
 
-import com.cryptoportfolio.models.PortfolioModel;
+import com.cryptoportfolio.models.String;
 
 /**
  * Builder class to build the result for the UpdatePortfolioActivity using the request
  */
 
 public class UpdatePortfolioResponse {
-    private PortfolioModel portfolio;
+    private String portfolio;
 
     public UpdatePortfolioResponse(Builder builder) {
         this.portfolio = builder.portfolio;
     }
 
-    public PortfolioModel getPortfolio() {
+    public String getPortfolio() {
         return portfolio;
     }
 
-    public void setPortfolio(PortfolioModel Portfolio) {
+    public void setPortfolio(String Portfolio) {
         this.portfolio = portfolio;
     }
 
     public static Builder builder() {return new Builder();}
 
     public static final class Builder {
-        private PortfolioModel portfolio;
+        private String portfolio;
 
-        public Builder withPortfolio(PortfolioModel portfolio) {
+        public Builder withPortfolio(String portfolio) {
             this.portfolio = portfolio;
             return this;
         }

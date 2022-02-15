@@ -1,7 +1,5 @@
 package com.cryptoportfolio.models.responses;
 
-import com.cryptoportfolio.models.PortfolioModel;
-
 /**
  * Builder class to build the result for the CreatePortfolioActivity using the request
  */
