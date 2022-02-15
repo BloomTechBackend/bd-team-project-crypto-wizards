@@ -1,4 +1,4 @@
-import {BrowserRouter, NavLink, Route, Routes} from "react-router-dom";
+import {BrowserRouter, NavLink, Route, Routes, useRoutes} from "react-router-dom";
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import Home from "./Home";
@@ -6,15 +6,13 @@ import Register from "./Register";
 import Login from "./Login";
 import Portfolio from "./Portfolio";
 import {getUsername, getToken, setUserSession, resetUserSession} from '../../frontend/src/service/AuthService';
-import PublicRoute from "./routes/PublicRoute";
-import PrivateRoute from "./routes/PrivateRoute";
 
 const verifyTokenAPIUrl = 'https://ccixqpmq4c.execute-api.us-east-2.amazonaws.com/prod/verify';
 
 function App() {
 
     const [isAuthentication, setAuthentication] = useState(null);
-    const [isTokenSet, tokenSet] = useState(getToken);
+    const [isTokenSet, setToken] = useState(getToken);
 
     useEffect(() => {
         const token = getToken();
@@ -53,24 +51,26 @@ function App() {
                     <NavLink className="active" to="/">Home</NavLink>
                     <NavLink className="active" to="/register">Register</NavLink>
                     <NavLink className="active" to="/login">Login</NavLink>
-                    <NavLink className="active" to="/portfolio">Portfolio</NavLink>
+                    {/*<NavLink className="active" to="/portfolio">Portfolio</NavLink>*/}
+                    <NavLink className="active" onClick={() => setToken(getToken())} to="/portfolio">Portfolio</NavLink>
                 </div>
                 <div className="content">
                     <Routes>
                         {/*public routes*/}
-                        {/*<Route element={<PublicRoute/>}>*/}
-                            <Route path="/" element={<Home/>}/>
-                            <Route path="/register" element={<Register/>}/>
-                            <Route path="/login" element={<Login/>}/>
-                        {/*</Route>*/}
-
+                        {!isTokenSet && (
+                            <>
+                                <Route path="/" element={<Home/>}/>
+                                <Route path="/register" element={<Register/>}/>
+                                <Route path="/login" element={<Login/>}/>
+                            </>
+                        )}
                         {/*private routes*/}
-                        {/*<Route element={<PrivateRoute/>}>*/}
+                        {isTokenSet (
                             <Route path="/portfolio" element={<Portfolio/>}/>
-                        {/*</Route>*/}
-
+                            // <Route path="/portfolio" element={<Portfolio props={() => setToken(getToken())} />}/>
+                        )}
                         {/*catch all*/}
-                        {/*<Route path="*" element={<PageNotFound/>}/>*/}
+                        {/*<Route path="*" element={<Navigate to={isAuthentication ? "/portfolio" : "/login"} />}/>*/}
                     </Routes>
                 </div>
             </BrowserRouter>
