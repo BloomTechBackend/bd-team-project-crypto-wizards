@@ -1,33 +1,31 @@
 package com.cryptoportfolio.models.responses;
 
-import com.cryptoportfolio.models.String;
-
 /**
- * Builder class to build the result for the UpdatePortfolioActivity using the request
+ * Builder class to build the result for the CreatePortfolioActivity using the request
  */
 
 public class UpdatePortfolioResponse {
-    private String portfolio;
+    private String message;
 
     public UpdatePortfolioResponse(Builder builder) {
-        this.portfolio = builder.portfolio;
+        this.message = builder.message;
     }
 
-    public String getPortfolio() {
-        return portfolio;
+    public String getMessage() {
+        return message;
     }
 
-    public void setPortfolio(String Portfolio) {
-        this.portfolio = portfolio;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     public static Builder builder() {return new Builder();}
 
     public static final class Builder {
-        private String portfolio;
+        private String message;
 
-        public Builder withPortfolio(String portfolio) {
-            this.portfolio = portfolio;
+        public Builder withMessage(String message) {
+            this.message = message;
             return this;
         }
 
