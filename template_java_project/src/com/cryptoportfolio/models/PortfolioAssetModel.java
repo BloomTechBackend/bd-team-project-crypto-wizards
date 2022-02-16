@@ -55,7 +55,7 @@ public class PortfolioAssetModel {
             return this;
         }
 
-        public Builder withMarketCap(int marketCapToUse) {
+        public Builder withMarketCap(double marketCapToUse) {
             this.marketCap = marketCapToUse;
             return this;
         }
