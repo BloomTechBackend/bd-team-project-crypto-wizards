@@ -13,17 +13,26 @@ import com.litesoftwares.coingecko.constant.Currency;
 import com.litesoftwares.coingecko.domain.Coins.CoinMarkets;
 import com.litesoftwares.coingecko.impl.CoinGeckoApiClientImpl;
 
+import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public class CoinGeckoConnector implements RequestHandler<ScheduledEvent, String> {
 
+    private AssetDao assetDao;
+    private Gson gson;
+
+
+    @Inject
+    public CoinGeckoConnector(AssetDao assetDao, Gson gson) {
+        this.assetDao = assetDao;
+        this.gson = gson;
+    }
+
     @Override
     public String handleRequest(final ScheduledEvent event, Context context) {
 
-        AssetDao assetDao = new AssetDao();
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
         LambdaLogger logger = context.getLogger();
         CoinGeckoApiClient client = new CoinGeckoApiClientImpl();
 

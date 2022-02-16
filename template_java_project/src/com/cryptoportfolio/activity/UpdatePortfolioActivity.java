@@ -21,6 +21,7 @@ import com.google.gson.GsonBuilder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.inject.Inject;
 import java.util.Map;
 
 public class UpdatePortfolioActivity implements RequestHandler<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> {
@@ -36,6 +37,7 @@ public class UpdatePortfolioActivity implements RequestHandler<APIGatewayProxyRe
      *
      */
 
+    @Inject
     public UpdatePortfolioActivity(PortfolioDao portfolioDao, AssetDao assetDao, Gson gson) {
         this.assetDao = assetDao;
         this.portfolioDao = portfolioDao;
@@ -55,7 +57,6 @@ public class UpdatePortfolioActivity implements RequestHandler<APIGatewayProxyRe
      */
     @Override
     public APIGatewayProxyResponseEvent handleRequest(final APIGatewayProxyRequestEvent request, Context context) {
-        gson = new GsonBuilder().setPrettyPrinting().create();
         LambdaLogger logger = context.getLogger();
         logger.log(gson.toJson(request));
 

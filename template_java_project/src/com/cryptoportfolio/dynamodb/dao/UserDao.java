@@ -9,10 +9,13 @@ import com.cryptoportfolio.exceptions.UserNotFoundException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.inject.Inject;
+
 public class UserDao {
 
     private final DynamoDBMapper dynamoDBMapper;
 
+    @Inject
     public UserDao() {
         this.dynamoDBMapper = new DynamoDBMapper(DynamoDbClientProvider.getDynamoDBClient(Regions.US_EAST_2));
     }

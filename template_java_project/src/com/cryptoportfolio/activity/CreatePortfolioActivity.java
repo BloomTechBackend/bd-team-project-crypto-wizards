@@ -56,7 +56,6 @@ public class CreatePortfolioActivity  implements RequestHandler<APIGatewayProxyR
      */
     @Override
     public APIGatewayProxyResponseEvent handleRequest(final APIGatewayProxyRequestEvent request, Context context) {
-        gson = new GsonBuilder().setPrettyPrinting().create();
         LambdaLogger logger = context.getLogger();
         logger.log(gson.toJson(request));
 

@@ -15,11 +15,14 @@ import com.cryptoportfolio.utils.Utils;
 import com.google.gson.Gson;
 import org.mindrot.jbcrypt.BCrypt;
 
+import javax.inject.Inject;
+
 public class RegisterActivity implements RequestHandler<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> {
 
     private UserDao userDao;
     Gson gson;
 
+    @Inject
     public RegisterActivity(UserDao userDao, Gson gson) {
         //this.userDao = new UserDao();
         //this.gson = new Gson();
