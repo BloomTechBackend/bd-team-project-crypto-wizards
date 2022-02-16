@@ -16,7 +16,7 @@ public class Asset {
     Integer rankByMarketCap;
     String assetName;
     String assetSymbol;
-    Integer marketCap;
+    Double marketCap;
     String assetImage;
     Double totalSupply;
     Double usdValue;
@@ -59,11 +59,11 @@ public class Asset {
     }
 
     @DynamoDBAttribute(attributeName = "market_cap")
-    public int getMarketCap() {
+    public Double getMarketCap() {
         return marketCap;
     }
 
-    public void setMarketCap(Integer marketCap) {
+    public void setMarketCap(Double marketCap) {
         this.marketCap = marketCap;
     }
 
