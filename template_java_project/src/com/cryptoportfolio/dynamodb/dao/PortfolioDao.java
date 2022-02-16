@@ -7,15 +7,18 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMappingException;
 import com.cryptoportfolio.dynamodb.models.Portfolio;
 import com.cryptoportfolio.exceptions.InsufficientAssetsException;
 
+import javax.inject.Inject;
+
 /**
  * The PortfolioDao class will create a new portfolio and also fetch an existing portfolio
  */
 public class PortfolioDao {
     private final DynamoDBMapper dynamoDBMapper;
 
-
-    public PortfolioDao() {
-        this.dynamoDBMapper = new DynamoDBMapper(DynamoDbClientProvider.getDynamoDBClient(Regions.US_EAST_2));
+    @Inject
+    public PortfolioDao(DynamoDBMapper dynamoDBMapper) {
+        this.dynamoDBMapper = dynamoDBMapper;
+                //new DynamoDBMapper(DynamoDbClientProvider.getDynamoDBClient(Regions.US_EAST_2));
     }
 
     /**
