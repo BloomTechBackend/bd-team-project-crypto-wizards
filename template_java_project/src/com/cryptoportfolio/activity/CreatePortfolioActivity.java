@@ -73,16 +73,16 @@ public class CreatePortfolioActivity  implements RequestHandler<APIGatewayProxyR
         Map<String, Double> assetQuantityMap = createPortfolioRequest.getAssetQuantityMap();
 
 
-        for(String assetId : assetQuantityMap.keySet()) {
-            if (assetDao.getAsset(assetId) == null || !assetDao.getAsset(assetId).getAvailable()) {
-                return Utils.buildResponse(401,
-                    new FailureResponse("This Asset is not available"));
-            }
-            if (createPortfolioRequest.getAssetQuantityMap().get(assetId) > assetDao.getAsset(assetId).getTotalSupply()) {
-                return Utils.buildResponse(401,
-                        new FailureResponse("There is an insufficient amount of assets, please enter a smaller amount"));
-            }
-        }
+//        for(String assetId : assetQuantityMap.keySet()) {
+//            if (assetDao.getAsset(assetId) == null || !assetDao.getAsset(assetId).getAvailable()) {
+//                return Utils.buildResponse(401,
+//                    new FailureResponse("This Asset is not available"));
+//            }
+//            if (createPortfolioRequest.getAssetQuantityMap().get(assetId) > assetDao.getAsset(assetId).getTotalSupply()) {
+//                return Utils.buildResponse(401,
+//                        new FailureResponse("There is an insufficient amount of assets, please enter a smaller amount"));
+//            }
+//        }
 
         portfolio.setUsername(createPortfolioRequest.getUsername());
         portfolio.setAssetQuantityMap(assetQuantityMap);
