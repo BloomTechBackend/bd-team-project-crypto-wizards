@@ -1,18 +1,16 @@
 import React from 'react';
 import {useNavigate} from "react-router-dom";
-import {getUsername, setUserSession, resetUserSession} from '../../frontend/src/service/AuthService';
+import {getUsername, resetUserSession} from '../../frontend/src/service/AuthService';
 
 const Portfolio = (props) => {
     const username = getUsername();
     const navigate = useNavigate();
 
     const createHandler = () => {
-        setUserSession();
         navigate('/createPortfolio');
     }
 
     const updateHandler = () => {
-        setUserSession();
         navigate('/updatePortfolio');
     }
 
