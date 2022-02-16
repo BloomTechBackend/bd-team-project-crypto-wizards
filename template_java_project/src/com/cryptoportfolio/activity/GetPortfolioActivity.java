@@ -1,16 +1,25 @@
 package com.cryptoportfolio.activity;
 
 import com.amazonaws.services.lambda.runtime.Context;
+import com.amazonaws.services.lambda.runtime.LambdaLogger;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
+import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent;
+import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyResponseEvent;
 import com.cryptoportfolio.dynamodb.dao.AssetDao;
 import com.cryptoportfolio.dynamodb.dao.PortfolioDao;
 import com.cryptoportfolio.dynamodb.models.Asset;
 import com.cryptoportfolio.dynamodb.models.Portfolio;
 import com.cryptoportfolio.exceptions.PortfolioNotFoundException;
 import com.cryptoportfolio.models.PortfolioAssetModel;
-import com.cryptoportfolio.models.String;
+import com.cryptoportfolio.models.requests.CreatePortfolioRequest;
 import com.cryptoportfolio.models.requests.GetPortfolioRequest;
+import com.cryptoportfolio.models.responses.CreatePortfolioResponse;
 import com.cryptoportfolio.models.responses.GetPortfolioResponse;
+import com.cryptoportfolio.utils.Auth;
+import com.cryptoportfolio.utils.Utils;
+import com.cryptoportfolio.utils.VerificationStatus;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -23,7 +32,7 @@ import java.util.Map;
  * This API allows the customer to retrieve their saved portfolio.
  */
 
-public class GetPortfolioActivity implements RequestHandler<GetPortfolioRequest, GetPortfolioResponse>  {
+public class GetPortfolioActivity implements RequestHandler<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent>  {
 
     private final Logger log = LogManager.getLogger();
     private PortfolioDao portfolioDao;
@@ -31,14 +40,12 @@ public class GetPortfolioActivity implements RequestHandler<GetPortfolioRequest,
 
     /**
      * Instantiates a new GetPortfolioActivity object.
-     *
-     * @param portfolioDao PortfolioDao to access the portfolio table.
      */
 
 
-    public GetPortfolioActivity(PortfolioDao portfolioDao, AssetDao assetDao) {
-        this.portfolioDao = portfolioDao;
-        this.assetDao = assetDao;
+    public GetPortfolioActivity() {
+        this.portfolioDao = new PortfolioDao();
+        this.assetDao = new AssetDao();
     }
 
     /**
@@ -48,27 +55,34 @@ public class GetPortfolioActivity implements RequestHandler<GetPortfolioRequest,
      * <p>
      * If the portfolio does not exist, this should throw a PortfolioNotFoundException.
      *
-     * @param getPortfolioRequest request object containing the username
+     * @param request request object containing the username
      * @return getPortfolioResult result object containing the API defined {@link String}
      */
     @Override
-    public GetPortfolioResponse handleRequest(final GetPortfolioRequest getPortfolioRequest, Context context) throws PortfolioNotFoundException {
-        //verifyRequest
-        log.info("Received GetPortfolioRequest {}", getPortfolioRequest);
-        java.lang.String requestedId = getPortfolioRequest.getUsername();
+    public APIGatewayProxyResponseEvent handleRequest(APIGatewayProxyRequestEvent request, Context context) {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        LambdaLogger logger = context.getLogger();
+        logger.log(gson.toJson(request));
 
-        Portfolio portfolio = portfolioDao.getUserPortfolio(requestedId);
-        Map<java.lang.String, PortfolioAssetModel> assetMap = new HashMap<>();
-        //Map<String, List<PortfolioAssetModel>> userAssetMap = new HashMap<>();
+        CreatePortfolioRequest createPortfolioRequest = gson.fromJson(request.getBody(), CreatePortfolioRequest.class);
+        String username = createPortfolioRequest.getUsername();
+        VerificationStatus verificationStatus = Auth.verifyRequest(username, request);
+
+        if (!verificationStatus.isVerified()) {
+            return Utils.buildResponse(401, verificationStatus.getMessage());
+        }
+
+        Portfolio portfolio = portfolioDao.getUserPortfolio(username);
+        Map<String, PortfolioAssetModel> assetMap = new HashMap<>();
         double totalPortfolioValue = 0.0;
 
         if (portfolio == null) {
-            throw new PortfolioNotFoundException();
+            return Utils.buildResponse(400, "Could not find Portfolio");
         }
 
-        for (java.lang.String assetId : portfolioDao.getUserPortfolio(requestedId).getAssetQuantityMap().keySet()) {
+        for (String assetId : portfolioDao.getUserPortfolio(username).getAssetQuantityMap().keySet()) {
             Asset asset = assetDao.getAsset(assetId);
-            double assetQuantity = portfolioDao.getUserPortfolio(requestedId).getAssetQuantityMap().get(assetId);
+            double assetQuantity = portfolioDao.getUserPortfolio(username).getAssetQuantityMap().get(assetId);
             PortfolioAssetModel portfolioAssetModel = new PortfolioAssetModel.Builder()
                     .withAssetId(asset.getAssetId())
                     .withAssetImage(asset.getAssetImage())
@@ -86,11 +100,11 @@ public class GetPortfolioActivity implements RequestHandler<GetPortfolioRequest,
             totalPortfolioValue = totalPortfolioValue + (assetQuantity * asset.getUsdValue());
         }
 
-        return GetPortfolioResponse.builder()
-                .withUsername(requestedId)
+        return Utils.buildResponse(200, GetPortfolioResponse.builder()
+                .withUsername(username)
                 .withPortfolioAssetMap(assetMap)
                 .withTotalPortfolioValue(totalPortfolioValue)
-                .build();
+                .build());
     }
 }
 

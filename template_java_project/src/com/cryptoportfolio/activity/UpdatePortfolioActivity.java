@@ -1,42 +1,43 @@
 package com.cryptoportfolio.activity;
 
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMappingException;
 import com.amazonaws.services.lambda.runtime.Context;
+import com.amazonaws.services.lambda.runtime.LambdaLogger;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
-import com.cryptoportfolio.converter.ModelConverter;
+import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent;
+import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyResponseEvent;
 import com.cryptoportfolio.dynamodb.dao.AssetDao;
 import com.cryptoportfolio.dynamodb.dao.PortfolioDao;
 import com.cryptoportfolio.dynamodb.models.Asset;
 import com.cryptoportfolio.dynamodb.models.Portfolio;
-import com.cryptoportfolio.exceptions.InsufficientAssetsException;
-import com.cryptoportfolio.models.String;
 import com.cryptoportfolio.models.requests.UpdatePortfolioRequest;
+import com.cryptoportfolio.models.responses.FailureResponse;
 import com.cryptoportfolio.models.responses.UpdatePortfolioResponse;
+import com.cryptoportfolio.utils.Auth;
+import com.cryptoportfolio.utils.Utils;
+import com.cryptoportfolio.utils.VerificationStatus;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.Map;
 
-public class UpdatePortfolioActivity implements RequestHandler<UpdatePortfolioRequest, UpdatePortfolioResponse> {
+public class UpdatePortfolioActivity implements RequestHandler<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> {
 
     private final Logger log = LogManager.getLogger();
     private PortfolioDao portfolioDao;
     private AssetDao assetDao;
 
-    public UpdatePortfolioActivity() {
-    }
-
     /**
      * Instantiates a new UpdatePortfolioActivity object.
      *
-     * @param portfolioDao PortfolioDao to access the Portfolios table.
      */
 
-    public UpdatePortfolioActivity(PortfolioDao portfolioDao, AssetDao assetDao) {
-        this.portfolioDao = portfolioDao;
-        this.assetDao = assetDao;
+    public UpdatePortfolioActivity() {
+        this.assetDao = new AssetDao();
+        this.portfolioDao = new PortfolioDao();
     }
-
-
 
     /**
      * This method handles the incoming request by updating the existing Portfolio
@@ -45,34 +46,54 @@ public class UpdatePortfolioActivity implements RequestHandler<UpdatePortfolioRe
      * It then returns the newly updated Portfolio.
      * <p>
      *
-     * @param updatePortfolioRequest request object containing the username and the asset,quantity map
+     * @param request request object containing the username and the asset,quantity map
      *                              associated with it
      * @return updatePortfolioResult result object containing the API defined {@link String}
      */
     @Override
-    public UpdatePortfolioResponse handleRequest(final UpdatePortfolioRequest updatePortfolioRequest, Context context) throws InsufficientAssetsException{
-        log.info("Received CreatePortfolioRequest {}", updatePortfolioRequest);
+    public APIGatewayProxyResponseEvent handleRequest(final APIGatewayProxyRequestEvent request, Context context) {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        LambdaLogger logger = context.getLogger();
+        logger.log(gson.toJson(request));
+
+        UpdatePortfolioRequest updatePortfolioRequest = gson.fromJson(request.getBody(), UpdatePortfolioRequest.class);
+        String username = updatePortfolioRequest.getUsername();
+        VerificationStatus verificationStatus = Auth.verifyRequest(username, request);
+
+        if (!verificationStatus.isVerified()) {
+            return Utils.buildResponse(401, verificationStatus.getMessage());
+        }
 
         Portfolio portfolio = new Portfolio();
         Asset asset = new Asset();
 
 
-        Map<java.lang.String, Double> assetQuantityMap = updatePortfolioRequest.getAssetQuantityMap();
+        Map<String, Double> assetQuantityMap = updatePortfolioRequest.getAssetQuantityMap();
 
-        for(Map.Entry<java.lang.String, Double> entry : assetQuantityMap.entrySet()) {
-            if (entry.getValue() > assetDao.getAsset(entry.getKey()).getTotalSupply()) {
-                throw new InsufficientAssetsException();
+
+        for(String assetId : assetQuantityMap.keySet()) {
+            if (assetDao.getAsset(assetId) == null || !assetDao.getAsset(assetId).getAvailable()) {
+                return Utils.buildResponse(401,
+                        new FailureResponse("This Asset is not available"));
+            }
+            if (updatePortfolioRequest.getAssetQuantityMap().get(assetId) > assetDao.getAsset(assetId).getTotalSupply()) {
+                return Utils.buildResponse(401,
+                        new FailureResponse("There is an insufficient amount of assets, please enter a smaller amount"));
             }
         }
 
         portfolio.setUsername(updatePortfolioRequest.getUsername());
         portfolio.setAssetQuantityMap(assetQuantityMap);
+        try {
+            portfolioDao.savePortfolio(portfolio);
+        } catch (DynamoDBMappingException e) {
+            return Utils.buildResponse(500,
+                    new FailureResponse("Unable to save portfolio"));
+        }
 
-        portfolioDao.savePortfolio(portfolio);
-
-        String portfolioModel = new ModelConverter().toPortfolioModel(updatePortfolioRequest.getUsername(), portfolio);
-
-        return UpdatePortfolioResponse.builder().withPortfolio(portfolioModel).build();
+        return Utils.buildResponse(200, UpdatePortfolioResponse.builder()
+                .withMessage("Portfolio created successfully")
+                .build());
     }
 
 }
