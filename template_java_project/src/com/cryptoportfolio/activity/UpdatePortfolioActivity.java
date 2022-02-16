@@ -28,15 +28,18 @@ public class UpdatePortfolioActivity implements RequestHandler<APIGatewayProxyRe
     private final Logger log = LogManager.getLogger();
     private PortfolioDao portfolioDao;
     private AssetDao assetDao;
+    private Gson gson;
+
 
     /**
      * Instantiates a new UpdatePortfolioActivity object.
      *
      */
 
-    public UpdatePortfolioActivity() {
-        this.assetDao = new AssetDao();
-        this.portfolioDao = new PortfolioDao();
+    public UpdatePortfolioActivity(PortfolioDao portfolioDao, AssetDao assetDao, Gson gson) {
+        this.assetDao = assetDao;
+        this.portfolioDao = portfolioDao;
+        this.gson = gson;
     }
 
     /**
@@ -52,7 +55,7 @@ public class UpdatePortfolioActivity implements RequestHandler<APIGatewayProxyRe
      */
     @Override
     public APIGatewayProxyResponseEvent handleRequest(final APIGatewayProxyRequestEvent request, Context context) {
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        gson = new GsonBuilder().setPrettyPrinting().create();
         LambdaLogger logger = context.getLogger();
         logger.log(gson.toJson(request));
 

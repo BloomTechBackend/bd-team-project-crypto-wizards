@@ -20,9 +20,11 @@ public class RegisterActivity implements RequestHandler<APIGatewayProxyRequestEv
     private UserDao userDao;
     Gson gson;
 
-    public RegisterActivity() {
-        this.userDao = new UserDao();
-        this.gson = new Gson();
+    public RegisterActivity(UserDao userDao, Gson gson) {
+        //this.userDao = new UserDao();
+        //this.gson = new Gson();
+        this.userDao = userDao;
+        this.gson = gson;
     }
 
     @Override

@@ -24,9 +24,9 @@ public class VerifyActivity implements RequestHandler<APIGatewayProxyRequestEven
     private UserDao userDao;
     Gson gson;
 
-    public VerifyActivity() {
-        this.userDao = new UserDao();
-        this.gson = new Gson();
+    public VerifyActivity(UserDao userDao, Gson gson) {
+        this.userDao = userDao;
+        this.gson = gson;
     }
 
     @Override

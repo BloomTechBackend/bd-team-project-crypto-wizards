@@ -21,6 +21,7 @@ import org.apache.logging.log4j.Logger;
 import com.cryptoportfolio.models.requests.CreatePortfolioRequest;
 import com.cryptoportfolio.models.responses.CreatePortfolioResponse;
 
+import javax.inject.Inject;
 import java.util.Map;
 
 public class CreatePortfolioActivity  implements RequestHandler<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> {
@@ -34,10 +35,11 @@ public class CreatePortfolioActivity  implements RequestHandler<APIGatewayProxyR
      * Instantiates a new CreatePortfolioActivity object.
      *
      */
-
-    public CreatePortfolioActivity() {
-        this.assetDao = new AssetDao();
-        this.portfolioDao = new PortfolioDao();
+    @Inject
+    public CreatePortfolioActivity(PortfolioDao portfolioDao, AssetDao assetDao, Gson gson) {
+        this.assetDao = assetDao;
+        this.portfolioDao = portfolioDao;
+        this.gson = gson;
     }
 
 
@@ -54,7 +56,7 @@ public class CreatePortfolioActivity  implements RequestHandler<APIGatewayProxyR
      */
     @Override
     public APIGatewayProxyResponseEvent handleRequest(final APIGatewayProxyRequestEvent request, Context context) {
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        gson = new GsonBuilder().setPrettyPrinting().create();
         LambdaLogger logger = context.getLogger();
         logger.log(gson.toJson(request));
 

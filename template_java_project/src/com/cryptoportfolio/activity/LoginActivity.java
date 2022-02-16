@@ -16,16 +16,17 @@ import com.cryptoportfolio.utils.Utils;
 import com.google.gson.Gson;
 import org.mindrot.jbcrypt.BCrypt;
 
+import javax.inject.Inject;
 import java.util.Date;
 
 public class LoginActivity implements RequestHandler<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> {
 
     private UserDao userDao;
     Gson gson;
-
-    public LoginActivity() {
-        this.userDao = new UserDao();
-        this.gson = new Gson();
+    @Inject
+    public LoginActivity(UserDao userDao, Gson gson) {
+        this.userDao = userDao;
+        this.gson = gson;
     }
 
     @Override
