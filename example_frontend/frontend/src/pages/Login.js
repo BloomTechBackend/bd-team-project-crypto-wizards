@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
 import {useNavigate} from "react-router-dom";
 import axios from 'axios';
-import {setUserSession} from '../../frontend/src/service/AuthService';
+import {setUserSession} from '../service/AuthService';
 
 const loginAPIUrl = 'https://ccixqpmq4c.execute-api.us-east-2.amazonaws.com/prod/login';
 
+// Upon successful login, ViewPortfolio-Create-Update buttons will be visible
 const Login = (props) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -28,6 +29,7 @@ const Login = (props) => {
             password: password
         }
 
+        // Take out redirect to portfolio, make ViewPortfolio-Create-Update buttons will be visible
         axios.post(loginAPIUrl, requestBody, requestConfig).then((response) => {
             setUserSession(response.data.username, response.data.token);
             props.authenticate();

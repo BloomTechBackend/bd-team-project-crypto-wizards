@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import axios from 'axios';
-import {getToken, getUsername} from './service/AuthService';
+import {getToken, getUsername} from '../service/AuthService';
 import {useNavigate} from "react-router-dom";
 //import AddAsset from "../../frontend/src/components/AddAsset";
-import AssetList from "../../frontend/src/components/AssetList";
+import AssetList from "../components/AssetList";
 
 const portfolioAPIUrl = 'https://ccixqpmq4c.execute-api.us-east-2.amazonaws.com/prod/portfolio';
 
@@ -59,12 +59,13 @@ const CreatePortfolio = (props) => {
     return (
         <div className="coinsummary shadow border p-2 rounded mt-2 bg-light">
             {/*<AddAsset />*/}
-            <AssetList />
+
             <form onSubmit={submitHandler}>
                 <h5>Create Portfolio</h5>
                 {username}'s Portfolio <br/> <br/>
                 Asset: <input type="text" value={assetId} onChange={event => setAssetId(event.target.value)} /> <br/>
                 Quantity: <input type="text" value={quantity} onChange={event => setQuantity(event.target.value)} /> <br/> <br/>
+                <AssetList />
                 <input type="submit" value="Add Asset" /> <br/>
                 <input type="submit" value="Create Portfolio" />
             </form>
