@@ -1,6 +1,6 @@
 import {createContext, useState} from "react";
 
-export const WatchlistContext = createContext();
+export const WatchListContext = createContext();
 
 // Use context to share "global" data
 // This component has localstorage (saves key-value pairs in browser for later use)
@@ -8,11 +8,19 @@ export const WatchlistContext = createContext();
 // Effect hook (useEffect) fetched data
 // Functions - addAsset, deleteAsset
 export const WatchListContextProvider = (props) => {
-    const [watchList, setWatchList] = useState(["bitcoin", "ethereum", "ripple"]);
+    const [watchList, setWatchList] = useState([
+        "bitcoin",
+        "ethereum",
+        "ripple",
+        "litecoin",
+        "tether",
+        "bitcoin-cash",
+        "eos",
+    ]);
 
     return (
-        <WatchlistContext.Provider value={{watchList}}>
+        <WatchListContext.Provider value={{watchList}}>
             {props.children}
-        </WatchlistContext.Provider>
+        </WatchListContext.Provider>
     );
 };
