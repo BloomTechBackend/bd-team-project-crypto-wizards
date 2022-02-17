@@ -5,12 +5,14 @@ import com.amazonaws.services.lambda.runtime.LambdaLogger;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyResponseEvent;
+import com.cryptoportfolio.converter.ModelConverter;
 import com.cryptoportfolio.dynamodb.dao.AssetDao;
 import com.cryptoportfolio.dynamodb.dao.PortfolioDao;
 import com.cryptoportfolio.dynamodb.models.Asset;
 import com.cryptoportfolio.dynamodb.models.Portfolio;
 import com.cryptoportfolio.exceptions.PortfolioNotFoundException;
 import com.cryptoportfolio.models.PortfolioAssetModel;
+import com.cryptoportfolio.models.PortfolioModel;
 import com.cryptoportfolio.models.requests.CreatePortfolioRequest;
 import com.cryptoportfolio.models.requests.GetPortfolioRequest;
 import com.cryptoportfolio.models.responses.CreatePortfolioResponse;
@@ -75,38 +77,16 @@ public class GetPortfolioActivity implements RequestHandler<APIGatewayProxyReque
         }
 
         Portfolio portfolio = portfolioDao.getUserPortfolio(username);
-        Map<String, PortfolioAssetModel> assetMap = new HashMap<>();
-        double totalPortfolioValue = 0.0;
 
         if (portfolio == null) {
             return Utils.buildResponse(400, "Could not find Portfolio");
         }
 
-        for (String assetId : portfolioDao.getUserPortfolio(username).getAssetQuantityMap().keySet()) {
-            Asset asset = assetDao.getAsset(assetId);
-            double assetQuantity = portfolioDao.getUserPortfolio(username).getAssetQuantityMap().get(assetId);
-            PortfolioAssetModel portfolioAssetModel = new PortfolioAssetModel.Builder()
-                    .withAssetId(asset.getAssetId())
-                    .withAssetImage(asset.getAssetImage())
-                    .withAssetName(asset.getAssetName())
-                    .withAssetSymbol(asset.getAssetSymbol())
-                    .withRankByMarketCap(asset.getRankByMarketCap())
-                    .withMarketCap(asset.getMarketCap())
-                    .withTotalSupply(asset.getTotalSupply())
-                    .withUsdValue(asset.getUsdValue())
-                    .withPriceChangePercentage24h(asset.getPriceChangePercentage24h())
-                    .withQuantity(assetQuantity)
-                    .withQuantityUSDValue(assetQuantity * asset.getUsdValue())
-                    .build();
+        PortfolioModel portfolioModel = new ModelConverter().toPortfolioModel(username, portfolio);
 
-            assetMap.put(assetId, portfolioAssetModel);
-            totalPortfolioValue = totalPortfolioValue + (assetQuantity * asset.getUsdValue());
-        }
 
         return Utils.buildResponse(200, GetPortfolioResponse.builder()
-                .withUsername(username)
-                .withPortfolioAssetMap(assetMap)
-                .withTotalPortfolioValue(totalPortfolioValue)
+                .withPortfolio(portfolioModel)
                 .build());
     }
 }

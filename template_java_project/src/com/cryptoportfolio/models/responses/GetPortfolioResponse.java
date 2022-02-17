@@ -1,6 +1,7 @@
 package com.cryptoportfolio.models.responses;
 
 import com.cryptoportfolio.models.PortfolioAssetModel;
+import com.cryptoportfolio.models.PortfolioModel;
 
 import java.util.Map;
 import java.util.Objects;
@@ -10,60 +11,27 @@ import java.util.Objects;
  */
 
 public class GetPortfolioResponse {
-    private String username;
-    private Map<String, PortfolioAssetModel> portfolioAssetMap;
-    private double totalPortfolioValue;
-
-
+    private PortfolioModel portfolio;
 
     public GetPortfolioResponse(Builder builder) {
-        this.portfolioAssetMap = builder.portfolioAssetMap;
-        this.totalPortfolioValue = builder.totalPortfolioValue;
+        this.portfolio = builder.portfolio;
     }
 
-    public String getUsername() {
-        return username;
+    public PortfolioModel getPortfolio() {
+        return portfolio;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public Map<String, PortfolioAssetModel> getPortfolioAssetMap() {
-        return portfolioAssetMap;
-    }
-
-    public void setPortfolioAssetMap(Map<String, PortfolioAssetModel> assetMap) {
-        this.portfolioAssetMap = assetMap;
-    }
-
-    public double getTotalPortfolioValue() {
-        return totalPortfolioValue;
-    }
-
-    public void setTotalPortfolioValue(double totalPortfolioValue) {
-        this.totalPortfolioValue = totalPortfolioValue;
+    public void setPortfolio(PortfolioModel portfolio) {
+        this.portfolio = portfolio;
     }
 
     public static Builder builder() {return new Builder();}
 
     public static final class Builder {
-        private String username;
-        private Map<String, PortfolioAssetModel> portfolioAssetMap;
-        private double totalPortfolioValue;
+        private PortfolioModel portfolio;
 
-        public Builder withUsername(String usernameToUse) {
-            this.username = usernameToUse;
-            return this;
-        }
-
-        public Builder withPortfolioAssetMap(Map<String, PortfolioAssetModel> portfolioAssetMapToUse) {
-            this.portfolioAssetMap = portfolioAssetMapToUse;
-            return this;
-        }
-
-        public Builder withTotalPortfolioValue(double totalPortfolioValueToUse) {
-            this.totalPortfolioValue = totalPortfolioValueToUse;
+        public Builder withPortfolio(PortfolioModel playlistToUse) {
+            this.portfolio = playlistToUse;
             return this;
         }
 
@@ -75,19 +43,18 @@ public class GetPortfolioResponse {
         if (this == o) return true;
         if (!(o instanceof GetPortfolioResponse)) return false;
         GetPortfolioResponse that = (GetPortfolioResponse) o;
-        return Double.compare(that.getTotalPortfolioValue(), getTotalPortfolioValue()) == 0 && Objects.equals(getPortfolioAssetMap(), that.getPortfolioAssetMap());
+        return Objects.equals(getPortfolio(), that.getPortfolio());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getPortfolioAssetMap(), getTotalPortfolioValue());
+        return Objects.hash(getPortfolio());
     }
 
     @Override
     public String toString() {
-        return "GetPortfolioResult{" +
-                "portfolioAssetMap=" + portfolioAssetMap +
-                ", totalPortfolioValue=" + totalPortfolioValue +
+        return "GetPortfolioResponse{" +
+                "portfolio=" + portfolio +
                 '}';
     }
 }
