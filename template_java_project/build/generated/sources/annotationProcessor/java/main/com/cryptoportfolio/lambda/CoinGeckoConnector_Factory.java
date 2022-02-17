@@ -21,7 +21,6 @@ public final class CoinGeckoConnector_Factory implements Factory<CoinGeckoConnec
     this.gsonProvider = gsonProvider;
   }
 
-
   @Override
   public CoinGeckoConnector get() {
     return new CoinGeckoConnector(assetDaoProvider.get(), gsonProvider.get());

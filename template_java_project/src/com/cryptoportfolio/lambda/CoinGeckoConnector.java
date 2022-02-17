@@ -6,6 +6,7 @@ import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.amazonaws.services.lambda.runtime.events.ScheduledEvent;
 import com.cryptoportfolio.dynamodb.dao.AssetDao;
 import com.cryptoportfolio.dynamodb.models.Asset;
+import com.cryptoportfolio.settings.Settings;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.litesoftwares.coingecko.CoinGeckoApiClient;
@@ -38,7 +39,8 @@ public class CoinGeckoConnector implements RequestHandler<ScheduledEvent, String
 
         logger.log(gson.toJson(event));
 
-        List<CoinMarkets> coinMarkets = client.getCoinMarkets(Currency.USD);
+        List<CoinMarkets> coinMarkets = client.getCoinMarkets(Currency.USD, Settings.AVAILABLE_ASSETS_STRING,
+                null, null, null, false, null);
         List<Asset> assetsToSave = new ArrayList<>();
 
         for (var coinMarket : coinMarkets) {
@@ -51,6 +53,7 @@ public class CoinGeckoConnector implements RequestHandler<ScheduledEvent, String
             asset.setAssetImage(coinMarket.getImage());
             asset.setTotalSupply(coinMarket.getTotalSupply());
             asset.setUsdValue(coinMarket.getCurrentPrice());
+            asset.setPriceChangePercentage24h(coinMarket.getPriceChangePercentage24h());
 
             assetsToSave.add(asset);
         }

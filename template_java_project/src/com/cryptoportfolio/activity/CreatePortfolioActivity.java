@@ -11,6 +11,7 @@ import com.cryptoportfolio.dynamodb.dao.PortfolioDao;
 import com.cryptoportfolio.dynamodb.models.Asset;
 import com.cryptoportfolio.dynamodb.models.Portfolio;
 import com.cryptoportfolio.models.responses.FailureResponse;
+import com.cryptoportfolio.settings.Settings;
 import com.cryptoportfolio.utils.Auth;
 import com.cryptoportfolio.utils.Utils;
 import com.cryptoportfolio.utils.VerificationStatus;
@@ -74,16 +75,19 @@ public class CreatePortfolioActivity  implements RequestHandler<APIGatewayProxyR
         Map<String, Double> assetQuantityMap = createPortfolioRequest.getAssetQuantityMap();
 
 
-        for(String assetId : assetQuantityMap.keySet()) {
-            if (assetDao.getAsset(assetId) == null || !assetDao.getAsset(assetId).getAvailable()) {
-                return Utils.buildResponse(401,
-                    new FailureResponse("This Asset is not available"));
-            }
-            if (createPortfolioRequest.getAssetQuantityMap().get(assetId) > assetDao.getAsset(assetId).getTotalSupply()) {
-                return Utils.buildResponse(401,
-                        new FailureResponse("There is an insufficient amount of assets, please enter a smaller amount"));
-            }
+        if (!Settings.AVAILABLE_ASSETS.containsAll(assetQuantityMap.keySet())) {
+            return Utils.buildResponse(401,
+                    new FailureResponse("Request contains unavailable assets"));
         }
+
+        // I think it takes too long to check the database for each asset
+        // If we do check the amount against the total supply, maybe we should only do it on the front end
+//        for(String assetId : assetQuantityMap.keySet()) {
+//            if (createPortfolioRequest.getAssetQuantityMap().get(assetId) > assetDao.getAsset(assetId).getTotalSupply()) {
+//                return Utils.buildResponse(401,
+//                        new FailureResponse("There is an insufficient amount of assets, please enter a smaller amount"));
+//            }
+//        }
 
         portfolio.setUsername(createPortfolioRequest.getUsername());
         portfolio.setAssetQuantityMap(assetQuantityMap);

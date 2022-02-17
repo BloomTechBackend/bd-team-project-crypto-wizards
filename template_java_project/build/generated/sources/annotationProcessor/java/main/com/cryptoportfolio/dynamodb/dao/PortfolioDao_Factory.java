@@ -16,7 +16,6 @@ public final class PortfolioDao_Factory implements Factory<PortfolioDao> {
     this.dynamoDBMapperProvider = dynamoDBMapperProvider;
   }
 
-
   @Override
   public PortfolioDao get() {
     return new PortfolioDao(dynamoDBMapperProvider.get());
