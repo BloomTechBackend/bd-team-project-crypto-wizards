@@ -1,17 +1,19 @@
 import {BrowserRouter, NavLink, Route, Routes, Navigate} from "react-router-dom";
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import Home from "./Home";
-import Register from "./Register";
-import Login from "./Login";
-import Portfolio from "./Portfolio";
+import Home from "./pages/Home";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
+import Portfolio from "./pages/Portfolio";
 import {getUsername, getToken, setUserSession, resetUserSession} from './service/AuthService';
-import CreatePortfolio from "./CreatePortfolio";
-import {WatchListContextProvider} from "./context/watchListContext";
+import CreatePortfolio from "./pages/CreatePortfolio";
+import {WatchListContextProvider} from "./context/watchlistContext";
 //import "./App.css";
 
 const verifyTokenAPIUrl = 'https://ccixqpmq4c.execute-api.us-east-2.amazonaws.com/prod/verify';
 
+
+// This function does the routing
 function App() {
 
     const [isAuthentication, setAuthentication] = useState(null);
@@ -58,10 +60,10 @@ function App() {
             <WatchListContextProvider>
                 <BrowserRouter>
                     <div className="header">
-                        <NavLink className="active" to="/">Home</NavLink>
+                        {/*<NavLink className="active" to="/">Home</NavLink>*/}
                         <NavLink className="active" to="/register">Register</NavLink>
                         <NavLink className="active" to="/login">Login</NavLink>
-                        <NavLink className="active" to="/portfolio">Portfolio</NavLink>
+                        {/*<NavLink className="active" to="/portfolio">Portfolio</NavLink>*/}
                     </div>
                     <div className="content">
                         <Routes>

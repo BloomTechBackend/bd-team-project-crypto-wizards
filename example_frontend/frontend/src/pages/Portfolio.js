@@ -1,7 +1,9 @@
 import React from 'react';
 import {useNavigate} from "react-router-dom";
-import {getUsername, resetUserSession} from '../../frontend/src/service/AuthService';
+import {getUsername, resetUserSession} from '../service/AuthService';
+import AssetList from "../components/AssetList";
 
+// This is the viewPortfolio page
 const Portfolio = (props) => {
     const username = getUsername();
     const navigate = useNavigate();
@@ -21,8 +23,9 @@ const Portfolio = (props) => {
     }
     return (
         <div>
-            Hello {username}! You have been logged in. <br/> <br/>
-            Welcome to Crypto Portfolio Tracker. <br/> <br/>
+            Hello {username}, you have been successfully logged in. <br/> <br/>
+            Your Crypto Portfolio Tracker. <br/> <br/>
+            <AssetList />
             <input type="button" value="Create Portfolio" onClick={createHandler} /> <br/>
             <input type="button" value="Update Portfolio" onClick={updateHandler} /> <br/>
             <input type="button" value="Logout" onClick={logoutHandler} />
