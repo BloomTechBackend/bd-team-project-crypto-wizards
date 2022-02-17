@@ -12,7 +12,6 @@ import javax.annotation.processing.Generated;
 public final class DaoModule_ProvideDynamoDBMapperFactory implements Factory<DynamoDBMapper> {
   private final DaoModule module;
 
-
   public DaoModule_ProvideDynamoDBMapperFactory(DaoModule module) {
     this.module = module;
   }

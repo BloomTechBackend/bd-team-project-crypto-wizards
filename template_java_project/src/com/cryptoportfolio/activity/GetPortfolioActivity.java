@@ -94,6 +94,7 @@ public class GetPortfolioActivity implements RequestHandler<APIGatewayProxyReque
                     .withMarketCap(asset.getMarketCap())
                     .withTotalSupply(asset.getTotalSupply())
                     .withUsdValue(asset.getUsdValue())
+                    .withPriceChangePercentage24h(asset.getPriceChangePercentage24h())
                     .withQuantity(assetQuantity)
                     .withQuantityUSDValue(assetQuantity * asset.getUsdValue())
                     .build();

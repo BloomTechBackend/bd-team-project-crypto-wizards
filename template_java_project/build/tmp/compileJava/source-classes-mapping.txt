@@ -20,6 +20,9 @@ com/cryptoportfolio/models/responses/RegisterResponse.java
  com.cryptoportfolio.models.responses.RegisterResponse$Builder
 com/cryptoportfolio/activity/VerifyActivity.java
  com.cryptoportfolio.activity.VerifyActivity
+com/cryptoportfolio/models/AssetModel.java
+ com.cryptoportfolio.models.AssetModel
+ com.cryptoportfolio.models.AssetModel$Builder
 com/cryptoportfolio/activity/RegisterActivity.java
  com.cryptoportfolio.activity.RegisterActivity
 com/cryptoportfolio/models/requests/UpdatePortfolioRequest.java
@@ -63,6 +66,8 @@ com/cryptoportfolio/models/requests/VerifyRequest.java
  com.cryptoportfolio.models.requests.VerifyRequest
 com/cryptoportfolio/lambda/CoinGeckoConnector.java
  com.cryptoportfolio.lambda.CoinGeckoConnector
+com/cryptoportfolio/settings/Settings.java
+ com.cryptoportfolio.settings.Settings
 com/cryptoportfolio/converter/AssetListConverter.java
  com.cryptoportfolio.converter.AssetListConverter
  com.cryptoportfolio.converter.AssetListConverter$1
@@ -86,6 +91,8 @@ com/cryptoportfolio/models/responses/LoginResponse.java
  com.cryptoportfolio.models.responses.LoginResponse$Builder
 com/cryptoportfolio/exceptions/AssetNotAvailableException.java
  com.cryptoportfolio.exceptions.AssetNotAvailableException
+com/cryptoportfolio/activity/GetAssetsActivity.java
+ com.cryptoportfolio.activity.GetAssetsActivity
 com/cryptoportfolio/models/PortfolioAssetModel.java
  com.cryptoportfolio.models.PortfolioAssetModel
  com.cryptoportfolio.models.PortfolioAssetModel$Builder

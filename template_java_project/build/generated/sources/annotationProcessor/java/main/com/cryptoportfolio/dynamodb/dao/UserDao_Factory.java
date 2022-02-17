@@ -19,4 +19,3 @@ public final class UserDao_Factory implements Factory<UserDao> {
     return INSTANCE;
   }
 }
-

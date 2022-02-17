@@ -76,7 +76,7 @@ public class UpdatePortfolioActivity implements RequestHandler<APIGatewayProxyRe
 
 
         for(String assetId : assetQuantityMap.keySet()) {
-            if (assetDao.getAsset(assetId) == null || !assetDao.getAsset(assetId).getAvailable()) {
+            if (assetDao.getAsset(assetId) == null) {
                 return Utils.buildResponse(401,
                         new FailureResponse("This Asset is not available"));
             }

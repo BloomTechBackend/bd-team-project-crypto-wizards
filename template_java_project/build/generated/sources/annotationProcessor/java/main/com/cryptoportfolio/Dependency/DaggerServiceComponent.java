@@ -24,7 +24,6 @@ import javax.inject.Provider;
 public final class DaggerServiceComponent implements ServiceComponent {
   private Provider<DynamoDBMapper> provideDynamoDBMapperProvider;
 
-
   private Provider<Gson> provideGsonProvider;
 
   private DaggerServiceComponent(Builder builder) {

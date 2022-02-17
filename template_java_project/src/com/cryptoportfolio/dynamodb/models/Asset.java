@@ -20,7 +20,8 @@ public class Asset {
     String assetImage;
     Double totalSupply;
     Double usdValue;
-    Boolean isAvailable;
+    Double priceChangePercentage24h;
+
 
     @DynamoDBHashKey(attributeName = "asset_id")
     public String getAssetId() {
@@ -94,27 +95,26 @@ public class Asset {
         this.usdValue = usdValue;
     }
 
-    @DynamoDBAttribute(attributeName = "is_available")
-    public Boolean getAvailable() {
-        return isAvailable;
+    @DynamoDBAttribute(attributeName = "price_change_percentage_24h")
+    public Double getPriceChangePercentage24h() {
+        return priceChangePercentage24h;
     }
 
-    public void setAvailable(Boolean available) {
-        isAvailable = available;
+    public void setPriceChangePercentage24h(Double priceChangePercentage24h) {
+        this.priceChangePercentage24h = priceChangePercentage24h;
     }
-
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Asset asset = (Asset) o;
-        return Objects.equals(getAssetId(), asset.getAssetId()) && Objects.equals(getRankByMarketCap(), asset.getRankByMarketCap()) && Objects.equals(getAssetName(), asset.getAssetName()) && Objects.equals(getAssetSymbol(), asset.getAssetSymbol()) && Objects.equals(getMarketCap(), asset.getMarketCap()) && Objects.equals(getAssetImage(), asset.getAssetImage()) && Objects.equals(getTotalSupply(), asset.getTotalSupply()) && Objects.equals(getUsdValue(), asset.getUsdValue()) && Objects.equals(isAvailable, asset.isAvailable);
+        return Objects.equals(getAssetId(), asset.getAssetId()) && Objects.equals(getRankByMarketCap(), asset.getRankByMarketCap()) && Objects.equals(getAssetName(), asset.getAssetName()) && Objects.equals(getAssetSymbol(), asset.getAssetSymbol()) && Objects.equals(getMarketCap(), asset.getMarketCap()) && Objects.equals(getAssetImage(), asset.getAssetImage()) && Objects.equals(getTotalSupply(), asset.getTotalSupply()) && Objects.equals(getUsdValue(), asset.getUsdValue()) && Objects.equals(getPriceChangePercentage24h(), asset.getPriceChangePercentage24h());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getAssetId(), getRankByMarketCap(), getAssetName(), getAssetSymbol(), getMarketCap(), getAssetImage(), getTotalSupply(), getUsdValue(), isAvailable);
+        return Objects.hash(getAssetId(), getRankByMarketCap(), getAssetName(), getAssetSymbol(), getMarketCap(), getAssetImage(), getTotalSupply(), getUsdValue(), getPriceChangePercentage24h());
     }
 
     @Override
@@ -128,7 +128,7 @@ public class Asset {
                 ", assetImage='" + assetImage + '\'' +
                 ", totalSupply=" + totalSupply +
                 ", usdValue=" + usdValue +
-                ", isAvailable=" + isAvailable +
+                ", priceChangePercentage24h=" + priceChangePercentage24h +
                 '}';
     }
 }

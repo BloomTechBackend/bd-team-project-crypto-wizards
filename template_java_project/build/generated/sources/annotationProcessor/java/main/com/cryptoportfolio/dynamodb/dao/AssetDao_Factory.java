@@ -16,7 +16,6 @@ public final class AssetDao_Factory implements Factory<AssetDao> {
     this.dynamoDBMapperProvider = dynamoDBMapperProvider;
   }
 
-
   @Override
   public AssetDao get() {
     return new AssetDao(dynamoDBMapperProvider.get());

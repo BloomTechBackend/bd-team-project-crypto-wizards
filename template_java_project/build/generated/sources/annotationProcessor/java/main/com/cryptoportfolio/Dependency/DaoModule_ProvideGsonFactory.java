@@ -16,7 +16,6 @@ public final class DaoModule_ProvideGsonFactory implements Factory<Gson> {
     this.module = module;
   }
 
-
   @Override
   public Gson get() {
     return Preconditions.checkNotNull(

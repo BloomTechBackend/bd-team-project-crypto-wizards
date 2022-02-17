@@ -64,7 +64,7 @@ dependencies {
     implementation 'com.amazonaws:aws-lambda-java-events:2.2.9'
     runtimeOnly 'com.amazonaws:aws-lambda-java-log4j2:1.2.0'
 
-    //implementation 'com.amazonaws:aws-java-sdk-dynamodb:1.12.154'
+    implementation 'com.amazonaws:aws-java-sdk-dynamodb:1.12.154'
 
     // bcrypt for password hashing
     implementation 'org.mindrot:jbcrypt:0.4'

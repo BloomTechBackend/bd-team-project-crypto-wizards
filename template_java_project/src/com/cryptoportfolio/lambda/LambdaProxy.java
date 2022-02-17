@@ -6,11 +6,6 @@ import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyResponseEvent;
 import com.cryptoportfolio.Dependency.DaggerServiceComponent;
-import com.cryptoportfolio.Dependency.ServiceComponent;
-import com.cryptoportfolio.activity.CreatePortfolioActivity;
-import com.cryptoportfolio.activity.LoginActivity;
-import com.cryptoportfolio.activity.RegisterActivity;
-import com.cryptoportfolio.activity.VerifyActivity;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -24,6 +19,7 @@ public class LambdaProxy implements RequestHandler<APIGatewayProxyRequestEvent, 
     private final String LOGIN_PATH = "/login";
     private final String VERIFY_PATH = "/verify";
     private final String PORTFOLIO_PATH = "/portfolio";
+    private final String ASSETS_PATH = "/assets";
 
     private Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
@@ -47,6 +43,8 @@ public class LambdaProxy implements RequestHandler<APIGatewayProxyRequestEvent, 
         } else if ("POST".equals(request.getHttpMethod()) && VERIFY_PATH.equals(request.getPath())) {
             response = DaggerServiceComponent.create().provideVerifyActivity().handleRequest(request, context);
         } else if ("POST".equals(request.getHttpMethod()) && PORTFOLIO_PATH.equals(request.getPath())) {
+            response = DaggerServiceComponent.create().provideCreatePortfolioActivity().handleRequest(request, context);
+        } else if ("GET".equals(request.getHttpMethod()) && ASSETS_PATH.equals(request.getPath())) {
             response = DaggerServiceComponent.create().provideCreatePortfolioActivity().handleRequest(request, context);
         } else {
             response = buildResponse(404, "404 Not Found");
