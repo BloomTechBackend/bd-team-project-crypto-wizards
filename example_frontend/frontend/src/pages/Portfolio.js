@@ -24,8 +24,9 @@ const Portfolio = (props) => {
     return (
         <div className="coinsummary shadow border p-2 rounded mt-2 bg-light">
             Hello {username}, you have been successfully logged in. <br/> <br/>
-                {username}'s crypto portfolio tracker <br/> <br/>
-            <AssetList />
+                {username}'s portfolio <br/> <br/>
+            $ Total Portfolio Value <br/>
+            {/*<AssetList />*/}
             <input type="button" value="Create Portfolio" onClick={createHandler} /> <br/>
             <input type="button" value="Update Portfolio" onClick={updateHandler} /> <br/>
             <input type="button" value="Logout" onClick={logoutHandler} />

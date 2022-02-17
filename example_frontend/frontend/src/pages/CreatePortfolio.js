@@ -63,12 +63,12 @@ const CreatePortfolio = (props) => {
                 {username}'s Portfolio <br/> <br/>
                 Asset: <input type="text" value={assetId} onChange={event => setAssetId(event.target.value)} /> <br/>
                 Quantity: <input type="text" value={quantity} onChange={event => setQuantity(event.target.value)} /> <br/> <br/>
+                <input className="btn btn-primary dropdown-toggle" type="submit" value="Create Portfolio" />
+                {message && <p className="message">{message}</p>}
                 <AddAsset />
                 <AssetList />
-                <input type="submit" value="Add Asset" /> <br/>
-                <input type="submit" value="Create Portfolio" />
             </form>
-            {message && <p className="message">{message}</p>}
+
         </div>
     )
 }

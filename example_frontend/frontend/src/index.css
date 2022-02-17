@@ -1,3 +1,5 @@
+/*Contains styling for index where the App component is called,*/
+/*therefore it contains styling for the App component.*/
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

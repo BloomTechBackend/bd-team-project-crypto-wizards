@@ -8,6 +8,7 @@ import Portfolio from "./pages/Portfolio";
 import {getUsername, getToken, setUserSession, resetUserSession} from './service/AuthService';
 import CreatePortfolio from "./pages/CreatePortfolio";
 import {WatchListContextProvider} from "./context/watchListContext";
+//import './index.css';
 import "./App.css";
 
 const verifyTokenAPIUrl = 'https://ccixqpmq4c.execute-api.us-east-2.amazonaws.com/prod/verify';
