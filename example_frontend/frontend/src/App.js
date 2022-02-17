@@ -7,8 +7,8 @@ import Login from "./pages/Login";
 import Portfolio from "./pages/Portfolio";
 import {getUsername, getToken, setUserSession, resetUserSession} from './service/AuthService';
 import CreatePortfolio from "./pages/CreatePortfolio";
-import {WatchListContextProvider} from "./context/watchlistContext";
-//import "./App.css";
+import {WatchListContextProvider} from "./context/watchListContext";
+import "./App.css";
 
 const verifyTokenAPIUrl = 'https://ccixqpmq4c.execute-api.us-east-2.amazonaws.com/prod/verify';
 
@@ -56,7 +56,7 @@ function App() {
     }
 
     return (
-        <div className="App">
+        <div className="container">
             <WatchListContextProvider>
                 <BrowserRouter>
                     <div className="header">
@@ -65,7 +65,7 @@ function App() {
                         <NavLink className="active" to="/login">Login</NavLink>
                         {/*<NavLink className="active" to="/portfolio">Portfolio</NavLink>*/}
                     </div>
-                    <div className="content">
+                    <div className="container">
                         <Routes>
                             {/* {console.log(getToken())} */}
 

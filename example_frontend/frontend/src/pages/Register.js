@@ -36,7 +36,7 @@ const Register = () => {
     }
 
     return (
-        <div>
+        <div className="coinsummary shadow border p-2 rounded mt-2 bg-light">
             <form onSubmit={submitHandler}>
                 <h5>Register</h5>
                 username: <input type="text" value={username} onChange={event => setUsername(event.target.value)} /> <br/>

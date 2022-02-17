@@ -22,9 +22,9 @@ const Portfolio = (props) => {
         navigate('/login');
     }
     return (
-        <div>
+        <div className="coinsummary shadow border p-2 rounded mt-2 bg-light">
             Hello {username}, you have been successfully logged in. <br/> <br/>
-            Your Crypto Portfolio Tracker. <br/> <br/>
+                {username}'s crypto portfolio tracker <br/> <br/>
             <AssetList />
             <input type="button" value="Create Portfolio" onClick={createHandler} /> <br/>
             <input type="button" value="Update Portfolio" onClick={updateHandler} /> <br/>

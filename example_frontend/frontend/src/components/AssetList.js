@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from "react";
 import coinGecko from "../apis/coinGecko";
-import {WatchlistContext} from "../context/watchlistContext";
+import {WatchListContext} from "../context/watchListContext";
 import Asset from "./Asset";
 
 // This component is a list of assets for CreatePortfolio,
@@ -9,8 +9,8 @@ import Asset from "./Asset";
 // Pulls data from watchListContext
 const AssetList = () => {
     // store data
-    const [coins, setCoins] = useState([]);
-    const {watchList} = useContext(WatchlistContext);
+    const [asset, setAsset] = useState([]);
+    const {watchList} = useContext(WatchListContext);
     // create loading state
     const [isLoading, setIsLoading] = useState(false);
     console.log(watchList);
@@ -27,7 +27,7 @@ const AssetList = () => {
                 },
             });
 
-            setCoins(response.data);
+            setAsset(response.data);
             setIsLoading(false);
             // console.log(response.data);
         };
@@ -37,21 +37,22 @@ const AssetList = () => {
         // pass in empty dependency array
     },[watchList]);
 
-    const renderAsset = () => {
+    // Render map of assets
+    const renderAssets = () => {
         if(isLoading) {
             return <div>Loading....</div>
         }
 
         return (
             <ul className="coinlist list-group mt-2">
-                {coins.map((coin) => {
-                    return <Asset key={coin.id} coin={coin} />;
+                {asset.map((asset) => {
+                    return <Asset key={asset.id} asset={asset} />;
                 })}
             </ul>
         );
     };
 
-    return <div>{renderAsset()}</div>;
+    return <div>{renderAssets()}</div>;
 };
 
 export default AssetList;
