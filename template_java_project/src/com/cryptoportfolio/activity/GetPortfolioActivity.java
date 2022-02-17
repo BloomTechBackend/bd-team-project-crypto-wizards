@@ -23,6 +23,7 @@ import com.google.gson.GsonBuilder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.inject.Inject;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -37,15 +38,17 @@ public class GetPortfolioActivity implements RequestHandler<APIGatewayProxyReque
     private final Logger log = LogManager.getLogger();
     private PortfolioDao portfolioDao;
     private AssetDao assetDao;
+    private Gson gson;
 
     /**
      * Instantiates a new GetPortfolioActivity object.
      */
 
-
-    public GetPortfolioActivity() {
-        this.portfolioDao = new PortfolioDao();
-        this.assetDao = new AssetDao();
+    @Inject
+    public GetPortfolioActivity(PortfolioDao portfolioDao, AssetDao assetDao, Gson gson) {
+        this.assetDao = assetDao;
+        this.portfolioDao = portfolioDao;
+        this.gson = gson;
     }
 
     /**
@@ -60,7 +63,6 @@ public class GetPortfolioActivity implements RequestHandler<APIGatewayProxyReque
      */
     @Override
     public APIGatewayProxyResponseEvent handleRequest(APIGatewayProxyRequestEvent request, Context context) {
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
         LambdaLogger logger = context.getLogger();
         logger.log(gson.toJson(request));
 

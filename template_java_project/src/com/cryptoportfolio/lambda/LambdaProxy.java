@@ -5,6 +5,8 @@ import com.amazonaws.services.lambda.runtime.LambdaLogger;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyResponseEvent;
+import com.cryptoportfolio.Dependency.DaggerServiceComponent;
+import com.cryptoportfolio.Dependency.ServiceComponent;
 import com.cryptoportfolio.activity.CreatePortfolioActivity;
 import com.cryptoportfolio.activity.LoginActivity;
 import com.cryptoportfolio.activity.RegisterActivity;
@@ -28,7 +30,7 @@ public class LambdaProxy implements RequestHandler<APIGatewayProxyRequestEvent, 
     @Override
     public APIGatewayProxyResponseEvent handleRequest(final APIGatewayProxyRequestEvent request, final Context context)
     {
-        APIGatewayProxyResponseEvent response;
+        APIGatewayProxyResponseEvent response = null;
         LambdaLogger logger = context.getLogger();
 
         logger.log("ENVIRONMENT VARIABLES: " + gson.toJson(System.getenv()));
@@ -39,13 +41,13 @@ public class LambdaProxy implements RequestHandler<APIGatewayProxyRequestEvent, 
         if ("GET".equals(request.getHttpMethod()) && HEALTH_PATH.equals(request.getPath())) {
             response = buildResponse(200, "200 OK");
         } else if ("POST".equals(request.getHttpMethod()) && REGISTER_PATH.equals(request.getPath())) {
-            response = new RegisterActivity().handleRequest(request, context);
+            response = DaggerServiceComponent.create().provideRegisterActivity().handleRequest(request, context);
         } else if ("POST".equals(request.getHttpMethod()) && LOGIN_PATH.equals(request.getPath())) {
-            response = new LoginActivity().handleRequest(request, context);
+            response = DaggerServiceComponent.create().provideLoginActivity().handleRequest(request, context);
         } else if ("POST".equals(request.getHttpMethod()) && VERIFY_PATH.equals(request.getPath())) {
-            response = new VerifyActivity().handleRequest(request, context);
+            response = DaggerServiceComponent.create().provideVerifyActivity().handleRequest(request, context);
         } else if ("POST".equals(request.getHttpMethod()) && PORTFOLIO_PATH.equals(request.getPath())) {
-            response = new CreatePortfolioActivity().handleRequest(request, context);
+            response = DaggerServiceComponent.create().provideCreatePortfolioActivity().handleRequest(request, context);
         } else {
             response = buildResponse(404, "404 Not Found");
         }

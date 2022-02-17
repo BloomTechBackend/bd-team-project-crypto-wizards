@@ -19,14 +19,17 @@ import com.cryptoportfolio.utils.Utils;
 import com.cryptoportfolio.utils.VerificationStatus;
 import com.google.gson.Gson;
 
+import javax.inject.Inject;
+
 public class VerifyActivity implements RequestHandler<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> {
 
     private UserDao userDao;
     Gson gson;
 
-    public VerifyActivity() {
-        this.userDao = new UserDao();
-        this.gson = new Gson();
+    @Inject
+    public VerifyActivity(UserDao userDao, Gson gson) {
+        this.userDao = userDao;
+        this.gson = gson;
     }
 
     @Override

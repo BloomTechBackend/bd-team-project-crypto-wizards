@@ -1,15 +1,19 @@
 import {BrowserRouter, NavLink, Route, Routes, Navigate} from "react-router-dom";
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import Home from "./Home";
-import Register from "./Register";
-import Login from "./Login";
-import Portfolio from "./Portfolio";
-import {getUsername, getToken, setUserSession, resetUserSession} from '../../frontend/src/service/AuthService';
-import CreatePortfolio from "./CreatePortfolio";
+import Home from "./pages/Home";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
+import Portfolio from "./pages/Portfolio";
+import {getUsername, getToken, setUserSession, resetUserSession} from './service/AuthService';
+import CreatePortfolio from "./pages/CreatePortfolio";
+import {WatchListContextProvider} from "./context/watchlistContext";
+//import "./App.css";
 
 const verifyTokenAPIUrl = 'https://ccixqpmq4c.execute-api.us-east-2.amazonaws.com/prod/verify';
 
+
+// This function does the routing
 function App() {
 
     const [isAuthentication, setAuthentication] = useState(null);
@@ -53,34 +57,37 @@ function App() {
 
     return (
         <div className="App">
-            <BrowserRouter>
-                <div className="header">
-                    <NavLink className="active" to="/">Home</NavLink>
-                    <NavLink className="active" to="/register">Register</NavLink>
-                    <NavLink className="active" to="/login">Login</NavLink>
-                    <NavLink className="active" to="/portfolio">Portfolio</NavLink>
-                </div>
-                <div className="content">
-                    <Routes>
-                        {/* {console.log(getToken())} */}
+            <WatchListContextProvider>
+                <BrowserRouter>
+                    <div className="header">
+                        {/*<NavLink className="active" to="/">Home</NavLink>*/}
+                        <NavLink className="active" to="/register">Register</NavLink>
+                        <NavLink className="active" to="/login">Login</NavLink>
+                        {/*<NavLink className="active" to="/portfolio">Portfolio</NavLink>*/}
+                    </div>
+                    <div className="content">
+                        <Routes>
+                            {/* {console.log(getToken())} */}
 
-                        {!isTokenSet && (
-                            <>
-                                <Route path="/" element={<Home/>}/>
-                                <Route path="/register" element={<Register/>}/>
-                                <Route path="/login" element={<Login authenticate={() => setToken(getToken())}/>}/>
-                            </>
-                        )}
-                        {isTokenSet && (
-                            <>
-                                <Route path="/portfolio" element={<Portfolio logout={() => setToken(getToken())}/>}/>
-                                <Route path="/createPortfolio" element={<CreatePortfolio/>}/>
-                            </>
-                        )}
-                        <Route path="*" element={<Navigate to={isTokenSet ? "/portfolio" : "/"}/>}/>
-                    </Routes>
-                </div>
-            </BrowserRouter>
+                            {!isTokenSet && (
+                                <>
+                                    <Route path="/" element={<Home/>}/>
+                                    <Route path="/register" element={<Register/>}/>
+                                    <Route path="/login" element={<Login authenticate={() => setToken(getToken())}/>}/>
+                                </>
+                            )}
+                            {isTokenSet && (
+                                <>
+                                    <Route path="/portfolio"
+                                           element={<Portfolio logout={() => setToken(getToken())}/>}/>
+                                    <Route path="/createPortfolio" element={<CreatePortfolio/>}/>
+                                </>
+                            )}
+                            <Route path="*" element={<Navigate to={isTokenSet ? "/portfolio" : "/"}/>}/>
+                        </Routes>
+                    </div>
+                </BrowserRouter>
+            </WatchListContextProvider>
         </div>
     );
 }

@@ -7,6 +7,7 @@ import com.cryptoportfolio.dynamodb.models.Asset;
 import com.cryptoportfolio.dynamodb.models.Portfolio;
 import com.cryptoportfolio.exceptions.InsufficientAssetsException;
 
+import javax.inject.Inject;
 import java.util.List;
 
 /**
@@ -20,8 +21,9 @@ public class AssetDao {
      * Instantiates an AssetDao object
      */
 
-    public AssetDao() {
-        this.dynamoDBMapper = new DynamoDBMapper(DynamoDbClientProvider.getDynamoDBClient(Regions.US_EAST_2));
+    @Inject
+    public AssetDao(DynamoDBMapper dynamoDBMapper) {
+        this.dynamoDBMapper = dynamoDBMapper;
     }
 
     /**
