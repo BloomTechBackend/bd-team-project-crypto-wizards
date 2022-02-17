@@ -2,8 +2,8 @@ import React from 'react';
 
 const Home = () => {
     return (
-        <div>
-           Portfolio Tracker HomePage!
+        <div className="text">
+           Crypto Portfolio Tracker
         </div>
     )
 }

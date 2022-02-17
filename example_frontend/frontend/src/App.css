@@ -1,3 +1,7 @@
+/*Contains styling for all pages.
+Good practice is each page having it's own CSS*/
+
+/*TODO Change names to asset instead of coin*/
 * {
     margin: 0;
     padding: 0;
@@ -11,6 +15,10 @@ body {
 
 ul {
     list-style: none;
+}
+
+.text {
+    color: chartreuse;
 }
 
 .coinlist-image {
