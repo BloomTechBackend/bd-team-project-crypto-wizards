@@ -1,14 +1,16 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 import {getToken, getUsername} from '../service/AuthService';
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useLocation} from "react-router-dom";
 import AssetList from "../components/AssetList";
 import AddAsset from "../components/AddAsset";
+import DropDownMenu from '../components/DropDownMenu';
 
 const portfolioAPIUrl = 'https://ccixqpmq4c.execute-api.us-east-2.amazonaws.com/prod/portfolio';
 
 const CreatePortfolio = (props) => {
     const navigate = useNavigate();
+    const location = useLocation();
     const token = getToken();
 
     const [username, setUsername] = useState(getUsername());
@@ -40,6 +42,7 @@ const CreatePortfolio = (props) => {
             username: username,
             assetQuantityMap: assetQuantityMap
         }
+
         console.log('Request config' + JSON.stringify(requestConfig));
         console.log('Request body' + JSON.stringify(requestBody));
 
@@ -61,12 +64,10 @@ const CreatePortfolio = (props) => {
             <form onSubmit={submitHandler}>
                 <h5>Create Portfolio</h5>
                 {username}'s Portfolio <br/> <br/>
-                Asset: <input type="text" value={assetId} onChange={event => setAssetId(event.target.value)} /> <br/>
+                Asset: <DropDownMenu assets={location.state} setAssetId={(e)=>setAssetId(e)} /> <br/>
                 Quantity: <input type="text" value={quantity} onChange={event => setQuantity(event.target.value)} /> <br/> <br/>
                 <input className="btn btn-primary dropdown-toggle" type="submit" value="Create Portfolio" />
                 {message && <p className="message">{message}</p>}
-                <AddAsset />
-                <AssetList />
             </form>
 
         </div>
