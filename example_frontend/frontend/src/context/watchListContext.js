@@ -8,7 +8,7 @@ export const WatchListContextProvider = (props) => {
     // Top 50 assets for AssetList
     const [watchList, setWatchList] = useState(
         // Fix split
-        // localStorage.getItem("watchList")?.spilt(",") || [
+        // localStorage.getItem("watchList")?.spilt(",") || []
         [
         "bitcoin", "ethereum", "tether",
         "binancecoin", "usd-coin", "ripple",

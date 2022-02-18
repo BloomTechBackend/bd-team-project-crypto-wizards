@@ -40,7 +40,7 @@ const Register = () => {
             <form onSubmit={submitHandler}>
                 <h5>Register</h5>
                 username: <input type="text" value={username} onChange={event => setUsername(event.target.value)} /> <br/>
-                password: <input type="text" value={password} onChange={event => setPassword(event.target.value)} /> <br/>
+                password: <input type="password" value={password} onChange={event => setPassword(event.target.value)} /> <br/>
                 <input type="submit" value="Register" />
             </form>
             {message && <p className="message">{message}</p>}

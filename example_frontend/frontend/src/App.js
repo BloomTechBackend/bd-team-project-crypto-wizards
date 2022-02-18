@@ -22,12 +22,6 @@ function App() {
 
     useEffect(() => {
         const token = getToken();
-        token ? setToken(true) : setToken(false);
-    })
-
-
-    useEffect(() => {
-        const token = getToken();
         if (token === 'undefined' || token === undefined || token === null || !token) {
             return;
         }
@@ -58,37 +52,35 @@ function App() {
 
     return (
         <div className="container">
-            <WatchListContextProvider>
-                <BrowserRouter>
-                    <div className="header">
-                        {/*<NavLink className="active" to="/">Home</NavLink>*/}
-                        <NavLink className="active" to="/register">Register</NavLink>
-                        <NavLink className="active" to="/login">Login</NavLink>
-                        {/*<NavLink className="active" to="/portfolio">Portfolio</NavLink>*/}
-                    </div>
-                    <div className="container">
-                        <Routes>
-                            {/* {console.log(getToken())} */}
+            <BrowserRouter>
+                <div className="header">
+                    {/*<NavLink className="active" to="/">Home</NavLink>*/}
+                    <NavLink className="active" to="/register">Register</NavLink>
+                    <NavLink className="active" to="/login">Login</NavLink>
+                    {/*<NavLink className="active" to="/portfolio">Portfolio</NavLink>*/}
+                </div>
+                <div className="container">
+                    <Routes>
+                        {/* {console.log(getToken())} */}
 
-                            {!isTokenSet && (
-                                <>
-                                    <Route path="/" element={<Home/>}/>
-                                    <Route path="/register" element={<Register/>}/>
-                                    <Route path="/login" element={<Login authenticate={() => setToken(getToken())}/>}/>
-                                </>
-                            )}
-                            {isTokenSet && (
-                                <>
-                                    <Route path="/portfolio"
-                                           element={<Portfolio logout={() => setToken(getToken())}/>}/>
-                                    <Route path="/createPortfolio" element={<CreatePortfolio/>}/>
-                                </>
-                            )}
-                            <Route path="*" element={<Navigate to={isTokenSet ? "/portfolio" : "/"}/>}/>
-                        </Routes>
-                    </div>
-                </BrowserRouter>
-            </WatchListContextProvider>
+                        {!isTokenSet && (
+                            <>
+                                <Route path="/" element={<Home/>}/>
+                                <Route path="/register" element={<Register/>}/>
+                                <Route path="/login" element={<Login authenticate={() => setToken(getToken())}/>}/>
+                            </>
+                        )}
+                        {isTokenSet && (
+                            <>
+                                <Route path="/portfolio"
+                                       element={<Portfolio logout={() => setToken(getToken())}/>}/>
+                                <Route path="/createPortfolio" element={<CreatePortfolio />}/>
+                            </>
+                        )}
+                        <Route path="*" element={<Navigate to={isTokenSet ? "/portfolio" : "/"}/>}/>
+                    </Routes>
+                </div>
+            </BrowserRouter>
         </div>
     );
 }
