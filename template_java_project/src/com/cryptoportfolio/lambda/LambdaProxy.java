@@ -44,8 +44,8 @@ public class LambdaProxy implements RequestHandler<APIGatewayProxyRequestEvent, 
             response = DaggerServiceComponent.create().provideVerifyActivity().handleRequest(request, context);
         } else if ("POST".equals(request.getHttpMethod()) && PORTFOLIO_PATH.equals(request.getPath())) {
             response = DaggerServiceComponent.create().provideCreatePortfolioActivity().handleRequest(request, context);
-        } else if ("GET".equals(request.getHttpMethod()) && ASSETS_PATH.equals(request.getPath())) {
-            response = DaggerServiceComponent.create().provideCreatePortfolioActivity().handleRequest(request, context);
+        } else if ("GET".equals(request.getHttpMethod()) && PORTFOLIO_PATH.equals(request.getPath())) {
+            response = DaggerServiceComponent.create().provideGetPortfolioActivity().handleRequest(request, context);
         } else {
             response = buildResponse(404, "404 Not Found");
         }
