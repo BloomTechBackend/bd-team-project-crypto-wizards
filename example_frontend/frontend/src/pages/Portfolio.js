@@ -2,9 +2,7 @@ import React, {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {getUsername, resetUserSession} from '../service/AuthService';
 import coinGecko from "../apis/coinGecko";
-import HistoryChart from "../components/HistoryChart";
-import AssetList from "../components/AssetList";
-import AssetDetailPage from "../components/AssetDetailPage";
+import PortfolioChart from "../components/PortfolioChart";
 
 // This is the viewPortfolio page
 const Portfolio = (props) => {
@@ -82,10 +80,8 @@ const Portfolio = (props) => {
             Hello {username}, you have been successfully logged in. <br/> <br/>
                 {username}'s portfolio <br/> <br/>
             $ Total Portfolio Value <br/>
-            {/*<p>{assetMap['bitcoin'].name}</p>*/}
             {/*<AssetList />*/}
-            <AssetDetailPage />
-            <HistoryChart />
+            <PortfolioChart />
             <input type="button" value="Create Portfolio" onClick={createHandler} /> <br/>
             <input type="button" value="Update Portfolio" onClick={updateHandler} /> <br/>
             <input type="button" value="Logout" onClick={logoutHandler} />
