@@ -9,19 +9,10 @@ import java.util.Objects;
 
 public class GetPortfolioRequest {
     private String username;
-    private String token;
 
     public GetPortfolioRequest(Builder builder) {
         this.username = builder.username;
 
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
     }
 
     public String getUsername() {

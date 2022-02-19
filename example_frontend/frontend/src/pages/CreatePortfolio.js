@@ -2,9 +2,9 @@ import React, {useState} from 'react';
 import axios from 'axios';
 import {getToken, getUsername} from '../service/AuthService';
 import {useNavigate, useLocation} from "react-router-dom";
-import AssetList from "../components/AssetList";
-import AddAsset from "../components/AddAsset";
 import DropDownMenu from '../components/DropDownMenu';
+import Portfolio from './Portfolio';
+import PortfolioList from '../components/PortfolioList';
 
 const portfolioAPIUrl = 'https://ccixqpmq4c.execute-api.us-east-2.amazonaws.com/prod/portfolio';
 
@@ -17,11 +17,9 @@ const CreatePortfolio = (props) => {
     const [assetId, setAssetId] = useState('');
     const [quantity, setQuantity] = useState('');
     const [message, setMessage] = useState(null);
+    const [assetQuantityMap, setAssetQuantityMap] = useState({});
 
-    const assetQuantityMap = {};
-
-    const submitHandler = (event) => {
-        assetQuantityMap[assetId] = quantity;
+    const addAssetHandler = (event) => {
 
         event.preventDefault();
         if (assetId.trim() === '' || quantity.trim() === '') {
@@ -30,6 +28,15 @@ const CreatePortfolio = (props) => {
         }
         setMessage(null);
 
+        const updatedValue = {};
+        updatedValue[assetId] = quantity;
+        setAssetQuantityMap(assetQuantityMap => ({
+            ...assetQuantityMap,
+            ...updatedValue
+        }));
+    }
+
+    const createPortfolioHandler = (event) => {
 
         const requestConfig = {
             headers: {
@@ -46,6 +53,7 @@ const CreatePortfolio = (props) => {
         console.log('Request config' + JSON.stringify(requestConfig));
         console.log('Request body' + JSON.stringify(requestBody));
 
+        
         axios.post(portfolioAPIUrl, requestBody, requestConfig).then((response) => {
             console.log('Portfolio Created');
             navigate('/portfolio');
@@ -61,12 +69,18 @@ const CreatePortfolio = (props) => {
 
     return (
         <div className="coinsummary shadow border p-2 rounded mt-2 bg-light">
-            <form onSubmit={submitHandler}>
+            <form onSubmit={addAssetHandler}>
                 <h5>Create Portfolio</h5>
+                {console.log("hello from createPortfolio")}
+                {console.log(location.state.assets)}
+                {console.log(location.state.assetMap)}
+                {console.log(Object.fromEntries(location.state.assets.map(asset => [asset.id, asset])))}
                 {username}'s Portfolio <br/> <br/>
-                Asset: <DropDownMenu assets={location.state} setAssetId={(e)=>setAssetId(e)} /> <br/>
+                <PortfolioList assets={location.state.assets.filter(asset => assetQuantityMap[asset.id])} assetQuantityMap={assetQuantityMap}/>
+                Asset: <DropDownMenu assets={location.state.assets} setAssetId={(e)=>setAssetId(e)} /> <br/>
                 Quantity: <input type="text" value={quantity} onChange={event => setQuantity(event.target.value)} /> <br/> <br/>
-                <input className="btn btn-primary dropdown-toggle" type="submit" value="Create Portfolio" />
+                <input className="btn btn-primary dropdown-toggle" type="submit" value="AddAsset" />
+                <input className="btn btn-primary dropdown-toggle" type="button" onClick={createPortfolioHandler} value="Create Portfolio" />
                 {message && <p className="message">{message}</p>}
             </form>
 
