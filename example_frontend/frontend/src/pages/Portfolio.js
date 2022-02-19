@@ -4,6 +4,7 @@ import {getToken, getUsername, resetUserSession} from '../service/AuthService';
 import coinGecko from "../apis/coinGecko";
 import axios from 'axios';
 import PortfolioList from "../components/PortfolioList";
+import PortfolioChart from "../components/PortfolioChart";
 
 const portfolioAPIUrl = 'https://ccixqpmq4c.execute-api.us-east-2.amazonaws.com/prod/portfolio';
 
