@@ -2,6 +2,9 @@ import React, {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {getUsername, resetUserSession} from '../service/AuthService';
 import coinGecko from "../apis/coinGecko";
+import HistoryChart from "../components/HistoryChart";
+import AssetList from "../components/AssetList";
+import AssetDetailPage from "../components/AssetDetailPage";
 
 // This is the viewPortfolio page
 const Portfolio = (props) => {
@@ -29,7 +32,7 @@ const Portfolio = (props) => {
 
     // store data
     const [assets, setAssets] = useState([]);
-    // create loading state
+    const [assetMap, setAssetMap] = useState({});
     const [isLoading, setIsLoading] = useState(false);
     // useEffect preform task when component mounts
     useEffect(() => {
@@ -47,13 +50,16 @@ const Portfolio = (props) => {
             });
 
             setAssets(response.data);
+            console.log(assets);
             setIsLoading(false);
-            // console.log(response.data);
-            // console.log(assets);
+            setAssetMap(Object.fromEntries(assets.map(asset => [asset.id, asset])));
+            console.log(assetMap);
+
+            //console.log(response.data);
+
         };
         fetchData();
     },[]);
-
 
 
 
@@ -76,7 +82,10 @@ const Portfolio = (props) => {
             Hello {username}, you have been successfully logged in. <br/> <br/>
                 {username}'s portfolio <br/> <br/>
             $ Total Portfolio Value <br/>
+            {/*<p>{assetMap['bitcoin'].name}</p>*/}
             {/*<AssetList />*/}
+            <AssetDetailPage />
+            <HistoryChart />
             <input type="button" value="Create Portfolio" onClick={createHandler} /> <br/>
             <input type="button" value="Update Portfolio" onClick={updateHandler} /> <br/>
             <input type="button" value="Logout" onClick={logoutHandler} />
