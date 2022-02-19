@@ -68,8 +68,8 @@ public class GetPortfolioActivity implements RequestHandler<APIGatewayProxyReque
         LambdaLogger logger = context.getLogger();
         logger.log(gson.toJson(request));
 
-        CreatePortfolioRequest createPortfolioRequest = gson.fromJson(request.getBody(), CreatePortfolioRequest.class);
-        String username = createPortfolioRequest.getUsername();
+        GetPortfolioRequest getPortfolioRequest = gson.fromJson(request.getBody(), GetPortfolioRequest.class);
+        String username = getPortfolioRequest.getUsername();
         VerificationStatus verificationStatus = Auth.verifyRequest(username, request);
 
         if (!verificationStatus.isVerified()) {
