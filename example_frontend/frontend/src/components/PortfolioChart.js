@@ -1,21 +1,26 @@
 import React, {useEffect, useRef, useState} from "react";
-import {Chart as ChartJS, ArcElement, Tooltip, Legend} from 'chart.js';
+import {Chart as ChartJS, ArcElement, Tooltip, Legend, Chart} from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const PortfolioChart = () => {
-    const assetQuantityMap = [
-        "bitcoin", "ethereum", "tether",
-        "binancecoin", "usd-coin", "ripple",
-    ];
+
+
+    const portfolioAssets = [
+        {id: 'bitcoin', symbol: 'btc', name: 'Bitcoin', current_price: 39.875},
+        {id: 'ethereum', symbol: 'eth', name: 'Ethereum', current_price: 171.851},
+        {id: 'tether', symbol: 'usdt', name: 'Tether', current_price: 271.002},
+        {id: 'binancecoin', symbol: 'bnb', name: 'BNB', current_price: 308.77}
+    ]
 
     let data = {
-        labels: [...assetQuantityMap],
+        labels: portfolioAssets.map(asset => [asset.name, asset.id, asset.symbol].join('\r')),
+
         datasets: [
             {
                 label: `Assets in Portfolio`,
-                data: [20, 20, 20, 20, 20],
+                data: portfolioAssets.map(asset => [asset.current_price]),
                 boarderWidth: 5,
                 backgroundColor: [
                     'rgba(255, 26, 104, 1)',
@@ -64,15 +69,11 @@ const PortfolioChart = () => {
 
     return (
         <div className="bg-white boarder mt-2 rounded p-3" >
-            {/*<canvas id="myChart" width="400" height="400">*/}
-                <Pie
-                    // Library needs key specified to track changes in dataset series
-                    datasetIdKey='id'
-                    data={data}
-                    height={300}
-                    options={options}
-                />
-            {/*</canvas>*/}
+            <Pie
+                data={data}
+                height={300}
+                options={options}
+            />
         </div>
     );
 };
