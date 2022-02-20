@@ -12,12 +12,12 @@ com/cryptoportfolio/dynamodb/dao/PortfolioDao.java
  com.cryptoportfolio.dynamodb.dao.PortfolioDao
 com/cryptoportfolio/exceptions/AssetNotFoundException.java
  com.cryptoportfolio.exceptions.AssetNotFoundException
-com/cryptoportfolio/models/requests/CreatePortfolioRequest.java
- com.cryptoportfolio.models.requests.CreatePortfolioRequest
- com.cryptoportfolio.models.requests.CreatePortfolioRequest$Builder
 com/cryptoportfolio/models/responses/RegisterResponse.java
  com.cryptoportfolio.models.responses.RegisterResponse
  com.cryptoportfolio.models.responses.RegisterResponse$Builder
+com/cryptoportfolio/models/requests/CreatePortfolioRequest.java
+ com.cryptoportfolio.models.requests.CreatePortfolioRequest
+ com.cryptoportfolio.models.requests.CreatePortfolioRequest$Builder
 com/cryptoportfolio/activity/VerifyActivity.java
  com.cryptoportfolio.activity.VerifyActivity
 com/cryptoportfolio/models/AssetModel.java
@@ -62,6 +62,8 @@ com/cryptoportfolio/utils/Utils.java
  com.cryptoportfolio.utils.Utils
 com/cryptoportfolio/models/responses/FailureResponse.java
  com.cryptoportfolio.models.responses.FailureResponse
+com/cryptoportfolio/lambda/GetPortfolioActivityProvider.java
+ com.cryptoportfolio.lambda.GetPortfolioActivityProvider
 com/cryptoportfolio/models/requests/VerifyRequest.java
  com.cryptoportfolio.models.requests.VerifyRequest
 com/cryptoportfolio/lambda/CoinGeckoConnector.java
@@ -76,6 +78,10 @@ com/cryptoportfolio/exceptions/UserNotFoundException.java
 com/cryptoportfolio/models/responses/GetPortfolioResponse.java
  com.cryptoportfolio.models.responses.GetPortfolioResponse
  com.cryptoportfolio.models.responses.GetPortfolioResponse$Builder
+com/cryptoportfolio/exceptions/AuthenticationFailedException.java
+ com.cryptoportfolio.exceptions.AuthenticationFailedException
+com/cryptoportfolio/lambda/CreatePortfolioActivityProvider.java
+ com.cryptoportfolio.lambda.CreatePortfolioActivityProvider
 com/cryptoportfolio/dynamodb/models/Asset.java
  com.cryptoportfolio.dynamodb.models.Asset
 com/cryptoportfolio/models/UserModel.java

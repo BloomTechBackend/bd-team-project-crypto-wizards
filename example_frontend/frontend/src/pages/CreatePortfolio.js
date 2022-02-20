@@ -41,7 +41,7 @@ const CreatePortfolio = (props) => {
         const requestConfig = {
             headers: {
                 'x-api-key': '9zsZhasE01a9hxGo92WUr68aGSvllMBN6Q3FHmBI',
-                'token': token
+                'cp-auth-token': token
             }
         }
 
@@ -53,7 +53,7 @@ const CreatePortfolio = (props) => {
         console.log('Request config' + JSON.stringify(requestConfig));
         console.log('Request body' + JSON.stringify(requestBody));
 
-        
+
         axios.post(portfolioAPIUrl, requestBody, requestConfig).then((response) => {
             console.log('Portfolio Created');
             navigate('/portfolio');
