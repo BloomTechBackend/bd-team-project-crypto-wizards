@@ -35,9 +35,9 @@ const Portfolio = (props) => {
     ];
 
     // store data
-    const [assets, setAssets] = useState([]);
-    const [assetMap, setAssetMap] = useState({});
-    const [assetQuantityMap, setAssetQuantityMap] = useState({});
+    const [assets, setAssets] = useState(null);
+    const [assetMap, setAssetMap] = useState(null);
+    const [assetQuantityMap, setAssetQuantityMap] = useState(null);
 
     // create loading state
     const [isLoading, setIsLoading] = useState(false);
@@ -57,12 +57,8 @@ const Portfolio = (props) => {
             });
 
             setAssets(response.data);
-            setAssetMap(Object.fromEntries(assets.map(asset => [asset.id, asset])));
+            setAssetMap(Object.fromEntries(response.data.map(asset => [asset.id, asset])));
             setIsLoading(false);
-            // console.log(response.data);
-            // console.log(response.data);
-            // console.log(assets);
-            // console.log(assetMap);
         };
         fetchData();
     },[]);
@@ -71,22 +67,16 @@ const Portfolio = (props) => {
         const requestConfig = {
             headers: {
                 'x-api-key': '9zsZhasE01a9hxGo92WUr68aGSvllMBN6Q3FHmBI',
-                'token': token
+                'cp-auth-token': token
             }
         }
 
-        const requestBody = {
-            username: username
-        }
-
         console.log('Request config' + JSON.stringify(requestConfig));
-        console.log('Request body' + JSON.stringify(requestBody));
-
         
-        axios.get(portfolioAPIUrl, requestBody, requestConfig).then((response) => {
+        axios.get(portfolioAPIUrl + '/' + username, requestConfig).then((response) => {
             console.log('Portfolio Received');
             console.log(response);
-            setAssetQuantityMap(response.assetQuantities);
+            setAssetQuantityMap(response.data.portfolio.assetQuantityMap);
         }).catch((error) => {
             console.log('Error ' + error);
             if (error.response.status === 401 || error.response.status === 403) {
@@ -117,7 +107,9 @@ const Portfolio = (props) => {
             Hello {username}, you have been successfully logged in. <br/> <br/>
                 {username}'s portfolio <br/> <br/>
             $ Total Portfolio Value <br/>
-            <PortfolioList assets={assets.filter(asset => assetQuantityMap[asset.id])} assetQuantityMap={assetQuantityMap}/>
+            {(assets && assetQuantityMap) ?
+            <PortfolioList assets={assets.filter(asset => assetQuantityMap[asset.id])} assetQuantityMap={assetQuantityMap} /> :
+            <div>Loading...</div>}
             <input type="button" value="Create Portfolio" onClick={createHandler} /> <br/>
             <input type="button" value="Update Portfolio" onClick={updateHandler} /> <br/>
             <input type="button" value="Logout" onClick={logoutHandler} />

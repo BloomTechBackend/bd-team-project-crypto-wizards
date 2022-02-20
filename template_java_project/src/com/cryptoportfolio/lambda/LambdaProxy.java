@@ -34,18 +34,12 @@ public class LambdaProxy implements RequestHandler<APIGatewayProxyRequestEvent, 
         logger.log("EVENT: " + gson.toJson(request));
         logger.log("EVENT TYPE: " + request.getClass().toString());
 
-        if ("GET".equals(request.getHttpMethod()) && HEALTH_PATH.equals(request.getPath())) {
-            response = buildResponse(200, "200 OK");
-        } else if ("POST".equals(request.getHttpMethod()) && REGISTER_PATH.equals(request.getPath())) {
+        if ("POST".equals(request.getHttpMethod()) && REGISTER_PATH.equals(request.getPath())) {
             response = DaggerServiceComponent.create().provideRegisterActivity().handleRequest(request, context);
         } else if ("POST".equals(request.getHttpMethod()) && LOGIN_PATH.equals(request.getPath())) {
             response = DaggerServiceComponent.create().provideLoginActivity().handleRequest(request, context);
         } else if ("POST".equals(request.getHttpMethod()) && VERIFY_PATH.equals(request.getPath())) {
             response = DaggerServiceComponent.create().provideVerifyActivity().handleRequest(request, context);
-        } else if ("POST".equals(request.getHttpMethod()) && PORTFOLIO_PATH.equals(request.getPath())) {
-            response = DaggerServiceComponent.create().provideCreatePortfolioActivity().handleRequest(request, context);
-        } else if ("GET".equals(request.getHttpMethod()) && PORTFOLIO_PATH.equals(request.getPath())) {
-            response = DaggerServiceComponent.create().provideGetPortfolioActivity().handleRequest(request, context);
         } else {
             response = buildResponse(404, "404 Not Found");
         }

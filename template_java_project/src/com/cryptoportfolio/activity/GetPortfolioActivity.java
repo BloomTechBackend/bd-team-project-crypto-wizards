@@ -35,7 +35,7 @@ import java.util.Map;
  * This API allows the customer to retrieve their saved portfolio.
  */
 
-public class GetPortfolioActivity implements RequestHandler<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent>  {
+public class GetPortfolioActivity implements RequestHandler<GetPortfolioRequest, GetPortfolioResponse>  {
 
     private final Logger log = LogManager.getLogger();
     private PortfolioDao portfolioDao;
@@ -60,34 +60,34 @@ public class GetPortfolioActivity implements RequestHandler<APIGatewayProxyReque
      * <p>
      * If the portfolio does not exist, this should throw a PortfolioNotFoundException.
      *
-     * @param request request object containing the username
+     * @param getPortfolioRequest request object containing the username
      * @return getPortfolioResult result object containing the API defined {@link String}
      */
     @Override
-    public APIGatewayProxyResponseEvent handleRequest(APIGatewayProxyRequestEvent request, Context context) {
+    public GetPortfolioResponse handleRequest(GetPortfolioRequest getPortfolioRequest, Context context) {
         LambdaLogger logger = context.getLogger();
-        logger.log(gson.toJson(request));
+        logger.log(gson.toJson(getPortfolioRequest));
 
-        GetPortfolioRequest getPortfolioRequest = gson.fromJson(request.getBody(), GetPortfolioRequest.class);
         String username = getPortfolioRequest.getUsername();
-        VerificationStatus verificationStatus = Auth.verifyRequest(username, request);
+        String authToken = getPortfolioRequest.getAuthToken();
+        //VerificationStatus verificationStatus = Auth.verifyToken(username, authToken);
 
-        if (!verificationStatus.isVerified()) {
-            return Utils.buildResponse(401, verificationStatus.getMessage());
-        }
+//        if (!verificationStatus.isVerified()) {
+//            return Utils.buildResponse(401, verificationStatus.getMessage());
+//        }
 
         Portfolio portfolio = portfolioDao.getUserPortfolio(username);
 
-        if (portfolio == null) {
-            return Utils.buildResponse(400, "Could not find Portfolio");
-        }
+//        if (portfolio == null) {
+//            return Utils.buildResponse(400, "Could not find Portfolio");
+//        }
 
         PortfolioModel portfolioModel = new ModelConverter().toPortfolioModel(username, portfolio);
 
 
-        return Utils.buildResponse(200, GetPortfolioResponse.builder()
+        return GetPortfolioResponse.builder()
                 .withPortfolio(portfolioModel)
-                .build());
+                .build();
     }
 }
 

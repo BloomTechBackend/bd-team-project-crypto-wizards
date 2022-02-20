@@ -13,6 +13,10 @@ import java.util.Objects;
 public class GetPortfolioResponse {
     private PortfolioModel portfolio;
 
+    public GetPortfolioResponse() {
+
+    }
+
     public GetPortfolioResponse(Builder builder) {
         this.portfolio = builder.portfolio;
     }
