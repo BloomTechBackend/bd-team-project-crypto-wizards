@@ -1,1 +1,0 @@
-// Component used for history page
