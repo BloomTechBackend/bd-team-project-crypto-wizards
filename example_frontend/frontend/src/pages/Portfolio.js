@@ -7,7 +7,7 @@ import PortfolioList from "../components/PortfolioList";
 import PortfolioChart from "../components/PortfolioChart";
 import TestChart from "../components/TestChart";
 
-const portfolioAPIUrl = 'https://ccixqpmq4c.execute-api.us-east-2.amazonaws.com/prod/portfolio';
+const portfolioAPIUrl = 'https://ccixqpmq4c.execute-api.us-east-2.amazonaws.com/prod/portfolio/';
 
 const Portfolio = (props) => {
     const username = getUsername();
@@ -70,8 +70,8 @@ const Portfolio = (props) => {
         }
 
         console.log('Request config' + JSON.stringify(requestConfig));
-
-        axios.get(portfolioAPIUrl + '/' + username, requestConfig).then((response) => {
+        
+        axios.get(portfolioAPIUrl + username, requestConfig).then((response) => {
             console.log('Portfolio Received');
             console.log(response);
             setAssetQuantityMap(response.data.portfolio.assetQuantityMap);
