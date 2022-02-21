@@ -1,6 +1,9 @@
 import React, {useEffect, useRef, useState} from "react";
-import {Chart as ChartJS, ArcElement, Tooltip, Legend, Chart} from 'chart.js';
+import {Chart as ChartJS, ArcElement, Tooltip, Legend} from 'chart.js';
 import { Pie } from 'react-chartjs-2';
+// Register all controllers, elements, scales, plugins from Chart.js
+import Chart from 'chart.js/auto';
+
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
