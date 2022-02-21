@@ -1,4 +1,4 @@
-package com.cryptoportfolio.Dependency;
+package com.cryptoportfolio.dependency;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.cryptoportfolio.activity.CreatePortfolioActivity;

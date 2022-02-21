@@ -1,4 +1,4 @@
-package com.cryptoportfolio.Dependency;
+package com.cryptoportfolio.dependency;
 
 import com.cryptoportfolio.activity.*;
 import com.cryptoportfolio.lambda.CoinGeckoConnector;

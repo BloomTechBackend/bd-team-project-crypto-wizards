@@ -5,7 +5,7 @@ import coinGecko from "../apis/coinGecko";
 import axios from 'axios';
 import PortfolioList from "../components/PortfolioList";
 
-const portfolioAPIUrl = 'https://ccixqpmq4c.execute-api.us-east-2.amazonaws.com/prod/portfolio';
+const portfolioAPIUrl = 'https://ccixqpmq4c.execute-api.us-east-2.amazonaws.com/prod/portfolio/';
 
 // This is the viewPortfolio page
 const Portfolio = (props) => {
@@ -73,7 +73,7 @@ const Portfolio = (props) => {
 
         console.log('Request config' + JSON.stringify(requestConfig));
         
-        axios.get(portfolioAPIUrl + '/' + username, requestConfig).then((response) => {
+        axios.get(portfolioAPIUrl + username, requestConfig).then((response) => {
             console.log('Portfolio Received');
             console.log(response);
             setAssetQuantityMap(response.data.portfolio.assetQuantityMap);
@@ -109,7 +109,7 @@ const Portfolio = (props) => {
             $ Total Portfolio Value <br/>
             {(assets && assetQuantityMap) ?
             <PortfolioList assets={assets.filter(asset => assetQuantityMap[asset.id])} assetQuantityMap={assetQuantityMap} /> :
-            <div>Loading...</div>}
+            <div>Loading<i class="fa-duotone fa-spinner"></i></div>}
             <input type="button" value="Create Portfolio" onClick={createHandler} /> <br/>
             <input type="button" value="Update Portfolio" onClick={updateHandler} /> <br/>
             <input type="button" value="Logout" onClick={logoutHandler} />
