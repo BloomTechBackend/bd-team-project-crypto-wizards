@@ -1,4 +1,4 @@
-package com.cryptoportfolio.Dependency;
+package com.cryptoportfolio.dependency;
 
 import com.amazon.ata.aws.dynamodb.DynamoDbClientProvider;
 import com.amazonaws.regions.Regions;

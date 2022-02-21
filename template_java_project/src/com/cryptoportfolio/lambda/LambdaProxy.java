@@ -5,7 +5,7 @@ import com.amazonaws.services.lambda.runtime.LambdaLogger;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyResponseEvent;
-import com.cryptoportfolio.Dependency.DaggerServiceComponent;
+import com.cryptoportfolio.dependency.DaggerServiceComponent;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -36,8 +36,6 @@ public class LambdaProxy implements RequestHandler<APIGatewayProxyRequestEvent, 
 
         if ("POST".equals(request.getHttpMethod()) && REGISTER_PATH.equals(request.getPath())) {
             response = DaggerServiceComponent.create().provideRegisterActivity().handleRequest(request, context);
-        } else if ("POST".equals(request.getHttpMethod()) && LOGIN_PATH.equals(request.getPath())) {
-            response = DaggerServiceComponent.create().provideLoginActivity().handleRequest(request, context);
         } else if ("POST".equals(request.getHttpMethod()) && VERIFY_PATH.equals(request.getPath())) {
             response = DaggerServiceComponent.create().provideVerifyActivity().handleRequest(request, context);
         } else {

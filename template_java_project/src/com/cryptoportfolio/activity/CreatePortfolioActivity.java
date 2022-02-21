@@ -55,33 +55,14 @@ public class CreatePortfolioActivity  implements RequestHandler<CreatePortfolioR
         LambdaLogger logger = context.getLogger();
         logger.log(gson.toJson(createPortfolioRequest));
 
-//        CreatePortfolioRequest createPortfolioRequest = gson.fromJson(request.getBody(), CreatePortfolioRequest.class);
-//        String username = createPortfolioRequest.getUsername();
-//        VerificationStatus verificationStatus = Auth.verifyRequest(username, request);
-//
-//        if (!verificationStatus.isVerified()) {
-//            return Utils.buildResponse(401, verificationStatus.getMessage());
-//        }
+        Auth.authenticateToken(createPortfolioRequest.getUsername(), createPortfolioRequest.getAuthToken());
 
         Portfolio portfolio = new Portfolio();
-//        Asset asset = new Asset();
-
-
         Map<String, Double> assetQuantityMap = createPortfolioRequest.getAssetQuantityMap();
-
 
         if (!Settings.AVAILABLE_ASSETS.containsAll(assetQuantityMap.keySet())) {
             throw new AssetNotAvailableException("Asset(s) unavailable");
         }
-
-        // I think it takes too long to check the database for each asset
-        // If we do check the amount against the total supply, maybe we should only do it on the front end
-//        for(String assetId : assetQuantityMap.keySet()) {
-//            if (createPortfolioRequest.getAssetQuantityMap().get(assetId) > assetDao.getAsset(assetId).getTotalSupply()) {
-//                return Utils.buildResponse(401,
-//                        new FailureResponse("There is an insufficient amount of assets, please enter a smaller amount"));
-//            }
-//        }
 
         portfolio.setUsername(createPortfolioRequest.getUsername());
         portfolio.setAssetQuantityMap(assetQuantityMap);

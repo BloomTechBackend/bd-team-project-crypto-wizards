@@ -7,6 +7,7 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.exceptions.TokenExpiredException;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import com.cryptoportfolio.exceptions.AuthenticationException;
 
 public class Auth {
 
@@ -46,5 +47,24 @@ public class Auth {
 
     public static VerificationStatus verifyRequest(String username, APIGatewayProxyRequestEvent request) {
         return verifyToken(username, request.getHeaders().get("token"));
+    }
+
+    public static void authenticateToken(String username, String token) {
+        if (null == username || "".equals(username) || null == token || "".equals(token)) {
+            throw new AuthenticationException("Authentication failed: username and token required");
+        }
+
+        try {
+            Algorithm algorithm = Algorithm.HMAC256(System.getenv("JWT_SECRET"));
+            JWTVerifier verifier = JWT.require(algorithm)
+                    .withIssuer("cryptoportfolio")
+                    .withClaim("username", username)
+                    .build(); //Reusable verifier instance
+            DecodedJWT jwt = verifier.verify(token);
+        } catch (TokenExpiredException e) {
+            throw new AuthenticationException("Authentication failed: token expired");
+        } catch (JWTVerificationException e) {
+            throw new AuthenticationException("Authentication failed: token could not be verified");
+        }
     }
 }

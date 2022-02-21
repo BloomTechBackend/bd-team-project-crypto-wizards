@@ -1,4 +1,4 @@
-package com.cryptoportfolio.Dependency;
+package com.cryptoportfolio.dependency;
 
 import com.google.gson.Gson;
 import dagger.internal.Factory;

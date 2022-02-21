@@ -2,27 +2,27 @@ package com.cryptoportfolio.activity;
 
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
-import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent;
-import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyResponseEvent;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.cryptoportfolio.dynamodb.dao.UserDao;
 import com.cryptoportfolio.dynamodb.models.User;
-import com.cryptoportfolio.exceptions.UserNotFoundException;
-import com.cryptoportfolio.models.UserModel;
-import com.cryptoportfolio.models.responses.FailureResponse;
+import com.cryptoportfolio.exceptions.LoginException;
+import com.cryptoportfolio.models.requests.LoginRequest;
 import com.cryptoportfolio.models.responses.LoginResponse;
-import com.cryptoportfolio.utils.Utils;
 import com.google.gson.Gson;
 import org.mindrot.jbcrypt.BCrypt;
 
 import javax.inject.Inject;
 import java.util.Date;
 
-public class LoginActivity implements RequestHandler<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> {
+public class LoginActivity implements RequestHandler<LoginRequest, LoginResponse> {
+
+    // Length of time auth token will remain valid in milliseconds
+    private static final int TOKEN_DURATION = 3_600_000;
 
     private UserDao userDao;
-    Gson gson;
+    private Gson gson;
+
     @Inject
     public LoginActivity(UserDao userDao, Gson gson) {
         this.userDao = userDao;
@@ -30,35 +30,26 @@ public class LoginActivity implements RequestHandler<APIGatewayProxyRequestEvent
     }
 
     @Override
-    public APIGatewayProxyResponseEvent handleRequest(APIGatewayProxyRequestEvent request, Context context) {
+    public LoginResponse handleRequest(LoginRequest loginRequest, Context context) {
 
-        UserModel userModel = gson.fromJson(request.getBody(), UserModel.class);
-        String username = userModel.getUsername();
-        String password = userModel.getPassword();
+        String username = loginRequest.getUsername();
+        String password = loginRequest.getPassword();
 
         if (null == username || "".equals(username) || null == password || "".equals(password)) {
-            return Utils.buildResponse(401,
-                    new FailureResponse("Username and password are required"));
+            throw new LoginException("username and password required");
         }
 
         // Get user, throw exception if user does not exist
-        User user;
-        try {
-            user = userDao.getUser(username);
-        } catch (UserNotFoundException e) {
-            return Utils.buildResponse(403,
-                    new FailureResponse("User does not exist"));
-        }
+        User user = userDao.getUser(username);
 
         // Check provided password against password from database
         if (!BCrypt.checkpw(password, user.getPassword())) {
-            return Utils.buildResponse(403,
-                    new FailureResponse("Password is incorrect"));
+            throw new LoginException("incorrect password");
         }
 
-        // Create and sign JSON web token expiring in 1 hr (3,600,000 milliseconds)
+        // Create and sign JSON web token
         Date expiry = new Date();
-        expiry.setTime(expiry.getTime() + 3_600_000);
+        expiry.setTime(expiry.getTime() + TOKEN_DURATION);
         Algorithm algorithm = Algorithm.HMAC256(System.getenv("JWT_SECRET"));
         String token = JWT.create()
                 .withIssuer("cryptoportfolio")
@@ -66,10 +57,9 @@ public class LoginActivity implements RequestHandler<APIGatewayProxyRequestEvent
                 .withExpiresAt(expiry)
                 .sign(algorithm);
 
-        return Utils.buildResponse(200,
-                new LoginResponse.Builder()
-                        .withUsername(username)
-                        .withToken(token)
-                        .build());
+        return new LoginResponse.Builder()
+                .withUsername(username)
+                .withAuthToken(token)
+                .build();
     }
 }

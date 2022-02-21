@@ -1,8 +1,8 @@
 package com.cryptoportfolio.exceptions;
 
-public class AuthenticationFailedException extends RuntimeException {
+public class AuthenticationException extends RuntimeException {
 
-    public AuthenticationFailedException() {
+    public AuthenticationException() {
         super();
     }
 
@@ -10,15 +10,15 @@ public class AuthenticationFailedException extends RuntimeException {
      * Exception with a message, but no cause.
      * @param message A descriptive message for this exception.
      */
-    public AuthenticationFailedException(String message) {
-        super(message);
+    public AuthenticationException(String message) {
+        super("Authentication failed: " + message);
     }
 
     /**
      * Exception with no message, but with a cause.
      * @param cause The original throwable resulting in this exception.
      */
-    public AuthenticationFailedException(Throwable cause) {
+    public AuthenticationException(Throwable cause) {
         super(cause);
     }
 
@@ -27,7 +27,7 @@ public class AuthenticationFailedException extends RuntimeException {
      * @param message A descriptive message for this exception.
      * @param cause The original throwable resulting in this exception.
      */
-    public AuthenticationFailedException(String message, Throwable cause) {
-        super(message, cause);
+    public AuthenticationException(String message, Throwable cause) {
+        super("Authentication failed: " + message, cause);
     }
 }
