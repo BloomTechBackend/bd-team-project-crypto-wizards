@@ -1,9 +1,13 @@
-com/cryptoportfolio/models/responses/RegisterResponse.java
- com.cryptoportfolio.models.responses.RegisterResponse
- com.cryptoportfolio.models.responses.RegisterResponse$Builder
+com/cryptoportfolio/lambda/VerifyActivityProvider.java
+ com.cryptoportfolio.lambda.VerifyActivityProvider
+com/cryptoportfolio/exceptions/MissingFieldException.java
+ com.cryptoportfolio.exceptions.MissingFieldException
 com/cryptoportfolio/models/requests/CreatePortfolioRequest.java
  com.cryptoportfolio.models.requests.CreatePortfolioRequest
  com.cryptoportfolio.models.requests.CreatePortfolioRequest$Builder
+com/cryptoportfolio/models/responses/RegisterResponse.java
+ com.cryptoportfolio.models.responses.RegisterResponse
+ com.cryptoportfolio.models.responses.RegisterResponse$Builder
 com/cryptoportfolio/activity/VerifyActivity.java
  com.cryptoportfolio.activity.VerifyActivity
 com/cryptoportfolio/lambda/LoginActivityProvider.java
@@ -11,8 +15,6 @@ com/cryptoportfolio/lambda/LoginActivityProvider.java
 com/cryptoportfolio/models/requests/UpdatePortfolioRequest.java
  com.cryptoportfolio.models.requests.UpdatePortfolioRequest
  com.cryptoportfolio.models.requests.UpdatePortfolioRequest$Builder
-com/cryptoportfolio/lambda/LambdaProxy.java
- com.cryptoportfolio.lambda.LambdaProxy
 com/cryptoportfolio/dynamodb/dao/AssetDao.java
  com.cryptoportfolio.dynamodb.dao.AssetDao
 com/cryptoportfolio/models/responses/UpdatePortfolioResponse.java
@@ -28,6 +30,8 @@ com/cryptoportfolio/activity/CreatePortfolioActivity.java
  com.cryptoportfolio.activity.CreatePortfolioActivity
 com/cryptoportfolio/utils/Utils.java
  com.cryptoportfolio.utils.Utils
+com/cryptoportfolio/models/requests/RegisterRequest.java
+ com.cryptoportfolio.models.requests.RegisterRequest
 com/cryptoportfolio/lambda/GetPortfolioActivityProvider.java
  com.cryptoportfolio.lambda.GetPortfolioActivityProvider
 com/cryptoportfolio/models/requests/VerifyRequest.java
@@ -73,6 +77,8 @@ com/cryptoportfolio/models/AssetModel.java
  com.cryptoportfolio.models.AssetModel$Builder
 com/cryptoportfolio/activity/RegisterActivity.java
  com.cryptoportfolio.activity.RegisterActivity
+com/cryptoportfolio/lambda/RegisterActivityProvider.java
+ com.cryptoportfolio.lambda.RegisterActivityProvider
 com/cryptoportfolio/models/responses/CreatePortfolioResponse.java
  com.cryptoportfolio.models.responses.CreatePortfolioResponse
  com.cryptoportfolio.models.responses.CreatePortfolioResponse$Builder

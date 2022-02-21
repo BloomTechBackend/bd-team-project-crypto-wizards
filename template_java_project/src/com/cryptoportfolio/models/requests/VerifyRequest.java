@@ -5,7 +5,7 @@ import java.util.Objects;
 public class VerifyRequest {
 
     private String username;
-    private String token;
+    private String authToken;
 
     public String getUsername() {
         return username;
@@ -15,12 +15,12 @@ public class VerifyRequest {
         this.username = username;
     }
 
-    public String getToken() {
-        return token;
+    public String getAuthToken() {
+        return authToken;
     }
 
-    public void setToken(String token) {
-        this.token = token;
+    public void setAuthToken(String authToken) {
+        this.authToken = authToken;
     }
 
     @Override
@@ -28,19 +28,19 @@ public class VerifyRequest {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         VerifyRequest that = (VerifyRequest) o;
-        return Objects.equals(getUsername(), that.getUsername()) && Objects.equals(getToken(), that.getToken());
+        return Objects.equals(getUsername(), that.getUsername()) && Objects.equals(getAuthToken(), that.getAuthToken());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getUsername(), getToken());
+        return Objects.hash(getUsername(), getAuthToken());
     }
 
     @Override
     public String toString() {
         return "VerifyRequest{" +
                 "username='" + username + '\'' +
-                ", token='" + token + '\'' +
+                ", authToken='" + authToken + '\'' +
                 '}';
     }
 }
