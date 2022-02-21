@@ -15,7 +15,7 @@ public class VerifyRequest {
         this.username = username;
     }
 
-    public String getToken() {
+    public String getAuthToken() {
         return authToken;
     }
 
@@ -28,12 +28,12 @@ public class VerifyRequest {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         VerifyRequest that = (VerifyRequest) o;
-        return Objects.equals(getUsername(), that.getUsername()) && Objects.equals(getToken(), that.getToken());
+        return Objects.equals(getUsername(), that.getUsername()) && Objects.equals(getAuthToken(), that.getAuthToken());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getUsername(), getToken());
+        return Objects.hash(getUsername(), getAuthToken());
     }
 
     @Override

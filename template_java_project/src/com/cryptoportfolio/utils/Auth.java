@@ -51,7 +51,7 @@ public class Auth {
 
     public static void authenticateToken(String username, String token) {
         if (null == username || "".equals(username) || null == token || "".equals(token)) {
-            throw new AuthenticationException("Authentication failed: username and token required");
+            throw new AuthenticationException("username and token required");
         }
 
         try {
@@ -62,9 +62,9 @@ public class Auth {
                     .build(); //Reusable verifier instance
             DecodedJWT jwt = verifier.verify(token);
         } catch (TokenExpiredException e) {
-            throw new AuthenticationException("Authentication failed: token expired");
+            throw new AuthenticationException("token expired");
         } catch (JWTVerificationException e) {
-            throw new AuthenticationException("Authentication failed: token could not be verified");
+            throw new AuthenticationException("token could not be verified");
         }
     }
 }

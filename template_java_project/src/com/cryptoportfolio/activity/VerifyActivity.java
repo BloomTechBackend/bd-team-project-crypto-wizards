@@ -2,21 +2,10 @@ package com.cryptoportfolio.activity;
 
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
-import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent;
-import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyResponseEvent;
-import com.auth0.jwt.JWT;
-import com.auth0.jwt.JWTVerifier;
-import com.auth0.jwt.algorithms.Algorithm;
-import com.auth0.jwt.exceptions.JWTVerificationException;
-import com.auth0.jwt.exceptions.TokenExpiredException;
-import com.auth0.jwt.interfaces.DecodedJWT;
 import com.cryptoportfolio.dynamodb.dao.UserDao;
 import com.cryptoportfolio.models.requests.VerifyRequest;
-import com.cryptoportfolio.models.responses.FailureResponse;
 import com.cryptoportfolio.models.responses.VerifyResponse;
 import com.cryptoportfolio.utils.Auth;
-import com.cryptoportfolio.utils.Utils;
-import com.cryptoportfolio.utils.VerificationStatus;
 import com.google.gson.Gson;
 
 import javax.inject.Inject;
@@ -36,7 +25,7 @@ public class VerifyActivity implements RequestHandler<VerifyRequest, VerifyRespo
     public VerifyResponse handleRequest(VerifyRequest verifyRequest, Context context) {
 
         String username = verifyRequest.getUsername();
-        String token = verifyRequest.getToken();
+        String token = verifyRequest.getAuthToken();
 
         Auth.authenticateToken(username, token);
 
