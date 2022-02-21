@@ -4,6 +4,7 @@ import {getToken, getUsername, resetUserSession} from '../service/AuthService';
 import coinGecko from "../apis/coinGecko";
 import axios from 'axios';
 import PortfolioList from "../components/PortfolioList";
+import PortfolioChart from "../components/PortfolioChart";
 
 const portfolioAPIUrl = 'https://ccixqpmq4c.execute-api.us-east-2.amazonaws.com/prod/portfolio/';
 
@@ -72,8 +73,13 @@ const Portfolio = (props) => {
         }
 
         console.log('Request config' + JSON.stringify(requestConfig));
+<<<<<<< HEAD
         
         axios.get(portfolioAPIUrl + username, requestConfig).then((response) => {
+=======
+
+        axios.get(portfolioAPIUrl + '/' + username, requestConfig).then((response) => {
+>>>>>>> 58f61c2c3b8e9a5be1fc8a50c0bc16ca6b3ba61e
             console.log('Portfolio Received');
             console.log(response);
             setAssetQuantityMap(response.data.portfolio.assetQuantityMap);
