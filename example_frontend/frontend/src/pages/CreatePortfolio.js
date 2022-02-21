@@ -6,7 +6,7 @@ import DropDownMenu from '../components/DropDownMenu';
 import Portfolio from './Portfolio';
 import PortfolioList from '../components/PortfolioList';
 
-const portfolioAPIUrl = 'https://ccixqpmq4c.execute-api.us-east-2.amazonaws.com/prod/portfolio';
+const portfolioAPIUrl = 'https://ccixqpmq4c.execute-api.us-east-2.amazonaws.com/prod/portfolio/';
 
 const CreatePortfolio = (props) => {
     const navigate = useNavigate();
@@ -54,7 +54,7 @@ const CreatePortfolio = (props) => {
         console.log('Request body' + JSON.stringify(requestBody));
 
 
-        axios.post(portfolioAPIUrl, requestBody, requestConfig).then((response) => {
+        axios.post(portfolioAPIUrl + username, requestBody, requestConfig).then((response) => {
             console.log('Portfolio Created');
             navigate('/portfolio');
         }).catch((error) => {
