@@ -73,13 +73,8 @@ const Portfolio = (props) => {
         }
 
         console.log('Request config' + JSON.stringify(requestConfig));
-<<<<<<< HEAD
         
         axios.get(portfolioAPIUrl + username, requestConfig).then((response) => {
-=======
-
-        axios.get(portfolioAPIUrl + '/' + username, requestConfig).then((response) => {
->>>>>>> 58f61c2c3b8e9a5be1fc8a50c0bc16ca6b3ba61e
             console.log('Portfolio Received');
             console.log(response);
             setAssetQuantityMap(response.data.portfolio.assetQuantityMap);
