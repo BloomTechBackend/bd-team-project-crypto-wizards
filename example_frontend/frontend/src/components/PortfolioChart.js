@@ -14,7 +14,8 @@ const PortfolioChart = () => {
         {id: 'bitcoin', symbol: 'btc', name: 'Bitcoin', current_price: 39.875},
         {id: 'ethereum', symbol: 'eth', name: 'Ethereum', current_price: 171.851},
         {id: 'tether', symbol: 'usdt', name: 'Tether', current_price: 271.002},
-        {id: 'binancecoin', symbol: 'bnb', name: 'BNB', current_price: 308.77}
+        {id: 'binancecoin', symbol: 'bnb', name: 'BNB', current_price: 308.771},
+        {id: "ripple", symbol: "xrp", name: "XRP", current_price: 421.539}
     ]
 
     useEffect(() => {
@@ -22,7 +23,7 @@ const PortfolioChart = () => {
             const myChart = new Chart(chartRef.current, {
                 type: 'pie',
                 data: {
-                    labels: portfolioAssets.map(asset => [asset.name, asset.id, asset.symbol].join('\r')),
+                    labels: portfolioAssets.map(asset => [asset.name, asset.id, asset.symbol].join(' \r')),
                     datasets: [{
                         label: `Assets in Portfolio`,
                         data: portfolioAssets.map(asset => [asset.current_price]),
@@ -36,17 +37,40 @@ const PortfolioChart = () => {
                             'rgba(255, 159, 64, 1)',
                             'rgba(182, 51, 204, 1)'
                         ],
-                        borderColor: 'rgba(0, 0, 0, 1)',
-                        boarderWidth: 5,
+                        // borderColor: 'rgba(0, 0, 0, 1)',
+                        boarderWidth: 1,
+                        hoverBorderWidth:1,
+                        hoverBorderColor:'#000',
                     }],
                 },
                 options: {
                     maintainAspectRatio: false,
-                    scales: {},
-                    legend: {
-                        labels: {
-                            fontSize: 24,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Display Title Here',
+                            fontsize: 30,
                         },
+                        legend: {
+                            display: true,
+                            position: 'left',
+                            labels: {
+                                display: true,
+                                fontSize: 24,
+                            },
+                        },
+
+                    },
+                    layout: {
+                        padding: {
+                            left: 100,
+                            right: 0,
+                            bottom: 0,
+                            top: 0,
+                        },
+                    },
+                    tooltips: {
+                        enabled: true
                     },
                 },
             });
