@@ -19,8 +19,8 @@ public class VerifyRequest {
         return authToken;
     }
 
-    public void setToken(String token) {
-        this.authToken = token;
+    public void setAuthToken(String authToken) {
+        this.authToken = authToken;
     }
 
     @Override
@@ -40,7 +40,7 @@ public class VerifyRequest {
     public String toString() {
         return "VerifyRequest{" +
                 "username='" + username + '\'' +
-                ", token='" + authToken + '\'' +
+                ", authToken='" + authToken + '\'' +
                 '}';
     }
 }
