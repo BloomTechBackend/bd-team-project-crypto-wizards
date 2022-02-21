@@ -23,7 +23,7 @@ const PortfolioChart = () => {
             const myChart = new Chart(chartRef.current, {
                 type: 'pie',
                 data: {
-                    labels: portfolioAssets.map(asset => [asset.name, asset.id, asset.symbol].join('\r')),
+                    labels: portfolioAssets.map(asset => [asset.name, asset.id, asset.symbol].join(' \r')),
                     datasets: [{
                         label: `Assets in Portfolio`,
                         data: portfolioAssets.map(asset => [asset.current_price]),
@@ -37,17 +37,40 @@ const PortfolioChart = () => {
                             'rgba(255, 159, 64, 1)',
                             'rgba(182, 51, 204, 1)'
                         ],
-                        borderColor: 'rgba(0, 0, 0, 1)',
-                        boarderWidth: 5,
+                        // borderColor: 'rgba(0, 0, 0, 1)',
+                        boarderWidth: 1,
+                        hoverBorderWidth:1,
+                        hoverBorderColor:'#000',
                     }],
                 },
                 options: {
                     maintainAspectRatio: false,
-                    scales: {},
-                    legend: {
-                        labels: {
-                            fontSize: 24,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Display Title Here',
+                            fontsize: 30,
                         },
+                        legend: {
+                            display: true,
+                            position: 'left',
+                            labels: {
+                                display: true,
+                                fontSize: 24,
+                            },
+                        },
+
+                    },
+                    layout: {
+                        padding: {
+                            left: 100,
+                            right: 0,
+                            bottom: 0,
+                            top: 0,
+                        },
+                    },
+                    tooltips: {
+                        enabled: true
                     },
                 },
             });
