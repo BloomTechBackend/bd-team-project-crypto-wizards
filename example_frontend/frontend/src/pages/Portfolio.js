@@ -73,13 +73,8 @@ const Portfolio = (props) => {
         }
 
         console.log('Request config' + JSON.stringify(requestConfig));
-<<<<<<< HEAD
         
         axios.get(portfolioAPIUrl + username, requestConfig).then((response) => {
-=======
-
-        axios.get(portfolioAPIUrl + '/' + username, requestConfig).then((response) => {
->>>>>>> 58f61c2c3b8e9a5be1fc8a50c0bc16ca6b3ba61e
             console.log('Portfolio Received');
             console.log(response);
             setAssetQuantityMap(response.data.portfolio.assetQuantityMap);
@@ -115,7 +110,7 @@ const Portfolio = (props) => {
             $ Total Portfolio Value <br/>
             {(assets && assetQuantityMap) ?
             <PortfolioList assets={assets.filter(asset => assetQuantityMap[asset.id])} assetQuantityMap={assetQuantityMap} /> :
-            <div>Loading<i class="fa-duotone fa-spinner"></i></div>}
+            <div>Loading...</div>}
             <input type="button" value="Create Portfolio" onClick={createHandler} /> <br/>
             <input type="button" value="Update Portfolio" onClick={updateHandler} /> <br/>
             <input type="button" value="Logout" onClick={logoutHandler} />
