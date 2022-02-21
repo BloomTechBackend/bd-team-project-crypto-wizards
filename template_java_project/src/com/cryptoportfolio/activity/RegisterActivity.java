@@ -3,46 +3,37 @@ package com.cryptoportfolio.activity;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.LambdaLogger;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
-import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent;
-import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyResponseEvent;
 import com.cryptoportfolio.dynamodb.dao.UserDao;
 import com.cryptoportfolio.dynamodb.models.User;
-import com.cryptoportfolio.exceptions.UserAlreadyExistsException;
-import com.cryptoportfolio.models.responses.FailureResponse;
+import com.cryptoportfolio.exceptions.MissingFieldException;
+import com.cryptoportfolio.models.requests.RegisterRequest;
 import com.cryptoportfolio.models.responses.RegisterResponse;
-import com.cryptoportfolio.models.UserModel;
-import com.cryptoportfolio.utils.Utils;
 import com.google.gson.Gson;
 import org.mindrot.jbcrypt.BCrypt;
 
 import javax.inject.Inject;
 
-public class RegisterActivity implements RequestHandler<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> {
+public class RegisterActivity implements RequestHandler<RegisterRequest, RegisterResponse> {
 
     private UserDao userDao;
-    Gson gson;
+    private Gson gson;
 
     @Inject
     public RegisterActivity(UserDao userDao, Gson gson) {
-        //this.userDao = new UserDao();
-        //this.gson = new Gson();
         this.userDao = userDao;
         this.gson = gson;
     }
 
     @Override
-    public APIGatewayProxyResponseEvent handleRequest(APIGatewayProxyRequestEvent request, Context context) {
+    public RegisterResponse handleRequest(RegisterRequest registerRequest, Context context) {
 
         LambdaLogger logger = context.getLogger();
 
-        UserModel userModel = gson.fromJson(request.getBody(), UserModel.class);
-        String username = userModel.getUsername();
-        String password = userModel.getPassword();
+        String username = registerRequest.getUsername();
+        String password = registerRequest.getPassword();
 
         if (null == username || "".equals(username) || null == password || "".equals(password)) {
-            return Utils.buildResponse(401,
-                    new FailureResponse("Username and password are required"));
-
+            throw new MissingFieldException("Username and password are required");
         }
 
         String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
@@ -51,16 +42,10 @@ public class RegisterActivity implements RequestHandler<APIGatewayProxyRequestEv
         user.setUsername(username);
         user.setPassword(hashedPassword);
 
-        try {
-            userDao.createUser(user);
-        } catch (UserAlreadyExistsException e) {
-            return Utils.buildResponse(401,
-                    new FailureResponse("Username already exists"));
-        }
+        userDao.createUser(user);
 
-        return Utils.buildResponse(200,
-                new RegisterResponse.Builder()
-                        .withUsername(username)
-                        .build());
+        return new RegisterResponse.Builder()
+                .withUsername(username)
+                .build();
     }
 }

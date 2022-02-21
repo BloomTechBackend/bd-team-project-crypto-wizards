@@ -5,7 +5,7 @@ import java.util.Objects;
 public class VerifyRequest {
 
     private String username;
-    private String token;
+    private String authToken;
 
     public String getUsername() {
         return username;
@@ -16,11 +16,11 @@ public class VerifyRequest {
     }
 
     public String getToken() {
-        return token;
+        return authToken;
     }
 
     public void setToken(String token) {
-        this.token = token;
+        this.authToken = token;
     }
 
     @Override
@@ -40,7 +40,7 @@ public class VerifyRequest {
     public String toString() {
         return "VerifyRequest{" +
                 "username='" + username + '\'' +
-                ", token='" + token + '\'' +
+                ", token='" + authToken + '\'' +
                 '}';
     }
 }

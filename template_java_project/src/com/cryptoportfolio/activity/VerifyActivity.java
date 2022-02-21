@@ -21,10 +21,10 @@ import com.google.gson.Gson;
 
 import javax.inject.Inject;
 
-public class VerifyActivity implements RequestHandler<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> {
+public class VerifyActivity implements RequestHandler<VerifyRequest, VerifyResponse> {
 
     private UserDao userDao;
-    Gson gson;
+    private Gson gson;
 
     @Inject
     public VerifyActivity(UserDao userDao, Gson gson) {
@@ -33,21 +33,16 @@ public class VerifyActivity implements RequestHandler<APIGatewayProxyRequestEven
     }
 
     @Override
-    public APIGatewayProxyResponseEvent handleRequest(APIGatewayProxyRequestEvent request, Context context) {
+    public VerifyResponse handleRequest(VerifyRequest verifyRequest, Context context) {
 
-        VerifyRequest verifyRequest = gson.fromJson(request.getBody(), VerifyRequest.class);
         String username = verifyRequest.getUsername();
         String token = verifyRequest.getToken();
 
-        VerificationStatus verificationStatus = Auth.verifyToken(username, token);
-        if (!verificationStatus.isVerified()) {
-            return Utils.buildResponse(401,
-                    new FailureResponse(verificationStatus.getMessage()));
-        }
+        Auth.authenticateToken(username, token);
 
-        return Utils.buildResponse(200,
-                new VerifyResponse.Builder()
-                        .withUsername(username)
-                        .withToken(token));
+        return new VerifyResponse.Builder()
+                .withUsername(username)
+                .withToken(token)
+                .build();
     }
 }
