@@ -8,7 +8,6 @@ import PortfolioChart from "../components/PortfolioChart";
 
 const portfolioAPIUrl = 'https://ccixqpmq4c.execute-api.us-east-2.amazonaws.com/prod/portfolio/';
 
-// This is the viewPortfolio page
 const Portfolio = (props) => {
     const username = getUsername();
     const navigate = useNavigate();
@@ -39,9 +38,8 @@ const Portfolio = (props) => {
     const [assets, setAssets] = useState(null);
     const [assetMap, setAssetMap] = useState(null);
     const [assetQuantityMap, setAssetQuantityMap] = useState(null);
-
-    // create loading state
     const [isLoading, setIsLoading] = useState(false);
+
     // useEffect preform task when component mounts
     useEffect(() => {
         // Fetching data for asset details that is returned in map
@@ -51,8 +49,6 @@ const Portfolio = (props) => {
                 // Params used in coinGecko API
                 params: {
                     vs_currency: "usd",
-                    // pass in a list
-                    // pass string to array
                     ids: masterList.join(","),
                 },
             });
@@ -111,6 +107,7 @@ const Portfolio = (props) => {
             {(assets && assetQuantityMap) ?
             <PortfolioList assets={assets.filter(asset => assetQuantityMap[asset.id])} assetQuantityMap={assetQuantityMap} /> :
             <div>Loading...</div>}
+            <PortfolioChart />
             <input type="button" value="Create Portfolio" onClick={createHandler} /> <br/>
             <input type="button" value="Update Portfolio" onClick={updateHandler} /> <br/>
             <input type="button" value="Logout" onClick={logoutHandler} />
