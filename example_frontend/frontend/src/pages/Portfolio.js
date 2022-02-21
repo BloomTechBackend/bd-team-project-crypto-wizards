@@ -5,7 +5,6 @@ import coinGecko from "../apis/coinGecko";
 import axios from 'axios';
 import PortfolioList from "../components/PortfolioList";
 import PortfolioChart from "../components/PortfolioChart";
-import TestChart from "../components/TestChart";
 
 const portfolioAPIUrl = 'https://ccixqpmq4c.execute-api.us-east-2.amazonaws.com/prod/portfolio/';
 
@@ -109,7 +108,6 @@ const Portfolio = (props) => {
             <PortfolioList assets={assets.filter(asset => assetQuantityMap[asset.id])} assetQuantityMap={assetQuantityMap} /> :
             <div>Loading...</div>}
             <PortfolioChart />
-            {/*<TestChart/>*/}
             <input type="button" value="Create Portfolio" onClick={createHandler} /> <br/>
             <input type="button" value="Update Portfolio" onClick={updateHandler} /> <br/>
             <input type="button" value="Logout" onClick={logoutHandler} />
