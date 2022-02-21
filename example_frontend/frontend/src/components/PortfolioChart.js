@@ -14,7 +14,8 @@ const PortfolioChart = () => {
         {id: 'bitcoin', symbol: 'btc', name: 'Bitcoin', current_price: 39.875},
         {id: 'ethereum', symbol: 'eth', name: 'Ethereum', current_price: 171.851},
         {id: 'tether', symbol: 'usdt', name: 'Tether', current_price: 271.002},
-        {id: 'binancecoin', symbol: 'bnb', name: 'BNB', current_price: 308.77}
+        {id: 'binancecoin', symbol: 'bnb', name: 'BNB', current_price: 308.771},
+        {id: "ripple", symbol: "xrp", name: "XRP", current_price: 421.539}
     ]
 
     useEffect(() => {
