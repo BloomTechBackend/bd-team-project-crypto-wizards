@@ -5,6 +5,8 @@ import coinGecko from "../apis/coinGecko";
 import axios from 'axios';
 import PortfolioList from "../components/PortfolioList";
 import PortfolioChart from "../components/PortfolioChart";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faSpinner} from '@fortawesome/free-solid-svg-icons'
 
 const portfolioAPIUrl = 'https://ccixqpmq4c.execute-api.us-east-2.amazonaws.com/prod/portfolio/';
 

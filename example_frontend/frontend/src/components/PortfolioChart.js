@@ -12,7 +12,6 @@ const PortfolioChart = ({assets, assetQuantityMap}) => {
 
 
     useEffect(() => {
-
         if (chartRef && chartRef.current) {
             const myChart = new Chart(chartRef.current, {
                 type: 'pie',
