@@ -49,21 +49,23 @@ const PortfolioChart = () => {
                         title: {
                             display: true,
                             text: 'Display Title Here',
-                            fontsize: 30,
+                            fontsize: 24,
                         },
                         legend: {
                             display: true,
                             position: 'left',
+                            align: 'center',
                             labels: {
-                                display: true,
-                                fontSize: 24,
+                                fontSize: 36,
+                                padding: 20,
+                                color: 'rgb(255, 99, 132)'
                             },
                         },
 
                     },
                     layout: {
                         padding: {
-                            left: 100,
+                            left: 50,
                             right: 0,
                             bottom: 0,
                             top: 0,
