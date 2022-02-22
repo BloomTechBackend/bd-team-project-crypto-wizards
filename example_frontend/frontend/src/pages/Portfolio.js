@@ -105,9 +105,10 @@ const Portfolio = (props) => {
                 {username}'s portfolio <br/> <br/>
             $ Total Portfolio Value <br/>
             {(assets && assetQuantityMap) ?
-            <PortfolioList assets={assets.filter(asset => assetQuantityMap[asset.id])} assetQuantityMap={assetQuantityMap} /> :
+            <PortfolioList assets={assets.filter(asset => assetQuantityMap[asset.id])} assetQuantityMap={assetQuantityMap} />:
             <div>Loading...</div>}
-            <PortfolioChart />
+            {(assets && assetQuantityMap) &&
+            <PortfolioChart assets={assets.filter(asset => assetQuantityMap[asset.id])} assetQuantityMap={assetQuantityMap} />} 
             <input type="button" value="Create Portfolio" onClick={createHandler} /> <br/>
             <input type="button" value="Update Portfolio" onClick={updateHandler} /> <br/>
             <input type="button" value="Logout" onClick={logoutHandler} />
