@@ -11,7 +11,7 @@ public class AuthenticationException extends RuntimeException {
      * @param message A descriptive message for this exception.
      */
     public AuthenticationException(String message) {
-        super("Authentication failed: " + message);
+        super(message);
     }
 
     /**
@@ -28,6 +28,6 @@ public class AuthenticationException extends RuntimeException {
      * @param cause The original throwable resulting in this exception.
      */
     public AuthenticationException(String message, Throwable cause) {
-        super("Authentication failed: " + message, cause);
+        super(message, cause);
     }
 }
