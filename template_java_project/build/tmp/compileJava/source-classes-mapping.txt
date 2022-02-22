@@ -15,6 +15,8 @@ com/cryptoportfolio/lambda/LoginActivityProvider.java
 com/cryptoportfolio/models/requests/UpdatePortfolioRequest.java
  com.cryptoportfolio.models.requests.UpdatePortfolioRequest
  com.cryptoportfolio.models.requests.UpdatePortfolioRequest$Builder
+com/cryptoportfolio/exceptions/UnableToSaveToDatabaseException.java
+ com.cryptoportfolio.exceptions.UnableToSaveToDatabaseException
 com/cryptoportfolio/dynamodb/dao/AssetDao.java
  com.cryptoportfolio.dynamodb.dao.AssetDao
 com/cryptoportfolio/models/responses/UpdatePortfolioResponse.java

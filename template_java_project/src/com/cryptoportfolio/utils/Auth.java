@@ -16,7 +16,7 @@ public class Auth {
         if (null == username || "".equals(username) || null == token || "".equals(token)) {
             return VerificationStatus.builder()
                     .withVerified(false)
-                    .withMessage("Username and token required")
+                    .withMessage("[Unauthorized] Authentication Failed : Username and token required")
                     .build();
         }
 
@@ -30,12 +30,12 @@ public class Auth {
         } catch (TokenExpiredException e) {
             return VerificationStatus.builder()
                     .withVerified(false)
-                    .withMessage("Token expired")
+                    .withMessage("[Unauthorized] Authentication Failed : Token expired")
                     .build();
         } catch (JWTVerificationException e) {
             return VerificationStatus.builder()
                     .withVerified(false)
-                    .withMessage("Verification failed")
+                    .withMessage("[Unauthorized] Authentication Failed : Verification failed")
                     .build();
         }
 
@@ -51,7 +51,7 @@ public class Auth {
 
     public static void authenticateToken(String username, String token) {
         if (null == username || "".equals(username) || null == token || "".equals(token)) {
-            throw new AuthenticationException("username and token required");
+            throw new AuthenticationException("[Unauthorized] Authentication Failed : username and token required");
         }
 
         try {
@@ -62,9 +62,9 @@ public class Auth {
                     .build(); //Reusable verifier instance
             DecodedJWT jwt = verifier.verify(token);
         } catch (TokenExpiredException e) {
-            throw new AuthenticationException("token expired");
+            throw new AuthenticationException("[Unauthorized] Authentication Failed : token expired");
         } catch (JWTVerificationException e) {
-            throw new AuthenticationException("token could not be verified");
+            throw new AuthenticationException("[Unauthorized] Authentication Failed : token could not be verified");
         }
     }
 }

@@ -1,11 +1,10 @@
 package com.cryptoportfolio.dynamodb.dao;
 
-import com.amazon.ata.aws.dynamodb.DynamoDbClientProvider;
-import com.amazonaws.regions.Regions;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMappingException;
 import com.cryptoportfolio.dynamodb.models.Portfolio;
 import com.cryptoportfolio.exceptions.InsufficientAssetsException;
+import com.cryptoportfolio.exceptions.PortfolioNotFoundException;
+import com.cryptoportfolio.exceptions.UnableToSaveToDatabaseException;
 
 import javax.inject.Inject;
 
@@ -30,7 +29,7 @@ public class PortfolioDao {
         Portfolio portfolio = this.dynamoDBMapper.load(Portfolio.class, username);
 
         if (portfolio == null) {
-            throw new InsufficientAssetsException("Could not find portfolio for the user :  " + username);
+            throw new PortfolioNotFoundException("[Not Found] Resource not found : Could not find portfolio for the user :  " + username);
         }
         return portfolio;
     }
@@ -40,11 +39,11 @@ public class PortfolioDao {
      * @param portfolio Saves a portfolio to the database
      * @return returns the saved portfolio
      */
-    public void savePortfolio(Portfolio portfolio) {
+    public void savePortfolio(Portfolio portfolio) throws UnableToSaveToDatabaseException {
         try {
             this.dynamoDBMapper.save(portfolio);
         } catch (Exception e){
-            throw new DynamoDBMappingException();
+            throw new UnableToSaveToDatabaseException("[Internal Server Error] Failed : Unable to service request");
         }
     }
 }
