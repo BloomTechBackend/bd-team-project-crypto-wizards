@@ -7,6 +7,8 @@ import com.cryptoportfolio.converter.ModelConverter;
 import com.cryptoportfolio.dynamodb.dao.AssetDao;
 import com.cryptoportfolio.dynamodb.dao.PortfolioDao;
 import com.cryptoportfolio.dynamodb.models.Portfolio;
+import com.cryptoportfolio.exceptions.LoginException;
+import com.cryptoportfolio.exceptions.PortfolioNotFoundException;
 import com.cryptoportfolio.models.PortfolioModel;
 import com.cryptoportfolio.models.requests.GetPortfolioRequest;
 import com.cryptoportfolio.models.responses.GetPortfolioResponse;
@@ -61,9 +63,9 @@ public class GetPortfolioActivity implements RequestHandler<GetPortfolioRequest,
 
         Portfolio portfolio = portfolioDao.getUserPortfolio(username);
 
-//        if (portfolio == null) {
-//            return Utils.buildResponse(400, "Could not find Portfolio");
-//        }
+        if (portfolio == null) {
+            throw new PortfolioNotFoundException("[Not Found] Resource not found : Could not find Portfolio");
+        }
 
         PortfolioModel portfolioModel = new ModelConverter().toPortfolioModel(username, portfolio);
 

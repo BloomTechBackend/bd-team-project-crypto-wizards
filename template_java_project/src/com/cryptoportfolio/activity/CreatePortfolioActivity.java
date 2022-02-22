@@ -9,6 +9,7 @@ import com.cryptoportfolio.dynamodb.dao.PortfolioDao;
 import com.cryptoportfolio.dynamodb.models.Asset;
 import com.cryptoportfolio.dynamodb.models.Portfolio;
 import com.cryptoportfolio.exceptions.AssetNotAvailableException;
+import com.cryptoportfolio.exceptions.UnableToSaveToDatabaseException;
 import com.cryptoportfolio.models.responses.FailureResponse;
 import com.cryptoportfolio.settings.Settings;
 import com.cryptoportfolio.utils.Auth;
@@ -61,16 +62,16 @@ public class CreatePortfolioActivity  implements RequestHandler<CreatePortfolioR
         Map<String, Double> assetQuantityMap = createPortfolioRequest.getAssetQuantityMap();
 
         if (!Settings.AVAILABLE_ASSETS.containsAll(assetQuantityMap.keySet())) {
-            throw new AssetNotAvailableException("Asset(s) unavailable");
+            throw new AssetNotAvailableException("[Not Found] Resource not found : Asset(s) unavailable");
         }
 
         portfolio.setUsername(createPortfolioRequest.getUsername());
         portfolio.setAssetQuantityMap(assetQuantityMap);
+
         try {
             portfolioDao.savePortfolio(portfolio);
         } catch (DynamoDBMappingException e) {
-//            return Utils.buildResponse(500,
-//                    new FailureResponse("Unable to save portfolio"));
+            throw new UnableToSaveToDatabaseException("[Internal Server Error] Failed : Unable to service request");
         }
 
         return CreatePortfolioResponse.builder()

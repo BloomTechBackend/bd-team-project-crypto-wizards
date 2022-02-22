@@ -33,7 +33,7 @@ public class RegisterActivity implements RequestHandler<RegisterRequest, Registe
         String password = registerRequest.getPassword();
 
         if (null == username || "".equals(username) || null == password || "".equals(password)) {
-            throw new MissingFieldException("Username and password are required");
+            throw new MissingFieldException("[Bad Request] Registration Failed : Username and password are required");
         }
 
         String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());

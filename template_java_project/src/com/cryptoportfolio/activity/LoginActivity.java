@@ -36,7 +36,7 @@ public class LoginActivity implements RequestHandler<LoginRequest, LoginResponse
         String password = loginRequest.getPassword();
 
         if (null == username || "".equals(username) || null == password || "".equals(password)) {
-            throw new LoginException("username and password required");
+            throw new LoginException("[Unauthorized] Login Failed : username and password required");
         }
 
         // Get user, throw exception if user does not exist
@@ -44,7 +44,7 @@ public class LoginActivity implements RequestHandler<LoginRequest, LoginResponse
 
         // Check provided password against password from database
         if (!BCrypt.checkpw(password, user.getPassword())) {
-            throw new LoginException("incorrect password");
+            throw new LoginException("[Forbidden] Login Failed: incorrect password");
         }
 
         // Create and sign JSON web token
