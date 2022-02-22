@@ -10,6 +10,8 @@ import com.cryptoportfolio.dynamodb.dao.AssetDao;
 import com.cryptoportfolio.dynamodb.dao.PortfolioDao;
 import com.cryptoportfolio.dynamodb.models.Asset;
 import com.cryptoportfolio.dynamodb.models.Portfolio;
+import com.cryptoportfolio.exceptions.AssetNotAvailableException;
+import com.cryptoportfolio.exceptions.UnableToSaveToDatabaseException;
 import com.cryptoportfolio.models.requests.UpdatePortfolioRequest;
 import com.cryptoportfolio.models.responses.FailureResponse;
 import com.cryptoportfolio.models.responses.UpdatePortfolioResponse;
@@ -77,12 +79,14 @@ public class UpdatePortfolioActivity implements RequestHandler<APIGatewayProxyRe
 
         for(String assetId : assetQuantityMap.keySet()) {
             if (assetDao.getAsset(assetId) == null) {
-                return Utils.buildResponse(401,
-                        new FailureResponse("This Asset is not available"));
+                throw new AssetNotAvailableException("[Not Found] Resource not found : Asset(s) unavailable");
+//                return Utils.buildResponse(401,
+//                        new FailureResponse("This Asset is not available"));
             }
             if (updatePortfolioRequest.getAssetQuantityMap().get(assetId) > assetDao.getAsset(assetId).getTotalSupply()) {
-                return Utils.buildResponse(401,
-                        new FailureResponse("There is an insufficient amount of assets, please enter a smaller amount"));
+                throw new AssetNotAvailableException("[Not Found] Resource not found : There is an insufficient amount of assets, please enter a smaller amount");
+//                return Utils.buildResponse(401,
+//                        new FailureResponse("There is an insufficient amount of assets, please enter a smaller amount"));
             }
         }
 
@@ -91,8 +95,9 @@ public class UpdatePortfolioActivity implements RequestHandler<APIGatewayProxyRe
         try {
             portfolioDao.savePortfolio(portfolio);
         } catch (DynamoDBMappingException e) {
-            return Utils.buildResponse(500,
-                    new FailureResponse("Unable to save portfolio"));
+//            return Utils.buildResponse(500,
+//                    new FailureResponse("Unable to save portfolio"));
+            throw new UnableToSaveToDatabaseException("[Internal Server Error] Failed : Unable to service request");
         }
 
         return Utils.buildResponse(200, UpdatePortfolioResponse.builder()

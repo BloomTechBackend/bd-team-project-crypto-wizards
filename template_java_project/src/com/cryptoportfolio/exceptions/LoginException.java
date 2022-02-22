@@ -11,7 +11,7 @@ public class LoginException extends RuntimeException {
      * @param message A descriptive message for this exception.
      */
     public LoginException(String message) {
-        super("Login failed: " + message);
+        super(message);
     }
 
     /**
@@ -28,6 +28,6 @@ public class LoginException extends RuntimeException {
      * @param cause The original throwable resulting in this exception.
      */
     public LoginException(String message, Throwable cause) {
-        super("Login failed: " + message, cause);
+        super(message, cause);
     }
 }

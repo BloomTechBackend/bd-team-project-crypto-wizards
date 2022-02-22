@@ -1,8 +1,8 @@
 package com.cryptoportfolio.exceptions;
 
-public class AuthenticationException extends RuntimeException {
+public class UnableToSaveToDatabaseException extends RuntimeException {
 
-    public AuthenticationException() {
+    public UnableToSaveToDatabaseException() {
         super();
     }
 
@@ -10,7 +10,7 @@ public class AuthenticationException extends RuntimeException {
      * Exception with a message, but no cause.
      * @param message A descriptive message for this exception.
      */
-    public AuthenticationException(String message) {
+    public UnableToSaveToDatabaseException(String message) {
         super(message);
     }
 
@@ -18,7 +18,7 @@ public class AuthenticationException extends RuntimeException {
      * Exception with no message, but with a cause.
      * @param cause The original throwable resulting in this exception.
      */
-    public AuthenticationException(Throwable cause) {
+    public UnableToSaveToDatabaseException(Throwable cause) {
         super(cause);
     }
 
@@ -27,7 +27,8 @@ public class AuthenticationException extends RuntimeException {
      * @param message A descriptive message for this exception.
      * @param cause The original throwable resulting in this exception.
      */
-    public AuthenticationException(String message, Throwable cause) {
+    public UnableToSaveToDatabaseException(String message, Throwable cause) {
         super(message, cause);
     }
+
 }
