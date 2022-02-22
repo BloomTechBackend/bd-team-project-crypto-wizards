@@ -8,13 +8,15 @@ import java.util.Objects;
  */
 public class UpdatePortfolioRequest {
     private String username;
+    private String authToken;
     private Map<String, Double> assetQuantityMap;
 
     public UpdatePortfolioRequest() {
     }
 
-    public UpdatePortfolioRequest(String username, Map<String, Double> assetQuantityMap) {
+    public UpdatePortfolioRequest(String username, String authToken, Map<String, Double> assetQuantityMap) {
         this.username = username;
+        this.authToken = authToken;
         this.assetQuantityMap = assetQuantityMap;
     }
 
@@ -31,6 +33,14 @@ public class UpdatePortfolioRequest {
         this.username = username;
     }
 
+    public String getAuthToken() {
+        return authToken;
+    }
+
+    public void setAuthToken(String authToken) {
+        this.authToken = authToken;
+    }
+
     public Map<String, Double> getAssetQuantityMap() {
         return assetQuantityMap;
     }
@@ -43,6 +53,7 @@ public class UpdatePortfolioRequest {
 
     public static final class Builder {
         private String username;
+        private String authToken;
         private Map<String, Double> assetQuantityMap;
 
         private Builder() {
@@ -50,6 +61,11 @@ public class UpdatePortfolioRequest {
 
         public Builder withUsername(String usernameToUse) {
             this.username = usernameToUse;
+            return this;
+        }
+
+        public Builder withAuthToken(String authTokenToUse) {
+            this.authToken = authTokenToUse;
             return this;
         }
 
@@ -66,20 +82,21 @@ public class UpdatePortfolioRequest {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof CreatePortfolioRequest)) return false;
-        CreatePortfolioRequest that = (CreatePortfolioRequest) o;
-        return Objects.equals(getUsername(), that.getUsername()) && Objects.equals(getAssetQuantityMap(), that.getAssetQuantityMap());
+        if (!(o instanceof UpdatePortfolioRequest)) return false;
+        UpdatePortfolioRequest that = (UpdatePortfolioRequest) o;
+        return Objects.equals(getUsername(), that.getUsername()) && Objects.equals(getAuthToken(), that.getAuthToken()) && Objects.equals(getAssetQuantityMap(), that.getAssetQuantityMap());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getUsername(), getAssetQuantityMap());
+        return Objects.hash(getUsername(), getAuthToken(), getAssetQuantityMap());
     }
 
     @Override
     public String toString() {
-        return "CreatePortfolioRequest{" +
+        return "UpdatePortfolioRequest{" +
                 "username='" + username + '\'' +
+                ", authToken='" + authToken + '\'' +
                 ", assetQuantityMap=" + assetQuantityMap +
                 '}';
     }
