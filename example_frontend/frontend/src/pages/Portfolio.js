@@ -5,8 +5,7 @@ import coinGecko from "../apis/coinGecko";
 import axios from 'axios';
 import PortfolioList from "../components/PortfolioList";
 import PortfolioChart from "../components/PortfolioChart";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faSpinner} from '@fortawesome/free-solid-svg-icons'
+import CreatePortfolio from "./CreatePortfolio";
 
 const portfolioAPIUrl = 'https://ccixqpmq4c.execute-api.us-east-2.amazonaws.com/prod/portfolio/';
 
@@ -40,7 +39,7 @@ const Portfolio = (props) => {
     // store data
     const [assets, setAssets] = useState(null);
     const [assetMap, setAssetMap] = useState(null);
-    const [assetQuantityMap, setAssetQuantityMap] = useState(null);
+    const [assetQuantityMap, setAssetQuantityMap] = useState({});
     const [isLoading, setIsLoading] = useState(false);
 
     // useEffect preform task when component mounts
@@ -114,6 +113,7 @@ const Portfolio = (props) => {
             {(assets && assetQuantityMap) ?
             <PortfolioList assets={assets.filter(asset => assetQuantityMap[asset.id])} assetQuantityMap={assetQuantityMap} />:
             <div>Loading...</div>}
+            {assets && <CreatePortfolio assets={assets} assetQuantityMap={assetQuantityMap} setAssetQuantityMap={(x)=>setAssetQuantityMap(x)}/>}
         </div>
     )
 }

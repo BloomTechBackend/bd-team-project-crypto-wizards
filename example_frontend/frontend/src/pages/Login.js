@@ -31,7 +31,6 @@ const Login = (props) => {
 
         // Take out redirect to portfolio, make ViewPortfolio-Create-Update buttons will be visible
         axios.post(loginAPIUrl, requestBody, requestConfig).then((response) => {
-            console.log(response.data.newUser);
             setUserSession(response.data.username, response.data.authToken, response.data.newUser);
             props.authenticate();
             navigate('/portfolio');

@@ -8,7 +8,7 @@ import PortfolioList from '../components/PortfolioList';
 
 const portfolioAPIUrl = 'https://ccixqpmq4c.execute-api.us-east-2.amazonaws.com/prod/portfolio/';
 
-const CreatePortfolio = (props) => {
+const CreatePortfolio = ({assets, assetQuantityMap, setAssetQuantityMap}) => {
     const navigate = useNavigate();
     const location = useLocation();
     const token = getToken();
@@ -17,7 +17,6 @@ const CreatePortfolio = (props) => {
     const [assetId, setAssetId] = useState('');
     const [quantity, setQuantity] = useState('');
     const [message, setMessage] = useState(null);
-    const [assetQuantityMap, setAssetQuantityMap] = useState({});
 
     const addAssetHandler = (event) => {
 
@@ -71,14 +70,13 @@ const CreatePortfolio = (props) => {
             <form onSubmit={addAssetHandler}>
                 <h5>Create Portfolio</h5>
                 {username}'s Portfolio <br/> <br/>
-                <PortfolioList assets={location.state.assets.filter(asset => assetQuantityMap[asset.id])} assetQuantityMap={assetQuantityMap}/>
-                Asset: <DropDownMenu assets={location.state.assets} setAssetId={(e)=>setAssetId(e)} /> <br/>
+                {/* <PortfolioList assets={assets.filter(asset => assetQuantityMap[asset.id])} assetQuantityMap={assetQuantityMap}/> */}
+                Asset: <DropDownMenu assets={assets} setAssetId={(e)=>setAssetId(e)} /> <br/>
                 Quantity: <input type="text" value={quantity} onChange={event => setQuantity(event.target.value)} /> <br/> <br/>
                 <input className="btn btn-primary dropdown-toggle" type="submit" value="AddAsset" />
                 <input className="btn btn-primary dropdown-toggle" type="button" onClick={createPortfolioHandler} value="Create Portfolio" />
                 {message && <p className="message">{message}</p>}
             </form>
-
         </div>
     )
 }
