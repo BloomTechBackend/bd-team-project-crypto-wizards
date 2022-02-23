@@ -41,6 +41,7 @@ public class RegisterActivity implements RequestHandler<RegisterRequest, Registe
         User user = new User();
         user.setUsername(username);
         user.setPassword(hashedPassword);
+        user.setIsNewUser(true);
 
         userDao.createUser(user);
 

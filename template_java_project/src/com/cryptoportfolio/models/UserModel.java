@@ -9,6 +9,8 @@ public class UserModel implements Serializable {
 
     private String username;
     private String password;
+    private Boolean isNewUser;
+
 
     public String getUsername() {
         return username;
@@ -26,17 +28,25 @@ public class UserModel implements Serializable {
         this.password = password;
     }
 
+    public Boolean getNewUser() {
+        return isNewUser;
+    }
+
+    public void setNewUser(Boolean newUser) {
+        isNewUser = newUser;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof UserModel)) return false;
         UserModel userModel = (UserModel) o;
-        return Objects.equals(getUsername(), userModel.getUsername()) && Objects.equals(getPassword(), userModel.getPassword());
+        return Objects.equals(getUsername(), userModel.getUsername()) && Objects.equals(getPassword(), userModel.getPassword()) && Objects.equals(isNewUser, userModel.isNewUser);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getUsername(), getPassword());
+        return Objects.hash(getUsername(), getPassword(), isNewUser);
     }
 
     @Override
@@ -44,6 +54,7 @@ public class UserModel implements Serializable {
         return "UserModel{" +
                 "username='" + username + '\'' +
                 ", password='" + password + '\'' +
+                ", isNewUser=" + isNewUser +
                 '}';
     }
 }
