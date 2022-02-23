@@ -107,7 +107,7 @@ const UpdatePortfolio = (props) => {
                 Quantity: <input type="text" value={quantity} onChange={event => setQuantity(event.target.value)} /> <br/> <br/>
                 <input className="btn btn-primary dropdown-toggle" type="button" onClick={addAssetHandler} value="Add Asset" />
                 <input className="btn btn-primary dropdown-toggle" type="button" onClick={updateAssetHandler} value="Update Asset" />
-                <input className="btn btn-primary dropdown-toggle" type="button" onClick={updatePortfolioHandler} value="Create Portfolio" />
+                <input className="btn btn-primary dropdown-toggle" type="button" onClick={updatePortfolioHandler} value="Update Portfolio" />
                 {message && <p className="message">{message}</p>}
 
         </div>
