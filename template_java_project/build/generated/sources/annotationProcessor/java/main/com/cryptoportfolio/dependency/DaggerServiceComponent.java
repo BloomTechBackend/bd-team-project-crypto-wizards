@@ -56,7 +56,7 @@ public final class DaggerServiceComponent implements ServiceComponent {
 
   @Override
   public CreatePortfolioActivity provideCreatePortfolioActivity() {
-    return new CreatePortfolioActivity(getPortfolioDao(), getAssetDao(), provideGsonProvider.get());
+    return new CreatePortfolioActivity(getPortfolioDao(), new UserDao(), provideGsonProvider.get());
   }
 
   @Override

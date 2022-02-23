@@ -29,6 +29,16 @@ public class UserDao {
         }
     }
 
+    public void updateUser(User user) {
+        User updateUser = user;
+        if (null != dynamoDBMapper.load(User.class, user.getUsername())) {
+            updateUser.setIsNewUser(false);
+            dynamoDBMapper.save(user);
+        } else {
+            throw new LoginException(String.format("[Unauthorized] Login Failed : user does not exist"));
+        }
+    }
+
     public User getUser(String username) {
 
         User user = dynamoDBMapper.load(User.class, username);

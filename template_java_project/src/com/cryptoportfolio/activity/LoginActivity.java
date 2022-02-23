@@ -35,12 +35,14 @@ public class LoginActivity implements RequestHandler<LoginRequest, LoginResponse
         String username = loginRequest.getUsername();
         String password = loginRequest.getPassword();
 
+
         if (null == username || "".equals(username) || null == password || "".equals(password)) {
             throw new LoginException("[Unauthorized] Login Failed : username and password required");
         }
 
         // Get user, throw exception if user does not exist
         User user = userDao.getUser(username);
+        boolean isNewUser = user.getIsNewUser();
 
         // Check provided password against password from database
         if (!BCrypt.checkpw(password, user.getPassword())) {
@@ -60,6 +62,7 @@ public class LoginActivity implements RequestHandler<LoginRequest, LoginResponse
         return new LoginResponse.Builder()
                 .withUsername(username)
                 .withAuthToken(token)
+                .withIsNewUser(isNewUser)
                 .build();
     }
 }
