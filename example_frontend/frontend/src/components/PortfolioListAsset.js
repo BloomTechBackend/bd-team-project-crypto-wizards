@@ -12,6 +12,7 @@ const PortfolioListAsset = ({asset, assetQuantityMap}) => {
             <img className="coinlist-image" src={asset.image} alt=""/>
             <span className="text-decoration-none">{asset.name}</span>
             <span className="text-decoration-none">{assetQuantityMap[asset.id]}</span>
+            <input type="button" value="Edit" />
 
         </li>
     );

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
-import {getToken, getUsername, resetUserSession} from '../service/AuthService';
+import {getToken, getUsername, isNewUser, resetUserSession} from '../service/AuthService';
 import coinGecko from "../apis/coinGecko";
 import axios from 'axios';
 import PortfolioList from "../components/PortfolioList";
@@ -12,6 +12,7 @@ const portfolioAPIUrl = 'https://ccixqpmq4c.execute-api.us-east-2.amazonaws.com/
 
 const Portfolio = (props) => {
     const username = getUsername();
+    const newUser = isNewUser();
     const navigate = useNavigate();
     const token = getToken();
     const [message, setMessage] = useState(null);
@@ -63,37 +64,37 @@ const Portfolio = (props) => {
     },[]);
 
     useEffect(() => {
-        const requestConfig = {
-            headers: {
-                'x-api-key': '9zsZhasE01a9hxGo92WUr68aGSvllMBN6Q3FHmBI',
-                'cp-auth-token': token
+        if(!newUser) {
+            const requestConfig = {
+                headers: {
+                    'x-api-key': '9zsZhasE01a9hxGo92WUr68aGSvllMBN6Q3FHmBI',
+                    'cp-auth-token': token
+                }
             }
-        }
 
-        console.log('Request config' + JSON.stringify(requestConfig));
-        
-        axios.get(portfolioAPIUrl + username, requestConfig).then((response) => {
-            console.log('Portfolio Received');
-            console.log(response);
-            setAssetQuantityMap(response.data.portfolio.assetQuantityMap);
-        }).catch((error) => {
-            console.log('Error ' + error);
-            if (error.response.status === 401 || error.response.status === 403) {
-                setMessage(error.response.data.message);
-            } else {
-                setMessage('Server is down, please try again later');
-            }
-        })
+            console.log('Request config' + JSON.stringify(requestConfig));
+            
+            axios.get(portfolioAPIUrl + username, requestConfig).then((response) => {
+                console.log('Portfolio Received');
+                console.log(response);
+                setAssetQuantityMap(response.data.portfolio.assetQuantityMap);
+            }).catch((error) => {
+                console.log('Error ' + error);
+                if (error.response.status === 401 || error.response.status === 403) {
+                    setMessage(error.response.data.message);
+                } else {
+                    setMessage('Server is down, please try again later');
+                }
+            })
+        }
     },[]);
 
     const createHandler = () => {
-        console.log(assets);
-        console.log(assetMap);
         navigate('/createPortfolio', {state : {assets:assets, assetMap:assetMap}});
     }
 
     const updateHandler = () => {
-        navigate('/updatePortfolio', {state : assets});
+        navigate('/updatePortfolio', {state : {assets:assets, assetMap:assetMap}});
     }
 
     const logoutHandler = () => {
@@ -106,14 +107,13 @@ const Portfolio = (props) => {
             Hello {username}, you have been successfully logged in. <br/> <br/>
                 {username}'s portfolio <br/> <br/>
             $ Total Portfolio Value <br/>
+            Is new user: {newUser} <br/>
+            {(assets && assetQuantityMap) &&
+            <PortfolioChart assets={assets.filter(asset => assetQuantityMap[asset.id])} assetQuantityMap={assetQuantityMap} />} 
+            <input type="button" value="Logout" onClick={logoutHandler} />
             {(assets && assetQuantityMap) ?
             <PortfolioList assets={assets.filter(asset => assetQuantityMap[asset.id])} assetQuantityMap={assetQuantityMap} />:
             <div>Loading...</div>}
-            {(assets && assetQuantityMap) &&
-            <PortfolioChart assets={assets.filter(asset => assetQuantityMap[asset.id])} assetQuantityMap={assetQuantityMap} />} 
-            <input type="button" value="Create Portfolio" onClick={createHandler} /> <br/>
-            <input type="button" value="Update Portfolio" onClick={updateHandler} /> <br/>
-            <input type="button" value="Logout" onClick={logoutHandler} />
         </div>
     )
 }
