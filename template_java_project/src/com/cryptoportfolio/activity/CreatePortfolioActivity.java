@@ -19,6 +19,7 @@ import com.cryptoportfolio.models.requests.CreatePortfolioRequest;
 import com.cryptoportfolio.models.responses.CreatePortfolioResponse;
 
 import javax.inject.Inject;
+import java.util.HashMap;
 import java.util.Map;
 
 public class CreatePortfolioActivity  implements RequestHandler<CreatePortfolioRequest, CreatePortfolioResponse> {
@@ -72,7 +73,16 @@ public class CreatePortfolioActivity  implements RequestHandler<CreatePortfolioR
         userDao.updateUser(user);
 
         portfolio.setUsername(createPortfolioRequest.getUsername());
-        portfolio.setAssetQuantityMap(assetQuantityMap);
+
+        Map<String, Double> nonZeroAssetQuantityMap = new HashMap<>();
+
+        for (String assetID : assetQuantityMap.keySet()) {
+            if (assetQuantityMap.get(assetID) != 0) {
+                nonZeroAssetQuantityMap.put(assetID, assetQuantityMap.get(assetID));
+            }
+        }
+
+        portfolio.setAssetQuantityMap(nonZeroAssetQuantityMap);
 
         try {
             portfolioDao.savePortfolio(portfolio);
@@ -81,8 +91,8 @@ public class CreatePortfolioActivity  implements RequestHandler<CreatePortfolioR
         }
 
         return CreatePortfolioResponse.builder()
-                        .withMessage("Portfolio created successfully")
-                        .build();
+                .withMessage("Portfolio created successfully")
+                .build();
     }
 
 }

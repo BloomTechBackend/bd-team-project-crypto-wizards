@@ -18,6 +18,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.inject.Inject;
+import java.util.HashMap;
 import java.util.Map;
 
 public class UpdatePortfolioActivity implements RequestHandler<UpdatePortfolioRequest, UpdatePortfolioResponse> {
@@ -66,7 +67,16 @@ public class UpdatePortfolioActivity implements RequestHandler<UpdatePortfolioRe
         }
 
         portfolio.setUsername(updatePortfolioRequest.getUsername());
-        portfolio.setAssetQuantityMap(assetQuantityMap);
+
+        Map<String, Double> nonZeroAssetQuantityMap = new HashMap<>();
+
+        for (String assetID : assetQuantityMap.keySet()) {
+            if (assetQuantityMap.get(assetID) != 0) {
+                nonZeroAssetQuantityMap.put(assetID, assetQuantityMap.get(assetID));
+            }
+        }
+
+        portfolio.setAssetQuantityMap(nonZeroAssetQuantityMap);
 
         try {
             portfolioDao.savePortfolio(portfolio);
