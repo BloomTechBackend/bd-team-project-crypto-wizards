@@ -91,7 +91,7 @@ const Portfolio = (props) => {
     }
 
     const updateHandler = () => {
-        navigate('/updatePortfolio', {state : assets});
+        navigate('/updatePortfolio', {state : {assets:assets, assetMap:assetMap, assetQuantityMap:assetQuantityMap}});
     }
 
     const logoutHandler = () => {
