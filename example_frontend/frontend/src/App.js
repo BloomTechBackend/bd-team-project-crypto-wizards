@@ -9,6 +9,7 @@ import {getUsername, getToken, setUserSession, resetUserSession} from './service
 import CreatePortfolio from "./pages/CreatePortfolio";
 //import './index.css';
 import "./App.css";
+import UpdatePortfolio from "./pages/UpdatePortfolio";
 
 const verifyTokenAPIUrl = 'https://ccixqpmq4c.execute-api.us-east-2.amazonaws.com/prod/verify';
 
@@ -73,6 +74,7 @@ function App() {
                                 <Route path="/portfolio"
                                        element={<Portfolio logout={() => setToken(getToken())}/>}/>
                                 <Route path="/createPortfolio" element={<CreatePortfolio />}/>
+                                <Route path="/updatePortfolio" element={<UpdatePortfolio />}/>
                             </>
                         )}
                         <Route path="*" element={<Navigate to={isTokenSet ? "/portfolio" : "/"}/>}/>
