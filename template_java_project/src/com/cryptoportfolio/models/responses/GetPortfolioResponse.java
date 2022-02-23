@@ -1,9 +1,7 @@
 package com.cryptoportfolio.models.responses;
 
-import com.cryptoportfolio.models.PortfolioAssetModel;
 import com.cryptoportfolio.models.PortfolioModel;
 
-import java.util.Map;
 import java.util.Objects;
 
 /**
