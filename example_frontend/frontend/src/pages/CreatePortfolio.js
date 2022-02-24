@@ -28,12 +28,14 @@ const CreatePortfolio = (props) => {
         }
         setMessage(null);
 
-        const updatedValue = {};
-        updatedValue[assetId] = quantity;
-        setAssetQuantityMap(assetQuantityMap => ({
-            ...assetQuantityMap,
-            ...updatedValue
-        }));
+        if (quantity > 0 && !assetQuantityMap[assetId]) {
+            const updatedValue = {};
+            updatedValue[assetId] = quantity;
+            setAssetQuantityMap(assetQuantityMap => ({
+                ...assetQuantityMap,
+                ...updatedValue
+            }));
+        }
     }
 
     const createPortfolioHandler = (event) => {
