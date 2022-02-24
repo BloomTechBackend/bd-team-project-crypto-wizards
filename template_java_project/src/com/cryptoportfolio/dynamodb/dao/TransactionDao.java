@@ -44,12 +44,12 @@ public class TransactionDao {
 
         Transaction event = new Transaction();
         Map<String, AttributeValue> valueMap = new HashMap<>();
-        valueMap.put(":asset_id", new AttributeValue().withS(assetFlag));
         valueMap.put(":username", new AttributeValue().withS(username));
+        valueMap.put(":asset_id", new AttributeValue().withS(assetFlag));
         DynamoDBQueryExpression<Transaction> queryExpression = new DynamoDBQueryExpression<Transaction>()
-                .withIndexName(Transaction.ASSET_ID_INDEX)
+                .withIndexName(Transaction.USERNAME_ASSET_ID_INDEX)
                 .withConsistentRead(false)
-                .withKeyConditionExpression("asset_id = :asset_id and username = :username")
+                .withKeyConditionExpression("username = :username and asset_id = :asset_id")
                 .withExpressionAttributeValues(valueMap);
 
         PaginatedQueryList<Transaction> transactionList = dynamoDBMapper.query(Transaction.class, queryExpression);

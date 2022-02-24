@@ -10,7 +10,7 @@ import java.util.Objects;
 
 @DynamoDBTable(tableName = "transactions")
 public class Transaction {
-    public static final String ASSET_ID_INDEX= "asset_id-index";
+    public static final String USERNAME_ASSET_ID_INDEX= "username-asset_id-index";
     private String username;
     private String transactionDate;
     private String assetId;
@@ -19,6 +19,7 @@ public class Transaction {
     private String transactionType;
 
     @DynamoDBHashKey(attributeName = "username")
+    @DynamoDBIndexHashKey(attributeName = "username", globalSecondaryIndexName = USERNAME_ASSET_ID_INDEX)
     public String getUsername() {
         return username;
     }
@@ -36,7 +37,7 @@ public class Transaction {
         this.transactionDate = transactionDate;
     }
 
-    @DynamoDBIndexHashKey(attributeName = "asset_id", globalSecondaryIndexName = ASSET_ID_INDEX)
+    @DynamoDBIndexRangeKey(attributeName = "asset_id", globalSecondaryIndexName = USERNAME_ASSET_ID_INDEX)
     public String getAssetId() {
         return assetId;
     }
