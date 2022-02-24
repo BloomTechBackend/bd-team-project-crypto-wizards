@@ -100,17 +100,17 @@ const UpdatePortfolio = (props) => {
         console.log('Request body' + JSON.stringify(requestBody));
 
 
-        // axios.put(portfolioAPIUrl + username, requestBody, requestConfig).then((response) => {
-        //     console.log('Portfolio Updated');
-        //     navigate('/portfolio');
-        // }).catch((error) => {
-        //     console.log('Error ' + error);
-        //     if (error.response.status === 401 || error.response.status === 403) {
-        //         setMessage(error.response.data.message);
-        //     } else {
-        //         setMessage('Server is down, please try again later');
-        //     }
-        // })
+        axios.put(portfolioAPIUrl + username, requestBody, requestConfig).then((response) => {
+            console.log('Portfolio Updated');
+            navigate('/portfolio');
+        }).catch((error) => {
+            console.log('Error ' + error);
+            if (error.response.status === 401 || error.response.status === 403) {
+                setMessage(error.response.data.message);
+            } else {
+                setMessage('Server is down, please try again later');
+            }
+        })
     }
 
     return (
