@@ -77,12 +77,6 @@ const UpdatePortfolio = (props) => {
         
         setTransactions(transactions => [...transactions, newTransaction]);
         
-        // let copyOfObject = { ...shopCart }
-        // delete copyOfObject['propertyToRemove']
-
-        // setShopCart( shopCart => ({
-        //     ...copyOfObject
-        // }));
 
         const updatedValue = {...assetQuantityMap};
         if (quantity <= 0) {
