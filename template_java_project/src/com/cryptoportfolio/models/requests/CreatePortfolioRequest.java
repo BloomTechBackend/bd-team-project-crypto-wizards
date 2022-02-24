@@ -1,5 +1,8 @@
 package com.cryptoportfolio.models.requests;
 
+import com.cryptoportfolio.dynamodb.models.Transaction;
+
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -11,20 +14,16 @@ public class CreatePortfolioRequest {
     private String username;
     private String authToken;
     private Map<String, Double> assetQuantityMap;
+    private List<Transaction> transactions;
 
     public CreatePortfolioRequest() {
-    }
-
-    public CreatePortfolioRequest(String username, String authToken, Map<String, Double> assetQuantityMap) {
-        this.username = username;
-        this.authToken = authToken;
-        this.assetQuantityMap = assetQuantityMap;
     }
 
     public CreatePortfolioRequest(Builder builder) {
         this.username = builder.username;
         this.authToken = builder.authToken;
         this.assetQuantityMap = builder.assetQuantityMap;
+        this.transactions = builder.transactions;
     }
 
     public String getUsername() {
@@ -51,12 +50,21 @@ public class CreatePortfolioRequest {
         this.authToken = authToken;
     }
 
+    public List<Transaction> getTransactions() {
+        return transactions;
+    }
+
+    public void setTransactions(List<Transaction> transactions) {
+        this.transactions = transactions;
+    }
+
     public static Builder builder() { return new Builder(); }
 
     public static final class Builder {
         private String username;
         private String authToken;
         private Map<String, Double> assetQuantityMap;
+        private List<Transaction> transactions;
 
         private Builder() {
         }
@@ -76,24 +84,28 @@ public class CreatePortfolioRequest {
             return this;
         }
 
+        public Builder withAssetQuantityMap(List<Transaction> transactionsToUse) {
+            this.transactions = transactionsToUse;
+            return this;
+        }
+
 
         public CreatePortfolioRequest build() {
             return new CreatePortfolioRequest(this);
         }
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof CreatePortfolioRequest)) return false;
         CreatePortfolioRequest that = (CreatePortfolioRequest) o;
-        return Objects.equals(getUsername(), that.getUsername()) && Objects.equals(getAuthToken(), that.getAuthToken()) && Objects.equals(getAssetQuantityMap(), that.getAssetQuantityMap());
+        return Objects.equals(getUsername(), that.getUsername()) && Objects.equals(getAuthToken(), that.getAuthToken()) && Objects.equals(getAssetQuantityMap(), that.getAssetQuantityMap()) && Objects.equals(getTransactions(), that.getTransactions());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getUsername(), getAuthToken(), getAssetQuantityMap());
+        return Objects.hash(getUsername(), getAuthToken(), getAssetQuantityMap(), getTransactions());
     }
 
     @Override
@@ -102,6 +114,7 @@ public class CreatePortfolioRequest {
                 "username='" + username + '\'' +
                 ", authToken='" + authToken + '\'' +
                 ", assetQuantityMap=" + assetQuantityMap +
+                ", transactions=" + transactions +
                 '}';
     }
 }

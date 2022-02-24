@@ -2,7 +2,6 @@ package com.cryptoportfolio.dynamodb.dao;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.cryptoportfolio.dynamodb.models.Portfolio;
-import com.cryptoportfolio.exceptions.InsufficientAssetsException;
 import com.cryptoportfolio.exceptions.PortfolioNotFoundException;
 import com.cryptoportfolio.exceptions.UnableToSaveToDatabaseException;
 
@@ -17,7 +16,6 @@ public class PortfolioDao {
     @Inject
     public PortfolioDao(DynamoDBMapper dynamoDBMapper) {
         this.dynamoDBMapper = dynamoDBMapper;
-                //new DynamoDBMapper(DynamoDbClientProvider.getDynamoDBClient(Regions.US_EAST_2));
     }
 
     /**

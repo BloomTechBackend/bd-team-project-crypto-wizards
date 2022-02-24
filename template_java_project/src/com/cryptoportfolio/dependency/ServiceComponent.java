@@ -9,11 +9,12 @@ import javax.inject.Singleton;
 @Singleton
 @Component(modules = { DaoModule.class })
 public interface ServiceComponent {
-    CreatePortfolioActivity provideCreatePortfolioActivity();
-    GetPortfolioActivity provideGetPortfolioActivity();
-    LoginActivity provideLoginActivity();
-    RegisterActivity provideRegisterActivity();
-    UpdatePortfolioActivity provideUpdatePortfolioActivity();
-    VerifyActivity provideVerifyActivity();
     CoinGeckoConnector provideCoinGeckoConnector();
+    CreatePortfolioActivity provideCreatePortfolioActivity();
+//    GetPortfolioActivity provideGetPortfolioActivity();
+//    LoginActivity provideLoginActivity();
+//    RegisterActivity provideRegisterActivity();
+//    UpdatePortfolioActivity provideUpdatePortfolioActivity();
+//    VerifyActivity provideVerifyActivity();
+//    GetTransactionsActivity provideGetTransactionsActivity();
 }

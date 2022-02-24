@@ -2,7 +2,7 @@ package com.cryptoportfolio.lambda;
 
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
-import com.cryptoportfolio.dependency.DaggerServiceComponent;
+//import com.cryptoportfolio.dependency.DaggerServiceComponent;
 import com.cryptoportfolio.models.requests.CreatePortfolioRequest;
 import com.cryptoportfolio.models.requests.UpdatePortfolioRequest;
 import com.cryptoportfolio.models.responses.CreatePortfolioResponse;
@@ -16,9 +16,10 @@ public class UpdatePortfolioActivityProvider implements RequestHandler<UpdatePor
 
     @Override
     public UpdatePortfolioResponse handleRequest(final UpdatePortfolioRequest updatePortfolioRequest, Context context) {
-        return DaggerServiceComponent.create()
-                .provideUpdatePortfolioActivity()
-                .handleRequest(updatePortfolioRequest, context);
+        return null;
+//        return DaggerServiceComponent.create()
+//                .provideUpdatePortfolioActivity()
+//                .handleRequest(updatePortfolioRequest, context);
     }
 
 }
