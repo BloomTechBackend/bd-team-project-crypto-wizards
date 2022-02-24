@@ -18,6 +18,7 @@ const CreatePortfolio = (props) => {
     const [quantity, setQuantity] = useState('');
     const [message, setMessage] = useState(null);
     const [assetQuantityMap, setAssetQuantityMap] = useState({});
+    const [transactions, setTransactions] = useState([]);
 
     const addAssetHandler = (event) => {
 
@@ -28,12 +29,29 @@ const CreatePortfolio = (props) => {
         }
         setMessage(null);
 
-        const updatedValue = {};
-        updatedValue[assetId] = quantity;
-        setAssetQuantityMap(assetQuantityMap => ({
-            ...assetQuantityMap,
-            ...updatedValue
-        }));
+        const newTransaction = {
+            username: username,
+            transactionDate: new Date().toISOString(),
+            assetId: assetId,
+            transactionType: "BUY",
+            assetQuantity: quantity,
+            transactionValue: location.state.assetMap[assetId].current_price * quantity
+        };
+
+        console.log(newTransaction);
+
+        setTransactions(transactions => [...transactions, newTransaction]);
+
+        console.log(transactions);
+
+        if (quantity > 0 && !assetQuantityMap[assetId]) {
+            const updatedValue = {};
+            updatedValue[assetId] = quantity;
+            setAssetQuantityMap(assetQuantityMap => ({
+                ...assetQuantityMap,
+                ...updatedValue
+            }));
+        }
     }
 
     const createPortfolioHandler = (event) => {
@@ -47,7 +65,8 @@ const CreatePortfolio = (props) => {
 
         const requestBody = {
             username: username,
-            assetQuantityMap: assetQuantityMap
+            assetQuantityMap: assetQuantityMap,
+            transactions: transactions
         }
 
         console.log('Request config' + JSON.stringify(requestConfig));

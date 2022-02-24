@@ -56,13 +56,13 @@ public class GetTransactionsActivity implements RequestHandler<GetTransactionsRe
         Auth.authenticateToken(username, getTransactionsRequest.getAuthToken());
         String assetFlag = getTransactionsRequest.getAssetFlag();
 
-        List<Transaction> transaction = transactionDao.getTransactions(username, assetFlag);
+        List<Transaction> transactions = transactionDao.getTransactions(username, assetFlag);
 
-        if (transaction == null) {
+        if (transactions == null) {
             throw new TransactionsNotFoundException("[Not Found] Resource not found : Could not find Transaction History");
         }
 
-        List<TransactionModel> transactionModelList = new ModelConverter().toTransactionModelList(transaction);
+        List<TransactionModel> transactionModelList = new ModelConverter().toTransactionModelList(transactions);
 
         return GetTransactionsResponse.builder()
                 .withTransactions(transactionModelList)

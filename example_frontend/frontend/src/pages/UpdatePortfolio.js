@@ -44,12 +44,14 @@ const UpdatePortfolio = (props) => {
 
         console.log(transactions);
 
-        const updatedValue = {};
-        updatedValue[assetId] = quantity;
-        setAssetQuantityMap(assetQuantityMap => ({
-            ...assetQuantityMap,
-            ...updatedValue
-        }));
+        if (quantity > 0 && !assetQuantityMap[assetId]) {
+            const updatedValue = {};
+            updatedValue[assetId] = quantity;
+            setAssetQuantityMap(assetQuantityMap => ({
+                ...assetQuantityMap,
+                ...updatedValue
+            }));
+        }
     }
 
     const updateAssetHandler = (event) => {
@@ -61,21 +63,27 @@ const UpdatePortfolio = (props) => {
         }
         setMessage(null);
 
+        const quantityTransacted = Math.abs(quantity - assetQuantityMap[assetId]);
+
         const newTransaction = {
             username: username,
             transactionDate: new Date().toISOString(),
             assetId: assetId,
             transactionType: quantity > assetQuantityMap[assetId] ? "BUY" : "SELL",
-            assetQuantity: Math.abs(quantity - assetQuantityMap[assetId]),
-            transactionValue: location.state.assetMap[assetId].current_price * quantity
+            assetQuantity: quantityTransacted,
+            transactionValue: location.state.assetMap[assetId].current_price * quantityTransacted
         };
 
-        console.log(newTransaction);
+        
         setTransactions(transactions => [...transactions, newTransaction]);
-        console.log(transactions);
+        
 
         const updatedValue = {...assetQuantityMap};
-        updatedValue[assetId] = quantity;
+        if (quantity <= 0) {
+            delete updatedValue[assetId];
+        } else {
+            updatedValue[assetId] = quantity;
+        }
         setAssetQuantityMap(() => ({
             ...updatedValue
         }));
@@ -100,17 +108,17 @@ const UpdatePortfolio = (props) => {
         console.log('Request body' + JSON.stringify(requestBody));
 
 
-        // axios.put(portfolioAPIUrl + username, requestBody, requestConfig).then((response) => {
-        //     console.log('Portfolio Updated');
-        //     navigate('/portfolio');
-        // }).catch((error) => {
-        //     console.log('Error ' + error);
-        //     if (error.response.status === 401 || error.response.status === 403) {
-        //         setMessage(error.response.data.message);
-        //     } else {
-        //         setMessage('Server is down, please try again later');
-        //     }
-        // })
+        axios.put(portfolioAPIUrl + username, requestBody, requestConfig).then((response) => {
+            console.log('Portfolio Updated');
+            navigate('/portfolio');
+        }).catch((error) => {
+            console.log('Error ' + error);
+            if (error.response.status === 401 || error.response.status === 403) {
+                setMessage(error.response.data.message);
+            } else {
+                setMessage('Server is down, please try again later');
+            }
+        })
     }
 
     return (

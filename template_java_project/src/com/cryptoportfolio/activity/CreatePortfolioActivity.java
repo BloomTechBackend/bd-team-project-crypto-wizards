@@ -72,9 +72,11 @@ public class CreatePortfolioActivity implements RequestHandler<CreatePortfolioRe
         }
 
         User user = userDao.getUser(createPortfolioRequest.getUsername());
-        if (portfolioDao.getUserPortfolio(createPortfolioRequest.getUsername()) != null) {
-            throw new PortfolioAlreadyExistsException("[Unauthorized] Failed : Portfolio already exists");
-        }
+
+        // getUserPortfolio is throwing an exception when you try to get a portfolio that doesn't exist
+//        if (portfolioDao.getUserPortfolio(createPortfolioRequest.getUsername()) != null) {
+//            throw new PortfolioAlreadyExistsException("[Unauthorized] Failed : Portfolio already exists");
+//        }
         user.setIsNewUser(false);
         userDao.updateUser(user);
 
@@ -95,6 +97,7 @@ public class CreatePortfolioActivity implements RequestHandler<CreatePortfolioRe
         try {
             portfolioDao.savePortfolio(portfolio);
         } catch (DynamoDBMappingException e) {
+            logger.log(e.toString());
             throw new UnableToSaveToDatabaseException("[Internal Server Error] Failed : Unable to service request");
         }
 

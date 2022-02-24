@@ -22,6 +22,7 @@ public class TransactionModel {
         this.username = builder.username;
         this.transactionDate = builder.transactionDate;
         this.assetId = builder.assetId;
+        this.assetQuantity = builder.assetQuantity;
         this.transactionValue = builder.transactionValue;
         this.transactionType = builder.transactionType;
     }
