@@ -68,7 +68,8 @@ const PortfolioChart = ({assets, assetQuantityMap}) => {
                                 for (let i = 0; i < assetValues.length; i++) {
                                     sum += assetValues[i];
                                 }
-                                sum = Math.trunc(sum * 100) / 100;
+                                // sum = Math.trunc(sum * 100) / 100;
+                                sum = sum.toFixed(2);
                                 return 'Total $' + sum;
                             },
                             color: '#000',
@@ -114,7 +115,15 @@ const PortfolioChart = ({assets, assetQuantityMap}) => {
                             position: 'left',
                             align: 'center',
                             labels: {
+
                                 filter: function(legendItem, data) {
+                                    let total = 0;
+                                    let assetValues = assets.map(asset => asset.current_price * assetQuantityMap[asset.id]);
+                                    for (let i = 0; i < assetValues.length; i++) {
+                                        total += assetValues[i];
+                                    }
+                                    total = total.toFixed(2);
+
                                     const label = legendItem.text;
                                     const labelIndex = _.findIndex(data.labels, (labelName) => labelName === label);
                                     const usd = data.datasets[0].data[labelIndex];
