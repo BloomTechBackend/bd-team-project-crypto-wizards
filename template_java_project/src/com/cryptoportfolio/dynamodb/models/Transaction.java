@@ -36,7 +36,7 @@ public class Transaction {
         this.transactionDate = transactionDate;
     }
 
-    @DynamoDBIndexHashKey(attributeName = "assetId", globalSecondaryIndexName = ASSET_ID_INDEX)
+    @DynamoDBIndexHashKey(attributeName = "asset_id", globalSecondaryIndexName = ASSET_ID_INDEX)
     public String getAssetId() {
         return assetId;
     }
@@ -75,14 +75,14 @@ public class Transaction {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Transaction)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         Transaction that = (Transaction) o;
-        return Objects.equals(getUsername(), that.getUsername()) && Objects.equals(getTransactionDate(), that.getTransactionDate()) && Objects.equals(getAssetQuantity(), that.getAssetQuantity()) && Objects.equals(getTransactionValue(), that.getTransactionValue()) && Objects.equals(getTransactionType(), that.getTransactionType());
+        return Objects.equals(getUsername(), that.getUsername()) && Objects.equals(getTransactionDate(), that.getTransactionDate()) && Objects.equals(getAssetId(), that.getAssetId()) && Objects.equals(getAssetQuantity(), that.getAssetQuantity()) && Objects.equals(getTransactionValue(), that.getTransactionValue()) && Objects.equals(getTransactionType(), that.getTransactionType());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getUsername(), getTransactionDate(), getAssetQuantity(), getTransactionValue(), getTransactionType());
+        return Objects.hash(getUsername(), getTransactionDate(), getAssetId(), getAssetQuantity(), getTransactionValue(), getTransactionType());
     }
 
     @Override
@@ -90,6 +90,7 @@ public class Transaction {
         return "Transaction{" +
                 "username='" + username + '\'' +
                 ", transactionDate='" + transactionDate + '\'' +
+                ", assetId='" + assetId + '\'' +
                 ", assetQuantity=" + assetQuantity +
                 ", transactionValue=" + transactionValue +
                 ", transactionType='" + transactionType + '\'' +

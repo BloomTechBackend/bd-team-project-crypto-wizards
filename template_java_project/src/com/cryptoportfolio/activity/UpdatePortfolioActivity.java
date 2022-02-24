@@ -84,6 +84,7 @@ public class UpdatePortfolioActivity implements RequestHandler<UpdatePortfolioRe
             }
         }
 
+        logger.log(transactionList.toString());
         transactionDao.batchSaveTransactions(transactionList);
 
         portfolio.setAssetQuantityMap(nonZeroAssetQuantityMap);

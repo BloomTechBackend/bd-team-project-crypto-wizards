@@ -63,12 +63,9 @@ public class TransactionDao {
      *
      */
 
-    public void batchSaveTransactions(List<Transaction> transactions) throws UnableToSaveToDatabaseException {
-
-        try {
-            dynamoDBMapper.batchSave(transactions);
-        } catch (Exception e){
-            throw new UnableToSaveToDatabaseException("[Internal Server Error] Failed : Unable to service request");
+    public void batchSaveTransactions(List<Transaction> transactions) {
+        for (var transaction : transactions) {
+            dynamoDBMapper.save(transaction);
         }
     }
 }
