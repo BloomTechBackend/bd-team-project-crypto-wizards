@@ -32,8 +32,8 @@ const TransactionHistory = (props) => {
         }
 
         console.log('Request config' + JSON.stringify(requestConfig));
-        // TODO add query param
-        axios.get(transactionHistoryAPIUrl + username, requestConfig).then((response) => {
+
+        axios.get(transactionHistoryAPIUrl + username + '?assetFlag=' + queryAssetId, requestConfig).then((response) => {
             console.log('Portfolio Received');
             console.log(response);
             setTransactionList(response.data.transactions);
@@ -69,10 +69,13 @@ const TransactionHistory = (props) => {
                 {username}'s portfolio <br/> <br/>
 
                 {/*TODO fix props*/}
-                <TransactionList assets={location.state.assets.filter(asset => assetQuantityMap[asset.id])} assetQuantityMap={assetQuantityMap}/> <br/>
+                {transactionList &&
+                <TransactionList transactions={transactionList} />
+                }
                 Transaction Value Query: <br/> <br/>
-                <DropDownMenu assets={location.state.assets} setAssetId={(e)=>setQueryAssetId(e)}  /> <br/>
-
+                {assets &&
+                    < DropDownMenu assets={location.state.assets} setAssetId={(e)=>setQueryAssetId(e)}  />
+                }
                 <input type="submit" value="Transaction Query"/> <br/>
                 <input type="button" value="Back to Portfolio" onClick={backHandler} /> <br/>
                 <input type="button" value="Logout" onClick={logoutHandler} />
