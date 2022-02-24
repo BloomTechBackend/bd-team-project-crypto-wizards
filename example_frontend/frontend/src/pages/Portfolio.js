@@ -34,19 +34,15 @@ const Portfolio = (props) => {
         "cdai", "the-graph"
     ];
 
-    // store data
     const [assets, setAssets] = useState(null);
     const [assetMap, setAssetMap] = useState(null);
     const [assetQuantityMap, setAssetQuantityMap] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
 
-    // useEffect preform task when component mounts
     useEffect(() => {
-        // Fetching data for asset details that is returned in map
         const fetchData = async () => {
             setIsLoading(true);
             const response = await coinGecko.get("/coins/markets/", {
-                // Params used in coinGecko API
                 params: {
                     vs_currency: "usd",
                     ids: masterList.join(","),
@@ -94,6 +90,12 @@ const Portfolio = (props) => {
         navigate('/updatePortfolio', {state : {assets:assets, assetMap:assetMap, assetQuantityMap:assetQuantityMap}});
     }
 
+    const transactionHandler = () => {
+        console.log(assets);
+        console.log(assetMap);
+        navigate('/transactionHistory', {state : {assets : assets.filter(asset => assetQuantityMap[asset.id])}});
+    }
+
     const logoutHandler = () => {
         resetUserSession();
         props.logout();
@@ -102,8 +104,7 @@ const Portfolio = (props) => {
     return (
         <div className="coinsummary shadow border p-2 rounded mt-2 bg-light">
             Hello {username}, you have been successfully logged in. <br/> <br/>
-                {username}'s portfolio <br/> <br/>
-            $ Total Portfolio Value <br/>
+            {username}'s portfolio <br/> <br/>
             {(assets && assetQuantityMap) ?
             <PortfolioList assets={assets.filter(asset => assetQuantityMap[asset.id])} assetQuantityMap={assetQuantityMap} />:
             <div>Loading...</div>}
@@ -111,6 +112,7 @@ const Portfolio = (props) => {
             <PortfolioChart assets={assets.filter(asset => assetQuantityMap[asset.id])} assetQuantityMap={assetQuantityMap} />} 
             <input type="button" value="Create Portfolio" onClick={createHandler} /> <br/>
             <input type="button" value="Update Portfolio" onClick={updateHandler} /> <br/>
+            <input type="button" value="Transaction History" onClick={transactionHandler} /> <br/>
             <input type="button" value="Logout" onClick={logoutHandler} />
         </div>
     )

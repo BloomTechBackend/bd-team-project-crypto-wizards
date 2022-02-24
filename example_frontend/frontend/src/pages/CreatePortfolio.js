@@ -79,8 +79,8 @@ const CreatePortfolio = (props) => {
                 <PortfolioList assets={location.state.assets.filter(asset => assetQuantityMap[asset.id])} assetQuantityMap={assetQuantityMap}/>
                 Asset: <DropDownMenu assets={location.state.assets} setAssetId={(e)=>setAssetId(e)} /> <br/>
                 Quantity: <input type="text" value={quantity} onChange={event => setQuantity(event.target.value)} /> <br/> <br/>
-                <input className="btn btn-primary dropdown-toggle" type="submit" value="AddAsset" />
-                <input className="btn btn-primary dropdown-toggle" type="button" onClick={createPortfolioHandler} value="Create Portfolio" />
+                <input className="button" type="submit" value="AddAsset" />
+                <input className="button" type="button" onClick={createPortfolioHandler} value="Create Portfolio" />
                 {message && <p className="message">{message}</p>}
             </form>
 
