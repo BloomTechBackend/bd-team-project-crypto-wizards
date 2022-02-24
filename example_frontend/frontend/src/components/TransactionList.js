@@ -5,11 +5,9 @@ const TransactionList = ({transactions}) => {
 
     return (
         <ul className="coinlist list-group mt-2">
-            <Transaction/>
-            {/*    // TODO fix this*/}
-            {/*{transactions.map((asset) => {*/}
-            {/*    return <Transaction key={asset.assetId} transaction={asset} />;*/}
-            {/*})}*/}
+            {transactions.map((transaction) => {
+                return <Transaction key={transaction.transactionDate} transaction={transaction} />;
+            })}
         </ul>
     );
 };

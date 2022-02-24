@@ -51,7 +51,10 @@ const PortfolioChart = ({assets, assetQuantityMap}) => {
                         datalabels: {
                             display: true,
                             color: '#000',
-                            anchor: 'center',
+                            align: 'end',
+                            // align: 90,
+                            anchor: 'end',
+                            clamp: true,
                             formatter: function(value, context) {
                                 const symbol = context.chart.data.datasets[0].label[0][context.dataIndex];
                                 const totalValue = context.chart.data.datasets[0].data[context.dataIndex];
@@ -115,7 +118,6 @@ const PortfolioChart = ({assets, assetQuantityMap}) => {
                             position: 'left',
                             align: 'center',
                             labels: {
-
                                 filter: function(legendItem, data) {
                                     let total = 0;
                                     let assetValues = assets.map(asset => asset.current_price * assetQuantityMap[asset.id]);
@@ -147,9 +149,9 @@ const PortfolioChart = ({assets, assetQuantityMap}) => {
                     },
                     layout: {
                         padding: {
-                            left: 50,
+                            left: 0,
                             right: 0,
-                            bottom: 0,
+                            bottom: 20,
                             top: 0,
                         },
                     },
@@ -172,7 +174,7 @@ const PortfolioChart = ({assets, assetQuantityMap}) => {
 
         return (
             <div className="bg-white boarder mt-2 rounded p-3">
-                <canvas id="myChart" ref={chartRef} width="400" height="400"/>
+                <canvas id="myChart" ref={chartRef}  width="400" height="400"/>
             </div>
         );
     };
