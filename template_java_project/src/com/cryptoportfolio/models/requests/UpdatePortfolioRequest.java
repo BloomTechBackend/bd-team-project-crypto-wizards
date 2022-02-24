@@ -1,5 +1,8 @@
 package com.cryptoportfolio.models.requests;
 
+import com.cryptoportfolio.dynamodb.models.Transaction;
+
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -10,19 +13,16 @@ public class UpdatePortfolioRequest {
     private String username;
     private String authToken;
     private Map<String, Double> assetQuantityMap;
+    private List<Transaction> transactions;
 
     public UpdatePortfolioRequest() {
     }
 
-    public UpdatePortfolioRequest(String username, String authToken, Map<String, Double> assetQuantityMap) {
-        this.username = username;
-        this.authToken = authToken;
-        this.assetQuantityMap = assetQuantityMap;
-    }
-
     public UpdatePortfolioRequest(Builder builder) {
         this.username = builder.username;
+        this.authToken = builder.authToken;
         this.assetQuantityMap = builder.assetQuantityMap;
+        this.transactions = builder.transactions;
     }
 
     public String getUsername() {
@@ -33,14 +33,6 @@ public class UpdatePortfolioRequest {
         this.username = username;
     }
 
-    public String getAuthToken() {
-        return authToken;
-    }
-
-    public void setAuthToken(String authToken) {
-        this.authToken = authToken;
-    }
-
     public Map<String, Double> getAssetQuantityMap() {
         return assetQuantityMap;
     }
@@ -49,12 +41,29 @@ public class UpdatePortfolioRequest {
         this.assetQuantityMap = assetQuantityMap;
     }
 
+    public String getAuthToken() {
+        return authToken;
+    }
+
+    public void setAuthToken(String authToken) {
+        this.authToken = authToken;
+    }
+
+    public List<Transaction> getTransactions() {
+        return transactions;
+    }
+
+    public void setTransactions(List<Transaction> transactions) {
+        this.transactions = transactions;
+    }
+
     public static Builder builder() { return new Builder(); }
 
     public static final class Builder {
         private String username;
         private String authToken;
         private Map<String, Double> assetQuantityMap;
+        private List<Transaction> transactions;
 
         private Builder() {
         }
@@ -71,6 +80,11 @@ public class UpdatePortfolioRequest {
 
         public Builder withAssetQuantityMap(Map<String, Double> assetQuantityMapIdToUse) {
             this.assetQuantityMap = assetQuantityMapIdToUse;
+            return this;
+        }
+
+        public Builder withAssetQuantityMap(List<Transaction> transactionsToUse) {
+            this.transactions = transactionsToUse;
             return this;
         }
 

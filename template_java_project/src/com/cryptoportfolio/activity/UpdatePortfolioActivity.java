@@ -6,7 +6,9 @@ import com.amazonaws.services.lambda.runtime.LambdaLogger;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.cryptoportfolio.dynamodb.dao.AssetDao;
 import com.cryptoportfolio.dynamodb.dao.PortfolioDao;
+import com.cryptoportfolio.dynamodb.dao.TransactionDao;
 import com.cryptoportfolio.dynamodb.models.Portfolio;
+import com.cryptoportfolio.dynamodb.models.Transaction;
 import com.cryptoportfolio.exceptions.AssetNotAvailableException;
 import com.cryptoportfolio.exceptions.UnableToSaveToDatabaseException;
 import com.cryptoportfolio.models.requests.UpdatePortfolioRequest;
@@ -18,7 +20,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.inject.Inject;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class UpdatePortfolioActivity implements RequestHandler<UpdatePortfolioRequest, UpdatePortfolioResponse> {
@@ -26,6 +30,7 @@ public class UpdatePortfolioActivity implements RequestHandler<UpdatePortfolioRe
     private final Logger log = LogManager.getLogger();
     private PortfolioDao portfolioDao;
     private AssetDao assetDao;
+    private TransactionDao transactionDao;
     private Gson gson;
 
 
@@ -35,9 +40,10 @@ public class UpdatePortfolioActivity implements RequestHandler<UpdatePortfolioRe
      */
 
     @Inject
-    public UpdatePortfolioActivity(PortfolioDao portfolioDao, AssetDao assetDao, Gson gson) {
+    public UpdatePortfolioActivity(PortfolioDao portfolioDao, AssetDao assetDao, TransactionDao transactionDao, Gson gson) {
         this.assetDao = assetDao;
         this.portfolioDao = portfolioDao;
+        this.transactionDao = transactionDao;
         this.gson = gson;
     }
 
@@ -59,6 +65,8 @@ public class UpdatePortfolioActivity implements RequestHandler<UpdatePortfolioRe
 
         Auth.authenticateToken(updatePortfolioRequest.getUsername(), updatePortfolioRequest.getAuthToken());
 
+        List<Transaction> transactionList = new ArrayList<Transaction>(updatePortfolioRequest.getTransactions());
+
         Portfolio portfolio = new Portfolio();
         Map<String, Double> assetQuantityMap = updatePortfolioRequest.getAssetQuantityMap();
 
@@ -75,6 +83,8 @@ public class UpdatePortfolioActivity implements RequestHandler<UpdatePortfolioRe
                 nonZeroAssetQuantityMap.put(assetID, assetQuantityMap.get(assetID));
             }
         }
+
+        transactionDao.batchSaveTransactions(transactionList);
 
         portfolio.setAssetQuantityMap(nonZeroAssetQuantityMap);
 

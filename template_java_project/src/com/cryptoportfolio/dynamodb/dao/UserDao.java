@@ -17,8 +17,8 @@ public class UserDao {
     private final DynamoDBMapper dynamoDBMapper;
 
     @Inject
-    public UserDao() {
-        this.dynamoDBMapper = new DynamoDBMapper(DynamoDbClientProvider.getDynamoDBClient(Regions.US_EAST_2));
+    public UserDao(DynamoDBMapper dynamoDBMapper) {
+        this.dynamoDBMapper = dynamoDBMapper;
     }
 
     public void createUser(User user) {
