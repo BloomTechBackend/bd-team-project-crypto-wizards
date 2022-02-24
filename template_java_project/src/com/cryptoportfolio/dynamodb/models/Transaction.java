@@ -28,7 +28,6 @@ public class Transaction {
     }
 
     @DynamoDBRangeKey(attributeName = "transaction_date")
-    //@DynamoDBTypeConverted(converter = ZonedDateTimeConverter.class)
     public String getTransactionDate() {
         return transactionDate;
     }

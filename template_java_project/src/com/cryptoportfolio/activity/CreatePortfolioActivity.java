@@ -60,7 +60,7 @@ public class CreatePortfolioActivity implements RequestHandler<CreatePortfolioRe
     public CreatePortfolioResponse handleRequest(final CreatePortfolioRequest createPortfolioRequest, Context context) {
         LambdaLogger logger = context.getLogger();
         logger.log(gson.toJson(createPortfolioRequest));
-        List<Transaction> transactionList = new ArrayList<Transaction>(createPortfolioRequest.getTransactions());
+        List<Transaction> transactionList = new ArrayList<>(createPortfolioRequest.getTransactions());
 
         Auth.authenticateToken(createPortfolioRequest.getUsername(), createPortfolioRequest.getAuthToken());
 
@@ -72,12 +72,11 @@ public class CreatePortfolioActivity implements RequestHandler<CreatePortfolioRe
         }
 
         User user = userDao.getUser(createPortfolioRequest.getUsername());
-        if (user.getIsNewUser() == false) {
+        if (portfolioDao.getUserPortfolio(createPortfolioRequest.getUsername()) != null) {
             throw new PortfolioAlreadyExistsException("[Unauthorized] Failed : Portfolio already exists");
         }
         user.setIsNewUser(false);
         userDao.updateUser(user);
-
 
         portfolio.setUsername(createPortfolioRequest.getUsername());
 
@@ -88,7 +87,7 @@ public class CreatePortfolioActivity implements RequestHandler<CreatePortfolioRe
                 nonZeroAssetQuantityMap.put(assetID, assetQuantityMap.get(assetID));
             }
         }
-
+        logger.log("transactionList : " + transactionList);
         transactionDao.batchSaveTransactions(transactionList);
 
         portfolio.setAssetQuantityMap(nonZeroAssetQuantityMap);
