@@ -105,11 +105,12 @@ const Portfolio = (props) => {
         <div className="coinsummary shadow border p-2 rounded mt-2 bg-light">
             Hello {username}, you have been successfully logged in. <br/> <br/>
             {username}'s portfolio <br/> <br/>
+
+            {(assets && assetQuantityMap) &&
+                <PortfolioChart assets={assets.filter(asset => assetQuantityMap[asset.id])} assetQuantityMap={assetQuantityMap} />}
             {(assets && assetQuantityMap) ?
             <PortfolioList assets={assets.filter(asset => assetQuantityMap[asset.id])} assetQuantityMap={assetQuantityMap} />:
             <div>Loading...</div>}
-            {(assets && assetQuantityMap) &&
-            <PortfolioChart assets={assets.filter(asset => assetQuantityMap[asset.id])} assetQuantityMap={assetQuantityMap} />} 
             <input type="button" value="Create Portfolio" onClick={createHandler} /> <br/>
             <input type="button" value="Update Portfolio" onClick={updateHandler} /> <br/>
             <input type="button" value="Transaction History" onClick={transactionHandler} /> <br/>

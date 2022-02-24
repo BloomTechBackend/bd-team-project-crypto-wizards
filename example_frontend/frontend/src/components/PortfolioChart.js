@@ -3,7 +3,6 @@ import {ArcElement, Chart as ChartJS, Legend, Tooltip} from 'chart.js';
 import Chart from 'chart.js/auto';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 
-
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const PortfolioChart = ({assets, assetQuantityMap}) => {
@@ -52,14 +51,24 @@ const PortfolioChart = ({assets, assetQuantityMap}) => {
                             display: true,
                             color: '#000',
                             align: 'end',
-                            // align: 90,
                             anchor: 'end',
                             clamp: true,
                             formatter: function(value, context) {
-                                const symbol = context.chart.data.datasets[0].label[0][context.dataIndex];
-                                const totalValue = context.chart.data.datasets[0].data[context.dataIndex];
-                                return '   ' + symbol.toUpperCase() + '\n$' + totalValue.toFixed(2);
+                                let total = 0;
+                                let assetValues = assets.map(asset => asset.current_price * assetQuantityMap[asset.id]);
+                                for (let i = 0; i < assetValues.length; i++) {
+                                    total += assetValues[i];
+                                }
+                                total = total.toFixed(0);
+                                let percent = ((value / total) * 100).toFixed(0);
 
+                                if (percent != 0) {
+                                    let symbol = context.chart.data.datasets[0].label[0][context.dataIndex];
+                                    let totalValue = context.chart.data.datasets[0].data[context.dataIndex];
+                                    return '   ' + symbol.toUpperCase() + '\n$' + totalValue.toFixed(2);
+                                } else {
+                                    return '';
+                                }
                             },
                         },
                         // TOTAL VALUE
@@ -71,7 +80,6 @@ const PortfolioChart = ({assets, assetQuantityMap}) => {
                                 for (let i = 0; i < assetValues.length; i++) {
                                     sum += assetValues[i];
                                 }
-                                // sum = Math.trunc(sum * 100) / 100;
                                 sum = sum.toFixed(2);
                                 return 'Total $' + sum;
                             },
@@ -80,38 +88,6 @@ const PortfolioChart = ({assets, assetQuantityMap}) => {
                                 size: 20,
                             },
                             align: 'start',
-                        },
-                        // HOVER LABEL
-                        // TODO Fix title data
-                        tooltip: {
-                            enabled: true,
-                            callbacks: {
-                                title: function(context) {
-                                    let title = context[0].label;
-                                    return title;
-                                },
-                                label: function(context) {
-                                    let label = new Intl.NumberFormat('en-US', {
-                                        style: 'percent',
-                                        minimumFractionDigits: 0,
-                                        maximumFractionDigits: 0
-                                    }).format(context.formattedValue);
-                                    return label;
-                                }
-                                // label: function(tooltipItems, data) {
-                                //     return tooltipItems.label + ' €';
-                                // }
-
-                            }
-                            //     {
-                            //     label: (tooltipItem, data) => {
-                            //         const label = data.labels[tooltipItem.index];
-                            //         const val =
-                            //             data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
-                            //         // return label.split('\n ')[1] + ": $" + val;
-                            //         return label + ": $" + val;
-                            //     }
-                            // }
                         },
                         legend: {
                             display: true,
@@ -124,13 +100,12 @@ const PortfolioChart = ({assets, assetQuantityMap}) => {
                                     for (let i = 0; i < assetValues.length; i++) {
                                         total += assetValues[i];
                                     }
-                                    total = total.toFixed(2);
+                                    total = total.toFixed(0);
 
-                                    const label = legendItem.text;
-                                    const labelIndex = _.findIndex(data.labels, (labelName) => labelName === label);
-                                    const usd = data.datasets[0].data[labelIndex];
-                                    // TODO fix percent calculate
-                                    const percent = Math.round(usd * .10);
+                                    let label = legendItem.text;
+                                    let labelIndex = _.findIndex(data.labels, (labelName) => labelName === label);
+                                    let usd = data.datasets[0].data[labelIndex];
+                                    let percent = ((usd / total) * 100).toFixed(0);
 
                                     legendItem.text = [`${legendItem.text}`];
                                     legendItem.text.push(`$${usd.toFixed(2)}`);
@@ -145,6 +120,31 @@ const PortfolioChart = ({assets, assetQuantityMap}) => {
                                 },
                                 padding: 40,
                             },
+                        },
+                        // HOVER LABEL
+                        tooltip: {
+                            enabled: true,
+                            callbacks: {
+                                title: function(tooltipItems) {
+                                    let title = tooltipItems[0].label;
+                                    return title;
+                                },
+                                label: function(tooltipItems) {
+                                    let total = 0;
+                                    let assetValues = assets.map(asset => asset.current_price * assetQuantityMap[asset.id]);
+                                    for (let i = 0; i < assetValues.length; i++) {
+                                        total += assetValues[i];
+                                    }
+                                    total = total.toFixed(0);
+                                    let value = tooltipItems.chart.data.datasets[0].label[1][tooltipItems.dataIndex];
+                                    let percent = ((value / total) * 100).toFixed(0);
+
+                                    let multiLine = ['$' + value.toFixed(2)];
+                                    multiLine.push(percent + '%');
+
+                                    return multiLine;
+                                }
+                            }
                         },
                     },
                     layout: {
