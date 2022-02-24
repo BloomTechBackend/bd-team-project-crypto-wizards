@@ -11,10 +11,10 @@ import javax.inject.Singleton;
 public interface ServiceComponent {
     CoinGeckoConnector provideCoinGeckoConnector();
     CreatePortfolioActivity provideCreatePortfolioActivity();
-//    GetPortfolioActivity provideGetPortfolioActivity();
-//    LoginActivity provideLoginActivity();
-//    RegisterActivity provideRegisterActivity();
-//    UpdatePortfolioActivity provideUpdatePortfolioActivity();
-//    VerifyActivity provideVerifyActivity();
-//    GetTransactionsActivity provideGetTransactionsActivity();
+    GetPortfolioActivity provideGetPortfolioActivity();
+    LoginActivity provideLoginActivity();
+    RegisterActivity provideRegisterActivity();
+    UpdatePortfolioActivity provideUpdatePortfolioActivity();
+    VerifyActivity provideVerifyActivity();
+    GetTransactionsActivity provideGetTransactionsActivity();
 }

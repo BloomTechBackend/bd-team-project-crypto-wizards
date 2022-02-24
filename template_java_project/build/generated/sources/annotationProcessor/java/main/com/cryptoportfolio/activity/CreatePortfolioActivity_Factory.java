@@ -12,8 +12,7 @@ import javax.inject.Provider;
   value = "dagger.internal.codegen.ComponentProcessor",
   comments = "https://google.github.io/dagger"
 )
-public final class CreatePortfolioActivity_Factory<transactionDao>
-    implements Factory<CreatePortfolioActivity<transactionDao>> {
+public final class CreatePortfolioActivity_Factory implements Factory<CreatePortfolioActivity> {
   private final Provider<PortfolioDao> portfolioDaoProvider;
 
   private final Provider<UserDao> userDaoProvider;
@@ -34,20 +33,20 @@ public final class CreatePortfolioActivity_Factory<transactionDao>
   }
 
   @Override
-  public CreatePortfolioActivity<transactionDao> get() {
-    return new CreatePortfolioActivity<transactionDao>(
+  public CreatePortfolioActivity get() {
+    return new CreatePortfolioActivity(
         portfolioDaoProvider.get(),
         userDaoProvider.get(),
         transactionDaoProvider.get(),
         gsonProvider.get());
   }
 
-  public static <transactionDao> CreatePortfolioActivity_Factory<transactionDao> create(
+  public static CreatePortfolioActivity_Factory create(
       Provider<PortfolioDao> portfolioDaoProvider,
       Provider<UserDao> userDaoProvider,
       Provider<TransactionDao> transactionDaoProvider,
       Provider<Gson> gsonProvider) {
-    return new CreatePortfolioActivity_Factory<transactionDao>(
+    return new CreatePortfolioActivity_Factory(
         portfolioDaoProvider, userDaoProvider, transactionDaoProvider, gsonProvider);
   }
 }

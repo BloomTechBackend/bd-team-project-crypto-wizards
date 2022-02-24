@@ -25,7 +25,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class CreatePortfolioActivity<transactionDao> implements RequestHandler<CreatePortfolioRequest, CreatePortfolioResponse> {
+public class CreatePortfolioActivity implements RequestHandler<CreatePortfolioRequest, CreatePortfolioResponse> {
 
     private PortfolioDao portfolioDao;
     private UserDao userDao;
