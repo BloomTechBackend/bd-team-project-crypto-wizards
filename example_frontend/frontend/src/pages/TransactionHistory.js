@@ -5,7 +5,6 @@ import axios from 'axios';
 import TransactionList from "../components/TransactionList";
 import DropDownMenu from "../components/DropDownMenu";
 
-// TODO fix endpoint
 const transactionHistoryAPIUrl = 'https://ccixqpmq4c.execute-api.us-east-2.amazonaws.com/prod/transactions/';
 
 const TransactionHistory = (props) => {
@@ -14,14 +13,10 @@ const TransactionHistory = (props) => {
     const location = useLocation();
     const token = getToken();
     const [message, setMessage] = useState(null);
-
-    // TODO what consts are needed - query
     const [assets, setAssets] = useState(null);
     const [queryAssetId, setQueryAssetId] = useState('ALL');
     const [transactionList, setTransactionList] = useState(null);
     const [transactionQuery, setTransactionQuery] = useState(null);
-
-    const [assetQuantityMap, setAssetQuantityMap] = useState({});
 
     useEffect(() => {
         const requestConfig = {
@@ -68,11 +63,11 @@ const TransactionHistory = (props) => {
                 {console.log("hello from transactionHistory")}
                 {username}'s portfolio <br/> <br/>
 
-                {/*TODO fix props*/}
+                {/*TODO fix */}
                 {transactionList &&
                 <TransactionList transactions={transactionList} />
                 }
-                Transaction Value Query: <br/> <br/>
+                Transaction Value Query <br/> <br/>
                 {assets &&
                     < DropDownMenu assets={location.state.assets} setAssetId={(e)=>setQueryAssetId(e)}  />
                 }

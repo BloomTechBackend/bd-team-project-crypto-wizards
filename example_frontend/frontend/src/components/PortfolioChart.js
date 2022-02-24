@@ -48,6 +48,7 @@ const PortfolioChart = ({assets, assetQuantityMap}) => {
                     plugins: {
                         // CHART LABEL
                         datalabels: {
+                            // display: 'auto',
                             display: true,
                             color: '#000',
                             align: 'end',
@@ -105,7 +106,8 @@ const PortfolioChart = ({assets, assetQuantityMap}) => {
                                     let label = legendItem.text;
                                     let labelIndex = _.findIndex(data.labels, (labelName) => labelName === label);
                                     let usd = data.datasets[0].data[labelIndex];
-                                    let percent = ((usd / total) * 100).toFixed(0);
+
+                                    let percent = ((usd / total) * 100).toFixed(1);
 
                                     legendItem.text = [`${legendItem.text}`];
                                     legendItem.text.push(`$${usd.toFixed(2)}`);
@@ -137,7 +139,7 @@ const PortfolioChart = ({assets, assetQuantityMap}) => {
                                     }
                                     total = total.toFixed(0);
                                     let value = tooltipItems.chart.data.datasets[0].label[1][tooltipItems.dataIndex];
-                                    let percent = ((value / total) * 100).toFixed(0);
+                                    let percent = ((value / total) * 100).toFixed(1);
 
                                     let multiLine = ['$' + value.toFixed(2)];
                                     multiLine.push(percent + '%');
