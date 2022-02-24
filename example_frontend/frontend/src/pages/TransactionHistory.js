@@ -18,10 +18,8 @@ const TransactionHistory = (props) => {
     // TODO what consts are needed - query
     const [assets, setAssets] = useState(null);
     const [queryAssetId, setQueryAssetId] = useState('ALL');
-    const [assetMap, setAssetMap] = useState(null);
-    const [transactionQuery, setTransactionQuery] = useState(null);
     const [transactionList, setTransactionList] = useState(null);
-    const [isLoading, setIsLoading] = useState(false);
+    const [transactionQuery, setTransactionQuery] = useState(null);
 
     const [assetQuantityMap, setAssetQuantityMap] = useState({});
 
@@ -70,8 +68,9 @@ const TransactionHistory = (props) => {
                 {console.log("hello from transactionHistory")}
                 {username}'s portfolio <br/> <br/>
 
+                {/*TODO fix props*/}
                 <TransactionList assets={location.state.assets.filter(asset => assetQuantityMap[asset.id])} assetQuantityMap={assetQuantityMap}/> <br/>
-                Transaction Value Query: <br/>
+                Transaction Value Query: <br/> <br/>
                 <DropDownMenu assets={location.state.assets} setAssetId={(e)=>setQueryAssetId(e)}  /> <br/>
 
                 <input type="submit" value="Transaction Query"/> <br/>
