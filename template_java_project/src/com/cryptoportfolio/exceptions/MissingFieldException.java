@@ -1,6 +1,6 @@
 package com.cryptoportfolio.exceptions;
 
-public class MissingFieldException extends RuntimeException {
+public class MissingFieldException extends CryptoPortfolioException {
 
     public MissingFieldException() {
         super();

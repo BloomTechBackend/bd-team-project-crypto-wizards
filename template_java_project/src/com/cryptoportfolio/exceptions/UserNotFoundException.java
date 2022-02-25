@@ -1,6 +1,6 @@
 package com.cryptoportfolio.exceptions;
 
-public class UserNotFoundException extends RuntimeException {
+public class UserNotFoundException extends CryptoPortfolioException {
 
     private static final long serialVersionUID = 5727457805800128796L;
 

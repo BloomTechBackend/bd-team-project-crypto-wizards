@@ -1,6 +1,6 @@
 package com.cryptoportfolio.exceptions;
 
-public class AuthenticationException extends RuntimeException {
+public class AuthenticationException extends CryptoPortfolioException {
 
     public AuthenticationException() {
         super();

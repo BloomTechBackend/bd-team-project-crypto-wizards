@@ -1,6 +1,6 @@
 package com.cryptoportfolio.exceptions;
 
-public class UserAlreadyExistsException extends RuntimeException {
+public class UserAlreadyExistsException extends CryptoPortfolioException {
 
     private static final long serialVersionUID = -7514608374992098226L;
 
