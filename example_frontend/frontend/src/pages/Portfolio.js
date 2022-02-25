@@ -93,7 +93,7 @@ const Portfolio = (props) => {
     const transactionHandler = () => {
         console.log(assets);
         console.log(assetMap);
-        navigate('/transactionHistory', {state : {assets : assets.filter(asset => assetQuantityMap[asset.id])}});
+        navigate('/transactionHistory', {state : {assets: assets.filter(asset => assetQuantityMap[asset.id])}});
     }
 
     const logoutHandler = () => {
