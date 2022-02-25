@@ -73,7 +73,7 @@ dependencies {
     // JSON web token library
     implementation 'com.auth0:java-jwt:3.18.3'
 
-    implementation files("$rootDir/LibrariesAndUtilities/ATAResources.jar")
+    //implementation files("$rootDir/LibrariesAndUtilities/ATAResources.jar")
     implementation files("$rootDir/LibrariesAndUtilities/CoinGeckoAPIClient.jar")
     //implementation files("$rootDir/LibrariesAndUtilities/slf4j.jar")
 
