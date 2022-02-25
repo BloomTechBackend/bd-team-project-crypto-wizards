@@ -8,9 +8,7 @@ import com.cryptoportfolio.dynamodb.dao.TransactionDao;
 import com.cryptoportfolio.dynamodb.models.Transaction;
 import com.cryptoportfolio.exceptions.TransactionsNotFoundException;
 import com.cryptoportfolio.models.TransactionModel;
-import com.cryptoportfolio.models.requests.GetPortfolioRequest;
 import com.cryptoportfolio.models.requests.GetTransactionsRequest;
-import com.cryptoportfolio.models.responses.GetPortfolioResponse;
 import com.cryptoportfolio.models.responses.GetTransactionsResponse;
 import com.cryptoportfolio.utils.Auth;
 import com.google.gson.Gson;
@@ -23,7 +21,7 @@ import java.util.List;
 public class GetTransactionsActivity implements RequestHandler<GetTransactionsRequest, GetTransactionsResponse> {
 
     private final Logger log = LogManager.getLogger();
-    TransactionDao transactionDao;
+    private TransactionDao transactionDao;
     private Gson gson;
 
     /**

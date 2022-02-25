@@ -40,9 +40,6 @@ public class RegisterActivity implements RequestHandler<RegisterRequest, Registe
         }
 
         if (!VALID_USERNAME_PATTERN.matcher(username).find()) {
-            logger.log("[Bad Request] Registration Failed : Password requirements: " +
-                    "\n1. Username consists of alphanumeric characters (a-zA-Z0-9)." +
-                    "\n2. The number of characters must be a max of 20.");
 
             throw new IllegalArgumentException("[Bad Request] Registration Failed : Password requirements: " +
                     "\n1. Username consists of alphanumeric characters (a-zA-Z0-9)." +

@@ -6,7 +6,6 @@ import com.amazonaws.services.dynamodbv2.datamodeling.PaginatedQueryList;
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 import com.cryptoportfolio.dynamodb.models.Transaction;
 import com.cryptoportfolio.exceptions.MissingFieldException;
-import com.cryptoportfolio.exceptions.UnableToSaveToDatabaseException;
 
 import javax.inject.Inject;
 import java.util.ArrayList;
@@ -33,7 +32,7 @@ public class TransactionDao {
     public List<Transaction> getTransactions(String username, String assetFlag) {
         if (assetFlag == null) {
             throw new MissingFieldException("[Bad Request] Asset Flag cannot be null");
-        } else if (assetFlag == "ALL") {
+        } else if (assetFlag.equalsIgnoreCase("ALL")) {
             Transaction event = new Transaction();
             event.setUsername(username);
             DynamoDBQueryExpression<Transaction> queryExpression = new DynamoDBQueryExpression<Transaction>()

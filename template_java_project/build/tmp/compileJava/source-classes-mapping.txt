@@ -12,11 +12,11 @@ com/cryptoportfolio/activity/VerifyActivity.java
  com.cryptoportfolio.activity.VerifyActivity
 com/cryptoportfolio/lambda/LoginActivityProvider.java
  com.cryptoportfolio.lambda.LoginActivityProvider
+com/cryptoportfolio/exceptions/UnableToSaveToDatabaseException.java
+ com.cryptoportfolio.exceptions.UnableToSaveToDatabaseException
 com/cryptoportfolio/models/requests/UpdatePortfolioRequest.java
  com.cryptoportfolio.models.requests.UpdatePortfolioRequest
  com.cryptoportfolio.models.requests.UpdatePortfolioRequest$Builder
-com/cryptoportfolio/exceptions/UnableToSaveToDatabaseException.java
- com.cryptoportfolio.exceptions.UnableToSaveToDatabaseException
 com/cryptoportfolio/dynamodb/dao/AssetDao.java
  com.cryptoportfolio.dynamodb.dao.AssetDao
 com/cryptoportfolio/dynamodb/models/Transaction.java
@@ -34,6 +34,8 @@ com/cryptoportfolio/activity/CreatePortfolioActivity.java
  com.cryptoportfolio.activity.CreatePortfolioActivity
 com/cryptoportfolio/utils/Utils.java
  com.cryptoportfolio.utils.Utils
+com/cryptoportfolio/exceptions/CryptoPortfolioException.java
+ com.cryptoportfolio.exceptions.CryptoPortfolioException
 com/cryptoportfolio/models/requests/RegisterRequest.java
  com.cryptoportfolio.models.requests.RegisterRequest
 com/cryptoportfolio/lambda/GetPortfolioActivityProvider.java
@@ -121,6 +123,8 @@ com/cryptoportfolio/models/responses/GetPortfolioResponse.java
  com.cryptoportfolio.models.responses.GetPortfolioResponse$Builder
 com/cryptoportfolio/dynamodb/models/Asset.java
  com.cryptoportfolio.dynamodb.models.Asset
+com/cryptoportfolio/dynamodb/DynamoDbClientProvider.java
+ com.cryptoportfolio.dynamodb.DynamoDbClientProvider
 com/cryptoportfolio/models/requests/GetTransactionsRequest.java
  com.cryptoportfolio.models.requests.GetTransactionsRequest
  com.cryptoportfolio.models.requests.GetTransactionsRequest$Builder

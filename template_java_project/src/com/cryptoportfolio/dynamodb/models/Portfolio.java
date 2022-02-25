@@ -51,7 +51,7 @@ public class Portfolio {
 
     @Override
     public String toString() {
-        return "UserAssets{" +
+        return "Portfolio{" +
                 "username='" + username + '\'' +
                 ", assetQuantityMap=" + assetQuantityMap +
                 '}';

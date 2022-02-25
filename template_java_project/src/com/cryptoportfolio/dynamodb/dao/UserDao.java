@@ -1,14 +1,9 @@
 package com.cryptoportfolio.dynamodb.dao;
 
-import com.amazon.ata.aws.dynamodb.DynamoDbClientProvider;
-import com.amazonaws.regions.Regions;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.cryptoportfolio.dynamodb.models.User;
 import com.cryptoportfolio.exceptions.LoginException;
 import com.cryptoportfolio.exceptions.UserAlreadyExistsException;
-import com.cryptoportfolio.exceptions.UserNotFoundException;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import javax.inject.Inject;
 
