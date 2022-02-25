@@ -84,7 +84,7 @@ public class CreatePortfolioRequest {
             return this;
         }
 
-        public Builder withAssetQuantityMap(List<Transaction> transactionsToUse) {
+        public Builder withTransactions(List<Transaction> transactionsToUse) {
             this.transactions = transactionsToUse;
             return this;
         }

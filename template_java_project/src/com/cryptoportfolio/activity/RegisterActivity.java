@@ -18,8 +18,8 @@ public class RegisterActivity implements RequestHandler<RegisterRequest, Registe
 
     private UserDao userDao;
     private Gson gson;
-//    private static final Pattern VALID_PACKAGE_PATTERN = Pattern.compile("[^.]+\\.[^.]+");
-//    private static final Pattern INVALID_CHARACTER_PATTERN = Pattern.compile("[\"\'\\\\]");
+    private static final Pattern VALID_USERNAME_PATTERN = Pattern.compile("^[a-zA-Z0-9]{1,20}$");
+    private static final Pattern VALID_PASSWORD_PATTERN = Pattern.compile("^\\w{5,20}$");
 
     @Inject
     public RegisterActivity(UserDao userDao, Gson gson) {
@@ -29,8 +29,8 @@ public class RegisterActivity implements RequestHandler<RegisterRequest, Registe
 
     @Override
     public RegisterResponse handleRequest(RegisterRequest registerRequest, Context context) {
-
         LambdaLogger logger = context.getLogger();
+
 
         String username = registerRequest.getUsername();
         String password = registerRequest.getPassword();
@@ -39,11 +39,23 @@ public class RegisterActivity implements RequestHandler<RegisterRequest, Registe
             throw new MissingFieldException("[Bad Request] Registration Failed : Username and password are required");
         }
 
-//        if (!VALID_PACKAGE_PATTERN.matcher(username).find() && !VALID_PACKAGE_PATTERN.matcher(password).find()) {
-//            throw new IllegalArgumentException(
-//                    String.format("[Bad Request] Registration Failed : Username and password can contain only the following characters")
-//            );
-//        }
+        if (!VALID_USERNAME_PATTERN.matcher(username).find()) {
+            logger.log("[Bad Request] Registration Failed : Password requirements: " +
+                    "\n1. Username consists of alphanumeric characters (a-zA-Z0-9)." +
+                    "\n2. The number of characters must be a max of 20.");
+
+            throw new IllegalArgumentException("[Bad Request] Registration Failed : Password requirements: " +
+                    "\n1. Username consists of alphanumeric characters (a-zA-Z0-9)." +
+                    "\n2. The number of characters must be a max of 20.");
+        }
+
+        if (!VALID_PASSWORD_PATTERN.matcher(password).find()) {
+            logger.log("[Bad Request] Registration Failed : Password requirements: " +
+                    "\n1. The number of characters must be a min of 5 to max of 20.");
+
+            throw new IllegalArgumentException("[Bad Request] Registration Failed : Password requirements: " +
+                    "\n1. The number of characters must be a min of 5 to max of 20.");
+        }
 
         String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
 
