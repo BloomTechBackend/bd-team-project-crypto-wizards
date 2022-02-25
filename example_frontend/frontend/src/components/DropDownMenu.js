@@ -4,6 +4,7 @@ import DropDownAsset from "./DropDownAsset";
 const DropDownMenu = ({assets, setAssetId}) => {
 
     return (
+        <div id="list">
         <select onChange={event => setAssetId(event.target.value)}>
             <option>Select an Asset</option>
 
@@ -11,6 +12,7 @@ const DropDownMenu = ({assets, setAssetId}) => {
                 return <DropDownAsset key={asset.id} asset={asset}/>;
             })}
         </select>
+        </div>
     );
 };
 

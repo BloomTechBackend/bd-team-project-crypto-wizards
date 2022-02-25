@@ -36,7 +36,7 @@ const PortfolioChart = ({assets, assetQuantityMap}) => {
                             '#F2D70C',
                             '#0CF270',
                         ],
-                        // borderColor: 'rgba(0, 0, 0, 1)',
+                        borderColor: 'rgba(0, 0, 0, 1)',
                         boarderWidth: 1,
                         hoverBorderWidth: 1,
                         hoverBorderColor: '#000',
@@ -48,8 +48,10 @@ const PortfolioChart = ({assets, assetQuantityMap}) => {
                     plugins: {
                         // CHART LABEL
                         datalabels: {
+                            // display: 'auto',
                             display: true,
-                            color: '#000',
+                            // color: '#000',
+                            color: '#fff',
                             align: 'end',
                             anchor: 'end',
                             clamp: true,
@@ -83,9 +85,11 @@ const PortfolioChart = ({assets, assetQuantityMap}) => {
                                 sum = sum.toFixed(2);
                                 return 'Total $' + sum;
                             },
-                            color: '#000',
+                            // color: '#000',
+                            color: '#fff',
                             font: {
                                 size: 20,
+                                weight: 'normal'
                             },
                             align: 'start',
                         },
@@ -105,7 +109,8 @@ const PortfolioChart = ({assets, assetQuantityMap}) => {
                                     let label = legendItem.text;
                                     let labelIndex = _.findIndex(data.labels, (labelName) => labelName === label);
                                     let usd = data.datasets[0].data[labelIndex];
-                                    let percent = ((usd / total) * 100).toFixed(0);
+
+                                    let percent = ((usd / total) * 100).toFixed(1);
 
                                     legendItem.text = [`${legendItem.text}`];
                                     legendItem.text.push(`$${usd.toFixed(2)}`);
@@ -113,12 +118,15 @@ const PortfolioChart = ({assets, assetQuantityMap}) => {
 
                                     return true;
                                 },
-                                fontSize: 36,
-                                color: '#000',
+                                // color: '#000',
+                                color: '#fff',
                                 font: {
-                                    weight: 'bold'
+                                    size: 12,
+                                    weight: 'normal'
                                 },
-                                padding: 40,
+                                boxWidth: 30,
+                                boxHeight: 15,
+                                padding: 35,
                             },
                         },
                         // HOVER LABEL
@@ -137,7 +145,7 @@ const PortfolioChart = ({assets, assetQuantityMap}) => {
                                     }
                                     total = total.toFixed(0);
                                     let value = tooltipItems.chart.data.datasets[0].label[1][tooltipItems.dataIndex];
-                                    let percent = ((value / total) * 100).toFixed(0);
+                                    let percent = ((value / total) * 100).toFixed(1);
 
                                     let multiLine = ['$' + value.toFixed(2)];
                                     multiLine.push(percent + '%');
@@ -173,7 +181,8 @@ const PortfolioChart = ({assets, assetQuantityMap}) => {
         console.log("Chart");
 
         return (
-            <div className="bg-white boarder mt-2 rounded p-3">
+            // <div className="bg-white boarder mt-2 rounded p-3">
+            <div className="chart" >
                 <canvas id="myChart" ref={chartRef}  width="400" height="400"/>
             </div>
         );

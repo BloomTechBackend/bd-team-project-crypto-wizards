@@ -12,7 +12,12 @@ const Portfolio = (props) => {
     const username = getUsername();
     const navigate = useNavigate();
     const token = getToken();
+
     const [message, setMessage] = useState(null);
+    const [assets, setAssets] = useState(null);
+    const [assetMap, setAssetMap] = useState(null);
+    const [assetQuantityMap, setAssetQuantityMap] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
 
     const masterList = [
         "bitcoin", "ethereum", "tether",
@@ -33,11 +38,6 @@ const Portfolio = (props) => {
         "klay-token", "monero", "compound-ether",
         "cdai", "the-graph"
     ];
-
-    const [assets, setAssets] = useState(null);
-    const [assetMap, setAssetMap] = useState(null);
-    const [assetQuantityMap, setAssetQuantityMap] = useState(null);
-    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -102,19 +102,22 @@ const Portfolio = (props) => {
         navigate('/login');
     }
     return (
-        <div className="coinsummary shadow border p-2 rounded mt-2 bg-light">
-            Hello {username}, you have been successfully logged in. <br/> <br/>
-            {username}'s portfolio <br/> <br/>
+        // <div className="coinsummary shadow border p-2 rounded mt-2 bg-light">
+        <div>
+            <h3>{username}'s portfolio</h3> <br/>
 
             {(assets && assetQuantityMap) &&
                 <PortfolioChart assets={assets.filter(asset => assetQuantityMap[asset.id])} assetQuantityMap={assetQuantityMap} />}
             {(assets && assetQuantityMap) ?
-            <PortfolioList assets={assets.filter(asset => assetQuantityMap[asset.id])} assetQuantityMap={assetQuantityMap} />:
+                <PortfolioList assets={assets.filter(asset => assetQuantityMap[asset.id])} assetQuantityMap={assetQuantityMap} />:
             <div>Loading...</div>}
-            <input type="button" value="Create Portfolio" onClick={createHandler} /> <br/>
-            <input type="button" value="Update Portfolio" onClick={updateHandler} /> <br/>
-            <input type="button" value="Transaction History" onClick={transactionHandler} /> <br/>
-            <input type="button" value="Logout" onClick={logoutHandler} />
+            <div id="outer">
+                <input className="inner" type="button" value="Create Portfolio" onClick={createHandler} /> <br/>
+                <input className="inner" type="button" value="Update Portfolio" onClick={updateHandler} /> <br/>
+                <input className="inner" type="button" value="Transaction History" onClick={transactionHandler} /> <br/>
+                <input className="inner" type="button" value="Logout" onClick={logoutHandler} />
+            </div>
+            {message && <p className="message">{message}</p>}
         </div>
     )
 }

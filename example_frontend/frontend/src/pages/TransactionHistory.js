@@ -5,7 +5,6 @@ import axios from 'axios';
 import TransactionList from "../components/TransactionList";
 import DropDownMenu from "../components/DropDownMenu";
 
-// TODO fix endpoint
 const transactionHistoryAPIUrl = 'https://ccixqpmq4c.execute-api.us-east-2.amazonaws.com/prod/transactions/';
 
 const TransactionHistory = (props) => {
@@ -15,15 +14,9 @@ const TransactionHistory = (props) => {
     const token = getToken();
     const [message, setMessage] = useState(null);
 
-    // TODO what consts are needed - query
     const [queryAssetId, setQueryAssetId] = useState('ALL');
     const [transactions, setTransactions] = useState(null);
-    const [transactionQuery, setTransactionQuery] = useState(null);
 
-    const [assetQuantityMap, setAssetQuantityMap] = useState({});
-
-
-    // TODO fix
     const queryHandler = () => {
         const requestConfig = {
             headers: {
@@ -41,11 +34,7 @@ const TransactionHistory = (props) => {
             setTransactions(response.data.transactions);
         }).catch((error) => {
             console.log('Error ' + error);
-            if (error.response.status === 401 || error.response.status === 403) {
-                setMessage(error.response.data.message);
-            } else {
-                setMessage('Server is down, please try again later');
-            }
+            setMessage(error.response.data.errorMessage);
         });
     }
 
@@ -59,20 +48,23 @@ const TransactionHistory = (props) => {
         navigate('/login');
     }
     return (
-        <div className="coinsummary shadow border p-2 rounded mt-2 bg-light">
+        // <div className="coinsummary shadow border p-2 rounded mt-2 bg-light">
+        <div>
+            <div id="alignpage">
             <h5>Transaction History</h5>
-            {console.log("hello from transactionHistory")}
             {username}'s portfolio <br/> <br/>
-
-            {/*TODO fix props*/}
             {transactions &&
             <TransactionList transactions={transactions} />
             }
-            Transaction Value Query: <br/> <br/>
+            Transaction Value Query <br/>
+            </div>
             < DropDownMenu assets={location.state.assets} setAssetId={(e)=>setQueryAssetId(e)}  />
-            <input type="button" value="Transaction Query" onClick={queryHandler} /> <br/>
-            <input type="button" value="Back to Portfolio" onClick={backHandler} /> <br/>
-                <input type="button" value="Logout" onClick={logoutHandler} />
+            <div id="outer">
+                <input className="inner" type="button" value="Transaction Query" onClick={queryHandler} /> <br/>
+                <input className="inner" type="button" value="Back to Portfolio" onClick={backHandler} /> <br/>
+                <input className="inner" type="button" value="Logout" onClick={logoutHandler} />
+            </div>
+            {message && <p className="message">{message}</p>}
         </div>
     )
 }

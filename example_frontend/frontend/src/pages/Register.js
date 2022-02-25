@@ -36,13 +36,15 @@ const Register = () => {
     }
 
     return (
-        <div className="coinsummary shadow border p-2 rounded mt-2 bg-light">
-            <form onSubmit={submitHandler}>
+        <div>
+            <div id="alignpage">
                 <h5>Register</h5>
                 username: <input type="text" value={username} onChange={event => setUsername(event.target.value)} /> <br/>
                 password: <input type="password" value={password} onChange={event => setPassword(event.target.value)} /> <br/>
-                <input type="submit" value="Register" />
-            </form>
+            </div>
+            <div id="outer">
+                <input type="submit" className="inner" value="Register" onClick={submitHandler}/>
+            </div>
             {message && <p className="message">{message}</p>}
         </div>
     )

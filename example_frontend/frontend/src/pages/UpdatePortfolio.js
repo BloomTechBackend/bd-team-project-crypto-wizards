@@ -3,7 +3,6 @@ import axios from 'axios';
 import {getToken, getUsername} from '../service/AuthService';
 import {useNavigate, useLocation} from "react-router-dom";
 import DropDownMenu from '../components/DropDownMenu';
-import Portfolio from './Portfolio';
 import PortfolioList from '../components/PortfolioList';
 
 const portfolioAPIUrl = 'https://ccixqpmq4c.execute-api.us-east-2.amazonaws.com/prod/portfolio/';
@@ -74,9 +73,7 @@ const UpdatePortfolio = (props) => {
             transactionValue: location.state.assetMap[assetId].current_price * quantityTransacted
         };
 
-        
         setTransactions(transactions => [...transactions, newTransaction]);
-        
 
         const updatedValue = {...assetQuantityMap};
         if (quantity <= 0) {
@@ -107,7 +104,6 @@ const UpdatePortfolio = (props) => {
         console.log('Request config' + JSON.stringify(requestConfig));
         console.log('Request body' + JSON.stringify(requestBody));
 
-
         axios.put(portfolioAPIUrl + username, requestBody, requestConfig).then((response) => {
             console.log('Portfolio Updated');
             navigate('/portfolio');
@@ -122,21 +118,25 @@ const UpdatePortfolio = (props) => {
     }
 
     return (
-        <div className="coinsummary shadow border p-2 rounded mt-2 bg-light">
-            <h5>Create Portfolio</h5>
+        // <div className="coinsummary shadow border p-2 rounded mt-2 bg-light">
+        <div>
+            <div id="alignpage">
+            <h5>Update Portfolio</h5>
+            {username}'s Portfolio <br/> <br/>
             {console.log("hello from updatePortfolio")}
             {console.log(location.state.assets)}
             {console.log(location.state.assetMap)}
             {console.log(Object.fromEntries(location.state.assets.map(asset => [asset.id, asset])))}
-            {username}'s Portfolio <br/> <br/>
             <PortfolioList assets={location.state.assets.filter(asset => assetQuantityMap[asset.id])} assetQuantityMap={assetQuantityMap}/>
             Asset: <DropDownMenu assets={location.state.assets} setAssetId={(e)=>setAssetId(e)} /> <br/>
             Quantity: <input type="text" value={quantity} onChange={event => setQuantity(event.target.value)} /> <br/> <br/>
-            <input className="btn btn-primary dropdown-toggle" type="button" onClick={addAssetHandler} value="Add Asset" />
-            <input className="btn btn-primary dropdown-toggle" type="button" onClick={updateAssetHandler} value="Update Asset" />
-            <input className="btn btn-primary dropdown-toggle" type="button" onClick={updatePortfolioHandler} value="Update Portfolio" />
+            </div>
+            <div id="outer">
+                <input className="inner" type="button" onClick={addAssetHandler} value="Add Asset" />
+                <input className="inner" type="button" onClick={updateAssetHandler} value="Update Asset" />
+                <input className="inner" type="button" onClick={updatePortfolioHandler} value="Update Portfolio" />
+            </div>
             {message && <p className="message">{message}</p>}
-
         </div>
     )
 }

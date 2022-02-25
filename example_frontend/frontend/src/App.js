@@ -53,6 +53,7 @@ function App() {
         <div className="container">
             <BrowserRouter>
                 <div className="header">
+                    <div className="text">Crypto Portfolio Tracker</div>
                     {/*<NavLink className="active" to="/">Home</NavLink>*/}
                     <NavLink className="active" to="/register">Register</NavLink>
                     <NavLink className="active" to="/login">Login</NavLink>

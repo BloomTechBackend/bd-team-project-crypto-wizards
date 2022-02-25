@@ -1,16 +1,35 @@
-/*Contains styling for all pages.
-Good practice is each page having it's own CSS*/
-
-/*TODO Change names to asset instead of coin*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    text-decoration: none !important;
+    /*text-decoration: none !important;*/
+    font-family: 'Montserrat', sans-serif;
+    background-color: #1a1a1c;
+    color: #fff;
+
 }
 
+.chart {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /*text-decoration: none !important;*/
+    font-family: 'Montserrat', sans-serif;
+    background-color: #1a1a1c;
+    color: #fff;
+
+}
+
+/** {*/
+/*    margin: 0;*/
+/*    padding: 0;*/
+/*    box-sizing: border-box;*/
+/*    text-decoration: none !important;*/
+/*}*/
+
 body {
-    background-color: #263238;
+    background-color: #1a1a1c;
 }
 
 ul {
@@ -18,32 +37,69 @@ ul {
 }
 
 .text {
-    color: chartreuse;
+    color: #6bfc03;
 }
 
-.coinlist-image {
+#canvas {
+    /*background-color: #e1e2e6;*/
+    background-color: #afb1ba;
+}
+
+#alignpage {
+    padding-left: 5px;
+}
+
+#list {
+    margin: 5px 5px 5px 5px;
+}
+
+/*Button*/
+#outer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.inner {
+    margin: 5px 5px 5px 5px;
+    width: 155px;
+    height: 30px;
+    border-radius: 4px;
+    border: none;
+    background-image: linear-gradient(
+            -225deg,
+            #ac32e4 0%,
+            #7918f2 48%,
+            #4801ff 100%
+    );
+    /*color: #e2e2e2;*/
+    color: #fff;
+}
+
+.assetlist-image {
     width: 50px;
 }
 
 .coinlist-item {
     display: flex;
+    background-color: #1a1a1c;
 }
 
-.coinsummary {
-    border-color: white !important;
-    border-style: outset !important;
+.assetsummary {
+    background-color: #1a1a1c;
 }
+
+/*.assetsummary {*/
+/*    color: #1369f2;*/
+/*}*/
+
+/*Page boarder around comonents*/
+/*className="coinsummary shadow border p-2 rounded mt-2 bg-light"*/
+/*.coinsummary {*/
+/*    border-color: white !important;*/
+/*    border-style: outset !important;*/
+/*}*/
 
 .coin-data-category {
     font-size: 10px;
-}
-
-.delete-icon {
-    display: none;
-    position: absolute;
-    right: 6px;
-}
-
-.coin:hover .delete-icon {
-    display: block;
 }
