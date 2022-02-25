@@ -21,13 +21,6 @@
 
 }
 
-/** {*/
-/*    margin: 0;*/
-/*    padding: 0;*/
-/*    box-sizing: border-box;*/
-/*    text-decoration: none !important;*/
-/*}*/
-
 body {
     background-color: #1a1a1c;
 }
@@ -40,10 +33,6 @@ ul {
     color: #6bfc03;
 }
 
-#canvas {
-    /*background-color: #e1e2e6;*/
-    background-color: #afb1ba;
-}
 
 #alignpage {
     padding-left: 5px;
@@ -51,6 +40,46 @@ ul {
 
 #list {
     margin: 5px 5px 5px 5px;
+}
+
+.field {
+    color: #1a1a1c;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 5px 5px 5px 5px;
+    width: 180px;
+    height: 30px;
+    border-radius: 4px;
+    background-color: #afb1ba;
+}
+
+.qfield {
+    color: #1a1a1c;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 5px 5px 5px 5px;
+    width: 75px;
+    height: 30px;
+    border-radius: 4px;
+    background-color: #afb1ba;
+}
+
+.dropmenu {
+    margin: 5px 5px 5px 0px;
+    width: 155px;
+    height: 30px;
+    border-radius: 4px;
+    border: none;
+    background-image: linear-gradient(
+            -225deg,
+            #ac32e4 0%,
+            #7918f2 48%,
+            #4801ff 100%
+    );
+    /*color: #e2e2e2;*/
+    color: #fff;
 }
 
 /*Button*/
@@ -76,8 +105,12 @@ ul {
     color: #fff;
 }
 
+/*.inner::placeholder {*/
+/*    color: #e2e2e2;*/
+/*}*/
+
 .assetlist-image {
-    width: 50px;
+    width: 40px;
 }
 
 .coinlist-item {
@@ -88,17 +121,6 @@ ul {
 .assetsummary {
     background-color: #1a1a1c;
 }
-
-/*.assetsummary {*/
-/*    color: #1369f2;*/
-/*}*/
-
-/*Page boarder around comonents*/
-/*className="coinsummary shadow border p-2 rounded mt-2 bg-light"*/
-/*.coinsummary {*/
-/*    border-color: white !important;*/
-/*    border-style: outset !important;*/
-/*}*/
 
 .coin-data-category {
     font-size: 10px;

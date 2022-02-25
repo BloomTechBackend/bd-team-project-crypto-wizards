@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {useLocation, useNavigate} from "react-router-dom";
 import {getToken, getUsername, resetUserSession} from '../service/AuthService';
 import axios from 'axios';
@@ -33,8 +33,13 @@ const TransactionHistory = (props) => {
             console.log(response);
             setTransactions(response.data.transactions);
         }).catch((error) => {
-            console.log('Error ' + error);
-            setMessage(error.response.data.errorMessage);
+            if (error.response.status === 401 || error.response.status === 403) {
+                resetUserSession();
+                props.logout();
+                navigate('/login');
+            } else {
+                setMessage(error.response.data.errorMessage.split('] ')[1]);
+            }
         });
     }
 
@@ -48,7 +53,6 @@ const TransactionHistory = (props) => {
         navigate('/login');
     }
     return (
-        // <div className="coinsummary shadow border p-2 rounded mt-2 bg-light">
         <div>
             <div id="alignpage">
             <h5>Transaction History</h5>
@@ -56,9 +60,11 @@ const TransactionHistory = (props) => {
             {transactions &&
             <TransactionList transactions={transactions} />
             }
-            Transaction Value Query <br/>
+            Transaction Query <br/>
             </div>
-            < DropDownMenu assets={location.state.assets} setAssetId={(e)=>setQueryAssetId(e)}  />
+
+            < DropDownMenu assets={location.state.assets} setAssetId={(e)=>setQueryAssetId(e)} /> <br/>
+
             <div id="outer">
                 <input className="inner" type="button" value="Transaction Query" onClick={queryHandler} /> <br/>
                 <input className="inner" type="button" value="Back to Portfolio" onClick={backHandler} /> <br/>

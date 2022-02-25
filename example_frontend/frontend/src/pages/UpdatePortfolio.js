@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import axios from 'axios';
-import {getToken, getUsername} from '../service/AuthService';
+import {getToken, getUsername, resetUserSession} from '../service/AuthService';
 import {useNavigate, useLocation} from "react-router-dom";
 import DropDownMenu from '../components/DropDownMenu';
 import PortfolioList from '../components/PortfolioList';
@@ -20,7 +20,6 @@ const UpdatePortfolio = (props) => {
     const [transactions, setTransactions] = useState([]);
 
     const addAssetHandler = (event) => {
-
         event.preventDefault();
         if (assetId.trim() === '' || quantity.trim() === '') {
             setMessage('All fields are required')
@@ -37,11 +36,7 @@ const UpdatePortfolio = (props) => {
             transactionValue: location.state.assetMap[assetId].current_price * quantity
         };
 
-        console.log(newTransaction);
-
         setTransactions(transactions => [...transactions, newTransaction]);
-
-        console.log(transactions);
 
         if (quantity > 0 && !assetQuantityMap[assetId]) {
             const updatedValue = {};
@@ -54,7 +49,6 @@ const UpdatePortfolio = (props) => {
     }
 
     const updateAssetHandler = (event) => {
-
         event.preventDefault();
         if (assetId.trim() === '' || quantity.trim() === '') {
             setMessage('All fields are required')
@@ -87,7 +81,6 @@ const UpdatePortfolio = (props) => {
     }
 
     const updatePortfolioHandler = (event) => {
-
         const requestConfig = {
             headers: {
                 'x-api-key': '9zsZhasE01a9hxGo92WUr68aGSvllMBN6Q3FHmBI',
@@ -108,33 +101,45 @@ const UpdatePortfolio = (props) => {
             console.log('Portfolio Updated');
             navigate('/portfolio');
         }).catch((error) => {
-            console.log('Error ' + error);
             if (error.response.status === 401 || error.response.status === 403) {
-                setMessage(error.response.data.message);
+                resetUserSession();
+                props.logout();
+                navigate('/login');
             } else {
-                setMessage('Server is down, please try again later');
+                setMessage(error.response.data.errorMessage.split('] ')[1]);
             }
         })
     }
 
+    const backHandler = () => {
+        navigate('/portfolio');
+    }
+
+    const logoutHandler = () => {
+        resetUserSession();
+        props.logout();
+        navigate('/login');
+    }
+
     return (
-        // <div className="coinsummary shadow border p-2 rounded mt-2 bg-light">
         <div>
             <div id="alignpage">
             <h5>Update Portfolio</h5>
             {username}'s Portfolio <br/> <br/>
-            {console.log("hello from updatePortfolio")}
-            {console.log(location.state.assets)}
-            {console.log(location.state.assetMap)}
-            {console.log(Object.fromEntries(location.state.assets.map(asset => [asset.id, asset])))}
-            <PortfolioList assets={location.state.assets.filter(asset => assetQuantityMap[asset.id])} assetQuantityMap={assetQuantityMap}/>
-            Asset: <DropDownMenu assets={location.state.assets} setAssetId={(e)=>setAssetId(e)} /> <br/>
-            Quantity: <input type="text" value={quantity} onChange={event => setQuantity(event.target.value)} /> <br/> <br/>
+            </div>
+
+                <PortfolioList assets={location.state.assets.filter(asset => assetQuantityMap[asset.id])} assetQuantityMap={assetQuantityMap}/>
+                <DropDownMenu assets={location.state.assets} setAssetId={(e)=>setAssetId(e)} />
+
+            <div id="alignpage">
+                Quantity: <input className="qfield" type="text" value={quantity} onChange={event => setQuantity(event.target.value)} /> <br/> <br/>
             </div>
             <div id="outer">
                 <input className="inner" type="button" onClick={addAssetHandler} value="Add Asset" />
                 <input className="inner" type="button" onClick={updateAssetHandler} value="Update Asset" />
                 <input className="inner" type="button" onClick={updatePortfolioHandler} value="Update Portfolio" />
+                <input className="inner" type="button" value="Back to Portfolio" onClick={backHandler} /> <br/>
+                <input className="inner" type="button" value="Logout" onClick={logoutHandler} />
             </div>
             {message && <p className="message">{message}</p>}
         </div>

@@ -30,6 +30,7 @@ function App() {
                 'cp-auth-token': token
             }
         }
+
         const requestBody = {
             username: getUsername(),
             token: token
@@ -53,16 +54,12 @@ function App() {
         <div className="container">
             <BrowserRouter>
                 <div className="header">
-                    <div className="text">Crypto Portfolio Tracker</div>
+                     <h4 className="text" >Crypto Portfolio Tracker</h4>
                     {/*<NavLink className="active" to="/">Home</NavLink>*/}
-                    <NavLink className="active" to="/register">Register</NavLink>
-                    <NavLink className="active" to="/login">Login</NavLink>
-                    {/*<NavLink className="active" to="/portfolio">Portfolio</NavLink>*/}
                 </div>
+
                 <div className="container">
                     <Routes>
-                        {/* {console.log(getToken())} */}
-
                         {!isTokenSet && (
                             <>
                                 <Route path="/" element={<Home />}/>
@@ -72,12 +69,10 @@ function App() {
                         )}
                         {isTokenSet && (
                             <>
-                                <Route path="/portfolio"
-                                       element={<Portfolio logout={() => setToken(getToken())} />}/>
+                                <Route path="/portfolio" element={<Portfolio logout={() => setToken(getToken())} />}/>
                                 <Route path="/createPortfolio" element={<CreatePortfolio logout={() => setToken(getToken())} />}/>
                                 <Route path="/transactionHistory" element={<TransactionHistory logout={() => setToken(getToken())} />}/>
                                 <Route path="/updatePortfolio" element={<UpdatePortfolio logout={() => setToken(getToken())} />}/>
-
                             </>
                         )}
                         <Route path="*" element={<Navigate to={isTokenSet ? "/portfolio" : "/"}/>}/>

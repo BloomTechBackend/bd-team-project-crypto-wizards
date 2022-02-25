@@ -48,7 +48,6 @@ const Portfolio = (props) => {
                     ids: masterList.join(","),
                 },
             });
-
             setAssets(response.data);
             setAssetMap(Object.fromEntries(response.data.map(asset => [asset.id, asset])));
             setIsLoading(false);
@@ -63,19 +62,18 @@ const Portfolio = (props) => {
                 'cp-auth-token': token
             }
         }
-
         console.log('Request config' + JSON.stringify(requestConfig));
         
         axios.get(portfolioAPIUrl + username, requestConfig).then((response) => {
-            console.log('Portfolio Received');
             console.log(response);
             setAssetQuantityMap(response.data.portfolio.assetQuantityMap);
         }).catch((error) => {
-            console.log('Error ' + error);
             if (error.response.status === 401 || error.response.status === 403) {
-                setMessage(error.response.data.message);
+                resetUserSession();
+                props.logout();
+                navigate('/login');
             } else {
-                setMessage('Server is down, please try again later');
+                setMessage(error.response.data.errorMessage.split('] ')[1]);
             }
         })
     },[]);
@@ -102,7 +100,6 @@ const Portfolio = (props) => {
         navigate('/login');
     }
     return (
-        // <div className="coinsummary shadow border p-2 rounded mt-2 bg-light">
         <div>
             <h3>{username}'s portfolio</h3> <br/>
 
@@ -111,6 +108,7 @@ const Portfolio = (props) => {
             {(assets && assetQuantityMap) ?
                 <PortfolioList assets={assets.filter(asset => assetQuantityMap[asset.id])} assetQuantityMap={assetQuantityMap} />:
             <div>Loading...</div>}
+
             <div id="outer">
                 <input className="inner" type="button" value="Create Portfolio" onClick={createHandler} /> <br/>
                 <input className="inner" type="button" value="Update Portfolio" onClick={updateHandler} /> <br/>

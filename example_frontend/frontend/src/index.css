@@ -1,5 +1,3 @@
-/*Contains styling for index where the App component is called,*/
-/*therefore it contains styling for the App component.*/
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -15,8 +13,8 @@ code {
 }
 
 .header {
-  margin: 2em 0 2em 2em;
-  padding-bottom: 1em;
+  margin: 2em 0 2em  0;
+  /*padding-bottom: 1em;*/
   boarder-bottom: 1px solid;
 }
 
