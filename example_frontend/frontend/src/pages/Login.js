@@ -5,7 +5,6 @@ import {setUserSession} from '../service/AuthService';
 
 const loginAPIUrl = 'https://ccixqpmq4c.execute-api.us-east-2.amazonaws.com/prod/login';
 
-// Upon successful login, ViewPortfolio-Create-Update buttons will be visible
 const Login = (props) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
