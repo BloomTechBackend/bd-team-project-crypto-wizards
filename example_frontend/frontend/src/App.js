@@ -74,9 +74,9 @@ function App() {
                             <>
                                 <Route path="/portfolio"
                                        element={<Portfolio logout={() => setToken(getToken())} />}/>
-                                <Route path="/createPortfolio" element={<CreatePortfolio />}/>
-                                <Route path="/transactionHistory" element={<TransactionHistory />}/>
-                                <Route path="/updatePortfolio" element={<UpdatePortfolio />}/>
+                                <Route path="/createPortfolio" element={<CreatePortfolio logout={() => setToken(getToken())} />}/>
+                                <Route path="/transactionHistory" element={<TransactionHistory logout={() => setToken(getToken())} />}/>
+                                <Route path="/updatePortfolio" element={<UpdatePortfolio logout={() => setToken(getToken())} />}/>
 
                             </>
                         )}
