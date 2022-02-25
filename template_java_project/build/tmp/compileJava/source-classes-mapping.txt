@@ -105,8 +105,6 @@ com/cryptoportfolio/converter/ModelConverter.java
  com.cryptoportfolio.converter.ModelConverter
 com/cryptoportfolio/activity/GetPortfolioActivity.java
  com.cryptoportfolio.activity.GetPortfolioActivity
-com/cryptoportfolio/converter/ZonedDateTimeConverter.java
- com.cryptoportfolio.converter.ZonedDateTimeConverter
 com/cryptoportfolio/models/responses/FailureResponse.java
  com.cryptoportfolio.models.responses.FailureResponse
 com/cryptoportfolio/lambda/CoinGeckoConnector.java

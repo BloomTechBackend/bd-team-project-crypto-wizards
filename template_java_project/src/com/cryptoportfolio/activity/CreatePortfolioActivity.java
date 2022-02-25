@@ -11,13 +11,12 @@ import com.cryptoportfolio.dynamodb.models.Portfolio;
 import com.cryptoportfolio.dynamodb.models.Transaction;
 import com.cryptoportfolio.dynamodb.models.User;
 import com.cryptoportfolio.exceptions.AssetNotAvailableException;
-import com.cryptoportfolio.exceptions.PortfolioAlreadyExistsException;
 import com.cryptoportfolio.exceptions.UnableToSaveToDatabaseException;
+import com.cryptoportfolio.models.requests.CreatePortfolioRequest;
+import com.cryptoportfolio.models.responses.CreatePortfolioResponse;
 import com.cryptoportfolio.settings.Settings;
 import com.cryptoportfolio.utils.Auth;
 import com.google.gson.Gson;
-import com.cryptoportfolio.models.requests.CreatePortfolioRequest;
-import com.cryptoportfolio.models.responses.CreatePortfolioResponse;
 
 import javax.inject.Inject;
 import java.util.ArrayList;
@@ -73,10 +72,6 @@ public class CreatePortfolioActivity implements RequestHandler<CreatePortfolioRe
 
         User user = userDao.getUser(createPortfolioRequest.getUsername());
 
-        // getUserPortfolio is throwing an exception when you try to get a portfolio that doesn't exist
-//        if (portfolioDao.getUserPortfolio(createPortfolioRequest.getUsername()) != null) {
-//            throw new PortfolioAlreadyExistsException("[Unauthorized] Failed : Portfolio already exists");
-//        }
         user.setIsNewUser(false);
         userDao.updateUser(user);
 
@@ -89,7 +84,6 @@ public class CreatePortfolioActivity implements RequestHandler<CreatePortfolioRe
                 nonZeroAssetQuantityMap.put(assetID, assetQuantityMap.get(assetID));
             }
         }
-        logger.log("transactionList : " + transactionList);
         transactionDao.batchSaveTransactions(transactionList);
 
         portfolio.setAssetQuantityMap(nonZeroAssetQuantityMap);
