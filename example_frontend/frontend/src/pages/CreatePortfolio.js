@@ -87,22 +87,24 @@ const CreatePortfolio = (props) => {
     }
 
     return (
-        <div className="coinsummary shadow border p-2 rounded mt-2 bg-light">
-            {/*<form onSubmit={addAssetHandler}>*/}
+        // <div className="coinsummary shadow border p-2 rounded mt-2 bg-light">
+        <div>
+            <div id="alignpage">
             <h5>Create Portfolio</h5>
+            {username}'s Portfolio <br/> <br/>
             {console.log("hello from createPortfolio")}
             {console.log(location.state.assets)}
             {console.log(location.state.assetMap)}
             {console.log(Object.fromEntries(location.state.assets.map(asset => [asset.id, asset])))}
-            {username}'s Portfolio <br/> <br/>
             <PortfolioList assets={location.state.assets.filter(asset => assetQuantityMap[asset.id])} assetQuantityMap={assetQuantityMap}/>
             Asset: <DropDownMenu assets={location.state.assets} setAssetId={(e)=>setAssetId(e)} /> <br/>
             Quantity: <input type="text" value={quantity} onChange={event => setQuantity(event.target.value)} /> <br/> <br/>
-            {/*<input className="button" type="submit" value="AddAsset" />*/}
-            <input className="button" type="button" onClick={addAssetHandler} value="Add Asset" /> <br/>
-            <input className="button" type="button" onClick={createPortfolioHandler} value="Create Portfolio" />
+            </div>
+            <div id="outer">
+                <input className="inner" type="button" onClick={addAssetHandler} value="Add Asset" /> <br/>
+                <input className="inner" type="button" onClick={createPortfolioHandler} value="Create Portfolio" />
+            </div>
             {message && <p className="message">{message}</p>}
-            {/*</form>*/}
         </div>
     )
 }

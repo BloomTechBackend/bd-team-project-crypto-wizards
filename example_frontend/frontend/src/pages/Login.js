@@ -28,28 +28,27 @@ const Login = (props) => {
             password: password
         }
 
-        // Take out redirect to portfolio, make ViewPortfolio-Create-Update buttons will be visible
         axios.post(loginAPIUrl, requestBody, requestConfig).then((response) => {
             setUserSession(response.data.username, response.data.authToken);
             props.authenticate();
             navigate('/portfolio');
         }).catch((error) => {
-            if (error.response.status === 401 || error.response.status === 403) {
-                setErrorMessage(error.response.data.message);
-            } else {
-                setErrorMessage('Server is down, please try again later');
-            }
+            console.log('Error ' + error.toJSON())
+            console.log(error.response)
+            setErrorMessage(error.response.data.errorMessage.split('] ')[1]);
         })
     }
 
     return (
-        <div className="coinsummary shadow border p-2 rounded mt-2 bg-light">
-            <form onSubmit={submitHandler}>
+        <div>
+            <div id="alignpage">
                 <h5>Login</h5>
                 username: <input type="text" value={username} onChange={event => setUsername(event.target.value)} /> <br/>
                 password: <input type="password" value={password} onChange={event => setPassword(event.target.value)} /> <br/>
-                <input type="submit" value="Login" />
-            </form>
+            </div>
+            <div id="outer">
+                <input className="inner" type="submit" value="Login" onClick={submitHandler} />
+            </div>
             {errorMessage && <p className="message">{errorMessage}</p>}
         </div>
     )
