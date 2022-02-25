@@ -5,7 +5,7 @@ const DropDownMenu = ({assets, setAssetId}) => {
 
     return (
         <div id="list">
-        <select onChange={event => setAssetId(event.target.value)}>
+        <select className="dropmenu" onChange={event => setAssetId(event.target.value)}>
             <option>Select an Asset</option>
 
             {assets.map((asset) => {

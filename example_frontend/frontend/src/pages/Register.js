@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import axios from 'axios';
+import {NavLink, useNavigate} from "react-router-dom";
 
 const registerAPIUrl = 'https://ccixqpmq4c.execute-api.us-east-2.amazonaws.com/prod/register';
 
@@ -7,14 +8,9 @@ const Register = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState(null);
+    const navigate = useNavigate();
 
     const submitHandler = (event) => {
-        event.preventDefault();
-        if (username.trim() === '' || password.trim() === '') {
-            setMessage('All fields are required')
-            return;
-        }
-        setMessage(null);
         const requestConfig = {
             headers: {
                 'x-api-key': '9zsZhasE01a9hxGo92WUr68aGSvllMBN6Q3FHmBI'
@@ -26,21 +22,22 @@ const Register = () => {
         }
         axios.post(registerAPIUrl, requestBody, requestConfig).then(response => {
             setMessage('Registration Successful');
+            navigate('/login');
         }).catch(error => {
-            if (error.response.status === 401 || error.response.status === 403) {
-                setMessage(error.response.data.message);
-            } else {
-                setMessage('Server is down, please try again later');
-            }
+            setMessage(error.response.data.errorMessage.split('] ')[1]);
         })
     }
 
     return (
         <div>
+            <div className="header">
+                <NavLink className="active" to="/register">Register</NavLink>
+                <NavLink className="active" to="/login">Login</NavLink>
+            </div>
             <div id="alignpage">
-                <h5>Register</h5>
-                username: <input type="text" value={username} onChange={event => setUsername(event.target.value)} /> <br/>
-                password: <input type="password" value={password} onChange={event => setPassword(event.target.value)} /> <br/>
+                <h4>Register</h4>
+                username: <input className="field" type="text" value={username} onChange={event => setUsername(event.target.value)} /> <br/>
+                password: <input className="field" type="password" value={password} onChange={event => setPassword(event.target.value)} /> <br/>
             </div>
             <div id="outer">
                 <input type="submit" className="inner" value="Register" onClick={submitHandler}/>

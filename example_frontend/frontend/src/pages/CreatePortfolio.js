@@ -1,9 +1,8 @@
 import React, {useState} from 'react';
 import axios from 'axios';
-import {getToken, getUsername} from '../service/AuthService';
+import {getToken, getUsername, resetUserSession} from '../service/AuthService';
 import {useNavigate, useLocation} from "react-router-dom";
 import DropDownMenu from '../components/DropDownMenu';
-import Portfolio from './Portfolio';
 import PortfolioList from '../components/PortfolioList';
 
 const portfolioAPIUrl = 'https://ccixqpmq4c.execute-api.us-east-2.amazonaws.com/prod/portfolio/';
@@ -77,32 +76,44 @@ const CreatePortfolio = (props) => {
             console.log('Portfolio Created');
             navigate('/portfolio');
         }).catch((error) => {
-            console.log('Error ' + error);
             if (error.response.status === 401 || error.response.status === 403) {
-                setMessage(error.response.data.message);
+                resetUserSession();
+                props.logout();
+                navigate('/login');
             } else {
-                setMessage('Server is down, please try again later');
+                setMessage(error.response.data.errorMessage.split('] ')[1]);
             }
         })
     }
 
+    const backHandler = () => {
+        navigate('/portfolio');
+    }
+
+    const logoutHandler = () => {
+        resetUserSession();
+        props.logout();
+        navigate('/login');
+    }
+
     return (
-        // <div className="coinsummary shadow border p-2 rounded mt-2 bg-light">
         <div>
             <div id="alignpage">
             <h5>Create Portfolio</h5>
             {username}'s Portfolio <br/> <br/>
-            {console.log("hello from createPortfolio")}
-            {console.log(location.state.assets)}
-            {console.log(location.state.assetMap)}
-            {console.log(Object.fromEntries(location.state.assets.map(asset => [asset.id, asset])))}
+            </div>
+
             <PortfolioList assets={location.state.assets.filter(asset => assetQuantityMap[asset.id])} assetQuantityMap={assetQuantityMap}/>
-            Asset: <DropDownMenu assets={location.state.assets} setAssetId={(e)=>setAssetId(e)} /> <br/>
-            Quantity: <input type="text" value={quantity} onChange={event => setQuantity(event.target.value)} /> <br/> <br/>
+            <DropDownMenu assets={location.state.assets} setAssetId={(e)=>setAssetId(e)} />
+
+            <div id="alignpage">
+            Quantity: <input className="qfield" type="text" value={quantity} onChange={event => setQuantity(event.target.value)} /> <br/> <br/>
             </div>
             <div id="outer">
                 <input className="inner" type="button" onClick={addAssetHandler} value="Add Asset" /> <br/>
                 <input className="inner" type="button" onClick={createPortfolioHandler} value="Create Portfolio" />
+                <input className="inner" type="button" value="Back to Portfolio" onClick={backHandler} /> <br/>
+                <input className="inner" type="button" value="Logout" onClick={logoutHandler} />
             </div>
             {message && <p className="message">{message}</p>}
         </div>

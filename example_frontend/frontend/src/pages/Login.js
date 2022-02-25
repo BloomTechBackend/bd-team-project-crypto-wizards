@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {useNavigate} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 import axios from 'axios';
 import {setUserSession} from '../service/AuthService';
 
@@ -8,16 +8,10 @@ const loginAPIUrl = 'https://ccixqpmq4c.execute-api.us-east-2.amazonaws.com/prod
 const Login = (props) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [errorMessage, setErrorMessage] = useState(null);
+    const [message, setMessage] = useState(null);
     const navigate = useNavigate();
 
     const submitHandler = (event) => {
-        event.preventDefault();
-        if (username.trim() === '' || password.trim() === '') {
-            setErrorMessage('Both username and password are required')
-            return;
-        }
-        setErrorMessage(null);
         const requestConfig = {
             headers: {
                 'x-api-key': '9zsZhasE01a9hxGo92WUr68aGSvllMBN6Q3FHmBI'
@@ -35,21 +29,25 @@ const Login = (props) => {
         }).catch((error) => {
             console.log('Error ' + error.toJSON())
             console.log(error.response)
-            setErrorMessage(error.response.data.errorMessage.split('] ')[1]);
+            setMessage(error.response.data.errorMessage.split('] ')[1]);
         })
     }
 
     return (
         <div>
+            <div className="header">
+                <NavLink className="active" to="/register">Register</NavLink>
+                <NavLink className="active" to="/login">Login</NavLink>
+            </div>
             <div id="alignpage">
-                <h5>Login</h5>
-                username: <input type="text" value={username} onChange={event => setUsername(event.target.value)} /> <br/>
-                password: <input type="password" value={password} onChange={event => setPassword(event.target.value)} /> <br/>
+                <h4>Login</h4>
+                username: <input className="field" type="text" value={username} onChange={event => setUsername(event.target.value)} /> <br/>
+                password: <input className="field" type="password" value={password} onChange={event => setPassword(event.target.value)} /> <br/>
             </div>
             <div id="outer">
                 <input className="inner" type="submit" value="Login" onClick={submitHandler} />
             </div>
-            {errorMessage && <p className="message">{errorMessage}</p>}
+            {message && <p className="message">{message}</p>}
         </div>
     )
 }

@@ -16,7 +16,6 @@ const PortfolioChart = ({assets, assetQuantityMap}) => {
             const chartInstance = new Chart(chartRef.current, {
                 type: 'doughnut',
                 data: {
-                    //labels: assets.map(asset => [asset.name, asset.symbol, asset.id, asset.current_price * assetQuantityMap[asset.id]].join(' ')),
                     labels: assets.map(asset => asset.name),
                     datasets: [{
                         label: [assets.map(asset => asset.symbol),
@@ -48,9 +47,8 @@ const PortfolioChart = ({assets, assetQuantityMap}) => {
                     plugins: {
                         // CHART LABEL
                         datalabels: {
-                            // display: 'auto',
-                            display: true,
-                            // color: '#000',
+                            display: 'auto',
+                            // display: true,
                             color: '#fff',
                             align: 'end',
                             anchor: 'end',
@@ -85,7 +83,6 @@ const PortfolioChart = ({assets, assetQuantityMap}) => {
                                 sum = sum.toFixed(2);
                                 return 'Total $' + sum;
                             },
-                            // color: '#000',
                             color: '#fff',
                             font: {
                                 size: 20,
@@ -118,15 +115,15 @@ const PortfolioChart = ({assets, assetQuantityMap}) => {
 
                                     return true;
                                 },
-                                // color: '#000',
                                 color: '#fff',
                                 font: {
+                                    family: "'Montserrat', 'sans-serif'",
                                     size: 12,
                                     weight: 'normal'
                                 },
                                 boxWidth: 30,
                                 boxHeight: 15,
-                                padding: 35,
+                                padding: 30,
                             },
                         },
                         // HOVER LABEL
@@ -159,7 +156,7 @@ const PortfolioChart = ({assets, assetQuantityMap}) => {
                         padding: {
                             left: 0,
                             right: 0,
-                            bottom: 20,
+                            bottom: 30,
                             top: 0,
                         },
                     },
@@ -177,11 +174,9 @@ const PortfolioChart = ({assets, assetQuantityMap}) => {
             if (!myChart) return;
             myChart.update();
         }, [myChart]);
-
         console.log("Chart");
 
         return (
-            // <div className="bg-white boarder mt-2 rounded p-3">
             <div className="chart" >
                 <canvas id="myChart" ref={chartRef}  width="400" height="400"/>
             </div>
