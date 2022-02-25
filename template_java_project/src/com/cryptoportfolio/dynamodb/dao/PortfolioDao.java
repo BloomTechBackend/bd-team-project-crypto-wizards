@@ -37,10 +37,11 @@ public class PortfolioDao {
      * @param portfolio Saves a portfolio to the database
      * @return returns the saved portfolio
      */
-    public void savePortfolio(Portfolio portfolio) throws UnableToSaveToDatabaseException {
+    public void savePortfolio(Portfolio portfolio) {
         try {
             this.dynamoDBMapper.save(portfolio);
         } catch (Exception e){
+            //logger.log(e.printStackTrace());
             throw new UnableToSaveToDatabaseException("[Internal Server Error] Failed : Unable to service request");
         }
     }

@@ -1,8 +1,8 @@
 package com.cryptoportfolio.activity;
 
-import com.cryptoportfolio.dynamodb.dao.AssetDao;
 import com.cryptoportfolio.dynamodb.dao.PortfolioDao;
 import com.cryptoportfolio.dynamodb.dao.TransactionDao;
+import com.cryptoportfolio.dynamodb.dao.UserDao;
 import com.google.gson.Gson;
 import dagger.internal.Factory;
 import javax.annotation.processing.Generated;
@@ -15,7 +15,7 @@ import javax.inject.Provider;
 public final class UpdatePortfolioActivity_Factory implements Factory<UpdatePortfolioActivity> {
   private final Provider<PortfolioDao> portfolioDaoProvider;
 
-  private final Provider<AssetDao> assetDaoProvider;
+  private final Provider<UserDao> userDaoProvider;
 
   private final Provider<TransactionDao> transactionDaoProvider;
 
@@ -23,11 +23,11 @@ public final class UpdatePortfolioActivity_Factory implements Factory<UpdatePort
 
   public UpdatePortfolioActivity_Factory(
       Provider<PortfolioDao> portfolioDaoProvider,
-      Provider<AssetDao> assetDaoProvider,
+      Provider<UserDao> userDaoProvider,
       Provider<TransactionDao> transactionDaoProvider,
       Provider<Gson> gsonProvider) {
     this.portfolioDaoProvider = portfolioDaoProvider;
-    this.assetDaoProvider = assetDaoProvider;
+    this.userDaoProvider = userDaoProvider;
     this.transactionDaoProvider = transactionDaoProvider;
     this.gsonProvider = gsonProvider;
   }
@@ -36,17 +36,17 @@ public final class UpdatePortfolioActivity_Factory implements Factory<UpdatePort
   public UpdatePortfolioActivity get() {
     return new UpdatePortfolioActivity(
         portfolioDaoProvider.get(),
-        assetDaoProvider.get(),
+        userDaoProvider.get(),
         transactionDaoProvider.get(),
         gsonProvider.get());
   }
 
   public static UpdatePortfolioActivity_Factory create(
       Provider<PortfolioDao> portfolioDaoProvider,
-      Provider<AssetDao> assetDaoProvider,
+      Provider<UserDao> userDaoProvider,
       Provider<TransactionDao> transactionDaoProvider,
       Provider<Gson> gsonProvider) {
     return new UpdatePortfolioActivity_Factory(
-        portfolioDaoProvider, assetDaoProvider, transactionDaoProvider, gsonProvider);
+        portfolioDaoProvider, userDaoProvider, transactionDaoProvider, gsonProvider);
   }
 }

@@ -1,6 +1,6 @@
 package com.cryptoportfolio.exceptions;
 
-public class InsufficientAssetsException extends RuntimeException {
+public class InsufficientAssetsException extends CryptoPortfolioException {
 
     public InsufficientAssetsException() {
         super();

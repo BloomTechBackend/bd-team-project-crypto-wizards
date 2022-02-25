@@ -1,6 +1,6 @@
 package com.cryptoportfolio.exceptions;
 
-public class PortfolioAlreadyExistsException extends RuntimeException {
+public class PortfolioAlreadyExistsException extends CryptoPortfolioException {
 
     public PortfolioAlreadyExistsException() {
         super();
