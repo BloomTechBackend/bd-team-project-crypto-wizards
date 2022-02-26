@@ -60,7 +60,7 @@ public class GetPortfolioActivity implements RequestHandler<GetPortfolioRequest,
         String username = getPortfolioRequest.getUsername();
         Auth.authenticateToken(username, getPortfolioRequest.getAuthToken());
 
-        Portfolio portfolio = portfolioDao.getUserPortfolio(username);
+        Portfolio portfolio = portfolioDao.getPortfolio(username);
 
         if (portfolio == null) {
             throw new PortfolioNotFoundException("[Not Found] Resource not found : Could not find Portfolio");

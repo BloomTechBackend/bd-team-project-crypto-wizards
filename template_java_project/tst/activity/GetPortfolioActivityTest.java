@@ -95,7 +95,7 @@ public class GetPortfolioActivityTest {
                                         .build();
 
         //WHEN
-        when(portfolioDao.getUserPortfolio(username)).thenReturn(portfolio);
+        when(portfolioDao.getPortfolio(username)).thenReturn(portfolio);
 
         try (MockedStatic<Auth> authMock = Mockito.mockStatic(Auth.class)) {
             authMock.when(() -> Auth.authenticateToken(username, token)).thenAnswer((Answer<Void>) invocation -> null);
@@ -123,7 +123,7 @@ public class GetPortfolioActivityTest {
                 .build();
 
         //WHEN
-        when(portfolioDao.getUserPortfolio(username)).thenReturn(null);
+        when(portfolioDao.getPortfolio(username)).thenReturn(null);
         try (MockedStatic<Auth> authMock = Mockito.mockStatic(Auth.class)) {
             authMock.when(() -> Auth.authenticateToken(username, token)).thenAnswer((Answer<Void>) invocation -> null);
             assertThrows(PortfolioNotFoundException.class, () -> getPortfolioActivity.handleRequest(request, context));

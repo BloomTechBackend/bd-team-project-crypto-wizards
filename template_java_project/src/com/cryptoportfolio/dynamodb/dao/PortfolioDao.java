@@ -23,7 +23,7 @@ public class PortfolioDao {
      * @param username Requires a UserName whose Portfolio needs to be fetched
      * @return Returns a Portfolio for the given User
      */
-    public Portfolio getUserPortfolio(String username) {
+    public Portfolio getPortfolio(String username) {
         Portfolio portfolio = this.dynamoDBMapper.load(Portfolio.class, username);
 
         if (portfolio == null) {
@@ -41,7 +41,7 @@ public class PortfolioDao {
         try {
             this.dynamoDBMapper.save(portfolio);
         } catch (Exception e){
-            //logger.log(e.printStackTrace());
+            //logger.log(e.toString());
             throw new UnableToSaveToDatabaseException("[Internal Server Error] Failed : Unable to service request");
         }
     }

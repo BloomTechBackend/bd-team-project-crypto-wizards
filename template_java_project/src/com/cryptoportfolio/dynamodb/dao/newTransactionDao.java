@@ -6,6 +6,7 @@ import com.amazonaws.services.dynamodbv2.datamodeling.PaginatedQueryList;
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 import com.cryptoportfolio.dynamodb.models.Transaction;
 import com.cryptoportfolio.exceptions.MissingFieldException;
+import com.cryptoportfolio.exceptions.TransactionsNotFoundException;
 import com.cryptoportfolio.exceptions.UnableToSaveToDatabaseException;
 
 import javax.inject.Inject;
@@ -17,11 +18,11 @@ import java.util.Map;
 /**
  * The TransactionHistoryDao class will create a new Transaction History and also fetch an existing Transaction History
  */
-public class TransactionDao {
+public class newTransactionDao {
     private final DynamoDBMapper dynamoDBMapper;
 
     @Inject
-    public TransactionDao(DynamoDBMapper dynamoDBMapper) {
+    public newTransactionDao(DynamoDBMapper dynamoDBMapper) {
         this.dynamoDBMapper = dynamoDBMapper;
     }
 
@@ -39,7 +40,12 @@ public class TransactionDao {
             DynamoDBQueryExpression<Transaction> queryExpression = new DynamoDBQueryExpression<Transaction>()
                     .withHashKeyValues(event)
                     .withConsistentRead(false);
-            return new ArrayList<>(dynamoDBMapper.query(Transaction.class, queryExpression));
+            try {
+                return new ArrayList<>(dynamoDBMapper.query(Transaction.class, queryExpression));
+            } catch (Exception e) {
+                //logger.log(e.toString());
+                throw new TransactionsNotFoundException("[Internal Server Error] Failed : Unable to service request");
+            }
         }
 
         Transaction event = new Transaction();
@@ -53,6 +59,10 @@ public class TransactionDao {
                 .withExpressionAttributeValues(valueMap);
 
         PaginatedQueryList<Transaction> transactionList = dynamoDBMapper.query(Transaction.class, queryExpression);
+
+        if (transactionList == null) {
+            throw new UnableToSaveToDatabaseException("[Internal Server Error] Failed : Unable to service request");
+        }
         return transactionList;
     }
 
