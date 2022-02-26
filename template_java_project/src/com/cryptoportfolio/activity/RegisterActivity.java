@@ -41,17 +41,14 @@ public class RegisterActivity implements RequestHandler<RegisterRequest, Registe
 
         if (!VALID_USERNAME_PATTERN.matcher(username).find()) {
 
-            throw new IllegalArgumentException("[Bad Request] Registration Failed : Password requirements: " +
-                    "\n1. Username consists of alphanumeric characters (a-zA-Z0-9)." +
-                    "\n2. The number of characters must be a max of 20.");
+            throw new IllegalArgumentException("[Bad Request] Registration Failed : Username Valid format: " +
+                    "(a-zA-Z0-9) & " +
+                    "max of 20 characters.");
         }
 
         if (!VALID_PASSWORD_PATTERN.matcher(password).find()) {
-            logger.log("[Bad Request] Registration Failed : Password requirements: " +
-                    "\n1. The number of characters must be a min of 5 to max of 20.");
-
-            throw new IllegalArgumentException("[Bad Request] Registration Failed : Password requirements: " +
-                    "\n1. The number of characters must be a min of 5 to max of 20.");
+            throw new IllegalArgumentException("[Bad Request] Registration Failed : Password Valid format:: " +
+                    "5 - 20 characters required.");
         }
 
         String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
