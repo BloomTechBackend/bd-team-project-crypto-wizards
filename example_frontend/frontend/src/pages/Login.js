@@ -45,7 +45,7 @@ const Login = (props) => {
                 password: <input className="field" type="password" value={password} onChange={event => setPassword(event.target.value)} /> <br/>
             </div>
             <div id="outer">
-                <input className="inner" type="submit" value="Login" onClick={submitHandler} />
+                <input className="inner" type="button" value="Login" onClick={submitHandler} />
             </div>
             {message && <p className="message">{message}</p>}
         </div>

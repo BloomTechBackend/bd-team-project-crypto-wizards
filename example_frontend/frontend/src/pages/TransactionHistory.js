@@ -25,9 +25,10 @@ const TransactionHistory = (props) => {
             }
         }
 
+        const urlString = transactionHistoryAPIUrl + username + '?assetFlag=' + (queryAssetId=='Select an Asset' ? 'ALL' : queryAssetId);
         console.log('Request config' + JSON.stringify(requestConfig));
-
-        const urlString = transactionHistoryAPIUrl + username + '?assetFlag=' + queryAssetId;
+        console.log(urlString);
+        
         axios.get(urlString, requestConfig).then((response) => {
             console.log('Portfolio Received');
             console.log(response);
@@ -58,7 +59,7 @@ const TransactionHistory = (props) => {
             <h5>Transaction History</h5>
             {username}'s portfolio <br/> <br/>
             {transactions &&
-            <TransactionList transactions={transactions} />
+            <TransactionList transactions={transactions} assetMap={location.state.assetMap} />
             }
             Transaction Query <br/>
             </div>

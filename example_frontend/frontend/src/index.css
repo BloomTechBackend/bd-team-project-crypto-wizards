@@ -15,7 +15,7 @@ code {
 .header {
   margin: 2em 0 2em  0;
   /*padding-bottom: 1em;*/
-  boarder-bottom: 1px solid;
+  /* border-bottom: 1px solid; */
 }
 
 .header a {
