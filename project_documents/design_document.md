@@ -161,17 +161,10 @@ RegisterActivity saves the new user onto the database.](images/design_document/R
 
 ### 6.6. GetTransactionActivity Endpoint
 
-* Accepts `GET` requests to `/portfolios/:id`
-* Accepts data to update the quantity of portfolio owned and adding new assets to the portfolio. Returns the updated portfolio.
-    * If the user enters an asset that is unavailable, will throw an
-      `AssetNotAvailableException`.
-    * If the user already has a portfolio and still attempts to create one, will throw
-      `PortfolioAlreadyExistsException`
-    * * If the profolio fails to get saved due to Internal dynamo Db server error, will throw
-        `UnableToSaveToDatabaseException`
-
-![alt text](images/design_document/UdatePortfolio.png)
-
+* Accepts `GET` requests to `/transactions/:id`
+* * Accepts a valid username and returns the list of transactions for the user's portfolio.
+    * If the user there are no transactions for the portfolio, will throw an
+      `TransactionsNotFoundException`.
 
 # 7. Tables
 
