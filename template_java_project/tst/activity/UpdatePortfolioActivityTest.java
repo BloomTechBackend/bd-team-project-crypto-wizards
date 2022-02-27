@@ -69,7 +69,7 @@ public class UpdatePortfolioActivityTest {
 
     //Happy Case
     @Test
-    public void handleRequest_withProperUsername_createsPortfolio() {
+    public void handleRequest_withProperUsername_updatesPortfolio() {
         // GIVEN
         String username = "testUser";
         String password = "testUser";

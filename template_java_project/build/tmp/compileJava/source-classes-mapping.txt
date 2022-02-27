@@ -46,8 +46,6 @@ com/cryptoportfolio/models/requests/VerifyRequest.java
  com.cryptoportfolio.models.requests.VerifyRequest
 com/cryptoportfolio/lambda/CreatePortfolioActivityProvider.java
  com.cryptoportfolio.lambda.CreatePortfolioActivityProvider
-com/cryptoportfolio/dynamodb/dao/newTransactionDao.java
- com.cryptoportfolio.dynamodb.dao.newTransactionDao
 com/cryptoportfolio/exceptions/LoginException.java
  com.cryptoportfolio.exceptions.LoginException
 com/cryptoportfolio/exceptions/TransactionsNotFoundException.java
