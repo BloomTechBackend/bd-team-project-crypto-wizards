@@ -11,6 +11,7 @@ import com.cryptoportfolio.dynamodb.models.Portfolio;
 import com.cryptoportfolio.dynamodb.models.Transaction;
 import com.cryptoportfolio.dynamodb.models.User;
 import com.cryptoportfolio.exceptions.AssetNotAvailableException;
+import com.cryptoportfolio.exceptions.LoginException;
 import com.cryptoportfolio.models.requests.CreatePortfolioRequest;
 import com.cryptoportfolio.models.responses.CreatePortfolioResponse;
 import com.cryptoportfolio.utils.Auth;
@@ -69,7 +70,7 @@ public class CreatePortfolioActivityTest {
 
     //Happy Case
     @Test
-    public void handleRequest_withProperUsername_createsPortfolio() {
+    public void handleRequest_withValidUsername_createsPortfolio() {
         // GIVEN
         String username = "testUser";
         String password = "testUser";
@@ -114,6 +115,45 @@ public class CreatePortfolioActivityTest {
         verify(transactionDao).batchSaveTransactions(transactions);
         verify(portfolioDao).savePortfolio(portfolio);
     }
+
+    @Test
+    public void handleRequest_withInValidUsername_throwsLoginException() {
+        // GIVEN
+        String username = "testUser";
+        String password = "testUser";
+        Map<String, Double> assetQuantityMap = new HashMap<>();
+        assetQuantityMap.put("bitcoin" , 3.0);
+        assetQuantityMap.put("fantom" , 5.0);
+        List<Transaction> transactions = new ArrayList<>();
+        double usdValue = 50.0;
+        User user = new User();
+        user.setUsername(username);
+        user.setPassword(password);
+        user.setIsNewUser(true);
+        for (String assetId : assetQuantityMap.keySet()) {
+            Transaction transaction = new Transaction();
+            transaction.setUsername(username);
+            transaction.setTransactionDate("2016-11-11T17:21:07.5272333Z");
+            transaction.setAssetId(assetId);
+            transaction.setTransactionValue(assetQuantityMap.get(assetId) * usdValue);
+            transaction.setTransactionType("BUY");
+            transactions.add(transaction);
+        }
+
+        CreatePortfolioRequest request = CreatePortfolioRequest.builder()
+                .withAssetQuantityMap(assetQuantityMap)
+                .withUsername(username)
+                .withAuthToken(token)
+                .withTransactions(transactions).build();
+
+        //WHEN & THEN
+        when(userDao.getUser(username)).thenThrow(new LoginException());
+        try (MockedStatic<Auth> authMock = Mockito.mockStatic(Auth.class)) {
+            authMock.when(() -> Auth.authenticateToken(username, token)).thenAnswer((Answer<Void>) invocation -> null);
+            assertThrows(LoginException.class, () -> createPortfolioActivity.handleRequest(request, context));
+        }
+    }
+
     @Test
     public void handleRequest_withUnavailableAsset_throwsAssetNotAvailableException() {
         // GIVEN

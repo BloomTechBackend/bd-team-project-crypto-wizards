@@ -6,7 +6,7 @@
 
 Crypto assets are digital tokens secured through a decentralized computer network. Owning several crypto assets can be difficult to track and view overall value and performance.
 
-This design document describes a crypto portfolio tracking service that provides a custom view of the client's portfolio to meet their needs. It is designed to connect with a 3rd party price quoting service, displaying realtime data converted to USD to see an accurate asset value. This will keep track of all assets in a single location with historical data to view growth and regression.
+This design document describes a crypto portfolio tracking service that provides a custom view of the client's portfolio to meet their needs. It is designed to connect with a 3rd party price quoting service, displaying realtime data converted to USD to see an accurate asset value. This will keep track of all assets in a single location with historical data of transactions to view growth and regression.
 
 
 ## 2. Top Questions to Resolve in Review
@@ -38,7 +38,7 @@ U3. As a customer, I want to update my list of assets in my portfolio.
 
 This initial iteration will provide creating, retrieving, and updating a user's portfolio.
 
-We will use API Gateway and Lambda to create six endpoints (`RegisterActivity`,`LoginActivity`, `VerifyActivity`, `CreatePortfolioActivity`, `GetPortfolioActivity`, `UpdatePortfolioActivity`) that will handle the creation, update, and retrieval of portfolio to satisfy our requirements.
+We will use API Gateway and Lambda to create six endpoints (`RegisterActivity`,`LoginActivity`, `VerifyActivity`, `CreatePortfolioActivity`, `GetPortfolioActivity`, `UpdatePortfolioActivity`, `GetTransactionActivity`) that will handle the creation, update, and retrieval of portfolio to satisfy our requirements.
 
 We will store the assets available for the portfolio in a table in DynamoDB. The portfolios themselves will also be stored in DynamoDB. 
 
@@ -72,6 +72,15 @@ String username;
 String password;
 Boolean isNewUser;
 
+//TransactionModel
+
+String username;
+String transactionDate;
+String assetId;
+Double assetQuantity;
+Double transactionValue;
+String transactionType;
+
 ```
 
 ## 6.1. Register Endpoint
@@ -103,6 +112,7 @@ RegisterActivity saves the new user onto the database.](images/design_document/R
 ![alt text](images/design_document/Login.png)
 
 ## 6.3. Verify Endpoint
+
 * Accepts `POST` request  to `/verify`.
 * Verifies if Access token is still valid.
   * If either the Username or token field is empty, will throw
@@ -149,6 +159,19 @@ RegisterActivity saves the new user onto the database.](images/design_document/R
 
 ![alt text](images/design_document/UdatePortfolio.png)
 
+### 6.6. GetTransactionActivity Endpoint
+
+* Accepts `GET` requests to `/portfolios/:id`
+* Accepts data to update the quantity of portfolio owned and adding new assets to the portfolio. Returns the updated portfolio.
+    * If the user enters an asset that is unavailable, will throw an
+      `AssetNotAvailableException`.
+    * If the user already has a portfolio and still attempts to create one, will throw
+      `PortfolioAlreadyExistsException`
+    * * If the profolio fails to get saved due to Internal dynamo Db server error, will throw
+        `UnableToSaveToDatabaseException`
+
+![alt text](images/design_document/UdatePortfolio.png)
+
 
 # 7. Tables
 
@@ -176,7 +199,16 @@ asset_symbol // String
 total_supply // number
 usd_value // number
 price_change_percentage_24h // Double
+```
 
+### 7.4.  `transactions`
+```
+username // string
+transactionDate // string
+assetId // string
+assetQuantity // number
+transactionValue // number
+transactionType // string
 ```
 
 # 8. Pages
