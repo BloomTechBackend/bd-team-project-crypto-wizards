@@ -125,3 +125,7 @@ ul {
 .coin-data-category {
     font-size: 10px;
 }
+
+.transaction-item {
+    width: 20%;
+}
