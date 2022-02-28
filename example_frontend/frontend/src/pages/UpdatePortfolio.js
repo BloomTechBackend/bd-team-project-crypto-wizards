@@ -27,18 +27,19 @@ const UpdatePortfolio = (props) => {
         }
         setMessage(null);
 
-        const newTransaction = {
-            username: username,
-            transactionDate: new Date().toISOString(),
-            assetId: assetId,
-            transactionType: "BUY",
-            assetQuantity: quantity,
-            transactionValue: location.state.assetMap[assetId].current_price * quantity
-        };
-
-        setTransactions(transactions => [...transactions, newTransaction]);
-
         if (quantity > 0 && !assetQuantityMap[assetId]) {
+
+            const newTransaction = {
+                username: username,
+                transactionDate: new Date().toISOString(),
+                assetId: assetId,
+                transactionType: "BUY",
+                assetQuantity: quantity,
+                transactionValue: location.state.assetMap[assetId].current_price * quantity
+            };
+    
+            setTransactions(transactions => [...transactions, newTransaction]);
+
             const updatedValue = {};
             updatedValue[assetId] = quantity;
             setAssetQuantityMap(assetQuantityMap => ({
@@ -57,6 +58,10 @@ const UpdatePortfolio = (props) => {
         setMessage(null);
 
         const quantityTransacted = Math.abs(quantity - assetQuantityMap[assetId]);
+
+        if (quantityTransacted < 1e-9) {
+            return;
+        }
 
         const newTransaction = {
             username: username,

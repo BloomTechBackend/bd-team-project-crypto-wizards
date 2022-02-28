@@ -28,22 +28,19 @@ const CreatePortfolio = (props) => {
         }
         setMessage(null);
 
-        const newTransaction = {
-            username: username,
-            transactionDate: new Date().toISOString(),
-            assetId: assetId,
-            transactionType: "BUY",
-            assetQuantity: quantity,
-            transactionValue: location.state.assetMap[assetId].current_price * quantity
-        };
-
-        console.log(newTransaction);
-
-        setTransactions(transactions => [...transactions, newTransaction]);
-
-        console.log(transactions);
-
         if (quantity > 0 && !assetQuantityMap[assetId]) {
+
+            const newTransaction = {
+                username: username,
+                transactionDate: new Date().toISOString(),
+                assetId: assetId,
+                transactionType: "BUY",
+                assetQuantity: quantity,
+                transactionValue: location.state.assetMap[assetId].current_price * quantity
+            };
+    
+            setTransactions(transactions => [...transactions, newTransaction]);
+
             const updatedValue = {};
             updatedValue[assetId] = quantity;
             setAssetQuantityMap(assetQuantityMap => ({
@@ -104,7 +101,8 @@ const CreatePortfolio = (props) => {
             {username}'s Portfolio <br/> <br/>
             </div>
 
-            <PortfolioList assets={location.state.assets.filter(asset => assetQuantityMap[asset.id])} assetQuantityMap={assetQuantityMap}/>
+            {Object.keys(assetQuantityMap).length > 0 && 
+            <PortfolioList assets={location.state.assets.filter(asset => assetQuantityMap[asset.id])} assetQuantityMap={assetQuantityMap}/>}
             <DropDownMenu assets={location.state.assets} setAssetId={(e)=>setAssetId(e)} />
 
             <div id="alignpage">
