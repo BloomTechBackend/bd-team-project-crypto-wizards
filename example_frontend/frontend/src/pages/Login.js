@@ -23,7 +23,9 @@ const Login = (props) => {
         }
 
         axios.post(loginAPIUrl, requestBody, requestConfig).then((response) => {
-            setUserSession(response.data.username, response.data.authToken);
+            setUserSession(response.data.username, response.data.authToken, response.data.newUser);
+            console.log("newUser: " + response.data.newUser);
+            console.log("typeof newUser: " + typeof response.data.newUser);
             props.authenticate();
             navigate('/portfolio');
         }).catch((error) => {
