@@ -1,6 +1,6 @@
 package com.cryptoportfolio.exceptions;
 
-public class UnableToSaveToDatabaseException extends RuntimeException {
+public class UnableToSaveToDatabaseException extends CryptoPortfolioException {
 
     public UnableToSaveToDatabaseException() {
         super();

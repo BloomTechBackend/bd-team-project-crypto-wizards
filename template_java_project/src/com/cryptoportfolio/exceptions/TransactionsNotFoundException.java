@@ -1,6 +1,6 @@
 package com.cryptoportfolio.exceptions;
 
-public class TransactionsNotFoundException extends RuntimeException {
+public class TransactionsNotFoundException extends CryptoPortfolioException {
 
     public TransactionsNotFoundException() {
         super();

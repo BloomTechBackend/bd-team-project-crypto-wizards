@@ -1,6 +1,6 @@
 package com.cryptoportfolio.exceptions;
 
-public class PortfolioNotFoundException extends RuntimeException {
+public class PortfolioNotFoundException extends CryptoPortfolioException {
 
     public PortfolioNotFoundException() {
         super();

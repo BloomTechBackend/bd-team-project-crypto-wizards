@@ -4,9 +4,9 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMappingException;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.LambdaLogger;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
-import com.cryptoportfolio.dynamodb.dao.AssetDao;
 import com.cryptoportfolio.dynamodb.dao.PortfolioDao;
 import com.cryptoportfolio.dynamodb.dao.TransactionDao;
+import com.cryptoportfolio.dynamodb.dao.UserDao;
 import com.cryptoportfolio.dynamodb.models.Portfolio;
 import com.cryptoportfolio.dynamodb.models.Transaction;
 import com.cryptoportfolio.exceptions.AssetNotAvailableException;
@@ -29,7 +29,7 @@ public class UpdatePortfolioActivity implements RequestHandler<UpdatePortfolioRe
 
     private final Logger log = LogManager.getLogger();
     private PortfolioDao portfolioDao;
-    private AssetDao assetDao;
+    private UserDao userDao;
     private TransactionDao transactionDao;
     private Gson gson;
 
@@ -40,8 +40,8 @@ public class UpdatePortfolioActivity implements RequestHandler<UpdatePortfolioRe
      */
 
     @Inject
-    public UpdatePortfolioActivity(PortfolioDao portfolioDao, AssetDao assetDao, TransactionDao transactionDao, Gson gson) {
-        this.assetDao = assetDao;
+    public UpdatePortfolioActivity(PortfolioDao portfolioDao, UserDao userDao, TransactionDao transactionDao, Gson gson) {
+        this.userDao = userDao;
         this.portfolioDao = portfolioDao;
         this.transactionDao = transactionDao;
         this.gson = gson;

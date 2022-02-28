@@ -7,7 +7,6 @@ import com.cryptoportfolio.converter.ModelConverter;
 import com.cryptoportfolio.dynamodb.dao.AssetDao;
 import com.cryptoportfolio.dynamodb.dao.PortfolioDao;
 import com.cryptoportfolio.dynamodb.models.Portfolio;
-import com.cryptoportfolio.exceptions.LoginException;
 import com.cryptoportfolio.exceptions.PortfolioNotFoundException;
 import com.cryptoportfolio.models.PortfolioModel;
 import com.cryptoportfolio.models.requests.GetPortfolioRequest;

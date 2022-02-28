@@ -2,10 +2,9 @@ package com.cryptoportfolio.dynamodb.dao;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBScanExpression;
-import com.amazonaws.services.dynamodbv2.model.ScanResult;
 import com.amazonaws.services.dynamodbv2.model.Select;
 import com.cryptoportfolio.dynamodb.models.Asset;
-import com.cryptoportfolio.exceptions.InsufficientAssetsException;
+import com.cryptoportfolio.exceptions.AssetNotFoundException;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -35,11 +34,9 @@ public class AssetDao {
     public Asset getAsset (String assetId) {
         Asset asset = this.dynamoDBMapper.load(Asset.class, assetId);
 
-        // If we throw an exception here, it should be something different, like maybe
-        // AssetNotFoundException
-//        if (asset == null) {
-//            throw new InsufficientAssetsException();
-//        }
+        if (asset == null) {
+            throw new AssetNotFoundException();
+        }
 
         return asset;
     }
