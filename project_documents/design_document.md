@@ -151,10 +151,8 @@ RegisterActivity saves the new user onto the database.](images/design_document/R
 * Accepts `PUT` requests to `/portfolios/:id`
 * Accepts data to update the quantity of portfolio owned and adding new assets to the portfolio. Returns the updated portfolio.
     * If the user enters an asset that is unavailable, will throw an
-      `AssetNotAvailableException`.
-    * If the user already has a portfolio and still attempts to create one, will throw
-      `PortfolioAlreadyExistsException`
-    * * If the profolio fails to get saved due to Internal dynamo Db server error, will throw
+      `AssetNotAvailableException`
+    * * If the portfolio fails to get saved due to Internal dynamo Db server error, will throw
         `UnableToSaveToDatabaseException`
 
 ![alt text](images/design_document/UdatePortfolio.png)
