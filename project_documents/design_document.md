@@ -19,10 +19,12 @@ This design document describes a crypto portfolio tracking service that provides
 U1. As a customer, I want to create a new portfolio from a list of assets when I log 
 into the site.
 
-U2. As a customer, I want to view a portfolio holding all my assets with realtime value 
+U2. As a customer, I want to view a portfolio holding all my assets with value 
 converted to USD.
     
 U3. As a customer, I want to update my list of assets in my portfolio.
+
+U4. As a customer, I want to view all transactions for an asset in my portfolio.
 
 ## 4. Project Scope
 
