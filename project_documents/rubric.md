@@ -175,21 +175,23 @@ team member learned:
 | Team Member | Something new the team member learned |   
 |-------------|---------------------------------------|
 | David       |                                       |   
-| Uma         |                                       |     
+| Uma         | DynamoDb queries and GSI                                      |     
 | Shannon     | React for frontend                    |     
 
 
-**Identify key words to research to accomplish a technical goal | Use sources
+**Identify keywords to research to accomplish a technical goal | Use sources
 like sage and stack overflow to solve issues encountered while programming.**
 Give an example of a search term that your team might have used to find an
 answer to a technical question/obstacle that your team ran into. List the
 resource that you found that was helpful.
  
-| Search terms | Helpful resource |   
-|--------------|------------------|
-| React        | reactjs.org      |   
-| Chartjs 3.7  | chartjs.org      |     
-| CORS policy  | stack overflow   |
+| Search terms           | Helpful resource      |   
+|------------------------|-----------------------|
+| React                  | reactjs.org           |   
+| Chartjs 3.7            | chartjs.org           |     
+| CORS policy            | stack overflow        |
+| DynamoDb queries       | docs.aws.amazon.com   |
+| Mocking Static methods | baeldung.com          |
 
 **Find material online to learn new technical topics.** List one resource that
 your team found on your own that helped you on your project.
@@ -199,16 +201,19 @@ your team found on your own that helped you on your project.
 API Gateway mapping template and access logging variable reference
 
 **Resource:**
- 
 
 [AWS Documentation](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-mapping-template-reference.html)
 
 
-| Topics       | Resources        |   
-|--------------|------------------|
-| React        | reactjs.org      |   
-| Chartjs 3.7  | chartjs.org      |     
-| CORS policy  | stack overflow   |
+
+
+| Topics                 | Resources             |   
+|------------------------|-----------------------|
+| React                  | reactjs.org           |   
+| Chartjs 3.7            | chartjs.org           |     
+| CORS policy            | stack overflow        |
+| DynamoDb queries       | docs.aws.amazon.com   |
+| Mocking Static methods | baeldung.com          |
 
 **Share what was worked on yesterday, the plan for today, and any blockers as a
 part of a scrum standup.** In one or two sentences, describe what your team
