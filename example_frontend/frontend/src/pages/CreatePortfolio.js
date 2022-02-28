@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import axios from 'axios';
-import {getToken, getUsername, resetUserSession} from '../service/AuthService';
+import {getToken, getUsername, setNewUser, resetUserSession} from '../service/AuthService';
 import {useNavigate, useLocation} from "react-router-dom";
 import DropDownMenu from '../components/DropDownMenu';
 import PortfolioList from '../components/PortfolioList';
@@ -74,6 +74,7 @@ const CreatePortfolio = (props) => {
 
         axios.post(portfolioAPIUrl + username, requestBody, requestConfig).then((response) => {
             console.log('Portfolio Created');
+            setNewUser(false);
             navigate('/portfolio');
         }).catch((error) => {
             if (error.response.status === 401 || error.response.status === 403) {
