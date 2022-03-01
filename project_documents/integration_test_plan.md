@@ -1,4 +1,4 @@
-# Crypto Warriors Integration Test Plan
+# Crypto Wizards Integration Test Plan
 
 ## Purpose
 
@@ -7,15 +7,12 @@ This captures the test plan for your project, including:
 * testing of endpoints through automated integration tests
 * testing of front-end through manual browser-based testing
 
-Use the endpoint test plan to create your automated integration tests. Use the
-front-end test plan to ensure that your front-end is working. Manual front-end
-tests are more expensive, so aim to have fewer of them, and you may want to run
-these at key milestones in your project (and certainly before presentation
-day!).
-
 ## Product Background
 
-The crypto portfolio tracking service provides a custom view of the client's portfolio to meet their needs. It is designed to connect with a 3rd party price quoting service, displaying realtime data converted to USD to see an accurate asset value. This will keep track of all assets in a single location with historical data of transactions to view growth and regression.
+The crypto portfolio tracking service provides a custom view of the client's portfolio to meet their needs. 
+It is designed to connect with a 3rd party price quoting service, displaying realtime data converted to USD 
+to see an accurate asset value. This will keep track of all assets in a single location with historical data 
+of transactions to view growth and regression.
 
 [Design Document](./design_document.md)
 
@@ -31,11 +28,12 @@ U4. As a customer, I want to update my list of assets in my portfolio.
 
 U5. As a customer, I want to view the history of my transactions for a particular asset / for all my assets.
 
-# Unit Test Plan
+# Back-end Unit Test Plan
 
-## Use Case: As a customer, I want register myself if I am accessing the website for the first time.
+## Use Case: As a customer, I want to **register** myself if I am accessing the website for the first time.
 
-### Manual Test Case: handleRequest_provideCorrectFormatUsernameAndPassword_registersUserSuccessfully
+### Manual Test Case: 
+handleRequest_provideCorrectFormatUsernameAndPassword_registersUserSuccessfully
 
 **Acceptance criteria:**
 
@@ -62,7 +60,8 @@ U5. As a customer, I want to view the history of my transactions for a particula
 
 1. Since we are Mocking the data, there is no clean up required for this test.
 
-### Manual Test Case: handleRequest_provideInCorrectFormatUsername_throwsIllegalArgumentException
+### Manual Test Case: 
+handleRequest_provideInCorrectFormatUsername_throwsIllegalArgumentException
 
 **Acceptance criteria:**
 
@@ -88,7 +87,8 @@ U5. As a customer, I want to view the history of my transactions for a particula
 
 1. Since we are Mocking the data, there is no clean up required for this test.
 
-### Manual Test Case: handleRequest_provideInCorrectFormatPassword_throwsIllegalArgumentException
+### Manual Test Case: 
+handleRequest_provideInCorrectFormatPassword_throwsIllegalArgumentException
 
 **Acceptance criteria:**
 
@@ -114,23 +114,10 @@ U5. As a customer, I want to view the history of my transactions for a particula
 
 1. Since we are Mocking the data, there is no clean up required for this test.
 
-# Manual Front-end Test Plan
+## Use Case: As a customer, I want to **create** a new portfolio from a list of assets when I log into the site.
 
-*List the key manual test cases that you will perform to verify the full
-end-to-end functionality of your project. Your integration tests will verify
-that your service is working properly, but you will also need to ensure that
-your web pages integrate with them properly. Use your judgment about which cases
-to cover in your manual tests, as they’re much more costly to execute. But you
-should cover the key operations that your customers will use the application
-for.*
-
-*The goal should be that any one of your team members could take this list of
-Preconditions, Actions and Verification Steps and run all of these manual tests,
-then report any bugs that are observed.*
-
-## Use Case: As a customer, I want to create a new portfolio from a list of assets when I log into the site.
-
-### Manual Test Case: handleRequest_withValidUsername_createsPortfolio
+### Manual Test Case: 
+handleRequest_withValidUsername_createsPortfolio
 
 **Acceptance criteria:**
 
@@ -158,7 +145,8 @@ then report any bugs that are observed.*
 
 1. Since we are Mocking the data, there is no clean up required for this test.
 
-### Manual Test Case: handleRequest_withInValidUsername_throwsLoginException
+### Manual Test Case: 
+handleRequest_withInValidUsername_throwsLoginException
 
 **Acceptance criteria:**
 
@@ -184,7 +172,8 @@ then report any bugs that are observed.*
 
 1. Since we are Mocking the data, there is no clean up required for this test.
 
-### Manual Test Case: handleRequest_withUnavailableAsset_throwsAssetNotAvailableException
+### Manual Test Case: 
+handleRequest_withUnavailableAsset_throwsAssetNotAvailableException
 
 **Acceptance criteria:**
 
@@ -212,23 +201,10 @@ then report any bugs that are observed.*
 
 1. Since we are Mocking the data, there is no clean up required for this test.
 
-# Manual Front-end Test Plan
+## Use Case: As a customer, I want to **view** a portfolio holding all my assets with realtime value converted to USD.
 
-*List the key manual test cases that you will perform to verify the full
-end-to-end functionality of your project. Your integration tests will verify
-that your service is working properly, but you will also need to ensure that
-your web pages integrate with them properly. Use your judgment about which cases
-to cover in your manual tests, as they’re much more costly to execute. But you
-should cover the key operations that your customers will use the application
-for.*
-
-*The goal should be that any one of your team members could take this list of
-Preconditions, Actions and Verification Steps and run all of these manual tests,
-then report any bugs that are observed.*
-
-## Use Case: As a customer, I want to view a portfolio holding all my assets with realtime value converted to USD.
-
-### Manual Test Case: handleRequest_withProperUsername_getsTheCorrectPortfolio
+### Manual Test Case: 
+handleRequest_withProperUsername_getsTheCorrectPortfolio
 
 **Acceptance criteria:**
 
@@ -255,7 +231,8 @@ then report any bugs that are observed.*
 
 1. Since we are Mocking the data, there is no clean up required for this test.
 
-### Manual Test Case: handleRequest_withUnavailableAsset_throwsAssetNotAvailableException
+### Manual Test Case: 
+handleRequest_withUnavailableAsset_throwsAssetNotAvailableException
 
 **Acceptance criteria:**
 
@@ -282,23 +259,10 @@ then report any bugs that are observed.*
 
 1. Since we are Mocking the data, there is no clean up required for this test.
 
-# Manual Front-end Test Plan
+## Use Case: As a customer, I want to **update** my list of assets in my portfolio.
 
-*List the key manual test cases that you will perform to verify the full
-end-to-end functionality of your project. Your integration tests will verify
-that your service is working properly, but you will also need to ensure that
-your web pages integrate with them properly. Use your judgment about which cases
-to cover in your manual tests, as they’re much more costly to execute. But you
-should cover the key operations that your customers will use the application
-for.*
-
-*The goal should be that any one of your team members could take this list of
-Preconditions, Actions and Verification Steps and run all of these manual tests,
-then report any bugs that are observed.*
-
-## Use Case: As a customer, I want to update my list of assets in my portfolio.
-
-### Manual Test Case: handleRequest_withProperUsername_updatesPortfolio
+### Manual Test Case: 
+handleRequest_withProperUsername_updatesPortfolio
 
 **Acceptance criteria:**
 
@@ -327,7 +291,8 @@ then report any bugs that are observed.*
 1. Since we are Mocking the data, there is no clean up required for this test.
 
 
-### Manual Test Case: handleRequest_withUnavailableAsset_throwsAssetNotAvailableException
+### Manual Test Case: 
+handleRequest_withUnavailableAsset_throwsAssetNotAvailableException
 
 **Acceptance criteria:**
 
@@ -354,23 +319,10 @@ then report any bugs that are observed.*
 
 1. Since we are Mocking the data, there is no clean up required for this test.
 
-# Manual Front-end Test Plan
+## Use Case: As a customer, I want to view the history of my **transactions** for a particular asset / for all my assets.
 
-*List the key manual test cases that you will perform to verify the full
-end-to-end functionality of your project. Your integration tests will verify
-that your service is working properly, but you will also need to ensure that
-your web pages integrate with them properly. Use your judgment about which cases
-to cover in your manual tests, as they’re much more costly to execute. But you
-should cover the key operations that your customers will use the application
-for.*
-
-*The goal should be that any one of your team members could take this list of
-Preconditions, Actions and Verification Steps and run all of these manual tests,
-then report any bugs that are observed.*
-
-## Use Case: As a customer, I want to view the history of my transactions for a particular asset / for all my assets.
-
-### Manual Test Case: handleRequest_withAssetFlagAll_getsAllTheTransactionsForTheUser
+### Manual Test Case: 
+handleRequest_withAssetFlagAll_getsAllTheTransactionsForTheUser
 
 **Acceptance criteria:**
 
@@ -383,7 +335,7 @@ then report any bugs that are observed.*
 **GIVEN (Preconditions):**
 
 1. A valid username and password are provided.
-2. The user has a porfolio and has a transaction history
+2. The user has a portfolio and has a transaction history
 
 **WHEN (Action(s)):**
 
@@ -397,7 +349,8 @@ then report any bugs that are observed.*
 
 1. Since we are Mocking the data, there is no clean up required for this test.
 
-### Manual Test Case: handleRequest_withAssetFlagAsAssetId_getsAllTheTransactionsForParticularAssertIdForTheUser
+### Manual Test Case: 
+handleRequest_withAssetFlagAsAssetId_getsAllTheTransactionsForParticularAssertIdForTheUser
 
 **Acceptance criteria:**
 
@@ -424,7 +377,8 @@ then report any bugs that are observed.*
 
 1. Since we are Mocking the data, there is no clean up required for this test.
 
-### Manual Test Case: handleRequest_withNullTransactions_throwsTransactionsNotFoundException
+### Manual Test Case: 
+handleRequest_withNullTransactions_throwsTransactionsNotFoundException
 
 **Acceptance criteria:**
 
@@ -453,14 +407,99 @@ then report any bugs that are observed.*
 
 # Manual Front-end Test Plan
 
-*List the key manual test cases that you will perform to verify the full
-end-to-end functionality of your project. Your integration tests will verify
-that your service is working properly, but you will also need to ensure that
-your web pages integrate with them properly. Use your judgment about which cases
-to cover in your manual tests, as they’re much more costly to execute. But you
-should cover the key operations that your customers will use the application
-for.*
+## Use Case: As a customer, I want to **register** myself if I am accessing the website for the first time.
 
-*The goal should be that any one of your team members could take this list of
-Preconditions, Actions and Verification Steps and run all of these manual tests,
-then report any bugs that are observed.*
+### Manual Test Case:
+Test a user profile is accurately created in database.
+
+GIVEN (Preconditions):
+1. Valid username and password are provided.
+2. User is a new user.
+
+WHEN (Action(s)):
+1. Entered password not meeting 6 character requirement.
+2. Entered existing username.
+
+THEN (Verification steps):
+1. User profile is created in database.
+
+## Use Case: As a customer, I want to **create** a new portfolio from a list of assets when I log into the site.
+
+### Manual Test Case:
+Test a user portfolio is accurately created in database.
+
+GIVEN (Preconditions):
+1. User is a new user.
+
+WHEN (Action(s)):
+1. Asset without quantity.
+2. Asset already added to list.
+
+THEN (Verification steps):
+1. User portfolio is created in database.
+2. Programmatically navigate to portfolio page.
+3. Back to portfolio event handlers programmatically navigates to empty portfolio page.
+4. Logout event handler programmatically navigates to login page.
+
+## Use Case: As a customer, I want to **view** a portfolio holding all my assets with realtime value converted to USD.
+
+### Manual Test Case:
+Test a user portfolio is accurately displayed in page.
+
+GIVEN (Preconditions):
+1. User is an existing user.
+2. User created a portfolio.
+
+WHEN (Action(s)):
+1. Existing user status.
+2. New user status.
+
+THEN (Verification steps):
+1. User portfolio chart displays accurately.
+2. Portfolio chart has correct formatting when various asset values are selected.
+3. Removing all assets displays zero dollar and stores empty portfolio in database.
+4. Update event handler programmatically navigates to update page.
+5. Transaction history event handler programmatically navigates to transactions page.
+6. Logout event handler programmatically navigates to login page.
+
+## Use Case: As a customer, I want to **update** my list of assets in my portfolio.
+
+### Manual Test Case:
+Test a user portfolio is accurately updated and displayed correctly on portfolio page.
+
+GIVEN (Preconditions):
+1. User has existing portfolio.
+
+WHEN (Action(s)):
+1. Add new asset.
+2. Update existing asset.
+3. Remove asset.
+
+THEN (Verification steps):
+1. User portfolio is updated in database.
+2. Add asset event handler updates portfolio list with new asset and quantity.
+3. Update asset event handler updates existing asset with new quantity.
+4. Update asset event handler removes asset when updating quantity to zero.
+5. Update portfolio event handler programmatically navigates to portfolio page with updated asset information.
+6. Back to portfolio event handlers programmatically navigates to portfolio page.
+7. Logout event handler programmatically navigates to login page.
+
+## Use Case: As a customer, I want to view the history of my **transactions** for a particular asset / for all my assets.
+
+### Manual Test Case:
+Test a user's transaction history is queried and displayed on transaction history page.
+
+GIVEN (Preconditions):
+1. User has existing portfolio.
+
+WHEN (Action(s)):
+1. Query all transactions.
+2. Query selected assets transactions. 
+
+THEN (Verification steps):
+1. Dropdown list display's all assets in portfolio.
+2. Transaction history event handler queries all transactions when asset isn't selected.
+3. Transaction history event handler queries all transactions of a selected asset.
+5. Back to portfolio event handlers programmatically navigates to portfolio page.
+6. Logout event handler programmatically navigates to login page.
+
