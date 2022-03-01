@@ -11,9 +11,10 @@
     * We also learnt how much important research is for the project. Searching for the problem on the internet and looking at the various sample solutions gave us a new perspective for our implementation.
 
 
-##Lessons learnt
+## Lessons learnt
+
 *Negative*
-###Event
+### Event
 * We realized the importance of how a well-thought-out design document impacts the project as a whole and minimizes 
 issues that may develop resulting in unnecessary changes.
 
@@ -21,11 +22,11 @@ issues that may develop resulting in unnecessary changes.
   * Realizing we didn't implement the GSI resulted in last minute feature additions to the project. Some early design 
   decisions would have changed if this was addressed in the original design documentation. 
 
-###Recommendation
+### Recommendation
 * Dedicate more time for project design documentation and planning to minimize misinterpretations or assumptions with 
 project requirements. 
 
-###Event
+### Event
 * We underestimated time allotted for debugging during integration testing.
 
   *Example*
@@ -33,15 +34,15 @@ project requirements.
   the backend tests were successful through Postman and frontend test successful with log statements. The errors 
   occurred when connecting both frontend and backend together.
 
-###Recommendation
+### Recommendation
 * Dedicate more time for testing and structure testing differently to incorporate more integration. 
 
 *Positive*
-###Event
+### Event
 * Daily standup meetings allowed us to keep each other updated on progress and discuss misunderstandings or lack of 
 clarity about design decisions. This resulted in great communication and trust while working as a team.
 
-###Event
+### Event
 * In depth research was executed when running into issues resulting in team collaboration while eliminating 
 possible causes and implementing new ideas or solutions. We learned optimal ways to research and resources to use.
 
