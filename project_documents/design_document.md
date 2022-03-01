@@ -16,15 +16,17 @@ This design document describes a crypto portfolio tracking service that provides
 
 ## 3. Use Cases
 
-U1. As a customer, I want to create a new portfolio from a list of assets when I log 
+U1. As a customer, I want register myself if I am accessing the website for the first time.
+
+U2. As a customer, I want to create a new portfolio from a list of assets when I log 
 into the site.
 
-U2. As a customer, I want to view a portfolio holding all my assets with value 
+U3. As a customer, I want to view a portfolio holding all my assets with realtime value 
 converted to USD.
     
-U3. As a customer, I want to update my list of assets in my portfolio.
+U4. As a customer, I want to update my list of assets in my portfolio.
 
-U4. As a customer, I want to view all transactions for an asset in my portfolio.
+U5. As a customer, I want to view all transactions for an asset in my portfolio.
 
 ## 4. Project Scope
 
