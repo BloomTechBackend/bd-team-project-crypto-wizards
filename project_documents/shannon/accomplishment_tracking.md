@@ -1,7 +1,5 @@
 # Shannon - Crypto Wizards Accomplishment Tracking
 
-Each team member should have their own version of this document.
-
 ## Background
 
 It's a great habit to record accomplishments and progress throughout your SDE
@@ -9,8 +7,6 @@ career. It's useful to reflect on what you've worked on in the past and comes in
 handy during performance reviews and promotion cycles.
 
 ## Instructions
-
-**Save a copy of this document in your “private” folder.**
 
 Using the below template, keep track of what you’ve worked on each week during
 the unit. 1-3 bullets under each section for each week should suffice. This
@@ -37,6 +33,17 @@ instructors by the end of the unit._
 ## Week 1
 
 **Goals:**
+* Brainstorm project ideas.
+* Establish team name.
+* Design document problem statement.
+* Understand API design.
+* Review DynamoDB design and creation.
+* Team charter
+* Design document
+* React register/Login 
+* Research react router latest update
+
+
 
 **Activity:**
 
@@ -47,6 +54,18 @@ instructors by the end of the unit._
 ## Week 2
 
 **Goals:**
+* Scrum overview
+* Planning in Trello
+* User stories
+* Sprint planning
+* Designing and Querying a GSI
+* HTML, CSS and JavaScript
+* React authentication service for login
+* React CORS policy error with login
+* Add asset dropdown menu
+* Create portfolio
+* Chartjs for portfolio page
+
 
 **Activity:**
 
@@ -57,6 +76,15 @@ instructors by the end of the unit._
 ## Week 3
 
 **Goals:**
+* Implement chart on portfolio page
+* Format legend with asset data to chart
+* Format labels with asset data to chart
+* Format tooltip label with asset data
+* Research chartjs updates
+* Transaction history page
+* CSS and navigation buttons
+* Implement error message response on frontend
+* Testing
 
 **Activity:**
 
@@ -69,6 +97,11 @@ instructors by the end of the unit._
 **Goals:**
 
 **Activity:**
+* Rubric
+* Testing plan for frontend
+* Team reflections
+* Presentation PowerPoint
+* presentation preparation
 
 **Important Docs, Commits, or Code Reviews**:
 
