@@ -172,7 +172,7 @@ For each team member, list something new that the team member learned:
 
 | Team Member | Something new the team member learned |   
 |-------------|---------------------------------------|
-| David       |                                       |   
+| David       | React, JSON web tokens                |   
 | Uma         | DynamoDb queries and GSI              |     
 | Shannon     | React for frontend                    |     
 
