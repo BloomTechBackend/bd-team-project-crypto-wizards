@@ -37,70 +37,70 @@ instructors by the end of the unit._
 ## Week 1
 
 **Goals:**
-*Create overall project design
-*Implement login/authentication backend
-*Create lambda function to handle login
+* Create overall project design
+* Implement login/authentication backend
+* Create lambda function to handle login
 
 **Activity:**
-*Brainstormed with team to decide on project
-*Decided on basic design and API for app
+* Brainstormed with team to decide on project
+* Decided on basic design and API for app
 
 **Important Docs, Commits, or Code Reviews**:
-*Implemented backend functionality for registration, login, and authentication
-*Created lambda using proxy integration
+* Implemented backend functionality for registration, login, and authentication
+* Created lambda using proxy integration
 
 **Things learned:**
-*Learned about JSON web tokens, bcrypt for password hashing, and lambda proxy integration
+* Learned about JSON web tokens, bcrypt for password hashing, and lambda proxy integration
 
 ## Week 2
 
 **Goals:**
-*Research React
-*Help Shannon finish front end implementation of registration and login
-*Connect front end and back end for login
-*Implement service to pull data from CoinGecko
+* Research React
+* Help Shannon finish front end implementation of registration and login
+* Connect front end and back end for login
+* Implement service to pull data from CoinGecko
 
 **Activity:**
 *Researched React
 
 **Important Docs, Commits, or Code Reviews**:
-*Fixed implementation of public/private routes
-*Implemented service to pull CoinGecko data
-*Changed design of app to pull from CoinGecko on front end
+* Fixed implementation of public/private routes
+* Implemented service to pull CoinGecko data
+* Changed design of app to pull from CoinGecko on front end
 
 **Things learned:**
-*Learned the basics of React Router v6
-*Learned about CORS
+* Learned the basics of React Router v6
+* Learned about CORS
 
 ## Week 3
 
 **Goals:**
-*Finish implementing front end
+* Finish implementing front end
 
 **Activity:**
-*Further researched React
+* Further researched React
 
 **Important Docs, Commits, or Code Reviews**:
-*Switched from using lambda proxy integration to body pass through
-*Implemented create/update portfolio frontend
-*Created GSI for indexing transactions by assetI
+* Switched from using lambda proxy integration to body pass through
+* Implemented create/update portfolio frontend
+* Created GSI for indexing transactions by assetI
 
 **Things learned:**
-*Learned about GSIs
-*Learned how to handle errors through AWS API gateway
+* Learned about GSIs
+* Learned how to handle errors through AWS API gateway
 
 ## Week 4
 
 **Goals:**
-*Fix bugs and polish front end
+* Fix bugs and polish front end
 
 **Activity:**
-*Finished reflection and accomplishment tracking
-*Prepared for presentation
+* Finished reflection and accomplishment tracking
+* Prepared for presentation
 
 **Important Docs, Commits, or Code Reviews**:
-*Implemented conditional rendering based on newUser status
-*Improved formatting for portfolio list and transaction history
+* Implemented conditional rendering based on newUser status
+* Improved formatting for portfolio list and transaction history
 
 **Things learned:**
-*Learned how sessionStorage stores everything as a string while investigating a bug
+* Learned how sessionStorage stores everything as a string while investigating a bug
