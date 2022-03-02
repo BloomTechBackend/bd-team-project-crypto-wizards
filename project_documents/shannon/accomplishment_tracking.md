@@ -8,10 +8,6 @@ handy during performance reviews and promotion cycles.
 
 ## Instructions
 
-Using the below template, keep track of what you’ve worked on each week during
-the unit. 1-3 bullets under each section for each week should suffice. This
-should only take 5 - 10 minutes of reflection each week.
-
 As you track your work, think about how it relates to the SDE fundamental skills
 laid out in the syllabus and how you are practicing them.
 
@@ -27,82 +23,97 @@ laid out in the syllabus and how you are practicing them.
 The important work samples don’t only include the things you authored, but
 should include things like key CRs you reviewed that you are proud of as well!
 
-_You will submit your completed Accomplishment Tracking Document to your
-instructors by the end of the unit._
-
 ## Week 1
 
 **Goals:**
-* Brainstorm project ideas.
-* Establish team name.
-* Design document problem statement.
-* Understand API design.
-* Review DynamoDB design and creation.
-* Team charter
-* Design document
-* React register/Login 
-* Research react router latest update
+* Design document 
+* Basic structure for frontend 
+* Implement register/login page
 
 
 
 **Activity:**
+* Brainstorm project ideas
+* React register/Login
+* Research react router version 6
+* Research CoinGecko API implementation
 
 **Important Docs, Commits, or Code Reviews**:
+* Design document
+* Team charter
+* Frontend login/registration (David to work on) 
+
 
 **Things learned:**
+* React 
+* React Router v6
 
 ## Week 2
 
 **Goals:**
-* Scrum overview
-* Planning in Trello
-* User stories
-* Sprint planning
-* Designing and Querying a GSI
-* HTML, CSS and JavaScript
-* React authentication service for login
-* React CORS policy error with login
-* Add asset dropdown menu
-* Create portfolio
-* Chartjs for portfolio page
+* Authentication service for login
+* Complete login/register page
+* Create portfolio page
 
 
 **Activity:**
+* Planning in Trello
+* Research react CORS policy error with login
+* Add asset dropdown menu
+* Create portfolio page
+* Chartjs for portfolio page
+
 
 **Important Docs, Commits, or Code Reviews**:
+* App.js
+* CreatePortfolio.js with CORS error (David helped debug)
+* AddAsset dropdown.js (David to work on)
+* PortfolioChart.js
 
 **Things learned:**
+* Chartjs for portfolio page
+* React functional components, hooks
 
 ## Week 3
 
 **Goals:**
 * Implement chart on portfolio page
-* Format legend with asset data to chart
-* Format labels with asset data to chart
-* Format tooltip label with asset data
-* Research chartjs updates
 * Transaction history page
 * CSS and navigation buttons
-* Implement error message response on frontend
-* Testing
 
 **Activity:**
+* Research chartjs updates
+* Format chart legend with asset data 
+* Format chart labels with asset data 
+* Format tooltip label with asset data
+* Transaction history page
+* CSS implementation
+* Implement error message response on frontend
+* Frontend testing
 
 **Important Docs, Commits, or Code Reviews**:
+* PortfolioChart.js label implementation
+* TransactionHistory.js (David to implement data from DynamoDB)
+* Frontend error messages
+* CSS for App
 
 **Things learned:**
+* Chartjs 3.0 with breaking changes
 
 ## Week 4
 
 **Goals:**
+* Finish all documentation
 
 **Activity:**
-* Rubric
-* Testing plan for frontend
-* Team reflections
 * Presentation PowerPoint
 * presentation preparation
 
 **Important Docs, Commits, or Code Reviews**:
+* Rubric
+* Testing plan for frontend
+* Team reflections
+* Accomplishment tracking
 
 **Things learned:**
+* David's implementations on frontend
