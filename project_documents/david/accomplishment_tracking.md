@@ -61,7 +61,7 @@ instructors by the end of the unit._
 * Implement service to pull data from CoinGecko
 
 **Activity:**
-*Researched React
+* Researched React
 
 **Important Docs, Commits, or Code Reviews**:
 * Fixed implementation of public/private routes
