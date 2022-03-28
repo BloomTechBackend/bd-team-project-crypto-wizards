@@ -81,8 +81,8 @@ public class GetPortfolioActivityTest {
         user.setIsNewUser(true);
 
         GetPortfolioRequest request = GetPortfolioRequest.builder()
-                .withUsername(username)
-                .withAuthToken(token)
+                .username(username)
+                .authToken(token)
                 .build();
 
         Portfolio portfolio = new Portfolio();
@@ -90,8 +90,8 @@ public class GetPortfolioActivityTest {
         portfolio.setAssetQuantityMap(assetQuantityMap);
 
         PortfolioModel portfolioModel = PortfolioModel.builder()
-                                        .withAssetQuantityMap(assetQuantityMap)
-                                        .withUsername(username)
+                                        .assetQuantityMap(assetQuantityMap)
+                                        .username(username)
                                         .build();
 
         //WHEN
@@ -118,8 +118,8 @@ public class GetPortfolioActivityTest {
         user.setIsNewUser(true);
 
         GetPortfolioRequest request = GetPortfolioRequest.builder()
-                .withUsername(username)
-                .withAuthToken(token)
+                .username(username)
+                .authToken(token)
                 .build();
 
         //WHEN

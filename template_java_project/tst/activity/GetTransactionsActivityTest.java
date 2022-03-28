@@ -77,9 +77,9 @@ public class GetTransactionsActivityTest {
         user.setIsNewUser(true);
 
         GetTransactionsRequest request = GetTransactionsRequest.builder()
-                .withUsername(username)
-                .withAuthToken(token)
-                .withAssetFlag(assetFlag)
+                .username(username)
+                .authToken(token)
+                .assetFlag(assetFlag)
                 .build();
 
         List<Transaction> transactions = new ArrayList<>();
@@ -134,9 +134,9 @@ public class GetTransactionsActivityTest {
         user.setIsNewUser(true);
 
         GetTransactionsRequest request = GetTransactionsRequest.builder()
-                .withUsername(username)
-                .withAuthToken(token)
-                .withAssetFlag(assetFlag)
+                .username(username)
+                .authToken(token)
+                .assetFlag(assetFlag)
                 .build();
 
         List<Transaction> transactions = new ArrayList<>();
@@ -195,9 +195,9 @@ public class GetTransactionsActivityTest {
         user.setIsNewUser(true);
 
         GetTransactionsRequest request = GetTransactionsRequest.builder()
-                .withUsername(username)
-                .withAuthToken(token)
-                .withAssetFlag(assetFlag)
+                .username(username)
+                .authToken(token)
+                .assetFlag(assetFlag)
                 .build();
 
         //WHEN
