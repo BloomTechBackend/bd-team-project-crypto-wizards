@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c1a7b167-a746-4d95-887e-103e49727ebe" name="Changes" comment="updated the design doc with the table name of the portfolios table to user_assets table">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/template_java_project/.idea/runConfigurations.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example_frontend/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/example_frontend/frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_java_project/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/.idea/compiler.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
