@@ -6,6 +6,7 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.dagger/dagger-compiler/2.15/c114d70b9a4e814132fc147e8b79b1a294e5c2db/dagger-compiler-2.15.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.12/48e4e5d60309ebd833bc528dcf77668eab3cd72c/lombok-1.18.12.jar" />
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.dagger/dagger-spi/2.15/b2a7a008233795b6a279c901485b0269549972d6/dagger-spi-2.15.jar" />
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.dagger/dagger-producers/2.15/cb9261e680cf2e0a9e1f0693f92b671781cb9f96/dagger-producers-2.15.jar" />
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.dagger/dagger/2.15/13cc1f509deda05c1fe5a315519d7cb743b8333b/dagger-2.15.jar" />
