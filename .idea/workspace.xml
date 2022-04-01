@@ -5,48 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c1a7b167-a746-4d95-887e-103e49727ebe" name="Changes" comment="updated the design doc with the table name of the portfolios table to user_assets table">
-      <change afterPath="$PROJECT_DIR$/template_java_project/configurations/Asset.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template_java_project/configurations/Portfolio.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template_java_project/configurations/Settings.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template_java_project/configurations/Transaction.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template_java_project/configurations/User.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template_java_project/configurations/commands.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template_java_project/configurations/tables.template.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template_java_project/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template_java_project/build/tmp/compileJava/source-classes-mapping.txt" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/build/tmp/compileJava/source-classes-mapping.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/activity/CreatePortfolioActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/activity/CreatePortfolioActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/activity/GetPortfolioActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/activity/GetPortfolioActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/activity/GetTransactionsActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/activity/GetTransactionsActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/activity/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/activity/LoginActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/activity/RegisterActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/activity/RegisterActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/activity/UpdatePortfolioActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/activity/UpdatePortfolioActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/activity/VerifyActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/activity/VerifyActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/converter/ModelConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/converter/ModelConverter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/models/AssetModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/models/AssetModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/models/PortfolioModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/models/PortfolioModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/models/TransactionModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/models/TransactionModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/models/UserModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/models/UserModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/models/requests/CreatePortfolioRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/models/requests/CreatePortfolioRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/models/requests/GetPortfolioRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/models/requests/GetPortfolioRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/models/requests/GetTransactionsRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/models/requests/GetTransactionsRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/models/requests/LoginRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/models/requests/LoginRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/models/requests/RegisterRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/models/requests/RegisterRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/models/requests/UpdatePortfolioRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/models/requests/UpdatePortfolioRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/models/requests/VerifyRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/models/requests/VerifyRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/models/responses/CreatePortfolioResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/models/responses/CreatePortfolioResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/models/responses/FailureResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/models/responses/FailureResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/models/responses/GetPortfolioResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/models/responses/GetPortfolioResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/models/responses/GetTransactionsResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/models/responses/GetTransactionsResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/models/responses/LoginResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/models/responses/LoginResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/models/responses/RegisterResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/models/responses/RegisterResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/models/responses/UpdatePortfolioResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/models/responses/UpdatePortfolioResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/models/responses/VerifyResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/src/com/cryptoportfolio/models/responses/VerifyResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template_java_project/tst/activity/CreatePortfolioActivityTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/tst/activity/CreatePortfolioActivityTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template_java_project/tst/activity/GetPortfolioActivityTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/tst/activity/GetPortfolioActivityTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template_java_project/tst/activity/GetTransactionsActivityTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/tst/activity/GetTransactionsActivityTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template_java_project/tst/activity/UpdatePortfolioActivityTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/tst/activity/UpdatePortfolioActivityTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +20,9 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
+        <task path="$PROJECT_DIR$/template_java_project">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
             <expand />
@@ -101,7 +63,7 @@
     </file-type-list>
   </component>
   <component name="GitToolBoxStore">
-    <option name="projectConfigVersion" value="4" />
+    <option name="projectConfigVersion" value="5" />
     <option name="recentBranches">
       <RecentBranches>
         <option name="branchesForRepo">
@@ -146,7 +108,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/template_java_project/configurations" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
