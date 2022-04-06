@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import axios from 'axios';
 import {NavLink, useNavigate} from "react-router-dom";
 
-const registerAPIUrl = 'https://ccixqpmq4c.execute-api.us-east-2.amazonaws.com/prod/register';
+const registerAPIUrl = 'https://3n3jjywto9.execute-api.us-east-2.amazonaws.com/prod/register';
 
 const Register = () => {
     const [username, setUsername] = useState('');

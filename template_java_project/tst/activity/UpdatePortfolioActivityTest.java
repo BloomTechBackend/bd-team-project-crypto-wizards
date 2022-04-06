@@ -93,10 +93,10 @@ public class UpdatePortfolioActivityTest {
         }
 
         UpdatePortfolioRequest request = UpdatePortfolioRequest.builder()
-                .withAssetQuantityMap(assetQuantityMap)
-                .withUsername(username)
-                .withAuthToken(token)
-                .withTransactions(transactions).build();
+                .assetQuantityMap(assetQuantityMap)
+                .username(username)
+                .authToken(token)
+                .transactions(transactions).build();
 
         Portfolio portfolio = new Portfolio();
         portfolio.setUsername(username);
@@ -139,10 +139,10 @@ public class UpdatePortfolioActivityTest {
         }
 
         UpdatePortfolioRequest request = UpdatePortfolioRequest.builder()
-                .withAssetQuantityMap(assetQuantityMap)
-                .withUsername(username)
-                .withAuthToken(token)
-                .withTransactions(transactions).build();
+                .assetQuantityMap(assetQuantityMap)
+                .username(username)
+                .authToken(token)
+                .transactions(transactions).build();
 
         Portfolio portfolio = new Portfolio();
         portfolio.setUsername(username);

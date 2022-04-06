@@ -5,7 +5,7 @@ import axios from 'axios';
 import TransactionList from "../components/TransactionList";
 import DropDownMenu from "../components/DropDownMenu";
 
-const transactionHistoryAPIUrl = 'https://ccixqpmq4c.execute-api.us-east-2.amazonaws.com/prod/transactions/';
+const transactionHistoryAPIUrl = 'https://3n3jjywto9.execute-api.us-east-2.amazonaws.com/prod/transactions/';
 
 const TransactionHistory = (props) => {
     const username = getUsername();
