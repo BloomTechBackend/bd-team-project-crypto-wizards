@@ -11,7 +11,7 @@ import "./App.css";
 import TransactionHistory from "./pages/TransactionHistory";
 import UpdatePortfolio from "./pages/UpdatePortfolio";
 
-const verifyTokenAPIUrl = 'https://ccixqpmq4c.execute-api.us-east-2.amazonaws.com/prod/verify';
+const verifyTokenAPIUrl = 'https://r6z0a5xu3f.execute-api.us-east-2.amazonaws.com/prod/verify';
 
 function App() {
 
@@ -26,7 +26,7 @@ function App() {
 
         const requestConfig = {
             headers: {
-                'x-api-key': '9zsZhasE01a9hxGo92WUr68aGSvllMBN6Q3FHmBI',
+                'x-api-key': 'Lg6TGbdNQBTq3IMNsQ9c5dCFEUpgXQS5IG5o7RZ5',
                 'cp-auth-token': token
             }
         }

@@ -5,7 +5,7 @@ import axios from 'axios';
 import TransactionList from "../components/TransactionList";
 import DropDownMenu from "../components/DropDownMenu";
 
-const transactionHistoryAPIUrl = 'https://3n3jjywto9.execute-api.us-east-2.amazonaws.com/prod/transactions/';
+const transactionHistoryAPIUrl = 'https://r6z0a5xu3f.execute-api.us-east-2.amazonaws.com/prod/transactions/';
 
 const TransactionHistory = (props) => {
     const username = getUsername();
@@ -20,7 +20,7 @@ const TransactionHistory = (props) => {
     const queryHandler = () => {
         const requestConfig = {
             headers: {
-                'x-api-key': '9zsZhasE01a9hxGo92WUr68aGSvllMBN6Q3FHmBI',
+                'x-api-key': 'Lg6TGbdNQBTq3IMNsQ9c5dCFEUpgXQS5IG5o7RZ5',
                 'cp-auth-token': token
             }
         }

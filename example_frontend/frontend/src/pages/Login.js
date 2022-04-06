@@ -3,7 +3,7 @@ import {NavLink, useNavigate} from "react-router-dom";
 import axios from 'axios';
 import {setUserSession} from '../service/AuthService';
 
-const loginAPIUrl = 'https://3n3jjywto9.execute-api.us-east-2.amazonaws.com/prod/login/';
+const loginAPIUrl = 'https://r6z0a5xu3f.execute-api.us-east-2.amazonaws.com/prod/login/';
 
 const Login = (props) => {
     const [username, setUsername] = useState('');
@@ -14,7 +14,7 @@ const Login = (props) => {
     const submitHandler = (event) => {
         const requestConfig = {
             headers: {
-                'x-api-key': '9zsZhasE01a9hxGo92WUr68aGSvllMBN6Q3FHmBI'
+                'x-api-key': 'Lg6TGbdNQBTq3IMNsQ9c5dCFEUpgXQS5IG5o7RZ5'
             }
         }
         const requestBody = {
