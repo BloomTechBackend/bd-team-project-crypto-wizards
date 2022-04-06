@@ -10,6 +10,7 @@ import CreatePortfolio from "./pages/CreatePortfolio";
 import "./App.css";
 import TransactionHistory from "./pages/TransactionHistory";
 import UpdatePortfolio from "./pages/UpdatePortfolio";
+import NavBar from "./components/NavBar";
 
 const verifyTokenAPIUrl = 'https://ccixqpmq4c.execute-api.us-east-2.amazonaws.com/prod/verify';
 
@@ -52,33 +53,33 @@ function App() {
 
     return (
         <div className="container">
-            <BrowserRouter>
-                <div className="header">
-                     <h4 className="text" >Crypto Portfolio Tracker</h4>
-                    {/*<NavLink className="active" to="/">Home</NavLink>*/}
-                </div>
-
-                <div className="container">
-                    <Routes>
-                        {!isTokenSet && (
-                            <>
-                                <Route path="/" element={<Home />}/>
-                                <Route path="/register" element={<Register />}/>
-                                <Route path="/login" element={<Login authenticate={() => setToken(getToken())} />}/>
-                            </>
-                        )}
-                        {isTokenSet && (
-                            <>
-                                <Route path="/portfolio" element={<Portfolio logout={() => setToken(getToken())} />}/>
-                                <Route path="/createPortfolio" element={<CreatePortfolio logout={() => setToken(getToken())} />}/>
-                                <Route path="/transactionHistory" element={<TransactionHistory logout={() => setToken(getToken())} />}/>
-                                <Route path="/updatePortfolio" element={<UpdatePortfolio logout={() => setToken(getToken())} />}/>
-                            </>
-                        )}
-                        <Route path="*" element={<Navigate to={isTokenSet ? "/portfolio" : "/"}/>}/>
-                    </Routes>
-                </div>
-            </BrowserRouter>
+            {/*<BrowserRouter>*/}
+            {/*    <div className="header">*/}
+            {/*         <h4 className="text" >Crypto Portfolio Tracker</h4>*/}
+            {/*        /!*<NavLink className="active" to="/">Home</NavLink>*!/*/}
+            {/*    </div>*/}
+            <NavBar/>
+                {/*<div className="container">*/}
+                <Routes>
+                    {!isTokenSet && (
+                        <>
+                            <Route path="/" element={<Home />}/>
+                            <Route path="/register" element={<Register />}/>
+                            <Route path="/login" element={<Login authenticate={() => setToken(getToken())} />}/>
+                        </>
+                    )}
+                    {isTokenSet && (
+                        <>
+                            <Route path="/portfolio" element={<Portfolio logout={() => setToken(getToken())} />}/>
+                            <Route path="/createPortfolio" element={<CreatePortfolio logout={() => setToken(getToken())} />}/>
+                            <Route path="/transactionHistory" element={<TransactionHistory logout={() => setToken(getToken())} />}/>
+                            <Route path="/updatePortfolio" element={<UpdatePortfolio logout={() => setToken(getToken())} />}/>
+                        </>
+                    )}
+                    <Route path="*" element={<Navigate to={isTokenSet ? "/portfolio" : "/"}/>}/>
+                </Routes>
+                {/*</div>*/}
+            {/*</BrowserRouter>*/}
         </div>
     );
 }
