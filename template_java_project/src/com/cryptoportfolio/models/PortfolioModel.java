@@ -12,7 +12,7 @@ import lombok.*;
 @Builder
 public class PortfolioModel {
     private String username;
-    private Map<String, Double> assetQuantityMap = new HashMap<>();
+    private @Builder.Default Map<String, Double> assetQuantityMap = new HashMap<>();
 
 //    public PortfolioModel() {
 //
