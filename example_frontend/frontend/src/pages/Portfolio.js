@@ -103,12 +103,12 @@ const Portfolio = (props) => {
         navigate('/login');
     }
     return (
-        <div>
+        <>
             {(assets && assetQuantityMap) &&
                 <PortfolioChart assets={assets.filter(asset => assetQuantityMap[asset.id])} assetQuantityMap={assetQuantityMap} />}
             {(assets && assetQuantityMap) ?
                 <PortfolioList assets={assets.filter(asset => assetQuantityMap[asset.id])} assetQuantityMap={assetQuantityMap} />:
-            <div>{newUser ? "" : "Loading..."}</div>}
+            <>{newUser ? "" : "Loading..."}</>}
 
             <div id="outer">
                 {newUser && <input className="inner" type="button" value="Create Portfolio" onClick={createHandler} />} <br/>
@@ -117,7 +117,7 @@ const Portfolio = (props) => {
                 <input className="inner" type="button" value="Logout" onClick={logoutHandler} />
             </div>
             {message && <p className="message">{message}</p>}
-        </div>
+        </>
     )
 }
 

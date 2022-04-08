@@ -54,7 +54,7 @@ const TransactionHistory = (props) => {
         navigate('/login');
     }
     return (
-        <div>
+        <>
             <div id="alignpage">
             <h5>Transaction History</h5>
             {username}'s portfolio <br/> <br/>
@@ -72,7 +72,7 @@ const TransactionHistory = (props) => {
                 <input className="inner" type="button" value="Logout" onClick={logoutHandler} />
             </div>
             {message && <p className="message">{message}</p>}
-        </div>
+        </>
     )
 }
 

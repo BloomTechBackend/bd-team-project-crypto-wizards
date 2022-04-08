@@ -95,7 +95,7 @@ const CreatePortfolio = (props) => {
     }
 
     return (
-        <div>
+        <>
             <div id="alignpage">
             <h5>Create Portfolio</h5>
             {username}'s Portfolio <br/> <br/>
@@ -115,7 +115,7 @@ const CreatePortfolio = (props) => {
                 <input className="inner" type="button" value="Logout" onClick={logoutHandler} />
             </div>
             {message && <p className="message">{message}</p>}
-        </div>
+        </>
     )
 }
 

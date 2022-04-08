@@ -127,7 +127,7 @@ const UpdatePortfolio = (props) => {
     }
 
     return (
-        <div>
+        <>
             <div id="alignpage">
             <h5>Update Portfolio</h5>
             {username}'s Portfolio <br/> <br/>
@@ -147,7 +147,7 @@ const UpdatePortfolio = (props) => {
                 <input className="inner" type="button" value="Logout" onClick={logoutHandler} />
             </div>
             {message && <p className="message">{message}</p>}
-        </div>
+        </>
     )
 }
 

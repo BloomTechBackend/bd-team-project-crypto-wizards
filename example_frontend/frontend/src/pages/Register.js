@@ -29,7 +29,7 @@ const Register = () => {
     }
 
     return (
-        <div>
+        <>
             <div className="header">
                 <NavLink className="active" to="/register">Register</NavLink>
                 <NavLink className="active" to="/login">Login</NavLink>
@@ -43,7 +43,7 @@ const Register = () => {
                 <input type="submit" className="inner" value="Register" onClick={submitHandler}/>
             </div>
             {message && <p className="message">{message}</p>}
-        </div>
+        </>
     )
 }
 
