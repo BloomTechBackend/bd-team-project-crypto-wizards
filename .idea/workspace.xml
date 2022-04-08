@@ -4,10 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1a7b167-a746-4d95-887e-103e49727ebe" name="Changes" comment="updated the design doc with the table name of the portfolios table to user_assets table">
-      <change afterPath="$PROJECT_DIR$/template_java_project/.idea/runConfigurations.xml" afterDir="false" />
+    <list default="true" id="c1a7b167-a746-4d95-887e-103e49727ebe" name="Changes" comment="BrowserRouter / NavBar">
+      <change afterPath="$PROJECT_DIR$/example_frontend/frontend/src/app/store.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example_frontend/frontend/src/components/AuthProvider.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example_frontend/frontend/src/components/AuthRedux.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example_frontend/frontend/src/features/AuthSlice.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example_frontend/frontend/src/features/LoginSlice.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example_frontend/frontend/src/pages/LoginRedux.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example_frontend/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/example_frontend/frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template_java_project/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example_frontend/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/example_frontend/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example_frontend/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/example_frontend/frontend/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example_frontend/frontend/src/pages/CreatePortfolio.js" beforeDir="false" afterPath="$PROJECT_DIR$/example_frontend/frontend/src/pages/CreatePortfolio.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example_frontend/frontend/src/pages/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/example_frontend/frontend/src/pages/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example_frontend/frontend/src/pages/Portfolio.js" beforeDir="false" afterPath="$PROJECT_DIR$/example_frontend/frontend/src/pages/Portfolio.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example_frontend/frontend/src/pages/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/example_frontend/frontend/src/pages/Register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example_frontend/frontend/src/pages/TransactionHistory.js" beforeDir="false" afterPath="$PROJECT_DIR$/example_frontend/frontend/src/pages/TransactionHistory.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example_frontend/frontend/src/pages/UpdatePortfolio.js" beforeDir="false" afterPath="$PROJECT_DIR$/example_frontend/frontend/src/pages/UpdatePortfolio.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,12 +35,14 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
-        <task path="$PROJECT_DIR$/template_java_project">
-          <activation />
-        </task>
         <projects_view>
           <tree_state>
-            <expand />
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="UnitProject" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
             <select />
           </tree_state>
         </projects_view>
@@ -41,7 +56,7 @@
         <option value="UML Class" />
         <option value="UML Sequence" />
         <option value="Class" />
-        <option value="AWS CloudFormation Template (JSON)" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -51,7 +66,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="shannon" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -65,7 +80,7 @@
     </file-type-list>
   </component>
   <component name="GitToolBoxStore">
-    <option name="projectConfigVersion" value="5" />
+    <option name="projectConfigVersion" value="4" />
     <option name="recentBranches">
       <RecentBranches>
         <option name="branchesForRepo">
@@ -104,59 +119,64 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="DefaultJsonCloudFormationTemplate" value="AWS CloudFormation Template (JSON)" />
     <property name="DefaultPlantUmlFileTemplate" value="UML Sequence" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/example_frontend/frontend/src/components" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/template_java_project/configurations" />
-      <recent name="$PROJECT_DIR$/template_java_project" />
+      <recent name="C:\Users\shans\Dev\Unit5\bd-team-project-crypto-wizards\example_frontend\frontend\src\components" />
+      <recent name="C:\Users\shans\Dev\Unit5\bd-team-project-crypto-wizards\example_frontend\frontend\src\features" />
+      <recent name="C:\Users\shans\Dev\Unit5\bd-team-project-crypto-wizards\example_frontend\frontend\src\pages" />
       <recent name="C:\Users\shans\Dev\Unit5\bd-team-project-crypto-wizards\example_frontend" />
       <recent name="$PROJECT_DIR$/project_documents/images/design_document" />
-      <recent name="$PROJECT_DIR$/resources/Images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\shans\Dev\Unit5\bd-team-project-crypto-wizards\example_frontend\frontend\src\components" />
+      <recent name="C:\Users\shans\Dev\Unit5\bd-team-project-crypto-wizards\example_frontend\frontend\src\features" />
+      <recent name="C:\Users\shans\Dev\Unit5\bd-team-project-crypto-wizards\example_frontend\frontend\public" />
+      <recent name="C:\Users\shans\Dev\Unit5\bd-team-project-crypto-wizards\example_frontend\frontend\public\ico" />
       <recent name="C:\Users\shans\Dev\Unit5\bd-team-project-crypto-wizards\project_documents\images\design_document" />
-      <recent name="$PROJECT_DIR$/resources" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.cryptoportfolio.converter" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.Tests in 'template_java_project.UnitProject.test'">
-    <configuration name="Tests in 'template_java_project.UnitProject.test'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="npm.npm start">
+    <configuration name="template_java_project [buildZip]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/template_java_project" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests *" />
+        <option name="scriptParameters" />
         <option name="taskDescriptions">
           <list />
         </option>
         <option name="taskNames">
           <list>
-            <option value=":test" />
+            <option value="buildZip" />
           </list>
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Gradle.Tests in 'template_java_project.UnitProject.test'" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -170,6 +190,13 @@
       <workItem from="1644693541658" duration="1300000" />
       <workItem from="1644725847279" duration="1373000" />
       <workItem from="1644730702532" duration="380000" />
+      <workItem from="1646457437487" duration="6461000" />
+      <workItem from="1648071554524" duration="1252000" />
+      <workItem from="1648478120739" duration="3012000" />
+      <workItem from="1648857055973" duration="2419000" />
+      <workItem from="1649087361338" duration="53536000" />
+      <workItem from="1649291768009" duration="3927000" />
+      <workItem from="1649356639905" duration="32270000" />
     </task>
     <task id="LOCAL-00001" summary="Updated the design document's API &amp; Tables Section (6 &amp; 7), Created the EntityRelationshipDiagram.puml">
       <created>1644449732646</created>
@@ -241,22 +268,25 @@
       <option name="project" value="LOCAL" />
       <updated>1644635148330</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="favicon">
+      <created>1649094116442</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1649094116442</updated>
+    </task>
+    <task id="LOCAL-00012" summary="BrowserRouter / NavBar">
+      <created>1649280664403</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1649280664403</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.History.Properties">
-    <option name="COLUMN_ID_ORDER">
-      <list>
-        <option value="Default.Root" />
-        <option value="Default.Author" />
-        <option value="Default.Date" />
-        <option value="Default.Subject" />
-        <option value="Space.CommitStatus" />
-      </list>
-    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -268,7 +298,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
@@ -279,6 +308,12 @@
     <MESSAGE value="table structure modified in Design Doc" />
     <MESSAGE value="Created the GetPlaylistActivity module. Testing pending. Pushing for safety purposes" />
     <MESSAGE value="updated the design doc with the table name of the portfolios table to user_assets table" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated the design doc with the table name of the portfolios table to user_assets table" />
+    <MESSAGE value="favicon" />
+    <MESSAGE value="BrowserRouter / NavBar" />
+    <option name="LAST_COMMIT_MESSAGE" value="BrowserRouter / NavBar" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

@@ -1,85 +1,56 @@
-import {BrowserRouter, NavLink, Route, Routes, Navigate} from "react-router-dom";
-import React, {useEffect, useState} from "react";
-import axios from "axios";
+import {Route, Routes, Navigate, useLocation} from "react-router-dom";
+import React, {createContext, useContext, useState} from "react";
 import Home from "./pages/Home";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Portfolio from "./pages/Portfolio";
-import {getUsername, getToken, setUserSession, resetUserSession} from './service/AuthService';
+import {getToken} from './service/AuthService';
 import CreatePortfolio from "./pages/CreatePortfolio";
 import "./App.css";
 import TransactionHistory from "./pages/TransactionHistory";
 import UpdatePortfolio from "./pages/UpdatePortfolio";
 import NavBar from "./components/NavBar";
+import AuthProvider from "./components/AuthProvider";
 
-const verifyTokenAPIUrl = 'https://ccixqpmq4c.execute-api.us-east-2.amazonaws.com/prod/verify';
 
 function App() {
-
-    const [isAuthentication, setAuthentication] = useState(null);
     const [isTokenSet, setToken] = useState(getToken());
 
-    useEffect(() => {
-        const token = getToken();
-        if (token === 'undefined' || token === undefined || token === null || !token) {
-            return;
-        }
 
-        const requestConfig = {
-            headers: {
-                'x-api-key': '9zsZhasE01a9hxGo92WUr68aGSvllMBN6Q3FHmBI',
-                'cp-auth-token': token
-            }
-        }
-
-        const requestBody = {
-            username: getUsername(),
-            token: token
-        }
-
-        axios.post(verifyTokenAPIUrl, requestBody, requestConfig).then((response) => {
-            setUserSession(response.data.username, response.data.token);
-            setAuthentication(false);
-        }).catch(() => {
-            resetUserSession();
-            setAuthentication(false);
-        })
-    }, []);
-
-    const token = getToken();
-    if (isAuthentication && token) {
-        return <div className="content">Authentication...</div>
-    }
+    //
+    // const ProtectedRoute = ({children}) => {
+    //     const {token} = useAuth();
+    //     const location = useLocation();
+    //
+    //     if (!token) {
+    //         return <Navigate to="/" replace state={{from: location}}/>;
+    //     }
+    //     return children;
+    // };
 
     return (
         <div className="container">
-            {/*<BrowserRouter>*/}
-            {/*    <div className="header">*/}
-            {/*         <h4 className="text" >Crypto Portfolio Tracker</h4>*/}
-            {/*        /!*<NavLink className="active" to="/">Home</NavLink>*!/*/}
-            {/*    </div>*/}
             <NavBar/>
-                {/*<div className="container">*/}
-                <Routes>
-                    {!isTokenSet && (
-                        <>
-                            <Route path="/" element={<Home />}/>
-                            <Route path="/register" element={<Register />}/>
-                            <Route path="/login" element={<Login authenticate={() => setToken(getToken())} />}/>
-                        </>
-                    )}
-                    {isTokenSet && (
-                        <>
-                            <Route path="/portfolio" element={<Portfolio logout={() => setToken(getToken())} />}/>
-                            <Route path="/createPortfolio" element={<CreatePortfolio logout={() => setToken(getToken())} />}/>
-                            <Route path="/transactionHistory" element={<TransactionHistory logout={() => setToken(getToken())} />}/>
-                            <Route path="/updatePortfolio" element={<UpdatePortfolio logout={() => setToken(getToken())} />}/>
-                        </>
-                    )}
-                    <Route path="*" element={<Navigate to={isTokenSet ? "/portfolio" : "/"}/>}/>
-                </Routes>
-                {/*</div>*/}
-            {/*</BrowserRouter>*/}
+            <AuthProvider/>
+            <Routes>
+                {!isTokenSet && (
+                    <>
+                        <Route path="/" element={<Home />}/>
+                        <Route path="/register" element={<Register />}/>
+                        <Route path="/login" element={<Login authenticate={() => setToken(getToken())} />}/>
+                        {/*<Route path="/login" element={<Login />}/>*/}
+                    </>
+                )}
+                {isTokenSet && (
+                    <>
+                        <Route path="/portfolio" element={<Portfolio logout={() => setToken(getToken())} />}/>
+                        <Route path="/createPortfolio" element={<CreatePortfolio logout={() => setToken(getToken())} />}/>
+                        <Route path="/transactionHistory" element={<TransactionHistory logout={() => setToken(getToken())} />}/>
+                        <Route path="/updatePortfolio" element={<UpdatePortfolio logout={() => setToken(getToken())} />}/>
+                    </>
+                )}
+                <Route path="*" element={<Navigate to={isTokenSet ? "/portfolio" : "/"}/>}/>
+            </Routes>
         </div>
     );
 }
