@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
 import axios from 'axios';
-import {getToken, getUsername, resetUserSession} from '../service/AuthService';
+import {getToken, getUsername, resetUserSession} from '../service/authService';
 import {useNavigate, useLocation} from "react-router-dom";
 import DropDownMenu from '../components/DropDownMenu';
 import PortfolioList from '../components/PortfolioList';
 
 const portfolioAPIUrl = 'https://3n3jjywto9.execute-api.us-east-2.amazonaws.com/prod/portfolio/';
 
-const UpdatePortfolio = (props) => {
+const UpdatePortfolio = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const token = getToken();
@@ -85,7 +85,7 @@ const UpdatePortfolio = (props) => {
         }));
     }
 
-    const updatePortfolioHandler = (event) => {
+    const updatePortfolioHandler = () => {
         const requestConfig = {
             headers: {
                 'x-api-key': '9zsZhasE01a9hxGo92WUr68aGSvllMBN6Q3FHmBI',
@@ -108,7 +108,6 @@ const UpdatePortfolio = (props) => {
         }).catch((error) => {
             if (error.response.status === 401 || error.response.status === 403) {
                 resetUserSession();
-                props.logout();
                 navigate('/login');
             } else {
                 setMessage(error.response.data.errorMessage.split('] ')[1]);
@@ -122,7 +121,6 @@ const UpdatePortfolio = (props) => {
 
     const logoutHandler = () => {
         resetUserSession();
-        props.logout();
         navigate('/login');
     }
 

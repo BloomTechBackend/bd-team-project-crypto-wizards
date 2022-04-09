@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
-import {getToken, getUsername, isNewUser, resetUserSession} from '../service/AuthService';
+import {getToken, getUsername, isNewUser, resetUserSession} from '../service/authService';
 import coinGecko from "../apis/coinGecko";
 import axios from 'axios';
 import PortfolioList from "../components/PortfolioList";
@@ -8,7 +8,7 @@ import PortfolioChart from "../components/PortfolioChart";
 
 const portfolioAPIUrl = 'https://3n3jjywto9.execute-api.us-east-2.amazonaws.com/prod/portfolio/';
 
-const Portfolio = (props) => {
+const Portfolio = () => {
     const username = getUsername();
     const navigate = useNavigate();
     const token = getToken();
@@ -72,7 +72,6 @@ const Portfolio = (props) => {
             }).catch((error) => {
                 if (error.response.status === 401 || error.response.status === 403) {
                     resetUserSession();
-                    props.logout();
                     navigate('/login');
                 } else {
                     setMessage(error.response.data.errorMessage.split('] ')[1]);
@@ -99,7 +98,6 @@ const Portfolio = (props) => {
 
     const logoutHandler = () => {
         resetUserSession();
-        props.logout();
         navigate('/login');
     }
     return (

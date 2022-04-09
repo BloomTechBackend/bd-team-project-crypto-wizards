@@ -10,7 +10,7 @@ const Register = () => {
     const [message, setMessage] = useState(null);
     const navigate = useNavigate();
 
-    const submitHandler = (event) => {
+    const submitHandler = () => {
         const requestConfig = {
             headers: {
                 'x-api-key': '9zsZhasE01a9hxGo92WUr68aGSvllMBN6Q3FHmBI'

@@ -1,13 +1,14 @@
-import React, {createContext, useContext, useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {NavLink, useNavigate} from "react-router-dom";
 import axios from 'axios';
-import {setUserSession} from '../service/AuthService';
-import AuthProvider from "../components/AuthProvider";
+import {getToken, setUserSession} from '../service/authService';
+import {AuthContext} from "../components/AuthProvider";
+
 
 const loginAPIUrl = 'https://3n3jjywto9.execute-api.us-east-2.amazonaws.com/prod/login/';
 
-const Login = ({props}) => {
-    // const {token, handleLogin} = useContext(AuthProvider);
+const Login = () => {
+    const {setToken} = useContext(AuthContext);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState(null);
@@ -28,10 +29,7 @@ const Login = ({props}) => {
             setUserSession(response.data.username, response.data.authToken, response.data.newUser);
             console.log("newUser: " + response.data.newUser);
             console.log("typeof newUser: " + typeof response.data.newUser);
-
-            props.authenticate();
-
-
+            setToken(getToken());
             navigate('/portfolio');
         }).catch((error) => {
             console.log('Error ' + error.toJSON());
@@ -39,7 +37,6 @@ const Login = ({props}) => {
             setMessage(error.response.data.errorMessage.split('] ')[1]);
         })
 
-        // return children;
     }
 
     return (

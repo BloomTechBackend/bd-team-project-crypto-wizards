@@ -1,13 +1,13 @@
 import React, {useState} from "react";
 import {useLocation, useNavigate} from "react-router-dom";
-import {getToken, getUsername, resetUserSession} from '../service/AuthService';
+import {getToken, getUsername, resetUserSession} from '../service/authService';
 import axios from 'axios';
 import TransactionList from "../components/TransactionList";
 import DropDownMenu from "../components/DropDownMenu";
 
 const transactionHistoryAPIUrl = 'https://3n3jjywto9.execute-api.us-east-2.amazonaws.com/prod/transactions/';
 
-const TransactionHistory = (props) => {
+const TransactionHistory = () => {
     const username = getUsername();
     const navigate = useNavigate();
     const location = useLocation();
@@ -36,7 +36,6 @@ const TransactionHistory = (props) => {
         }).catch((error) => {
             if (error.response.status === 401 || error.response.status === 403) {
                 resetUserSession();
-                props.logout();
                 navigate('/login');
             } else {
                 setMessage(error.response.data.errorMessage.split('] ')[1]);
@@ -50,7 +49,6 @@ const TransactionHistory = (props) => {
 
     const logoutHandler = () => {
         resetUserSession();
-        props.logout();
         navigate('/login');
     }
     return (
