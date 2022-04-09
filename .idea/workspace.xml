@@ -5,7 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c1a7b167-a746-4d95-887e-103e49727ebe" name="Changes" comment="slice">
+      <change beforePath="$PROJECT_DIR$/.idea/aws.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/aws.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example_frontend/frontend/src/components/AuthProvider.js" beforeDir="false" afterPath="$PROJECT_DIR$/example_frontend/frontend/src/components/AuthProvider.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example_frontend/frontend/src/pages/CreatePortfolio.js" beforeDir="false" afterPath="$PROJECT_DIR$/example_frontend/frontend/src/pages/CreatePortfolio.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example_frontend/frontend/src/pages/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/example_frontend/frontend/src/pages/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example_frontend/frontend/src/pages/Portfolio.js" beforeDir="false" afterPath="$PROJECT_DIR$/example_frontend/frontend/src/pages/Portfolio.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example_frontend/frontend/src/pages/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/example_frontend/frontend/src/pages/Register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example_frontend/frontend/src/pages/TransactionHistory.js" beforeDir="false" afterPath="$PROJECT_DIR$/example_frontend/frontend/src/pages/TransactionHistory.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example_frontend/frontend/src/pages/UpdatePortfolio.js" beforeDir="false" afterPath="$PROJECT_DIR$/example_frontend/frontend/src/pages/UpdatePortfolio.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

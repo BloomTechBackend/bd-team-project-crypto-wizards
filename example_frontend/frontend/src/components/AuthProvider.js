@@ -2,7 +2,7 @@ import {createContext, useEffect, useState} from "react";
 import {getToken, getUsername, resetUserSession, setUserSession} from "../service/authService";
 import axios from "axios";
 
-const verifyTokenAPIUrl = 'https://ccixqpmq4c.execute-api.us-east-2.amazonaws.com/prod/verify';
+const verifyTokenAPIUrl = 'https://r6z0a5xu3f.execute-api.us-east-2.amazonaws.com/prod/verify';
 const AuthContext = createContext({});
 
 const AuthProvider = ({children}) => {
@@ -17,7 +17,7 @@ const AuthProvider = ({children}) => {
 
         const requestConfig = {
             headers: {
-                'x-api-key': '9zsZhasE01a9hxGo92WUr68aGSvllMBN6Q3FHmBI',
+                'x-api-key': 'Lg6TGbdNQBTq3IMNsQ9c5dCFEUpgXQS5IG5o7RZ5',
                 'cp-auth-token': token
             }
         }

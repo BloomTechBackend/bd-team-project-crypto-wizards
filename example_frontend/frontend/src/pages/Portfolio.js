@@ -6,7 +6,7 @@ import axios from 'axios';
 import PortfolioList from "../components/PortfolioList";
 import PortfolioChart from "../components/PortfolioChart";
 
-const portfolioAPIUrl = 'https://3n3jjywto9.execute-api.us-east-2.amazonaws.com/prod/portfolio/';
+const portfolioAPIUrl = 'https://r6z0a5xu3f.execute-api.us-east-2.amazonaws.com/prod/portfolio/';
 
 const Portfolio = () => {
     const username = getUsername();
@@ -60,7 +60,7 @@ const Portfolio = () => {
     useEffect(() => {
         const requestConfig = {
             headers: {
-                'x-api-key': '9zsZhasE01a9hxGo92WUr68aGSvllMBN6Q3FHmBI',
+                'x-api-key': 'Lg6TGbdNQBTq3IMNsQ9c5dCFEUpgXQS5IG5o7RZ5',
                 'cp-auth-token': token
             }
         }
