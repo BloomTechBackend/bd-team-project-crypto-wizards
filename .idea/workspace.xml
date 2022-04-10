@@ -4,18 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1a7b167-a746-4d95-887e-103e49727ebe" name="Changes" comment="favicon">
-      <change afterPath="$PROJECT_DIR$/example_frontend/frontend/src/apis/apiKey.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example_frontend/frontend/src/apis/cryptoPortfolio.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example_frontend/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/example_frontend/frontend/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example_frontend/frontend/src/pages/CreatePortfolio.js" beforeDir="false" afterPath="$PROJECT_DIR$/example_frontend/frontend/src/pages/CreatePortfolio.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example_frontend/frontend/src/pages/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/example_frontend/frontend/src/pages/Login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example_frontend/frontend/src/pages/Portfolio.js" beforeDir="false" afterPath="$PROJECT_DIR$/example_frontend/frontend/src/pages/Portfolio.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example_frontend/frontend/src/pages/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/example_frontend/frontend/src/pages/Register.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example_frontend/frontend/src/pages/TransactionHistory.js" beforeDir="false" afterPath="$PROJECT_DIR$/example_frontend/frontend/src/pages/TransactionHistory.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example_frontend/frontend/src/pages/UpdatePortfolio.js" beforeDir="false" afterPath="$PROJECT_DIR$/example_frontend/frontend/src/pages/UpdatePortfolio.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example_frontend/frontend/src/service/AuthService.js" beforeDir="false" afterPath="$PROJECT_DIR$/example_frontend/frontend/src/service/authService.js" afterDir="false" />
+    <list default="true" id="c1a7b167-a746-4d95-887e-103e49727ebe" name="Changes" comment="updated the design doc with the table name of the portfolios table to user_assets table">
+      <change afterPath="$PROJECT_DIR$/template_java_project/.idea/runConfigurations.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example_frontend/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/example_frontend/frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template_java_project/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/template_java_project/.idea/compiler.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +22,9 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
+        <task path="$PROJECT_DIR$/template_java_project">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
             <expand>
@@ -51,7 +46,7 @@
         <option value="UML Class" />
         <option value="UML Sequence" />
         <option value="Class" />
-        <option value="JavaScript File" />
+        <option value="AWS CloudFormation Template (JSON)" />
       </list>
     </option>
   </component>
@@ -75,7 +70,7 @@
     </file-type-list>
   </component>
   <component name="GitToolBoxStore">
-    <option name="projectConfigVersion" value="4" />
+    <option name="projectConfigVersion" value="5" />
     <option name="recentBranches">
       <RecentBranches>
         <option name="branchesForRepo">
@@ -114,21 +109,20 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="DefaultJsonCloudFormationTemplate" value="AWS CloudFormation Template (JSON)" />
     <property name="DefaultPlantUmlFileTemplate" value="UML Sequence" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/template_java_project/configurations" />
+      <recent name="$PROJECT_DIR$/template_java_project" />
       <recent name="C:\Users\shans\Dev\Unit5\bd-team-project-crypto-wizards\example_frontend" />
       <recent name="$PROJECT_DIR$/project_documents/images/design_document" />
       <recent name="$PROJECT_DIR$/resources/Images" />
@@ -143,24 +137,19 @@
       <recent name="com.cryptoportfolio.converter" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.npm start">
-    <configuration name="template_java_project [buildZip]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/template_java_project" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
         <option name="taskDescriptions">
           <list />
         </option>
         <option name="taskNames">
           <list>
-            <option value="buildZip" />
           </list>
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
@@ -259,6 +248,17 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="Space.CommitStatus" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">

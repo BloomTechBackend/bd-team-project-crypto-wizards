@@ -94,10 +94,10 @@ public class CreatePortfolioActivityTest {
         }
 
         CreatePortfolioRequest request = CreatePortfolioRequest.builder()
-                .withAssetQuantityMap(assetQuantityMap)
-                .withUsername(username)
-                .withAuthToken(token)
-                .withTransactions(transactions).build();
+                .assetQuantityMap(assetQuantityMap)
+                .username(username)
+                .authToken(token)
+                .transactions(transactions).build();
 
         Portfolio portfolio = new Portfolio();
         portfolio.setUsername(username);
@@ -141,10 +141,10 @@ public class CreatePortfolioActivityTest {
         }
 
         CreatePortfolioRequest request = CreatePortfolioRequest.builder()
-                .withAssetQuantityMap(assetQuantityMap)
-                .withUsername(username)
-                .withAuthToken(token)
-                .withTransactions(transactions).build();
+                .assetQuantityMap(assetQuantityMap)
+                .username(username)
+                .authToken(token)
+                .transactions(transactions).build();
 
         //WHEN & THEN
         when(userDao.getUser(username)).thenThrow(new LoginException());
@@ -179,10 +179,10 @@ public class CreatePortfolioActivityTest {
         }
 
         CreatePortfolioRequest request = CreatePortfolioRequest.builder()
-                .withAssetQuantityMap(assetQuantityMap)
-                .withUsername(username)
-                .withAuthToken(token)
-                .withTransactions(transactions).build();
+                .assetQuantityMap(assetQuantityMap)
+                .username(username)
+                .authToken(token)
+                .transactions(transactions).build();
 
         Portfolio portfolio = new Portfolio();
         portfolio.setUsername(username);
