@@ -1,17 +1,17 @@
 import {BrowserRouter, NavLink, Route, Routes, Navigate} from "react-router-dom";
 import React, {useEffect, useState} from "react";
-import axios from "axios";
+
 import Home from "./pages/Home";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Portfolio from "./pages/Portfolio";
-import {getUsername, getToken, setUserSession, resetUserSession} from './service/AuthService';
+import {getUsername, getToken, setUserSession, resetUserSession} from './service/authService';
 import CreatePortfolio from "./pages/CreatePortfolio";
 import "./App.css";
 import TransactionHistory from "./pages/TransactionHistory";
 import UpdatePortfolio from "./pages/UpdatePortfolio";
-
-const verifyTokenAPIUrl = 'https://ccixqpmq4c.execute-api.us-east-2.amazonaws.com/prod/verify';
+import axios from './apis/cryptoPortfolio.js';
+import {APIKey} from "./apis/apiKey";
 
 function App() {
 
@@ -26,7 +26,7 @@ function App() {
 
         const requestConfig = {
             headers: {
-                'x-api-key': '9zsZhasE01a9hxGo92WUr68aGSvllMBN6Q3FHmBI',
+                'x-api-key': APIKey,
                 'cp-auth-token': token
             }
         }
@@ -36,7 +36,7 @@ function App() {
             token: token
         }
 
-        axios.post(verifyTokenAPIUrl, requestBody, requestConfig).then((response) => {
+        axios.post('/verify', requestBody, requestConfig).then((response) => {
             setUserSession(response.data.username, response.data.token);
             setAuthentication(false);
         }).catch(() => {
