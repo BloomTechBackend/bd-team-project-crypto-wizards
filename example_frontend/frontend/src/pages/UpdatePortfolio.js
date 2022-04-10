@@ -1,11 +1,10 @@
 import React, {useState} from 'react';
-import axios from 'axios';
-import {getToken, getUsername, resetUserSession} from '../service/AuthService';
+import {getToken, getUsername, resetUserSession} from '../service/authService';
 import {useNavigate, useLocation} from "react-router-dom";
 import DropDownMenu from '../components/DropDownMenu';
 import PortfolioList from '../components/PortfolioList';
-
-const portfolioAPIUrl = 'https://ccixqpmq4c.execute-api.us-east-2.amazonaws.com/prod/portfolio/';
+import axios from '../apis/cryptoPortfolio';
+import {APIKey} from "../apis/apiKey";
 
 const UpdatePortfolio = (props) => {
     const navigate = useNavigate();
@@ -88,7 +87,7 @@ const UpdatePortfolio = (props) => {
     const updatePortfolioHandler = (event) => {
         const requestConfig = {
             headers: {
-                'x-api-key': '9zsZhasE01a9hxGo92WUr68aGSvllMBN6Q3FHmBI',
+                'x-api-key': APIKey,
                 'cp-auth-token': token
             }
         }
@@ -102,7 +101,7 @@ const UpdatePortfolio = (props) => {
         console.log('Request config' + JSON.stringify(requestConfig));
         console.log('Request body' + JSON.stringify(requestBody));
 
-        axios.put(portfolioAPIUrl + username, requestBody, requestConfig).then((response) => {
+        axios.put('/portfolio/'+ username, requestBody, requestConfig).then((response) => {
             console.log('Portfolio Updated');
             navigate('/portfolio');
         }).catch((error) => {

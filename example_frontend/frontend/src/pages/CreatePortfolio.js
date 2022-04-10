@@ -1,11 +1,10 @@
 import React, {useState} from 'react';
-import axios from 'axios';
-import {getToken, getUsername, setNewUser, resetUserSession} from '../service/AuthService';
+import {getToken, getUsername, setNewUser, resetUserSession} from '../service/authService';
 import {useNavigate, useLocation} from "react-router-dom";
 import DropDownMenu from '../components/DropDownMenu';
 import PortfolioList from '../components/PortfolioList';
-
-const portfolioAPIUrl = 'https://ccixqpmq4c.execute-api.us-east-2.amazonaws.com/prod/portfolio/';
+import axios from '../apis/cryptoPortfolio';
+import {APIKey} from "../apis/apiKey";
 
 const CreatePortfolio = (props) => {
     const navigate = useNavigate();
@@ -54,7 +53,7 @@ const CreatePortfolio = (props) => {
 
         const requestConfig = {
             headers: {
-                'x-api-key': '9zsZhasE01a9hxGo92WUr68aGSvllMBN6Q3FHmBI',
+                'x-api-key': APIKey,
                 'cp-auth-token': token
             }
         }
@@ -69,7 +68,7 @@ const CreatePortfolio = (props) => {
         console.log('Request body' + JSON.stringify(requestBody));
 
 
-        axios.post(portfolioAPIUrl + username, requestBody, requestConfig).then((response) => {
+        axios.post('/portfolio/' + username, requestBody, requestConfig).then((response) => {
             console.log('Portfolio Created');
             setNewUser(false);
             navigate('/portfolio');
