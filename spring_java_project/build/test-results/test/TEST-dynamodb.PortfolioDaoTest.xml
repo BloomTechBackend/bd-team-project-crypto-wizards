@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="dynamodb.PortfolioDaoTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2022-03-28T04:05:53" hostname="KrishnarthysAir" time="0.767">
+  <properties/>
+  <testcase name="savePortfolio_nullPortfolio_throwsUnableToSaveToDatabaseException()" classname="dynamodb.PortfolioDaoTest" time="0.17"/>
+  <testcase name="getPortfolio_InvalidPortfolio_throwsPortfolioNotFoundException()" classname="dynamodb.PortfolioDaoTest" time="0.193"/>
+  <testcase name="savePortfolio_savesPortfolioToDatabase()" classname="dynamodb.PortfolioDaoTest" time="0.185"/>
+  <testcase name="getPortfolio_ExistingPortfolio_retrievesFromDatabase()" classname="dynamodb.PortfolioDaoTest" time="0.215"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

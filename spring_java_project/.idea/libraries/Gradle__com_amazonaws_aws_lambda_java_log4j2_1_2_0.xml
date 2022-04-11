@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.amazonaws:aws-lambda-java-log4j2:1.2.0">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../../Unit1/bd-java-fundamentals-1-sprint-project-umasitaraman/gradle/wrapper/caches/modules-2/files-2.1/com.amazonaws/aws-lambda-java-log4j2/1.2.0/7daee01e15c80c3b29adddb5f94ed30f1e5edd0e/aws-lambda-java-log4j2-1.2.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../../../Unit1/bd-java-fundamentals-1-sprint-project-umasitaraman/gradle/wrapper/caches/modules-2/files-2.1/com.amazonaws/aws-lambda-java-log4j2/1.2.0/1cc68d51c60fa8fb1f71fd83a9416814d4933e06/aws-lambda-java-log4j2-1.2.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
