@@ -3,8 +3,13 @@ import {useLocation, useNavigate} from "react-router-dom";
 import {getToken, getUsername, resetUserSession} from '../service/authService';
 import TransactionList from "../components/TransactionList";
 import DropDownMenu from "../components/DropDownMenu";
+<<<<<<< HEAD
+
+const transactionHistoryAPIUrl = 'https://r6z0a5xu3f.execute-api.us-east-2.amazonaws.com/prod/transactions/';
+=======
 import axios from '../apis/cryptoPortfolio';
 import {APIKey} from "../apis/apiKey";
+>>>>>>> main
 
 const TransactionHistory = (props) => {
     const username = getUsername();
@@ -19,7 +24,11 @@ const TransactionHistory = (props) => {
     const queryHandler = () => {
         const requestConfig = {
             headers: {
+<<<<<<< HEAD
+                'x-api-key': 'Lg6TGbdNQBTq3IMNsQ9c5dCFEUpgXQS5IG5o7RZ5',
+=======
                 'x-api-key': APIKey,
+>>>>>>> main
                 'cp-auth-token': token
             }
         }

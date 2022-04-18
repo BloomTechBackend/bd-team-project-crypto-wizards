@@ -1,7 +1,12 @@
 import React, {useState} from 'react';
 import {NavLink, useNavigate} from "react-router-dom";
+<<<<<<< HEAD
+
+const registerAPIUrl = 'https://r6z0a5xu3f.execute-api.us-east-2.amazonaws.com/prod/register/';
+=======
 import axios from '../apis/cryptoPortfolio';
 import {APIKey} from "../apis/apiKey";
+>>>>>>> main
 
 const Register = () => {
     const [username, setUsername] = useState('');
@@ -12,7 +17,11 @@ const Register = () => {
     const submitHandler = () => {
         const requestConfig = {
             headers: {
+<<<<<<< HEAD
+                'x-api-key': 'Lg6TGbdNQBTq3IMNsQ9c5dCFEUpgXQS5IG5o7RZ5'
+=======
                 'x-api-key': APIKey
+>>>>>>> main
             }
         }
         const requestBody = {

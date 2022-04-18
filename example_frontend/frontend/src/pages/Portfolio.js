@@ -3,9 +3,14 @@ import {useNavigate} from "react-router-dom";
 import {getToken, getUsername, isNewUser, resetUserSession} from '../service/authService';
 import PortfolioList from "../components/PortfolioList";
 import PortfolioChart from "../components/PortfolioChart";
+<<<<<<< HEAD
+
+const portfolioAPIUrl = 'https://r6z0a5xu3f.execute-api.us-east-2.amazonaws.com/prod/portfolio/';
+=======
 import coinGecko from "../apis/coinGecko";
 import axios from '../apis/cryptoPortfolio';
 import {APIKey} from "../apis/apiKey";
+>>>>>>> main
 
 const Portfolio = (props) => {
     const username = getUsername();
@@ -59,7 +64,11 @@ const Portfolio = (props) => {
     useEffect(() => {
         const requestConfig = {
             headers: {
+<<<<<<< HEAD
+                'x-api-key': 'Lg6TGbdNQBTq3IMNsQ9c5dCFEUpgXQS5IG5o7RZ5',
+=======
                 'x-api-key': APIKey,
+>>>>>>> main
                 'cp-auth-token': token
             }
         }

@@ -3,8 +3,13 @@ import {getToken, getUsername, resetUserSession} from '../service/authService';
 import {useNavigate, useLocation} from "react-router-dom";
 import DropDownMenu from '../components/DropDownMenu';
 import PortfolioList from '../components/PortfolioList';
+<<<<<<< HEAD
+
+const portfolioAPIUrl = 'https://r6z0a5xu3f.execute-api.us-east-2.amazonaws.com/prod/portfolio/';
+=======
 import axios from '../apis/cryptoPortfolio';
 import {APIKey} from "../apis/apiKey";
+>>>>>>> main
 
 const UpdatePortfolio = (props) => {
     const navigate = useNavigate();
@@ -87,7 +92,11 @@ const UpdatePortfolio = (props) => {
     const updatePortfolioHandler = (event) => {
         const requestConfig = {
             headers: {
+<<<<<<< HEAD
+                'x-api-key': 'Lg6TGbdNQBTq3IMNsQ9c5dCFEUpgXQS5IG5o7RZ5',
+=======
                 'x-api-key': APIKey,
+>>>>>>> main
                 'cp-auth-token': token
             }
         }

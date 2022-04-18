@@ -10,8 +10,13 @@ import CreatePortfolio from "./pages/CreatePortfolio";
 import "./App.css";
 import TransactionHistory from "./pages/TransactionHistory";
 import UpdatePortfolio from "./pages/UpdatePortfolio";
+<<<<<<< HEAD
+
+const verifyTokenAPIUrl = 'https://r6z0a5xu3f.execute-api.us-east-2.amazonaws.com/prod/verify';
+=======
 import axios from './apis/cryptoPortfolio.js';
 import {APIKey} from "./apis/apiKey";
+>>>>>>> main
 
 function App() {
 
@@ -26,7 +31,11 @@ function App() {
 
         const requestConfig = {
             headers: {
+<<<<<<< HEAD
+                'x-api-key': 'Lg6TGbdNQBTq3IMNsQ9c5dCFEUpgXQS5IG5o7RZ5',
+=======
                 'x-api-key': APIKey,
+>>>>>>> main
                 'cp-auth-token': token
             }
         }
