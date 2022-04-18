@@ -25,7 +25,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class UpdatePortfolioActivity implements RequestHandler<UpdatePortfolioRequest, UpdatePortfolioResponse> {
+public class UpdatePortfolioActivity {
 
     private final Logger log = LogManager.getLogger();
     private PortfolioDao portfolioDao;
@@ -58,10 +58,10 @@ public class UpdatePortfolioActivity implements RequestHandler<UpdatePortfolioRe
      *                              associated with it
      * @return updatePortfolioResult result object containing the API defined {@link String}
      */
-    @Override
-    public UpdatePortfolioResponse handleRequest(final UpdatePortfolioRequest updatePortfolioRequest, Context context) {
-        LambdaLogger logger = context.getLogger();
-        logger.log(gson.toJson(updatePortfolioRequest));
+
+    public UpdatePortfolioResponse execute(final UpdatePortfolioRequest updatePortfolioRequest) {
+//        LambdaLogger logger = context.getLogger();
+//        logger.log(gson.toJson(updatePortfolioRequest));
 
         Auth.authenticateToken(updatePortfolioRequest.getUsername(), updatePortfolioRequest.getAuthToken());
 
@@ -84,7 +84,7 @@ public class UpdatePortfolioActivity implements RequestHandler<UpdatePortfolioRe
             }
         }
 
-        logger.log(transactionList.toString());
+        //logger.log(transactionList.toString());
         transactionDao.batchSaveTransactions(transactionList);
 
         portfolio.setAssetQuantityMap(nonZeroAssetQuantityMap);

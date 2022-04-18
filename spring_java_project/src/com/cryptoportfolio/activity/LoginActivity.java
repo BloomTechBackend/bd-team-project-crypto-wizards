@@ -15,7 +15,7 @@ import org.mindrot.jbcrypt.BCrypt;
 import javax.inject.Inject;
 import java.util.Date;
 
-public class LoginActivity implements RequestHandler<LoginRequest, LoginResponse> {
+public class LoginActivity  {
 
     // Length of time auth token will remain valid in milliseconds
     private static final int TOKEN_DURATION = 3_600_000;
@@ -29,8 +29,7 @@ public class LoginActivity implements RequestHandler<LoginRequest, LoginResponse
         this.gson = gson;
     }
 
-    @Override
-    public LoginResponse handleRequest(LoginRequest loginRequest, Context context) {
+    public LoginResponse execute(LoginRequest loginRequest) {
 
         String username = loginRequest.getUsername();
         String password = loginRequest.getPassword();

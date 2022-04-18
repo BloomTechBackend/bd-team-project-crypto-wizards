@@ -24,7 +24,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class CreatePortfolioActivity implements RequestHandler<CreatePortfolioRequest, CreatePortfolioResponse> {
+public class CreatePortfolioActivity {
 
     private PortfolioDao portfolioDao;
     private UserDao userDao;
@@ -55,10 +55,10 @@ public class CreatePortfolioActivity implements RequestHandler<CreatePortfolioRe
      *                              associated with it
      * @return createPortfolioResult result object containing the API defined {@link String}
      */
-    @Override
-    public CreatePortfolioResponse handleRequest(final CreatePortfolioRequest createPortfolioRequest, Context context) {
-        LambdaLogger logger = context.getLogger();
-        logger.log(gson.toJson(createPortfolioRequest));
+
+    public CreatePortfolioResponse execute (final CreatePortfolioRequest createPortfolioRequest) {
+        //LambdaLogger logger = context.getLogger();
+        //logger.log(gson.toJson(createPortfolioRequest));
         List<Transaction> transactionList = new ArrayList<>(createPortfolioRequest.getTransactions());
 
         Auth.authenticateToken(createPortfolioRequest.getUsername(), createPortfolioRequest.getAuthToken());
@@ -91,7 +91,7 @@ public class CreatePortfolioActivity implements RequestHandler<CreatePortfolioRe
         try {
             portfolioDao.savePortfolio(portfolio);
         } catch (DynamoDBMappingException e) {
-            logger.log(e.toString());
+            //logger.log(e.toString());
             throw new UnableToSaveToDatabaseException("[Internal Server Error] Failed : Unable to service request");
         }
 

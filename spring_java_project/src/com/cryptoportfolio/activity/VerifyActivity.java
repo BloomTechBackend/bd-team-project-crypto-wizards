@@ -11,7 +11,7 @@ import com.google.gson.Gson;
 
 import javax.inject.Inject;
 
-public class VerifyActivity implements RequestHandler<VerifyRequest, VerifyResponse> {
+public class VerifyActivity {
 
     private UserDao userDao;
     private Gson gson;
@@ -22,11 +22,10 @@ public class VerifyActivity implements RequestHandler<VerifyRequest, VerifyRespo
         this.gson = gson;
     }
 
-    @Override
-    public VerifyResponse handleRequest(VerifyRequest verifyRequest, Context context) {
+    public VerifyResponse execute (VerifyRequest verifyRequest) {
 
-        LambdaLogger logger = context.getLogger();
-        logger.log(gson.toJson(verifyRequest));
+//        LambdaLogger logger = context.getLogger();
+//        logger.log(gson.toJson(verifyRequest));
 
         String username = verifyRequest.getUsername();
         String token = verifyRequest.getAuthToken();

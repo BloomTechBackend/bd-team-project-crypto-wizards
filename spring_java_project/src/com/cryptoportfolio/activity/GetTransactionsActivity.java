@@ -18,7 +18,7 @@ import org.apache.logging.log4j.Logger;
 import javax.inject.Inject;
 import java.util.List;
 
-public class GetTransactionsActivity implements RequestHandler<GetTransactionsRequest, GetTransactionsResponse> {
+public class GetTransactionsActivity {
 
     private final Logger log = LogManager.getLogger();
     private TransactionDao transactionDao;
@@ -45,10 +45,9 @@ public class GetTransactionsActivity implements RequestHandler<GetTransactionsRe
      * @return getTransactionsResponse result object containing the API defined {@link TransactionModel}
      */
 
-    @Override
-    public GetTransactionsResponse handleRequest(GetTransactionsRequest getTransactionsRequest, Context context) {
-        LambdaLogger logger = context.getLogger();
-        logger.log(gson.toJson(getTransactionsRequest));
+    public GetTransactionsResponse execute (GetTransactionsRequest getTransactionsRequest) {
+//        LambdaLogger logger = context.getLogger();
+//        logger.log(gson.toJson(getTransactionsRequest));
 
         String username = getTransactionsRequest.getUsername();
         Auth.authenticateToken(username, getTransactionsRequest.getAuthToken());

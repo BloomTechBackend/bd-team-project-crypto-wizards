@@ -32,8 +32,8 @@ public class ModelConverter {
                 .username(transaction.getUsername())
                 .transactionDate(transaction.getTransactionDate())
                 .assetId(transaction.getAssetId())
-                .assetQuantity(transaction.getAssetQuantity())
-                .transactionValue(transaction.getTransactionValue())
+                .assetQuantity(transaction.getAssetQuantity() != null ? transaction.getAssetQuantity() : 0.0)
+                .transactionValue(transaction.getTransactionValue() != null ? transaction.getTransactionValue() : 0.0)
                 .transactionType(transaction.getTransactionType())
                 .build();
     }
