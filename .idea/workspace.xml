@@ -27,7 +27,12 @@
         </task>
         <projects_view>
           <tree_state>
-            <expand />
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="UnitProject" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
             <select />
           </tree_state>
         </projects_view>
@@ -123,6 +128,8 @@
       <recent name="$PROJECT_DIR$/resources/Images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\shans\Dev\Unit5\bd-team-project-crypto-wizards\example_frontend\frontend\public" />
+      <recent name="C:\Users\shans\Dev\Unit5\bd-team-project-crypto-wizards\example_frontend\frontend\public\ico" />
       <recent name="C:\Users\shans\Dev\Unit5\bd-team-project-crypto-wizards\project_documents\images\design_document" />
       <recent name="$PROJECT_DIR$/resources" />
     </key>
@@ -130,33 +137,23 @@
       <recent name="com.cryptoportfolio.converter" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.Tests in 'template_java_project.UnitProject.test'">
-    <configuration name="Tests in 'template_java_project.UnitProject.test'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/template_java_project" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests *" />
         <option name="taskDescriptions">
           <list />
         </option>
         <option name="taskNames">
           <list>
-            <option value=":test" />
           </list>
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Gradle.Tests in 'template_java_project.UnitProject.test'" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -170,6 +167,11 @@
       <workItem from="1644693541658" duration="1300000" />
       <workItem from="1644725847279" duration="1373000" />
       <workItem from="1644730702532" duration="380000" />
+      <workItem from="1646457437487" duration="6461000" />
+      <workItem from="1648071554524" duration="1252000" />
+      <workItem from="1648478120739" duration="3012000" />
+      <workItem from="1648857055973" duration="2419000" />
+      <workItem from="1649087361338" duration="1475000" />
     </task>
     <task id="LOCAL-00001" summary="Updated the design document's API &amp; Tables Section (6 &amp; 7), Created the EntityRelationshipDiagram.puml">
       <created>1644449732646</created>
@@ -268,7 +270,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
@@ -279,6 +280,7 @@
     <MESSAGE value="table structure modified in Design Doc" />
     <MESSAGE value="Created the GetPlaylistActivity module. Testing pending. Pushing for safety purposes" />
     <MESSAGE value="updated the design doc with the table name of the portfolios table to user_assets table" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated the design doc with the table name of the portfolios table to user_assets table" />
+    <MESSAGE value="favicon" />
+    <option name="LAST_COMMIT_MESSAGE" value="favicon" />
   </component>
 </project>
