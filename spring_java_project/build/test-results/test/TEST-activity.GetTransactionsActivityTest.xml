@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="activity.GetTransactionsActivityTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2022-03-28T04:06:02" hostname="KrishnarthysAir" time="0.156">
+  <properties/>
+  <testcase name="handleRequest_withNullTransactions_throwsTransactionsNotFoundException()" classname="activity.GetTransactionsActivityTest" time="0.022"/>
+  <testcase name="handleRequest_withAssetFlagAll_getsAllTheTransactionsForTheUser()" classname="activity.GetTransactionsActivityTest" time="0.097"/>
+  <testcase name="handleRequest_withAssetFlagAsAssetId_getsAllTheTransactionsForParticularAssertIdForTheUser()" classname="activity.GetTransactionsActivityTest" time="0.023"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

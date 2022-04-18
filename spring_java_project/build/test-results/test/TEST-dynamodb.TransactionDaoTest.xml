@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="dynamodb.TransactionDaoTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2022-03-28T04:05:52" hostname="KrishnarthysAir" time="1.144">
+  <properties/>
+  <testcase name="batchSaveTransactions_nullTransaction_throwsUnableToSaveToDatabaseException()" classname="dynamodb.TransactionDaoTest" time="0.236"/>
+  <testcase name="getTransactionsWithAssetFlagALL_getAllTransactionsFromDatabaseForTheUser()" classname="dynamodb.TransactionDaoTest" time="0.353"/>
+  <testcase name="batchSaveTransactions_savesTransactionsToDatabase()" classname="dynamodb.TransactionDaoTest" time="0.299"/>
+  <testcase name="getTransactionsWithAssetFlagAssetId_getTransactionsFromDatabaseForTheUser()" classname="dynamodb.TransactionDaoTest" time="0.253"/>
+  <system-out><![CDATA[2
+2
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
