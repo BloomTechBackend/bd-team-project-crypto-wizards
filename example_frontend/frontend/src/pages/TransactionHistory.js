@@ -1,8 +1,7 @@
 import React, {useState} from "react";
 import {useLocation, useNavigate} from "react-router-dom";
 import {getToken, getUsername, resetUserSession} from '../service/authService';
-import axios from '../apis/cryptoPortfolio';
-import {APIKey} from "../apis/cryptoPortfolio";
+import axios, {APIKey} from '../apis/cryptoPortfolio';
 import TransactionList from "../components/TransactionList";
 import DropDownMenu from "../components/DropDownMenu";
 

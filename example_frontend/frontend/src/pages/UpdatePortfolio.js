@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
-import axios from '../apis/cryptoPortfolio';
-import {APIKey} from "../apis/cryptoPortfolio";
+import axios, {APIKey} from '../apis/cryptoPortfolio';
 import {getToken, getUsername, resetUserSession} from '../service/authService';
 import {useNavigate, useLocation} from "react-router-dom";
 import DropDownMenu from '../components/DropDownMenu';

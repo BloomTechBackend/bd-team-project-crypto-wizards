@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
-import axios from '../apis/cryptoPortfolio';
-import {APIKey} from "../apis/cryptoPortfolio";
+import axios, {APIKey} from '../apis/cryptoPortfolio';
 import {NavLink, useNavigate} from "react-router-dom";
 
 const Register = () => {

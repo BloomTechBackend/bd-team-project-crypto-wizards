@@ -1,7 +1,7 @@
 import {createContext, useEffect, useState} from "react";
 import {getToken, getUsername, resetUserSession, setUserSession} from "../service/authService";
-import axios from '../apis/cryptoPortfolio';
-import {APIKey} from "../apis/cryptoPortfolio";
+import axios, {APIKey} from '../apis/cryptoPortfolio';
+
 
 const AuthContext = createContext({});
 

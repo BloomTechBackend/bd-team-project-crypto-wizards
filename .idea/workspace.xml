@@ -4,25 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1a7b167-a746-4d95-887e-103e49727ebe" name="Changes" comment="slice">
-      <change afterPath="$PROJECT_DIR$/example_frontend/frontend/src/apis/cryptoPortfolio.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example_frontend/frontend/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/example_frontend/frontend/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example_frontend/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/example_frontend/frontend/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example_frontend/frontend/src/app/store.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example_frontend/frontend/src/components/AuthProvider.js" beforeDir="false" afterPath="$PROJECT_DIR$/example_frontend/frontend/src/components/AuthProvider.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example_frontend/frontend/src/components/AuthRedux.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example_frontend/frontend/src/features/authSlice.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example_frontend/frontend/src/features/loginSlice.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example_frontend/frontend/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/example_frontend/frontend/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example_frontend/frontend/src/pages/CreatePortfolio.js" beforeDir="false" afterPath="$PROJECT_DIR$/example_frontend/frontend/src/pages/CreatePortfolio.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example_frontend/frontend/src/pages/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/example_frontend/frontend/src/pages/Login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example_frontend/frontend/src/pages/LoginRedux.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example_frontend/frontend/src/pages/Portfolio.js" beforeDir="false" afterPath="$PROJECT_DIR$/example_frontend/frontend/src/pages/Portfolio.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example_frontend/frontend/src/pages/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/example_frontend/frontend/src/pages/Register.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example_frontend/frontend/src/pages/TransactionHistory.js" beforeDir="false" afterPath="$PROJECT_DIR$/example_frontend/frontend/src/pages/TransactionHistory.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example_frontend/frontend/src/pages/UpdatePortfolio.js" beforeDir="false" afterPath="$PROJECT_DIR$/example_frontend/frontend/src/pages/UpdatePortfolio.js" afterDir="false" />
-    </list>
+    <list default="true" id="c1a7b167-a746-4d95-887e-103e49727ebe" name="Changes" comment="Context Provider" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -298,7 +280,21 @@
       <option name="project" value="LOCAL" />
       <updated>1649522602734</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Context Provider">
+      <created>1652816959935</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1652816959935</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Context Provider">
+      <created>1652817196555</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1652817196555</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -327,7 +323,8 @@
     <MESSAGE value="favicon" />
     <MESSAGE value="BrowserRouter / NavBar" />
     <MESSAGE value="slice" />
-    <option name="LAST_COMMIT_MESSAGE" value="slice" />
+    <MESSAGE value="Context Provider" />
+    <option name="LAST_COMMIT_MESSAGE" value="Context Provider" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

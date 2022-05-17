@@ -2,8 +2,7 @@ import React, {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {getToken, getUsername, isNewUser, resetUserSession} from '../service/authService';
 import coinGecko from "../apis/coinGecko";
-import axios from '../apis/cryptoPortfolio';
-import {APIKey} from "../apis/cryptoPortfolio";
+import axios, {APIKey} from '../apis/cryptoPortfolio';
 import PortfolioList from "../components/PortfolioList";
 import PortfolioChart from "../components/PortfolioChart";
 
