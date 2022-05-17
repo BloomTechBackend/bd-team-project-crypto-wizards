@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="activity.CreatePortfolioActivityTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2022-03-28T04:06:02" hostname="KrishnarthysAir" time="0.058">
+  <properties/>
+  <testcase name="handleRequest_withUnavailableAsset_throwsAssetNotAvailableException()" classname="activity.CreatePortfolioActivityTest" time="0.015"/>
+  <testcase name="handleRequest_withValidUsername_createsPortfolio()" classname="activity.CreatePortfolioActivityTest" time="0.024"/>
+  <testcase name="handleRequest_withInValidUsername_throwsLoginException()" classname="activity.CreatePortfolioActivityTest" time="0.016"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

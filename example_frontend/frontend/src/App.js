@@ -8,7 +8,7 @@ import {getToken} from './service/authService';
 import CreatePortfolio from "./pages/CreatePortfolio";
 import "./App.css";
 import TransactionHistory from "./pages/TransactionHistory";
-import UpdatePortfolio from "./pages/UpdatePortfolio";
+import UpdatePortfolio from "./pages/UpdatePortfolio"; 
 import NavBar from "./components/NavBar";
 import {AuthProvider} from "./components/AuthProvider";
 
