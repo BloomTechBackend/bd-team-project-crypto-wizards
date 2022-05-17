@@ -14,7 +14,7 @@ import {AuthProvider} from "./components/AuthProvider";
 
 
 function App() {
-    const [isTokenSet, setToken] = useState(getToken());
+    const [isTokenSet] = useState(getToken());
 
     return (
         <div className="container">

@@ -1,11 +1,9 @@
 import React, {useContext, useState} from 'react';
 import {NavLink, useNavigate} from "react-router-dom";
-import axios from 'axios';
+import axios from '../apis/cryptoPortfolio';
+import {APIKey} from "../apis/cryptoPortfolio";
 import {getToken, setUserSession} from '../service/authService';
 import {AuthContext} from "../components/AuthProvider";
-
-
-const loginAPIUrl = 'https://r6z0a5xu3f.execute-api.us-east-2.amazonaws.com/prod/login/';
 
 const Login = () => {
     const {setToken} = useContext(AuthContext);
@@ -17,7 +15,7 @@ const Login = () => {
     const submitHandler = () => {
         const requestConfig = {
             headers: {
-                'x-api-key': 'Lg6TGbdNQBTq3IMNsQ9c5dCFEUpgXQS5IG5o7RZ5'
+                'x-api-key': APIKey
             }
         }
         const requestBody = {
@@ -25,7 +23,7 @@ const Login = () => {
             password: password
         }
 
-        axios.post(loginAPIUrl, requestBody, requestConfig).then((response) => {
+        axios.post('/login', requestBody, requestConfig).then((response) => {
             setUserSession(response.data.username, response.data.authToken, response.data.newUser);
             console.log("newUser: " + response.data.newUser);
             console.log("typeof newUser: " + typeof response.data.newUser);

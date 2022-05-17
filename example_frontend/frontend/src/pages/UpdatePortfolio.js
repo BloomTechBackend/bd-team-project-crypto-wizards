@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import axios from 'axios';
+import axios from '../apis/cryptoPortfolio';
+import {APIKey} from "../apis/cryptoPortfolio";
 import {getToken, getUsername, resetUserSession} from '../service/authService';
 import {useNavigate, useLocation} from "react-router-dom";
 import DropDownMenu from '../components/DropDownMenu';
@@ -12,7 +13,7 @@ const UpdatePortfolio = () => {
     const location = useLocation();
     const token = getToken();
 
-    const [username, setUsername] = useState(getUsername());
+    const [username] = useState(getUsername());
     const [assetId, setAssetId] = useState('');
     const [quantity, setQuantity] = useState('');
     const [message, setMessage] = useState(null);
@@ -88,7 +89,7 @@ const UpdatePortfolio = () => {
     const updatePortfolioHandler = () => {
         const requestConfig = {
             headers: {
-                'x-api-key': 'Lg6TGbdNQBTq3IMNsQ9c5dCFEUpgXQS5IG5o7RZ5',
+                'x-api-key': APIKey,
                 'cp-auth-token': token
             }
         }
@@ -102,7 +103,7 @@ const UpdatePortfolio = () => {
         console.log('Request config' + JSON.stringify(requestConfig));
         console.log('Request body' + JSON.stringify(requestBody));
 
-        axios.put(portfolioAPIUrl + username, requestBody, requestConfig).then((response) => {
+        axios.put('/portfolio/' + username, requestBody, requestConfig).then((response) => {
             console.log('Portfolio Updated');
             navigate('/portfolio');
         }).catch((error) => {

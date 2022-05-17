@@ -1,11 +1,10 @@
 import React, {useState} from "react";
 import {useLocation, useNavigate} from "react-router-dom";
 import {getToken, getUsername, resetUserSession} from '../service/authService';
-import axios from 'axios';
+import axios from '../apis/cryptoPortfolio';
+import {APIKey} from "../apis/cryptoPortfolio";
 import TransactionList from "../components/TransactionList";
 import DropDownMenu from "../components/DropDownMenu";
-
-const transactionHistoryAPIUrl = 'https://r6z0a5xu3f.execute-api.us-east-2.amazonaws.com/prod/transactions/';
 
 const TransactionHistory = () => {
     const username = getUsername();
@@ -20,12 +19,12 @@ const TransactionHistory = () => {
     const queryHandler = () => {
         const requestConfig = {
             headers: {
-                'x-api-key': 'Lg6TGbdNQBTq3IMNsQ9c5dCFEUpgXQS5IG5o7RZ5',
+                'x-api-key': APIKey,
                 'cp-auth-token': token
             }
         }
 
-        const urlString = transactionHistoryAPIUrl + username + '?assetFlag=' + (queryAssetId=='Select an Asset' ? 'ALL' : queryAssetId);
+        const urlString = '/transactions/' + username + '?assetFlag=' + (queryAssetId=='Select an Asset' ? 'ALL' : queryAssetId);
         console.log('Request config' + JSON.stringify(requestConfig));
         console.log(urlString);
         

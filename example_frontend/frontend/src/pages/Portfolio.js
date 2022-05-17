@@ -2,18 +2,16 @@ import React, {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {getToken, getUsername, isNewUser, resetUserSession} from '../service/authService';
 import coinGecko from "../apis/coinGecko";
-import axios from 'axios';
+import axios from '../apis/cryptoPortfolio';
+import {APIKey} from "../apis/cryptoPortfolio";
 import PortfolioList from "../components/PortfolioList";
 import PortfolioChart from "../components/PortfolioChart";
-
-const portfolioAPIUrl = 'https://r6z0a5xu3f.execute-api.us-east-2.amazonaws.com/prod/portfolio/';
 
 const Portfolio = () => {
     const username = getUsername();
     const navigate = useNavigate();
     const token = getToken();
     const newUser = !!isNewUser();
-
 
     const [message, setMessage] = useState(null);
     const [assets, setAssets] = useState(null);
@@ -60,13 +58,13 @@ const Portfolio = () => {
     useEffect(() => {
         const requestConfig = {
             headers: {
-                'x-api-key': 'Lg6TGbdNQBTq3IMNsQ9c5dCFEUpgXQS5IG5o7RZ5',
+                'x-api-key': APIKey,
                 'cp-auth-token': token
             }
         }
         
         if (!newUser) {
-            axios.get(portfolioAPIUrl + username, requestConfig).then((response) => {
+            axios.get('/portfolio/' + username, requestConfig).then((response) => {
                 console.log(response);
                 setAssetQuantityMap(response.data.portfolio.assetQuantityMap);
             }).catch((error) => {
