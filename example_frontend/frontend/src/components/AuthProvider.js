@@ -1,12 +1,12 @@
 import {createContext, useEffect, useState} from "react";
 import {getToken, getUsername, resetUserSession, setUserSession} from "../service/authService";
-import axios from "axios";
+import axios from '../apis/cryptoPortfolio';
+import {APIKey} from "../apis/cryptoPortfolio";
 
-const verifyTokenAPIUrl = 'https://r6z0a5xu3f.execute-api.us-east-2.amazonaws.com/prod/verify';
 const AuthContext = createContext({});
 
 const AuthProvider = ({children}) => {
-    const [isAuthentication, setAuthentication] = useState(null);
+    const [setAuthentication] = useState(null);
     const [token, setToken] = useState(getToken());
 
     useEffect(() => {
@@ -17,7 +17,7 @@ const AuthProvider = ({children}) => {
 
         const requestConfig = {
             headers: {
-                'x-api-key': 'Lg6TGbdNQBTq3IMNsQ9c5dCFEUpgXQS5IG5o7RZ5',
+                'x-api-key': APIKey,
                 'cp-auth-token': token
             }
         }
@@ -27,7 +27,7 @@ const AuthProvider = ({children}) => {
             token: token
         }
 
-        axios.post(verifyTokenAPIUrl, requestBody, requestConfig).then((response) => {
+        axios.post('/verify/', requestBody, requestConfig).then((response) => {
             setUserSession(response.data.username, response.data.token);
             setAuthentication(false);
             console.log("token: " + response.data.token);

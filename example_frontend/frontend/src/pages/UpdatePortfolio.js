@@ -6,8 +6,6 @@ import {useNavigate, useLocation} from "react-router-dom";
 import DropDownMenu from '../components/DropDownMenu';
 import PortfolioList from '../components/PortfolioList';
 
-const portfolioAPIUrl = 'https://r6z0a5xu3f.execute-api.us-east-2.amazonaws.com/prod/portfolio/';
-
 const UpdatePortfolio = () => {
     const navigate = useNavigate();
     const location = useLocation();
