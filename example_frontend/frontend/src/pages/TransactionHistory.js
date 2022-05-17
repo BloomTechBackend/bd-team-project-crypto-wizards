@@ -1,17 +1,11 @@
 import React, {useState} from "react";
 import {useLocation, useNavigate} from "react-router-dom";
 import {getToken, getUsername, resetUserSession} from '../service/authService';
+import axios, {APIKey} from '../apis/cryptoPortfolio';
 import TransactionList from "../components/TransactionList";
 import DropDownMenu from "../components/DropDownMenu";
-<<<<<<< HEAD
 
-const transactionHistoryAPIUrl = 'https://r6z0a5xu3f.execute-api.us-east-2.amazonaws.com/prod/transactions/';
-=======
-import axios from '../apis/cryptoPortfolio';
-import {APIKey} from "../apis/apiKey";
->>>>>>> main
-
-const TransactionHistory = (props) => {
+const TransactionHistory = () => {
     const username = getUsername();
     const navigate = useNavigate();
     const location = useLocation();
@@ -24,11 +18,7 @@ const TransactionHistory = (props) => {
     const queryHandler = () => {
         const requestConfig = {
             headers: {
-<<<<<<< HEAD
-                'x-api-key': 'Lg6TGbdNQBTq3IMNsQ9c5dCFEUpgXQS5IG5o7RZ5',
-=======
                 'x-api-key': APIKey,
->>>>>>> main
                 'cp-auth-token': token
             }
         }
@@ -44,7 +34,6 @@ const TransactionHistory = (props) => {
         }).catch((error) => {
             if (error.response.status === 401 || error.response.status === 403) {
                 resetUserSession();
-                props.logout();
                 navigate('/login');
             } else {
                 setMessage(error.response.data.errorMessage.split('] ')[1]);
@@ -58,11 +47,10 @@ const TransactionHistory = (props) => {
 
     const logoutHandler = () => {
         resetUserSession();
-        props.logout();
         navigate('/login');
     }
     return (
-        <div>
+        <>
             <div id="alignpage">
             <h5>Transaction History</h5>
             {username}'s portfolio <br/> <br/>
@@ -80,7 +68,7 @@ const TransactionHistory = (props) => {
                 <input className="inner" type="button" value="Logout" onClick={logoutHandler} />
             </div>
             {message && <p className="message">{message}</p>}
-        </div>
+        </>
     )
 }
 

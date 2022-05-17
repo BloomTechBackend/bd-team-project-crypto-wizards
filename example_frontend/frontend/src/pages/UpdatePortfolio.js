@@ -1,22 +1,16 @@
 import React, {useState} from 'react';
+import axios, {APIKey} from '../apis/cryptoPortfolio';
 import {getToken, getUsername, resetUserSession} from '../service/authService';
 import {useNavigate, useLocation} from "react-router-dom";
 import DropDownMenu from '../components/DropDownMenu';
 import PortfolioList from '../components/PortfolioList';
-<<<<<<< HEAD
 
-const portfolioAPIUrl = 'https://r6z0a5xu3f.execute-api.us-east-2.amazonaws.com/prod/portfolio/';
-=======
-import axios from '../apis/cryptoPortfolio';
-import {APIKey} from "../apis/apiKey";
->>>>>>> main
-
-const UpdatePortfolio = (props) => {
+const UpdatePortfolio = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const token = getToken();
 
-    const [username, setUsername] = useState(getUsername());
+    const [username] = useState(getUsername());
     const [assetId, setAssetId] = useState('');
     const [quantity, setQuantity] = useState('');
     const [message, setMessage] = useState(null);
@@ -89,14 +83,10 @@ const UpdatePortfolio = (props) => {
         }));
     }
 
-    const updatePortfolioHandler = (event) => {
+    const updatePortfolioHandler = () => {
         const requestConfig = {
             headers: {
-<<<<<<< HEAD
-                'x-api-key': 'Lg6TGbdNQBTq3IMNsQ9c5dCFEUpgXQS5IG5o7RZ5',
-=======
                 'x-api-key': APIKey,
->>>>>>> main
                 'cp-auth-token': token
             }
         }
@@ -110,13 +100,12 @@ const UpdatePortfolio = (props) => {
         console.log('Request config' + JSON.stringify(requestConfig));
         console.log('Request body' + JSON.stringify(requestBody));
 
-        axios.put('/portfolio/'+ username, requestBody, requestConfig).then((response) => {
+        axios.put('/portfolio/' + username, requestBody, requestConfig).then((response) => {
             console.log('Portfolio Updated');
             navigate('/portfolio');
         }).catch((error) => {
             if (error.response.status === 401 || error.response.status === 403) {
                 resetUserSession();
-                props.logout();
                 navigate('/login');
             } else {
                 setMessage(error.response.data.errorMessage.split('] ')[1]);
@@ -130,12 +119,11 @@ const UpdatePortfolio = (props) => {
 
     const logoutHandler = () => {
         resetUserSession();
-        props.logout();
         navigate('/login');
     }
 
     return (
-        <div>
+        <>
             <div id="alignpage">
             <h5>Update Portfolio</h5>
             {username}'s Portfolio <br/> <br/>
@@ -155,7 +143,7 @@ const UpdatePortfolio = (props) => {
                 <input className="inner" type="button" value="Logout" onClick={logoutHandler} />
             </div>
             {message && <p className="message">{message}</p>}
-        </div>
+        </>
     )
 }
 

@@ -1,23 +1,16 @@
 import React, {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {getToken, getUsername, isNewUser, resetUserSession} from '../service/authService';
+import coinGecko from "../apis/coinGecko";
+import axios, {APIKey} from '../apis/cryptoPortfolio';
 import PortfolioList from "../components/PortfolioList";
 import PortfolioChart from "../components/PortfolioChart";
-<<<<<<< HEAD
 
-const portfolioAPIUrl = 'https://r6z0a5xu3f.execute-api.us-east-2.amazonaws.com/prod/portfolio/';
-=======
-import coinGecko from "../apis/coinGecko";
-import axios from '../apis/cryptoPortfolio';
-import {APIKey} from "../apis/apiKey";
->>>>>>> main
-
-const Portfolio = (props) => {
+const Portfolio = () => {
     const username = getUsername();
     const navigate = useNavigate();
     const token = getToken();
     const newUser = !!isNewUser();
-
 
     const [message, setMessage] = useState(null);
     const [assets, setAssets] = useState(null);
@@ -64,11 +57,7 @@ const Portfolio = (props) => {
     useEffect(() => {
         const requestConfig = {
             headers: {
-<<<<<<< HEAD
-                'x-api-key': 'Lg6TGbdNQBTq3IMNsQ9c5dCFEUpgXQS5IG5o7RZ5',
-=======
                 'x-api-key': APIKey,
->>>>>>> main
                 'cp-auth-token': token
             }
         }
@@ -80,7 +69,6 @@ const Portfolio = (props) => {
             }).catch((error) => {
                 if (error.response.status === 401 || error.response.status === 403) {
                     resetUserSession();
-                    props.logout();
                     navigate('/login');
                 } else {
                     setMessage(error.response.data.errorMessage.split('] ')[1]);
@@ -107,16 +95,15 @@ const Portfolio = (props) => {
 
     const logoutHandler = () => {
         resetUserSession();
-        props.logout();
         navigate('/login');
     }
     return (
-        <div>
+        <>
             {(assets && assetQuantityMap) &&
                 <PortfolioChart assets={assets.filter(asset => assetQuantityMap[asset.id])} assetQuantityMap={assetQuantityMap} />}
             {(assets && assetQuantityMap) ?
                 <PortfolioList assets={assets.filter(asset => assetQuantityMap[asset.id])} assetQuantityMap={assetQuantityMap} />:
-            <div>{newUser ? "" : "Loading..."}</div>}
+            <>{newUser ? "" : "Loading..."}</>}
 
             <div id="outer">
                 {newUser && <input className="inner" type="button" value="Create Portfolio" onClick={createHandler} />} <br/>
@@ -125,7 +112,7 @@ const Portfolio = (props) => {
                 <input className="inner" type="button" value="Logout" onClick={logoutHandler} />
             </div>
             {message && <p className="message">{message}</p>}
-        </div>
+        </>
     )
 }
 

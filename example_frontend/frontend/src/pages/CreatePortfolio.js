@@ -1,22 +1,17 @@
 import React, {useState} from 'react';
+import axios, {APIKey} from '../apis/cryptoPortfolio';
 import {getToken, getUsername, setNewUser, resetUserSession} from '../service/authService';
 import {useNavigate, useLocation} from "react-router-dom";
 import DropDownMenu from '../components/DropDownMenu';
 import PortfolioList from '../components/PortfolioList';
-<<<<<<< HEAD
 
-const portfolioAPIUrl = 'https://r6z0a5xu3f.execute-api.us-east-2.amazonaws.com/prod/portfolio/';
-=======
-import axios from '../apis/cryptoPortfolio';
-import {APIKey} from "../apis/apiKey";
->>>>>>> main
 
-const CreatePortfolio = (props) => {
+const CreatePortfolio = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const token = getToken();
 
-    const [username, setUsername] = useState(getUsername());
+    const [username] = useState(getUsername());
     const [assetId, setAssetId] = useState('');
     const [quantity, setQuantity] = useState('');
     const [message, setMessage] = useState(null);
@@ -54,15 +49,11 @@ const CreatePortfolio = (props) => {
         }
     }
 
-    const createPortfolioHandler = (event) => {
+    const createPortfolioHandler = () => {
 
         const requestConfig = {
             headers: {
-<<<<<<< HEAD
-                'x-api-key': 'Lg6TGbdNQBTq3IMNsQ9c5dCFEUpgXQS5IG5o7RZ5',
-=======
                 'x-api-key': APIKey,
->>>>>>> main
                 'cp-auth-token': token
             }
         }
@@ -84,7 +75,6 @@ const CreatePortfolio = (props) => {
         }).catch((error) => {
             if (error.response.status === 401 || error.response.status === 403) {
                 resetUserSession();
-                props.logout();
                 navigate('/login');
             } else {
                 setMessage(error.response.data.errorMessage.split('] ')[1]);
@@ -98,12 +88,11 @@ const CreatePortfolio = (props) => {
 
     const logoutHandler = () => {
         resetUserSession();
-        props.logout();
         navigate('/login');
     }
 
     return (
-        <div>
+        <>
             <div id="alignpage">
             <h5>Create Portfolio</h5>
             {username}'s Portfolio <br/> <br/>
@@ -123,7 +112,7 @@ const CreatePortfolio = (props) => {
                 <input className="inner" type="button" value="Logout" onClick={logoutHandler} />
             </div>
             {message && <p className="message">{message}</p>}
-        </div>
+        </>
     )
 }
 
